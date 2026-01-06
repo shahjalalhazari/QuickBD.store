@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# QuickBD.store - Fast Delivery Marketplace
 
-## Getting Started
+QuickBD.store is a comprehensive shopping & delivery platform serving Bangladesh, connecting local sellers with customers for fast, reliable delivery of everything from daily necessities to specialty items.
 
-First, run the development server:
+## 🛍️ What is QuickBD.store?
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+A modern e-commerce platform built specifically for the Bangladeshi market, offering:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Multi-vendor marketplace** - Any seller can join and sell products
+- **Fast delivery network** - Quick and reliable delivery services
+- **Multiple payment options** - bKash, Nagad, Card, Cash on Delivery
+- **User-friendly experience** - Modern UI/UX for all user types
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 👥 For Everyone
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Customers** - Browse, order, and track deliveries
+- **Sellers** - Manage shops, products, and orders
+- **Admins** - Platform management and analytics
 
-## Learn More
+## 🛠️ Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend**: Next.js 16+, React, Tailwind CSS
+- **Backend**: Next.js API Routes, MongoDB
+- **Authentication**: NextAuth.js
+- **Payments**: bKash, Nagad, Stripe integration
+- **Deployment**: Vercel-ready
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 Features
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- User authentication & role management
+- Shop & product management
+- Shopping cart & order system
+- Real-time order tracking
+- Payment gateway integration
+- Admin dashboard & analytics
+- Responsive design for all devices
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Join us in revolutionizing delivery services in Bangladesh! 🇧🇩.
