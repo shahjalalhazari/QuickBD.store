@@ -2,20 +2,81 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://quickbd.store'
 const SITE_NAME = 'QuickBD.store'
 const SITE_DESCRIPTION = 'Bangladesh\'s fastest and most reliable online shopping platform'
 const SITE_KEYWORDS = [
-  'online shopping bangladesh',
-  'bangladesh ecommerce',
-  'electronics bangladesh',
-  'fashion bangladesh',
-  'home appliances',
-  'quick delivery dhaka',
-  'online store bangladesh',
-  'montserrat font',
-  'hind siliguri font',
-  'bangladesh shopping',
-  'dhaka delivery',
-  'ecommerce platform',
+  // Brand and core service
+  'quickbd.store',
   'quickbd',
-  'bangladesh market',
+  'quickbd.store delivery',
+  'quickbd.store bangladesh',
+  'quickbd.store online shopping',
+
+  // Core services
+  'home delivery bangladesh',
+  'quick delivery service bangladesh',
+  'online shopping bangladesh',
+  'bangladesh delivery app',
+  'fast delivery',
+  'reliable delivery service',
+  'home delivery service',
+  'home delivery in gouripur',
+  'home delivery in daudkandi',
+  'home delivery in eliatgong',
+  'home delivery in shahidnagar',
+  'home delivery in sachar',
+  'home delivery in moloy',
+  'home delivery in juranpur',
+  'home delivery in daspara',
+  'home delivery in titas',
+  'home delivery in batakandi',
+  'home delivery in dorikandi',
+  'home delivery in homna',
+
+  // Product categories
+  'grocery delivery',
+  'electronics delivery',
+  'fashion online',
+  'medicine delivery',
+  'food delivery',
+  'mobile phone delivery',
+  'cosmetics delivery',
+  'baby products delivery',
+  'grocery shopping',
+  'electronics shopping',
+  'fashion online shopping',
+  'medicine shopping',
+  'food shopping',
+  'mobile phone shopping',
+  'cosmetics shopping',
+  'baby products shopping',
+
+  // Payment methods
+  'cash on delivery bangladesh',
+  'bkash payment online shopping',
+  'nagad payment delivery',
+  'card payment bangladesh',
+  'online payment bangladesh',
+
+  // Service features
+  'same day delivery bangladesh',
+  'next day delivery dhaka',
+  'express delivery bangladesh',
+  'quick home delivery',
+  'free delivery bangladesh',
+  'fast shipping bangladesh',
+
+  // Problem-solving keywords
+  'shop from home bangladesh',
+  'get everything delivered bangladesh',
+  'order online bangladesh',
+  'buy online bangladesh',
+  'online store bangladesh',
+  'bangladesh ecommerce',
+  
+  // Urgent needs
+  'quick grocery delivery',
+  'emergency medicine delivery',
+  'fast electronics delivery',
+  'urgent delivery service',
+  'instant delivery bangladesh'
 ]
 
 const AUTHOR = 'QuickBD.store Team'
