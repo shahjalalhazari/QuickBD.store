@@ -1,0 +1,19 @@
+.quickbd-navbar {
+    @apply flex items-center justify-between px-40 py-6 border-b border-border-color border-opacity-60;
+}
+
+.navbar-items {
+    @apply flex space-x-10 font-semibold text-lg text-heading-color;
+}
+
+.navbar-item:hover {
+    @apply text-primary underline;
+}
+
+.active-nav {
+    @apply text-primary font-bold;
+}
+
+.navbar-icons {
+    @apply flex items-center space-x-6;
+}

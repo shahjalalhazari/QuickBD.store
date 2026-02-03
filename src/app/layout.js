@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Montserrat, Hind_Siliguri } from "next/font/google";
 import { baseMetadata } from "./metadata";
+import Navbar from "@/components/shared/navbar/Navbar";
 
 
 const montserrat = Montserrat({
@@ -21,7 +22,7 @@ export const metadata = baseMetadata;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${hind.variable} font-montserrat`}>
+    <html lang="en" className={`${montserrat.variable} ${hind.variable} font-montserrat`} data-theme="light">
       <head>
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,7 +37,8 @@ export default function RootLayout({ children }) {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="format-detection" content="telephone=no" />
       </head>
-      <body>
+      <body className="bg-ghost-white">
+        <Navbar/>
         {children}
       </body>
     </html>

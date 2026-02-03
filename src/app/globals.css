@@ -16,3 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.quickbd-transition {
+    @apply transition-all duration-500 ease-in-out;
+}
