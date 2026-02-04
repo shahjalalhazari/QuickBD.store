@@ -70,7 +70,7 @@ body {
 
 /* -------------------------------------------------------------- */
 /* MEDIUM SCREEN */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   /* ERROR 404 PAGE */
   /* *** Shapes *** */
   .oval-1 {
@@ -165,7 +165,7 @@ body {
 
 /* TRANSITIONS & ANIMATIONS */
 .quickbd-transition {
-    @apply transition-all duration-500 ease-in-out;
+  @apply transition-all duration-500 ease-in-out;
 }
 @keyframes float-up-down {
   0%,

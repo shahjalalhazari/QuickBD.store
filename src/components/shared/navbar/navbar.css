@@ -17,3 +17,53 @@
 .navbar-icons {
     @apply flex items-center space-x-6;
 }
+
+.navbar-icon {
+    @apply w-6 h-6;
+}
+
+.navbar-icons > li :hover {
+    @apply text-primary;
+}
+
+.cart-icon {
+    @apply flex items-center;
+}
+
+.cart-count {
+    @apply bg-heading-color text-ghost-white text-xs font-semibold rounded-full py-1.5 px-2.5 ml-0.5;
+}
+
+
+/* -------------------------------------------------------------- */
+/* MEDIUM SCREEN */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .quickbd-navbar {
+        @apply px-8 py-4;
+    }
+
+    .navbar-logo {
+        @apply w-28 h-auto;
+    }
+
+    .navbar-items {
+        @apply space-x-6 text-sm;
+    }
+
+    .navbar-icons {
+        @apply space-x-4;
+    }
+
+    .navbar-icon {
+        @apply w-5 h-5;
+    }
+
+    .cart-count {
+        @apply py-1 px-2;
+    }
+}
+/* -------------------------------------------------------------- */
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+}
+/* -------------------------------------------------------------- */
