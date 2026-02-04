@@ -1,7 +1,6 @@
 import "./globals.css";
 import { Montserrat, Hind_Siliguri } from "next/font/google";
 import { baseMetadata } from "./metadata";
-import Navbar from "@/components/shared/navbar/Navbar";
 
 
 const montserrat = Montserrat({
@@ -38,7 +37,6 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no" />
       </head>
       <body className="bg-ghost-white">
-        <Navbar/>
         {children}
       </body>
     </html>

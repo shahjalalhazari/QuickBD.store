@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 
 const LargeNavbar = ({navItems}) => {
   const pathname = usePathname();
-
-  console.log(pathname);
+  
   return (
     <nav className="quickbd-navbar" role="navigation" aria-label="main navigation">
 

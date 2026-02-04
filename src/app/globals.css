@@ -17,6 +17,57 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* TRANSITIONS */
 .quickbd-transition {
     @apply transition-all duration-500 ease-in-out;
+}
+
+/* ERROR 404 PAGE */
+.not-found-404 {
+  @apply relative flex min-h-screen w-full items-center justify-center overflow-hidden;
+}
+/* *** Shapes *** */
+.oval-1 {
+  @apply absolute top-0 left-0 z-[1];
+}
+.oval-2 {
+  @apply absolute left-[11%] bottom-[42%] z-[4];
+}
+.oval-3 {
+  @apply absolute bottom-[10%] right-[20%] z-[5];
+}
+.oval-4 {
+  @apply absolute top-[18%] right-[7%] z-[6];
+}
+.oval-5 {
+  @apply absolute top-[28%] right-[28%] z-[7];
+}
+.objects-1 {
+  @apply absolute top-0 right-0 z-[2];
+}
+.objects-2 {
+  @apply absolute right-0 bottom-0 z-[3];
+}
+/* *** Content *** */
+.content {
+  @apply relative z-10 flex flex-col items-center text-center;
+}
+.error-heading {
+  @apply text-[250px] font-bold text-primary leading-tight;
+}
+.error-subheading {
+  @apply text-[54px] font-bold text-heading-color;
+}
+.error-paragraph {
+  @apply text-base text-body-color;
+}
+.back-to-home-btn {
+  @apply mt-12;
+}
+
+
+/* BUTTONS */
+/* *** Full Width Button *** */
+.full-width-btn {
+  @apply py-2.5 text-ghost-white font-medium text-base rounded-lg cursor-pointer;
 }
