@@ -1,6 +1,9 @@
 .quickbd-navbar {
     @apply flex items-center justify-between px-40 py-6 border-b border-border-color border-opacity-60;
 }
+.small-navbar {
+    @apply hidden
+}
 
 .navbar-items {
     @apply flex space-x-10 font-semibold text-lg text-heading-color;
@@ -41,6 +44,9 @@
     .quickbd-navbar {
         @apply px-8 py-4;
     }
+    .small-navbar {
+        @apply hidden
+    }
 
     .navbar-logo {
         @apply w-28 h-auto;
@@ -59,11 +65,21 @@
     }
 
     .cart-count {
-        @apply py-1 px-2;
+        @apply py-0.5 px-1.5 font-normal;
     }
 }
 /* -------------------------------------------------------------- */
 /* SMALL SCREEN */
 @media (max-width: 639px) {
+    .quickbd-navbar {
+        @apply hidden;
+    }
+    .small-navbar {
+        @apply flex items-center justify-between px-6 py-4 border-b border-border-color border-opacity-60;
+    }
+
+    .cart-count {
+        @apply py-1 px-2 font-medium;
+    } 
 }
 /* -------------------------------------------------------------- */
