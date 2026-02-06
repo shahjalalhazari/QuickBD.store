@@ -8,7 +8,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSearch, BiX } from "react-icons/bi";
 import FullWIthBtn from "../buttons/FullWIthBtn";
 import { SlSocialYoutube } from "react-icons/sl";
-import { FaInstagram } from "react-icons/fa6";
+import { FaInstagram, FaRegHeart } from "react-icons/fa6";
 
 const SmallNavbar = ({ navItems }) => {
 	const pathname = usePathname();
@@ -104,13 +104,66 @@ const SmallNavbar = ({ navItems }) => {
                           pathname === item.path && "active-nav-item"
                         }`}
                         href={item.path}
-                        onClick={() => setNavbarOpen(false)}
+                        onClick={closeNavbar}
                       >
                         {item.title}
                       </Link>
                     </li>
                   ))}
                 </ul> 
+              </div>
+
+              {/* BOTTOM PART */}
+              <div className="bottom-part-content">
+
+                {/* CART BTN */}
+                <Link href="/cart" 
+                  className={`cart-full-btn ${
+                  pathname === "/cart" ? "active-nav-item" : ""}`}
+                  onClick={closeNavbar}
+                >
+                  <p>Cart</p>
+                  <span className="cart-icon">
+                    <FiShoppingBag className="navbar-icon" />
+                    <span className="cart-count">9</span>
+                  </span>
+                </Link>
+
+                {/* FAVORITE BTN */}
+                <Link href="/profile/favorite" 
+                  className={`cart-full-btn ${
+                  pathname === "/profile/favorite" ? "active-nav-item" : ""}`}
+                  onClick={closeNavbar}
+                >
+                  <p>Favorite</p>
+                  <span className="cart-icon">
+                    <FaRegHeart className="navbar-icon" />
+                    <span className="cart-count">9</span>
+                  </span>
+                </Link>
+
+                {/* SIGNIN / ACCOUNT BTN */}
+                <Link href={"/signin"}>
+                  <FullWIthBtn 
+                    text={"SignIn / Account"} 
+                    color={"bg-primary"}
+                    customClass=""
+                    onClick={closeNavbar} 
+                  />
+                </Link>
+
+                {/* SOCIAL MEDIA ICONS */}
+                <div className="social-icons">
+                  <Link href={"/"} target="_blank">
+                    <FaInstagram className="navbar-icon"/>
+                  </Link>
+                  <Link href={"/"} target="_blank">
+                    <FiFacebook className="navbar-icon"/>
+                  </Link>
+                  <Link href={"/"} target="_blank">
+                    <SlSocialYoutube className="navbar-icon"/>
+                  </Link>
+                </div>
               </div>
             </div>
           </>

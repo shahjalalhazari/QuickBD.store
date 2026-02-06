@@ -90,10 +90,12 @@
     }
 
     .menu-sidebar {
-        @apply fixed top-0 left-0 h-full bg-ghost-white z-[1000] p-6;
+        @apply fixed top-0 left-0 h-full bg-ghost-white z-[1000] p-6 flex flex-col justify-between;
         width: calc(100% - 32px);
     }
 
+
+    /* *** TOP PART *** */
     .top-part-content {
         @apply flex flex-col space-y-8;
     }
@@ -140,5 +142,23 @@
 
     .active-nav-item {
         @apply text-primary font-bold border-primary;
+    }
+
+
+    /* *** BOTTOM PART *** */
+    .bottom-part-content {
+        @apply flex flex-col space-y-6;
+    }
+
+    .cart-full-btn {
+        @apply text-body-color flex items-center justify-between border-b-2 border-border-color border-opacity-60 pb-2
+    }
+
+    .cart-full-btn>p {
+        @apply text-base font-semibold;
+    };
+
+    .social-icons {
+        @apply flex gap-x-4 text-body-color
     }
 }
