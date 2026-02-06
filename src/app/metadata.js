@@ -210,7 +210,6 @@ export const baseMetadata = {
   },
   
   manifest: '/manifest.json',
-  themeColor: THEME_COLOR,
   
   alternates: {
     canonical: SITE_URL,

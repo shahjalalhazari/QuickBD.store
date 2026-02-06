@@ -17,6 +17,14 @@ variable: "--font-hind",
 weight: ["300", "400", "500", "600", "700"],
 });
 
+// VIEWPORT
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#EE7411",
+};
+
 // METADATA
 export const metadata = baseMetadata;
 
@@ -27,9 +35,6 @@ export default function RootLayout({ children }) {
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* Viewport */}
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         
         {/* PWA */}
         <meta name="mobile-web-app-capable" content="yes" />
