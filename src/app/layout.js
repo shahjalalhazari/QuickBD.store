@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Montserrat, Hind_Siliguri } from "next/font/google";
 import { baseMetadata } from "./metadata";
+import 'animate.css';
 
 
 const montserrat = Montserrat({

@@ -51,7 +51,7 @@ export default function NotFound() {
           It might have been moved or deleted.
         </p>
         <Link href="/" className="back-to-home-btn">
-          <FullWIthBtn text="Back to Home" color="bg-secondary w-[328px] lg:w-[428px]"/>
+          <FullWIthBtn text="Back to Home" color="bg-secondary" customClass="w-[328px] lg:w-[428px]" />
         </Link>
       </div>
     </div>
