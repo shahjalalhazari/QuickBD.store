@@ -1,4 +1,4 @@
-import FullWIthBtn from "@/components/shared/buttons/FullWIthBtn";
+import FullWidthBtn from "@/components/shared/buttons/FullWidthBtn";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -51,7 +51,7 @@ export default function NotFound() {
           It might have been moved or deleted.
         </p>
         <Link href="/" className="back-to-home-btn">
-          <FullWIthBtn text="Back to Home" color="bg-secondary" customClass="w-[328px] lg:w-[428px]" />
+          <FullWidthBtn text="Back to Home" color="bg-secondary" customClass="w-[328px] lg:w-[428px]" />
         </Link>
       </div>
     </div>

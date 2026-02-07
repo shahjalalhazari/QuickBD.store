@@ -6,9 +6,9 @@ import { useState } from "react";
 import { FiFacebook, FiShoppingBag } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSearch, BiX } from "react-icons/bi";
-import FullWIthBtn from "../buttons/FullWIthBtn";
 import { SlSocialYoutube } from "react-icons/sl";
 import { FaInstagram, FaRegHeart } from "react-icons/fa6";
+import FullWidthBtn from "../buttons/FullWidthBtn";
 
 const SmallNavbar = ({ navItems }) => {
 	const pathname = usePathname();
@@ -144,7 +144,7 @@ const SmallNavbar = ({ navItems }) => {
 
                 {/* SIGNIN / ACCOUNT BTN */}
                 <Link href={"/signin"}>
-                  <FullWIthBtn 
+                  <FullWidthBtn 
                     text={"SignIn / Account"} 
                     color={"bg-primary"}
                     customClass=""

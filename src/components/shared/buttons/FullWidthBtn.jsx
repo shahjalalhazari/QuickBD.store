@@ -1,4 +1,4 @@
-const FullWIthBtn = ({text, color, customClass=""}) => {
+const FullWidthBtn = ({ text, color, customClass }) => {
   return (
     <div className={`full-width-btn ${color} ${customClass}`}>
       {text}
@@ -6,4 +6,4 @@ const FullWIthBtn = ({text, color, customClass=""}) => {
   );
 };
 
-export default FullWIthBtn;
+export default FullWidthBtn;

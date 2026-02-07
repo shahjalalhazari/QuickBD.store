@@ -69,6 +69,31 @@ body {
 .full-width-btn:hover {
   @apply underline
 }
+/* *** Button With Underline *** */
+.underline-btn {
+  @apply text-base w-fit font-medium flex gap-x-2 items-center border-b-2 pb-1 border-heading-color;
+}
+.underline-btn:hover {
+  @apply border-primary quickbd-transition;
+}
+
+
+/* CATEGORY CARD */
+.categroy-card {
+  @apply w-full h-80 rounded-lg relative overflow-hidden;
+}
+.category-image {
+  @apply w-full h-full object-cover rounded-lg;
+}
+.categroy-card:hover .category-image {
+  @apply scale-105;
+}
+.card-content {
+  @apply absolute bottom-6 left-6 right-6 bg-ghost-white bg-opacity-90 text-secondary p-4 rounded-md;
+}
+.category-title {
+  @apply text-2xl font-semibold text-primary uppercase mb-3;
+}
 
 /* -------------------------------------------------------------- */
 /* MEDIUM SCREEN */
@@ -111,6 +136,18 @@ body {
   }
   .back-to-home-btn {
     @apply mt-10;
+  }
+
+  
+  /* CATEGORY CARD */
+  .categroy-card {
+    @apply h-72;
+  }
+  .card-content {
+    @apply bottom-5 left-5 right-5;
+  }
+  .category-title {
+    @apply text-xl mb-2;
   }
 }
 /* -------------------------------------------------------------- */
@@ -158,9 +195,21 @@ body {
 
 
   /* BUTTONS */
-  /* *** Full Width Button *** */
-  .full-width-btn {
+  /* *** Full Width Button & Button With Underline *** */
+  .full-width-btn, .underline-btn {
     @apply text-sm;
+  }
+
+
+  /* CATEGORY CARD */
+  .categroy-card {
+    @apply h-64 rounded-md;
+  }
+  .card-content {
+    @apply bottom-4 left-4 right-4 rounded-md;
+  }
+  .category-title {
+    @apply text-xl mb-2;
   }
 }
 /* -------------------------------------------------------------- */
