@@ -45,6 +45,17 @@
 .category-list {
     @apply grid grid-cols-3 gap-6;
 }
+
+/* FEATURE DETAILS SECTION */
+.feature-details-section {
+    @apply grid grid-cols-2 gap-6;
+}
+.details-heading {
+    @apply text-4xl font-semibold text-heading-color uppercase;
+}
+.details-body {
+    @apply text-base font-medium text-body-color leading-relaxed;
+}
 /* -------------------------------------------------------------- */
 
 
@@ -77,6 +88,17 @@
     /* CATEGROIES SECTION */
     .category-list {
         @apply grid grid-cols-2 gap-5;
+    }
+
+    /* FEATURE DETAILS SECTION */
+    .feature-details-section {
+        @apply grid grid-cols-2 gap-5;
+    }
+    .details-heading {
+        @apply text-3xl;
+    }
+    .details-body {
+        @apply text-sm;
     }
 }
 /* -------------------------------------------------------------- */
@@ -114,5 +136,16 @@
     }
     .category-list {
         @apply grid grid-cols-1 gap-4;
+    }
+
+    /* FEATURE DETAILS SECTION */
+    .feature-details-section {
+        @apply grid grid-cols-1 gap-4;
+    }
+    .details-heading {
+        @apply text-[28px];
+    }
+    .details-body {
+        @apply text-sm;
     }
 }
