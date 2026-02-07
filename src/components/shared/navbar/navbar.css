@@ -42,7 +42,7 @@
 /* MEDIUM SCREEN */
 @media (min-width: 768px) and (max-width: 1024px) {
     .quickbd-navbar {
-        @apply px-8 py-4;
+        @apply px-10 py-4;
     }
     .small-navbar {
         @apply hidden

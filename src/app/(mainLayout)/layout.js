@@ -1,9 +1,10 @@
 import Navbar from '@/components/shared/navbar/Navbar';
 
-const MainLayout = () => {
+const MainLayout = ({children}) => {
   return (
     <>
       <Navbar/>
+      {children}
     </>
   );
 };
