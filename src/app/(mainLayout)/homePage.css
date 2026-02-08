@@ -56,6 +56,16 @@
 .details-body {
     @apply text-base font-medium text-body-color leading-relaxed;
 }
+
+/* NEW ARRIVALS SECTION */
+.new-arrivals-section {
+    @apply flex flex-col gap-y-8;
+}
+.products-list {
+    @apply grid grid-cols-4 gap-6;
+}
+
+
 /* -------------------------------------------------------------- */
 
 

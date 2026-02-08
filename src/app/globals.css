@@ -95,6 +95,63 @@ body {
   @apply text-2xl font-semibold text-primary uppercase mb-3;
 }
 
+
+/* PRODUCT CARD */
+.product-card {
+  @apply flex flex-col gap-y-3 rounded-lg;
+}
+.product-image-wrapper {
+  @apply relative w-full h-[362px] overflow-hidden rounded-lg;
+}
+.product-image {
+  @apply object-cover object-center;
+}
+.product-card:hover .product-image {
+  @apply scale-105;
+}
+.badges-icons {
+  @apply absolute top-4 left-4 right-4 flex justify-between;
+}
+.badges {
+  @apply flex flex-col gap-y-2;
+}
+.badge {
+  @apply text-xs font-semibold py-2.5 uppercase w-14 text-center rounded-sm;
+}
+.favorite-icon {
+  @apply bg-ghost-white rounded-full text-primary p-2 h-fit text-center cursor-pointer;
+}
+.favorite-icon:hover {
+  @apply bg-primary text-ghost-white;
+}
+.add-to-cart-btn {
+  @apply absolute bottom-4 left-4 right-4 bg-ghost-white bg-opacity-75 rounded text-center py-2 text-lg uppercase font-medium;
+}
+.add-to-cart-btn:hover {
+  @apply bg-opacity-90 text-primary;
+}
+.product-details {
+  @apply flex flex-col gap-y-2;
+}
+.product-name {
+  @apply text-base font-semibold uppercase text-secondary;
+}
+.product-name:hover {
+  @apply text-primary;
+}
+.product-price {
+  @apply text-lg font-semibold text-heading-color;
+}
+.discount-price {
+  @apply text-body-color text-sm line-through ml-2;
+}
+
+
+/* SECTION HEADING */
+.section-heading {
+    @apply text-[40px] font-semibold text-secondary uppercase leading-tight;
+}
+
 /* -------------------------------------------------------------- */
 /* MEDIUM SCREEN */
 @media (min-width: 768px) and (max-width: 1024px) {
