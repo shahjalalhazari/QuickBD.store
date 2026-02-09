@@ -40,7 +40,7 @@ const CategorySection = () => {
       ))}
       </div>
 
-      <Link href="/categories">
+      <Link href="/categories" className="flex justify-end">
         <UnderlineBtn text={"Show More"} icon={<FaArrowRight />} />
       </Link>
     </section>

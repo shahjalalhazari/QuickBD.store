@@ -40,7 +40,7 @@
 
 /* CATEGROIES SECTION */
 .categories-section {
-    @apply flex flex-col gap-y-8 items-end;
+    @apply flex flex-col gap-y-8;
 }
 .category-list {
     @apply grid grid-cols-3 gap-6;
@@ -110,6 +110,11 @@
     .details-body {
         @apply text-sm;
     }
+
+    /* NEW ARRIVALS SECTION */
+    .products-list {
+        @apply grid grid-cols-2 gap-5;
+    }
 }
 /* -------------------------------------------------------------- */
 
@@ -157,5 +162,13 @@
     }
     .details-body {
         @apply text-sm;
+    }
+
+    /* NEW ARRIVALS SECTION */
+    .new-arrivals-section {
+        @apply gap-y-7;
+    }
+    .products-list {
+        @apply grid grid-cols-1 gap-4;
     }
 }

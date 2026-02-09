@@ -83,9 +83,9 @@ const NewArrivals = () => {
           ))}
         </div>
 
-        <div className="flex justify-end">
+        <Link href={"/products"} className="flex justify-end">
           <UnderlineBtn text="Show More" icon={<FaAngleRight/>}/>
-        </div>
+        </Link>
 
     </section>
   );

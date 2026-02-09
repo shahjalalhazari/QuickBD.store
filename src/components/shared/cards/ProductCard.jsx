@@ -13,8 +13,8 @@ const ProductCard = ({ item}) => {
           <Image
             src={item.image}
             alt={item.name}
-            width={300}
-            height={300}
+            width={800}
+            height={800}
             className="product-image quickbd-transition"
           />
         </Link>
