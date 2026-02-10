@@ -70,7 +70,7 @@
     @apply grid grid-cols-4 gap-6;
 }
 .feature-card {
-    @apply flex flex-col py-12 px-8 bg-light-orange rounded-xl shadow-xl border border-body-color border-opacity-20;
+    @apply flex flex-col py-12 px-8 bg-light-orange rounded-xl shadow-lg border border-body-color border-opacity-20;
 }
 .feature-card .icon {
     @apply text-[40px] text-heading-color mb-4;
@@ -82,7 +82,45 @@
     @apply text-sm text-body-color;
 }
 
-
+/* TESTIMONIAL SECTION */
+.testimonial-section {
+    @apply space-y-8;
+}
+.testimonial-slider {
+    @apply flex gap-6 overflow-x-scroll scroll-smooth;
+}
+.testimonial-slider::-webkit-scrollbar {
+    @apply hidden
+}
+.testimonial-slider {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.testimonial-slide {
+    @apply flex-shrink-0;
+    width: calc((100% - 48px) / 3);
+}
+.testimonial-card {
+    @apply border-2 w-full h-full border-heading-color p-4 flex flex-col gap-y-3 rounded-lg;
+}
+.testimonial-card .user {
+    @apply flex items-center gap-x-3 text-start bg-light-orange rounded-md;
+}
+.testimonial-card .user-img {
+    @apply w-14 h-14 rounded-md object-cover;
+}
+.testimonial-card .user-info {
+    @apply flex flex-col gap-y-1;
+}
+.testimonial-card .user-name {
+    @apply text-base font-semibold text-secondary;
+}
+.testimonial-card .user-location {
+    @apply text-sm font-medium text-body-color;
+}
+.testimonial-card .feedback {
+    @apply text-sm text-body-color text-justify;
+}
 /* -------------------------------------------------------------- */
 
 
@@ -145,6 +183,14 @@
     }
     .feature-card .title {
         @apply text-lg;
+    }
+
+    /* TESTIMONIAL SECTION */
+    .testimonial-slider {
+        @apply gap-5;
+    }
+    .testimonial-slide {
+        width: calc((100% - 20px) / 2);
     }
 }
 /* -------------------------------------------------------------- */
@@ -215,5 +261,16 @@
     }
     .feature-card .title {
         @apply text-base;
+    }
+
+    /* TESTIMONIAL SECTION */
+    .testimonial-section {
+        @apply space-y-7;
+    }
+    .testimonial-slider {
+        @apply gap-4;
+    }
+    .testimonial-slide {
+        @apply w-full;
     }
 }

@@ -73,7 +73,7 @@ const products = [
 const NewArrivals = () => {
   return (
     <section className="new-arrivals-section">
-      <SectionHeading text={"New Arrivals"} customClass="w-full" />
+      <SectionHeading text={"New | Arrivals"} customClass="w-full" />
 
         <div className="products-list">
           {products.map((item, i) => (
