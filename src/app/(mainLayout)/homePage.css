@@ -65,6 +65,23 @@
     @apply grid grid-cols-4 gap-6;
 }
 
+/* FEATURE CARDS SECTION */
+.feature-cards-section {
+    @apply grid grid-cols-4 gap-6;
+}
+.feature-card {
+    @apply flex flex-col py-12 px-8 bg-light-orange rounded-xl shadow-xl border border-body-color border-opacity-20;
+}
+.feature-card .icon {
+    @apply text-[40px] text-heading-color mb-4;
+}
+.feature-card .title {
+    @apply text-xl font-semibold text-secondary mb-2;
+}
+.feature-card .details {
+    @apply text-sm text-body-color;
+}
+
 
 /* -------------------------------------------------------------- */
 
@@ -114,6 +131,20 @@
     /* NEW ARRIVALS SECTION */
     .products-list {
         @apply grid grid-cols-2 gap-5;
+    }
+
+    /* FEATURE CARDS SECTION */
+    .feature-cards-section {
+        @apply grid grid-cols-2 gap-5;
+    }
+    .feature-card {
+        @apply py-10 px-6 rounded-lg shadow-lg;
+    }
+    .feature-card .icon {
+        @apply text-[40px];
+    }
+    .feature-card .title {
+        @apply text-lg;
     }
 }
 /* -------------------------------------------------------------- */
@@ -170,5 +201,19 @@
     }
     .products-list {
         @apply grid grid-cols-1 gap-4;
+    }
+
+    /* FEATURE CARDS SECTION */
+    .feature-cards-section {
+        @apply grid grid-cols-2 gap-4;
+    }
+    .feature-card {
+        @apply py-8 px-4 rounded-md shadow-lg;
+    }
+    .feature-card .icon {
+        @apply text-4xl;
+    }
+    .feature-card .title {
+        @apply text-base;
     }
 }

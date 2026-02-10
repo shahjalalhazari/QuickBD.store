@@ -1,8 +1,6 @@
 import Image from "next/image";
 import UnderlineBtn from "../shared/buttons/UnderlineBtn";
 import { FaAngleRight } from "react-icons/fa6";
-import { FaStar } from "react-icons/fa6";
-import { VscStarFull } from "react-icons/vsc";
 import SectionHeading from "../shared/heading/SectionHeading";
 import Link from "next/link";
 import ProductCard from "../shared/cards/ProductCard";
