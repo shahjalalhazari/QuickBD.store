@@ -125,7 +125,7 @@
 
 
 /* MEDIUM SCREEN */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 639px) and (max-width: 1023px) {
     .home-page {
         @apply mx-10;
     }

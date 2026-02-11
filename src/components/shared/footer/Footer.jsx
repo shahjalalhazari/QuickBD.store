@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import "./footer.css";
-import { FaInstagram } from 'react-icons/fa6';
-import { FiFacebook } from 'react-icons/fi';
-import { LuFacebook } from "react-icons/lu";
-import { TbBrandFacebook } from "react-icons/tb";
-import { SlSocialYoutube } from 'react-icons/sl';
+import { FaFacebookF, FaYoutube, FaInstagram } from "react-icons/fa6";
 import FooterColumn from './FooterColumn';
 
 const Footer = () => {
+  const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/shahjalalhazari0/";
+  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/shahjalalhazari/";
+  const youtubeUrl = process.env.NEXT_PUBLIC_YOUTUBE_URL || "#";
+
   return (
     <footer className="quickbd-footer">
       {/* TOP PART */}
@@ -28,14 +28,14 @@ const Footer = () => {
           </p>
 
           <div className="social-icons">
-            <Link href={"/"} target="_blank" className='quickbd-transition'>
-              <FaInstagram/>
+            <Link href={instagramUrl} target="_blank" className='quickbd-transition'>
+              <FaInstagram />
             </Link>
-            <Link href={"/"} target="_blank" className='quickbd-transition'>
-              <FiFacebook />
+            <Link href={facebookUrl} target="_blank" className='quickbd-transition'>
+              <FaFacebookF />
             </Link>
-            <Link href={"/"} target="_blank" className='quickbd-transition'>
-              <SlSocialYoutube />
+            <Link href={youtubeUrl} target="_blank" className='quickbd-transition'>
+              <FaYoutube />
             </Link>
           </div>
         </div>
@@ -48,7 +48,6 @@ const Footer = () => {
 
         {/* COLUMN 4 - CONTACT */}
         <FooterColumn heading={"Contact Us"} links={contactUs} isAccount={false} />
-
       </div>
 
       <div className="bottom-part">

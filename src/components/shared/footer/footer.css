@@ -40,7 +40,7 @@
 
 /* -------------------------------------------------------------- */
 /* MEDIUM SCREEN */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 639px) and (max-width: 1023px) {
     .quickbd-footer {
         @apply px-10 py-20 mt-[72px];
     }

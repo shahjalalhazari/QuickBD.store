@@ -15,6 +15,10 @@ const SmallNavbar = ({ navItems }) => {
 	const [navbarOpen, setNavbarOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
+  const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/shahjalalhazari0/";
+  const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/shahjalalhazari/";
+  const youtubeUrl = process.env.NEXT_PUBLIC_YOUTUBE_URL || "#";
+
   const openNavbar = () => {
     setNavbarOpen(true);
     setIsClosing(false);
@@ -154,13 +158,13 @@ const SmallNavbar = ({ navItems }) => {
 
                 {/* SOCIAL MEDIA ICONS */}
                 <div className="social-icons">
-                  <Link href={"/"} target="_blank">
+                  <Link href={instagramUrl} target="_blank">
                     <FaInstagram className="navbar-icon"/>
                   </Link>
-                  <Link href={"/"} target="_blank">
+                  <Link href={facebookUrl} target="_blank">
                     <FiFacebook className="navbar-icon"/>
                   </Link>
-                  <Link href={"/"} target="_blank">
+                  <Link href={youtubeUrl} target="_blank">
                     <SlSocialYoutube className="navbar-icon"/>
                   </Link>
                 </div>
