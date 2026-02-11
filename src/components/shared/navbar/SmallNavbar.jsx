@@ -3,12 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { FiFacebook, FiShoppingBag } from "react-icons/fi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSearch, BiX } from "react-icons/bi";
-import { SlSocialYoutube } from "react-icons/sl";
-import { FaInstagram, FaRegHeart } from "react-icons/fa6";
+import { FaFacebookF, FaYoutube, FaInstagram, FaRegHeart } from "react-icons/fa6";
 import FullWidthBtn from "../buttons/FullWidthBtn";
+import { FiShoppingBag } from "react-icons/fi";
 
 const SmallNavbar = ({ navItems }) => {
 	const pathname = usePathname();
@@ -158,14 +157,14 @@ const SmallNavbar = ({ navItems }) => {
 
                 {/* SOCIAL MEDIA ICONS */}
                 <div className="social-icons">
-                  <Link href={instagramUrl} target="_blank">
+                  <Link href={instagramUrl} target="_blank" className='quickbd-transition'>
                     <FaInstagram className="navbar-icon"/>
                   </Link>
-                  <Link href={facebookUrl} target="_blank">
-                    <FiFacebook className="navbar-icon"/>
+                  <Link href={facebookUrl} target="_blank" className='quickbd-transition'>
+                    <FaFacebookF className="navbar-icon"/>
                   </Link>
-                  <Link href={youtubeUrl} target="_blank">
-                    <SlSocialYoutube className="navbar-icon"/>
+                  <Link href={youtubeUrl} target="_blank" className='quickbd-transition'>
+                    <FaYoutube className="navbar-icon"/>
                   </Link>
                 </div>
               </div>

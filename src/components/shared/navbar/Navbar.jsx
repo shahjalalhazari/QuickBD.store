@@ -11,7 +11,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav role="navigation" aria-label="main navigation">
+    <nav role="navigation" aria-label="main navigation" className="main-navbar">
       {/* NAVBAR FOR LARGE & MEDIUM DEVICES */}
       <div className="quickbd-navbar">
         {/* NAVBAR LOGO */}

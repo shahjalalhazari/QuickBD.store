@@ -1,5 +1,5 @@
 .quickbd-footer {
-    @apply bg-secondary text-ghost-white px-40 py-24 mt-20;
+    @apply bg-secondary text-ghost-white px-40 pt-24 pb-8 mt-20;
 }
 /* TOP PART */
 .footer-top-part {
@@ -34,7 +34,7 @@
 }
 /* BOTTOM PART */
 .bottom-part {
-    @apply mt-12 pt-12 border-t-2 border-border-color border-opacity-30 text-center text-sm;
+    @apply mt-12 pt-8 border-t-2 border-border-color border-opacity-30 text-center text-sm;
 }
 
 
@@ -42,7 +42,7 @@
 /* MEDIUM SCREEN */
 @media (min-width: 639px) and (max-width: 1023px) {
     .quickbd-footer {
-        @apply px-10 py-20 mt-[72px];
+        @apply px-10 pt-20 mt-[72px];
     }
     /* TOP PART */
     .footer-top-part {
@@ -59,7 +59,7 @@
 /* SMALL SCREEN */
 @media (max-width: 639px) {
     .quickbd-footer {
-        @apply px-8 py-16 mt-16;
+        @apply px-8 pt-16 mt-16;
     }
     /* TOP PART */
     .footer-top-part {
