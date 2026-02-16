@@ -149,7 +149,22 @@ body {
 
 /* SECTION HEADING */
 .section-heading {
-    @apply text-[40px] font-semibold text-secondary uppercase leading-tight;
+  @apply text-[40px] font-semibold text-secondary uppercase leading-tight;
+}
+
+
+/* BREADCRUMBS */
+.breadcrumbs-list {
+  @apply flex flex-wrap items-center gap-2 text-body-color text-sm w-full;
+}
+.breadcrumbs-item {
+  @apply flex items-center gap-2;
+}
+.breadcrumbs-link {
+  @apply text-heading-color font-semibold;
+}
+.breadcrumbs-link:hover {
+  @apply text-primary;
 }
 
 /* -------------------------------------------------------------- */

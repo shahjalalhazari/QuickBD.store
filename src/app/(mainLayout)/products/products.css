@@ -1,0 +1,43 @@
+.products-page {
+    @apply px-40 pb-20 pt-12 grid grid-cols-5 gap-6 items-start;
+}
+.filters {
+    @apply col-span-1 sticky top-24 self-start h-fit space-y-8;
+}
+.filter-item {
+    @apply flex flex-col gap-y-4;
+}
+.filter-heading {
+    @apply flex items-center gap-2 text-xl font-bold text-secondary;
+}
+.filter-item-heading {
+    @apply text-lg uppercase font-bold text-heading-color;
+}
+.filter-item-list {
+    @apply flex flex-col gap-y-2;
+}
+.filter-item-list .list-item {
+    @apply flex text-base items-center cursor-pointer justify-between text-body-color;
+}
+.list-item .list-item-label {
+    @apply text-base font-medium;
+}
+.list-item .list-item-label:hover {
+    @apply text-primary;
+}
+.list-item .active-list-item {
+    @apply text-primary font-semibold;
+}
+.list-item .check-box {
+    @apply h-4 w-4 border-2 rounded-sm;
+}
+.filter-item-list .list-item .check-box {
+    @apply text-xl;
+}
+
+.products-grid {
+    @apply col-span-4;
+}
+.products-grid-items {
+    @apply grid grid-cols-4 gap-6 mt-8 mb-12;
+}
