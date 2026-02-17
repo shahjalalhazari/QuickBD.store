@@ -70,7 +70,7 @@
     @apply grid grid-cols-4 gap-6;
 }
 .feature-card {
-    @apply flex flex-col py-12 px-8 bg-light-orange rounded-xl shadow-lg border border-body-color border-opacity-20;
+    @apply flex flex-col h-full w-full py-12 px-8 bg-light-orange rounded-xl shadow-lg border border-body-color border-opacity-20;
 }
 .feature-card .icon {
     @apply text-[40px] text-heading-color mb-4;
