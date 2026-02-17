@@ -1,14 +1,20 @@
+import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import "./products.css";
 import ClientProductsPage from "@/components/productsPage/ClientProductsPage";
 
 const ProductsPage = () => {
   return (
     <div className="products-page">
+      <div className="small-breadcrumbs">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "All Products" }
+          ]}
+        />
+      </div>
       <ClientProductsPage
         products = {products}
-        sortingOptions = {sortingOptions}
-        categoryOptions = {categoryOptions}
-        priceOptions = {priceOptions}
       />
     </div>
   );
@@ -109,33 +115,4 @@ const products = [
     image: "/images/products/item-10.jpg",
     rating: 4.0,
   },
-];
-
-const sortingOptions = [
-  { label: "Default", value: "default" },
-  { label: "Name, A - Z", value: "name-asc" },
-  { label: "Name, Z - A", value: "name-desc" },
-  { label: "Price, Low to High", value: "price-asc" },
-  { label: "Price, High to Low", value: "price-desc" },
-  { label: "Rating, Low to High", value: "rating-asc" },
-  { label: "Rating, High to Low", value: "rating-desc" },
-];
-
-const categoryOptions = [
-  { label: "All Products", value: "all-products" },
-  { label: "Vegetables", value: "vegetables" },
-  { label: "Fruits", value: "fruits" },
-  { label: "Meat", value: "meat" },
-  { label: "Grocery", value: "grocery" },
-  { label: "Clothes", value: "clothes" },
-  { label: "Shoes", value: "shoes" },
-  { label: "Mobile Phone", value: "mobile-phone" },
-];
-
-const priceOptions = [
-  { label: "All Prices", value: "all-prices" },
-  { label: "0 - 100", value: "0-100" },
-  { label: "100 - 300", value: "100-300" },
-  { label: "300 - 500", value: "300-500" },
-  { label: "500+", value: "500-plus" },
 ];

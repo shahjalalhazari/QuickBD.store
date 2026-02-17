@@ -1,14 +1,21 @@
 .products-page {
-    @apply px-40 pb-20 pt-12 grid grid-cols-5 gap-6 items-start;
+    @apply px-40 pt-12 grid grid-cols-5 gap-6 items-start;
+}
+.small-breadcrumbs {
+    @apply hidden
 }
 .filters {
-    @apply col-span-1 sticky top-24 self-start h-fit space-y-8;
+    @apply col-span-1 self-start h-fit;
 }
-.filter-item {
-    @apply flex flex-col gap-y-4;
+/* CHECK BOX FILTERS */
+.checkbox-filters {
+    @apply space-y-8;
 }
 .filter-heading {
     @apply flex items-center gap-2 text-xl font-bold text-secondary;
+}
+.filter-item {
+    @apply flex flex-col gap-y-4;
 }
 .filter-item-heading {
     @apply text-lg uppercase font-bold text-heading-color;
@@ -34,10 +41,81 @@
 .filter-item-list .list-item .check-box {
     @apply text-xl;
 }
-
+/* DROPDOWN FILTERS */
+.sorting-dropdowns {
+    @apply hidden;
+}
+/* PRODUCTS LIST */
 .products-grid {
     @apply col-span-4;
 }
 .products-grid-items {
     @apply grid grid-cols-4 gap-6 mt-8 mb-12;
+}
+/* -------------------------------------------------------------- */
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+}
+/* -------------------------------------------------------------- */
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+    .products-page {
+        @apply p-8 pb-0 grid grid-cols-1 gap-4 items-start;
+    }
+    .small-breadcrumbs {
+        @apply block;
+    }
+    .large-breadcrumbs {
+        @apply hidden;
+    }
+    .filters {
+        @apply col-span-1 self-start h-fit;
+    }
+    /* CHECK BOX FILTERS */
+    .checkbox-filters {
+        @apply hidden;
+    }
+    .filter-item-heading {
+        @apply text-base text-body-color;
+    }
+    /* DROPDOWN FILTERS */
+    .sorting-dropdowns {
+        @apply flex flex-col gap-y-6;
+    }
+    .quickbd-dropdown {
+        @apply relative w-full space-y-2;
+    }
+    .dropdown-btn {
+        @apply flex justify-between items-center w-full px-4 py-3 rounded-md cursor-pointer border-b-2 border-heading-color bg-heading-color bg-opacity-10;
+    }
+    .dropdown-label {
+        @apply text-heading-color text-sm font-semibold
+    }
+    .dropdown-list-container {
+        @apply absolute left-0 mt-2 z-[995] w-full bg-ghost-white rounded border border-border-color shadow-lg overflow-hidden origin-top;
+    }
+    .container-open {
+        @apply opacity-100 overflow-y-auto max-h-60;
+    }
+    .container-close {
+        @apply max-h-0 opacity-0;
+    }
+    .dropdown-item {
+        @apply px-3 py-2 text-sm cursor-pointer font-medium text-body-color;
+    }
+    .dropdown-item:hover {
+        @apply bg-primary bg-opacity-20 text-primary;
+    }
+    .active-dropdown-item {
+        @apply bg-primary font-semibold text-ghost-white;
+    }
+    /* PRODUCTS LIST */
+    .products-grid {
+        @apply col-span-1;
+    }
+    .products-grid-items {
+        @apply grid grid-cols-1 gap-4 mt-4 mb-7;
+    }
 }
