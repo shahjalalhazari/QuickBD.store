@@ -8,14 +8,17 @@ const SortingDropdowns = ({sortingOptions, categoryOptions, priceOptions}) => {
       <SortingDropdown 
         title={"Sort By"} 
         options={sortingOptions}
-        onChange={(option) => {
-          setSelectedSort(option);
-        }}
       />
       {/* CATEGORIES LIST */}
-      <SortingDropdown title={"Categories"} options={categoryOptions} />
+      <SortingDropdown 
+        title={"Categories"} 
+        options={categoryOptions} 
+      />
       {/* CATEGORIES LIST */}
-      <SortingDropdown title={"Price Range"} options={priceOptions} />
+      <SortingDropdown 
+        title={"Price Range"} 
+        options={priceOptions} 
+      />
     </div>
   );
 };

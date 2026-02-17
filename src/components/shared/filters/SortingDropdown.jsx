@@ -23,19 +23,19 @@ const SortingDropdown = ({title, options}) => {
   return (
     <div className="quickbd-dropdown" ref={dropdownRef}>
       <p className='filter-item-heading'>{title}</p>
-      {/* Button */}
+      {/* DROPDOWN BUTTON */}
       <button
         onClick={() => setOpen(!open)}
         className="dropdown-btn"
       >
-        <span className="dropdown-label">{value.label}</span>
+        <span className="dropdown-selected-item">{value.label}</span>
         <BiChevronDown
           size={20}
           className={`quickbd-transition ${open ? "rotate-180" : ""}`}
         />
       </button>
 
-      {/* Dropdown */}
+      {/* DROPDOWN CONTAINER */}
       <div
         className={`dropdown-list-container quickbd-transition ${
           open

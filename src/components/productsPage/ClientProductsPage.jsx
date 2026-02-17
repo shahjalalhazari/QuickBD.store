@@ -12,7 +12,7 @@ const ClientProductsPage = ({products}) => {
   return (
     <>
       {/* LEFT SIDE FILTERS */}
-      <div className="filters">
+      <div className="filters lg:sticky lg:top-24">
         {/* SIDEBAR CHECK BOX FILTER OPTIONS FOR LARGE DEVICES */}
         <CheckboxFilters 
           sortingOptions={sortingOptions}

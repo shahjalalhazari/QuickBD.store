@@ -4,7 +4,7 @@ import CheckboxFilter from "../shared/filters/CheckboxFilter";
 
 const CheckboxFilters = ({sortingOptions, categoryOptions, priceOptions}) => {
   return (
-    <div className="checkbox-filters lg:sticky lg:top-24">
+    <div className="checkbox-filters">
       {/* HEADING */}
         <h2 className="filter-heading"><FiFilter />Filters</h2>
 
