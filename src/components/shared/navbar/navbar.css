@@ -61,7 +61,7 @@
     @apply text-center text-body-color font-medium;
 }
 .cart-list-item {
-    @apply px-6 py-3 flex items-center gap-3 w-full h-fit overflow-hidden;
+    @apply px-6 py-3 flex items-center gap-3 w-full;
 }
 .cart-list-item:hover {
     @apply bg-heading-color/20
@@ -95,7 +95,7 @@
 }
 /* SIDEBAR FOOTER */
 .sidebar-footer {
-    @apply border-t flex-shrink-0 flex flex-col space-y-4 items-center w-full p-6 shadow-[0_-10px_15px_rgba(0,0,0,0.1)];
+    @apply flex-shrink-0 flex flex-col space-y-4 items-center w-full p-6 shadow-[0_-10px_15px_rgba(0,0,0,0.1)];
 }
 .sub-total {
     @apply flex items-center justify-between uppercase text-heading-color w-full font-semibold;
@@ -113,25 +113,46 @@
     .small-navbar {
         @apply hidden
     }
-
     .navbar-logo {
         @apply w-28 h-auto;
     }
-
     .navbar-items {
         @apply space-x-6 text-sm;
     }
-
     .navbar-icons {
         @apply space-x-4;
     }
-
     .navbar-icon {
         @apply w-5 h-5;
     }
-
     .cart-count {
         @apply py-0.5 px-1.5 font-normal;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+        width: 66%;
+    }
+    /* SIDEBAR HEADER */
+    .sidebar-header {
+        @apply p-5;
+    }
+    .sidebar-heading {
+        @apply text-base;
+    }
+    /* SIDEBAR CONTENT */
+    .cart-list-container {
+        @apply py-5;
+    }
+    .cart-list-item {
+        @apply px-5;
+    }
+    /* SIDEBAR FOOTER */
+    .sidebar-footer {
+        @apply space-y-3 p-5;
+    }
+    .buttons {
+        @apply flex gap-5;
     }
 }
 
