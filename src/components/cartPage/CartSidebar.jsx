@@ -36,7 +36,6 @@ const CartSidebar = ({ isOpen, onClose, cartItems }) => {
       <div className={`sidebar right-0
         ${isOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-
         {/* SIDEBAR HEADER */}
         <div className="sidebar-header">
           <h2 className="sidebar-heading">
@@ -47,46 +46,48 @@ const CartSidebar = ({ isOpen, onClose, cartItems }) => {
           </button>
         </div>
 
-        {/* CART LIST - SCROLLABLE */}
-        <div className="cart-list-container">
-          {cartItems.length === 0 ? (
-            <p className="cart-empty">
-              Your cart is empty.
-            </p>
-          ) : (
-            cartItems.map((_, index) => (
-              <div
-                key={index}
-                className="cart-list-item quickbd-transition"
-              >
-                <Image
-                  src={"/images/products/item-1.jpg"}
-                  width={100}
-                  height={100}
-                  alt={"Apple"}
-                  className="list-item-img"
-                />
-                <div className="cart-item-content">
-                  <div className="item-title">
-                    <h5>Beef Tikka Burger</h5>
-                    <button onClick={onClose} className="close-btn quickbd-transition">
-                      <BiX size={20}/>
-                    </button>
-                  </div>
-                  <p className="varitent">size: <span>M</span> | Ingredient: <span>Beef</span></p>
-                  <div className="price-qty">
-                    <div className="qty-selector">
-                      <button className="qty-change quickbd-transition"><FaMinus /></button>
-                      <span>1</span> 
-                      <button  className="qty-change quickbd-transition"><FaPlus /></button>
+        {/* BODY CONTAINER - SCROLLABLE */}
+        <div className="sidebar-body-container">
+          <div className="cart-list">
+            {cartItems.length === 0 ? (
+              <p className="cart-empty">
+                Your cart is empty.
+              </p>
+            ) : (
+              cartItems.map((_, index) => (
+                <div
+                  key={index}
+                  className="cart-list-item quickbd-transition"
+                >
+                  <Image
+                    src={"/images/products/item-1.jpg"}
+                    width={100}
+                    height={100}
+                    alt={"Apple"}
+                    className="list-item-img"
+                  />
+                  <div className="cart-item-content">
+                    <div className="item-title">
+                      <h5>Beef Tikka Burger</h5>
+                      <button onClick={onClose} className="close-btn quickbd-transition">
+                        <BiX size={20}/>
+                      </button>
                     </div>
-                    <p className="unit-price">৳ 129.99</p>
-                    <h6 className="total-price">৳ 129.00</h6>
+                    <p className="varitent">size: <span>M</span> | Ingredient: <span>Beef</span></p>
+                    <div className="price-qty">
+                      <div className="qty-selector">
+                        <button className="qty-change quickbd-transition"><FaMinus /></button>
+                        <span>1</span> 
+                        <button  className="qty-change quickbd-transition"><FaPlus /></button>
+                      </div>
+                      <p className="unit-price">৳ 129.99</p>
+                      <h6 className="total-price">৳ 129.00</h6>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
-          )}
+              ))
+            )}
+          </div>
         </div>
 
         {/* SIDEBAR FOOTER */}

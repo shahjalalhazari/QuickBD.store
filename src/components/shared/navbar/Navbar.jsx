@@ -62,7 +62,7 @@ const Navbar = () => {
       </div>
 
       {/* NAVBAR FOR SMALL DEVICES */}
-      <SmallNavbar navItems={navItems} onCartOpen={() => setCartOpen(true)}/>
+      <SmallNavbar navItems={navItems} cartItems={cartItems} onCartOpen={() => setCartOpen(true)}/>
     </nav>
 
     {/* Cart Sidebar */}

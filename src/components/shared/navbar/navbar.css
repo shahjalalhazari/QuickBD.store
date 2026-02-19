@@ -54,7 +54,7 @@
     @apply  bg-heading-color/20;
 }
 /* SIDEBAR CONTENT */
-.cart-list-container {
+.sidebar-body-container {
     @apply flex-1 overflow-y-auto py-6;
 }
 .cart-empty {
@@ -103,8 +103,9 @@
 .buttons {
     @apply flex gap-6 w-full
 }
-
 /* -------------------------------------------------------------- */
+
+
 /* MEDIUM SCREEN */
 @media (min-width: 639px) and (max-width: 1024px) {
     .quickbd-navbar {
@@ -141,7 +142,7 @@
         @apply text-base;
     }
     /* SIDEBAR CONTENT */
-    .cart-list-container {
+    .sidebar-body-container {
         @apply py-5;
     }
     .cart-list-item {
@@ -155,9 +156,9 @@
         @apply flex gap-5;
     }
 }
-
-
 /* -------------------------------------------------------------- */
+
+
 /* SMALL SCREEN */
 @media (max-width: 639px) {
     .quickbd-navbar {
@@ -171,12 +172,19 @@
     }
     /* MENU SIDEBAR */
     .sidebar {
-        @apply p-6;
         width: calc(100% - 32px);
     }
-    /* *** TOP PART *** */
+    /* SIDEBAR HEADER */
+    .sidebar-header {
+        @apply px-6 py-4;
+    }
+    /* SIDEBAR CONTENT */
+    .sidebar-body-container {
+        @apply space-y-8 py-4;
+    }
+    /* SEARCH BOX */
     .sidebar-search-box {
-        @apply flex items-center justify-between py-3 px-4 border-2 border-body-color rounded-md;
+        @apply flex items-center justify-between p-3 border-2 border-body-color rounded-md mx-6;
     }
     .search-input-wrapper {
         @apply flex items-center space-x-2;
@@ -193,8 +201,9 @@
     .sidebar-search-btn {
         @apply text-ghost-white bg-primary px-4 py-1.5 rounded text-sm font-medium;
     }
+    /* NAV ITEMS LIST */
     .sidebar-nav-list {
-        @apply flex flex-col space-y-4;
+        @apply flex flex-col space-y-4 mx-6;
     }
     .nav-item {
         @apply flex text-base text-heading-color font-semibold border-b-2 border-border-color/60 pb-2;
@@ -205,14 +214,48 @@
     .active-nav-item {
         @apply text-primary font-bold border-primary;
     }
-    /* *** BOTTOM PART *** */
+    /* CART LIST ITEMS */
+    .cart-empty {
+        @apply text-center text-body-color font-medium;
+    }
+    .cart-list-item {
+        @apply px-6;
+    }
+    .list-item-img {
+        @apply w-20 h-20;
+    }
+    .cart-item-content {
+        @apply gap-y-1.5;
+    }
+    .item-title {
+        @apply text-sm;
+    }
+    .varitent {
+        @apply text-xs;
+    }
+    .qty-selector {
+        @apply text-sm gap-x-3;
+    }
+    .unit-price {
+        @apply text-xs;
+    }
+    .total-price {
+        @apply text-sm;
+    }
+    /* SIDEBAR FOOTER */
+    .sidebar-footer {
+        @apply space-y-4 px-6 py-4 w-full;
+    }
     .cart-full-btn {
-        @apply text-body-color flex items-center justify-between border-b-2 border-border-color/60 pb-2
+        @apply text-body-color w-full flex items-center justify-between border-b-2 border-border-color/60 pb-2
     }
     .cart-full-btn>p {
-        @apply text-base font-semibold;
+        @apply text-sm font-semibold;
     };
-    .social-icons {
-        @apply flex gap-x-4 text-body-color
+    .sub-total {
+        @apply text-base;
+    }
+    .buttons {
+        @apply flex flex-col gap-4 w-full
     }
 }
