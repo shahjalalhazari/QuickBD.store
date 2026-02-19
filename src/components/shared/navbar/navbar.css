@@ -37,7 +37,7 @@
     @apply fixed inset-0 bg-secondary/80 z-[999];
 }
 .sidebar {
-    @apply fixed top-0 h-screen flex flex-col justify-between bg-ghost-white z-[1002] transform transition-transform duration-500 ease-in-out;
+    @apply fixed top-0 h-full flex flex-col justify-between bg-ghost-white z-[1002] transform transition-transform duration-500 ease-in-out;
     width: calc(100% / 3);
 }
 /* SIDEBAR HEADER */
