@@ -6,11 +6,18 @@ import { usePathname } from "next/navigation";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { FiLogIn, FiShoppingBag } from "react-icons/fi";
 import SmallNavbar from "./SmallNavbar";
+import CartSidebar from "@/components/cartPage/CartSidebar";
+import { useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const cartItems = [1, 2, 3, 4, 5];
+  const totalItems = cartItems.length;
 
   return (
+    <>
     <nav role="navigation" aria-label="main navigation" className="main-navbar">
       {/* NAVBAR FOR LARGE & MEDIUM DEVICES */}
       <div className="quickbd-navbar">
@@ -43,17 +50,28 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="quickbd-transition">
-            <Link href="/cart" className="cart-icon">
+            <button
+              onClick={() => setCartOpen(true)}
+              className="cart-icon"
+            >
               <FiShoppingBag className="navbar-icon" />
-              <span className="cart-count">9</span>
-            </Link>
+              <span className="cart-count">{totalItems}</span>
+            </button>
           </li>
         </ul>
       </div>
 
       {/* NAVBAR FOR SMALL DEVICES */}
-      <SmallNavbar navItems={navItems} />
+      <SmallNavbar navItems={navItems} onCartOpen={() => setCartOpen(true)}/>
     </nav>
+
+    {/* Cart Sidebar */}
+      <CartSidebar
+        isOpen={cartOpen}
+        onClose={() => setCartOpen(false)}
+        cartItems={cartItems}
+      />
+    </>
   );
 };
 
