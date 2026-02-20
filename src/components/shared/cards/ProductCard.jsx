@@ -5,11 +5,21 @@ import { FaRegHeart } from "react-icons/fa6";
 import ProductBadge from "../ProductBadge";
 
 const ProductCard = ({ item}) => {
+
+  // GENERATE SLUG
+  const generateSlug = (text) => {
+    return text
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")   // remove special chars
+      .replace(/\s+/g, "-");      // replace spaces with -
+  };
+
   return (
     <div className="product-card">
       {/* IMAGE WRAPER */}
       <div className="product-image-wrapper">
-        <Link href={`/products/${item.id}/${item.name.toLowerCase().replace(/\s+/g, "-")}`}>
+        <Link href={`/products/${item.id}/${generateSlug(item.name)}`}>
           <Image
             src={item.image}
             alt={item.name}
@@ -35,7 +45,7 @@ const ProductCard = ({ item}) => {
       {/* PRODUCT DETAILS */}
       <div className="product-details">
         <ProductRating rating={item.rating} size="16" />
-        <Link href={`/products/${item.id}/${item.name.toLowerCase().replace(/\s+/g, "-")}`}>
+        <Link href={`/products/${item.id}/${generateSlug(item.name)}`}>
           <h3 className="product-name">
           {item.name}
         </h3>

@@ -1,5 +1,5 @@
 .products-page {
-    @apply px-40 pt-12 grid grid-cols-5 gap-6 items-start;
+    @apply grid grid-cols-5 gap-6 items-start;
 }
 .small-breadcrumbs {
     @apply hidden
@@ -84,7 +84,7 @@
 /* MEDIUM SCREEN */
 @media (min-width: 639px) and (max-width: 1023px) {
     .products-page {
-        @apply p-10 pb-0 grid grid-cols-1 gap-5 items-start;
+        @apply grid grid-cols-1 gap-5 items-start;
     }
     .small-breadcrumbs {
         @apply block;
@@ -116,7 +116,7 @@
 /* SMALL SCREEN */
 @media (max-width: 639px) {
     .products-page {
-        @apply p-8 pb-0 grid grid-cols-1 gap-4 items-start;
+        @apply grid grid-cols-1 gap-4 items-start;
     }
     .small-breadcrumbs {
         @apply block;

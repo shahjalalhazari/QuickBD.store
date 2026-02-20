@@ -4,7 +4,7 @@ import ClientProductsPage from "@/components/productsPage/ClientProductsPage";
 
 const ProductsPage = () => {
   return (
-    <div className="products-page">
+    <div className="products-page quickbd-container">
       <div className="small-breadcrumbs">
         <Breadcrumbs
           items={[
