@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import InnerImageZoom from 'react-inner-image-zoom';
-import 'react-inner-image-zoom/lib/styles.min.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import Image from 'next/image';
 
@@ -35,7 +34,7 @@ const ImageGallery = ({images, title}) => {
 
 
   return (
-    <div className="images-gallery">
+    <div className="small-images-gallery">
       {/* ACTIVE IMAGE */}
       <div className="active-img">
         <InnerImageZoom
@@ -59,12 +58,6 @@ const ImageGallery = ({images, title}) => {
           swiper.navigation.init();
           swiper.navigation.update();
         }}
-        // breakpoints={{
-        //   0: { slidesPerView: 4 },
-        //   640: { slidesPerView: 4 },
-        //   768: { slidesPerView: 4 },
-        //   1024: { slidesPerView: 4 },
-        // }}
         slidesPerView={4}
         loop={enableLoop}
         autoplay={{ delay: 15000 }}
