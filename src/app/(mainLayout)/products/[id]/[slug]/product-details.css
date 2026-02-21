@@ -35,7 +35,46 @@
 
 /* DETAILS CONTENT */
 .details-content {
-    @apply w-full;
+    @apply w-full h-full;
+}
+.basic-info {
+    @apply space-y-4 border-b border-border-color/60 pb-6;
+}
+.product-title {
+    @apply text-3xl font-semibold text-heading-color;
+}
+.body-text {
+    @apply text-base text-body-color font-medium;
+}
+.prices {
+    @apply flex items-center gap-x-2;
+}
+.price {
+    @apply text-2xl font-bold text-primary;
+}
+.discount-price {
+    @apply line-through text-base text-body-color font-medium;
+}
+.pick-varients {
+    @apply py-6 border-b border-border-color/60 space-y-4
+}
+.varient-section {
+    @apply space-y-3;
+}
+.varient-section .heading {
+    @apply text-body-color font-semibold text-sm;
+}
+.varient-list {
+    @apply flex gap-x-3 text-heading-color font-medium;
+}
+.varient-item {
+    @apply border border-heading-color rounded px-2.5 py-1;
+}
+.selected-size {
+    @apply bg-heading-color text-ghost-white font-semibold;
+}
+.color {
+    @apply h-7 w-7 text-primary flex items-center justify-center rounded border border-body-color/60 cursor-pointer;
 }
 /* -------------------------------------------------------------- */
 

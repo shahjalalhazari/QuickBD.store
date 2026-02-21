@@ -121,7 +121,7 @@ body {
   @apply flex flex-col gap-y-2;
 }
 .badge {
-  @apply text-xs font-semibold py-2.5 uppercase w-14 text-center rounded-sm shadow-xl;
+  @apply text-xs font-semibold py-3 uppercase w-14 text-center rounded-sm shadow-xl;
 }
 .favorite-icon {
   @apply bg-ghost-white rounded-full text-primary p-2 h-fit text-center cursor-pointer shadow-xl;
