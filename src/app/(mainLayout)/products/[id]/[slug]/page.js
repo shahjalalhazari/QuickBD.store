@@ -9,6 +9,7 @@ import DetailsContent from "@/components/productDetailsPage/DetailsContent";
 
 const ProductDetailsPage = async() => {
   const product = await getProductDetails(28);
+  console.log(product);
 
   return (
     <div className="quickbd-container">

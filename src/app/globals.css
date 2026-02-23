@@ -72,7 +72,7 @@ body {
   @apply py-2.5 text-ghost-white text-center font-medium text-base rounded-lg cursor-pointer;
 }
 .full-width-btn:hover {
-  @apply underline
+  @apply bg-primary-dark;
 }
 /* *** Button With Underline *** */
 .underline-btn {

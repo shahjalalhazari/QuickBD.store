@@ -3,17 +3,9 @@ import Link from "next/link";
 import ProductRating from "../ProductRating";
 import { FaRegHeart } from "react-icons/fa6";
 import ProductBadge from "../ProductBadge";
+import { generateSlug } from "@/utils/generateSlug";
 
 const ProductCard = ({ item}) => {
-
-  // GENERATE SLUG
-  const generateSlug = (text) => {
-    return text
-      .toLowerCase()
-      .trim()
-      .replace(/[^\w\s-]/g, "")   // remove special chars
-      .replace(/\s+/g, "-");      // replace spaces with -
-  };
 
   return (
     <div className="product-card">

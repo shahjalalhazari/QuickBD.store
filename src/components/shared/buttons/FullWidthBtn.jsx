@@ -1,7 +1,7 @@
-const FullWidthBtn = ({ text, color, customClass }) => {
+const FullWidthBtn = ({ text, color, customClass, icon="" }) => {
   return (
     <div className={`full-width-btn quickbd-transition ${color} ${customClass}`}>
-      {text}
+      {icon} {text}
     </div>
   );
 };
