@@ -57,10 +57,10 @@
 .seller-info {
     @apply space-y-1 text-sm font-medium;
 }
-p {
+.desc>p, .seller-info>p {
     @apply flex gap-x-1 text-body-color;
 }
-p>span {
+.desc>p>span, .seller-info>p>span {
     @apply font-semibold;
 }
 .seller-info>p>a:hover {
@@ -114,6 +114,44 @@ p>span {
 .tag:hover {
     @apply text-primary underline;
 }
+/* TABS SECTION */
+.tabs-section {
+    @apply mt-12;
+}
+.tab-btns {
+    @apply flex gap-x-12 text-body-color font-medium text-lg w-full pb-3 border-b-2 border-border-color;
+}
+.tab {
+    @apply uppercase;
+}
+.tab:hover {
+    @apply text-heading-color;
+}
+.active-tab {
+    @apply text-primary font-semibold;
+}
+.sliding-contents {
+    @apply relative overflow-hidden mt-6;
+}
+.desc {
+    @apply text-sm space-y-1;
+}
+.review-tab {
+    @apply grid grid-cols-2 gap-6;
+}
+.review-form-section {
+    @apply space-y-6;
+}
+.form-heading {
+    @apply text-heading-color text-xl font-bold uppercase;
+}
+.review-from {
+    @apply w-full h-full flex flex-col gap-4;
+}
+.rating-stars {
+    @apply text-2xl w-fit;
+}
+
 /* -------------------------------------------------------------- */
 
 

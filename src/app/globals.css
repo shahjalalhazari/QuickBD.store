@@ -71,9 +71,6 @@ body {
 .full-width-btn {
   @apply py-2.5 text-ghost-white text-center font-medium text-base rounded-lg cursor-pointer;
 }
-.full-width-btn:hover {
-  @apply bg-primary-dark;
-}
 /* *** Button With Underline *** */
 .underline-btn {
   @apply text-base w-fit font-medium flex gap-x-2 items-center border-b-2 pb-1 border-heading-color;
@@ -81,6 +78,46 @@ body {
 .underline-btn:hover {
   @apply border-primary quickbd-transition;
 }
+
+/* FORM INPUT FIELDS */
+/* *** Underlined Form Inputs *** */
+.underline-input-group {
+  @apply w-full relative border-b-2 border-heading-color;
+}
+.underline-input-field {
+  @apply w-full pt-2 text-heading-color border-none outline-none text-sm bg-transparent font-medium transition duration-500 ease-linear;
+}
+.underline-input-label {
+  @apply text-sm bg-transparent absolute top-1/2 left-0 text-body-color font-medium pointer-events-none;
+  transform: translateY(-50%);
+  transition: 0.5s ease;
+}
+.underline-input-field:focus ~ .underline-input-label,
+.underline-input-field:not(:placeholder-shown) ~ .underline-input-label {
+  @apply top-0 text-primary scale-90;
+  transform: translateY(-70%);
+}
+.underline-input-group:focus-within, .underline-input-field:focus,
+.underline-textarea-input:focus, .underline-textarea-group:focus-within {
+  @apply border-primary;
+}
+/* *** Underlined Textarea Input *** */
+.underline-textarea-group {
+  @apply w-full relative border-b-2 border-heading-color ;
+}
+.underline-textarea-input {
+  @apply w-full pt-2 text-heading-color border-none outline-none text-sm bg-transparent font-medium resize-none transition duration-500 ease-linear;
+}
+.underline-textarea-label {
+  @apply text-sm absolute top-3 left-0 text-body-color font-medium pointer-events-none;
+  transition: 0.5s ease;
+}
+.underline-textarea-input:focus ~ .underline-textarea-label,
+.underline-textarea-input:not(:placeholder-shown) ~ .underline-textarea-label {
+  @apply top-0 text-primary scale-90;
+  transform: translateY(-70%);
+}
+
 
 
 /* CATEGORY CARD */
@@ -342,71 +379,31 @@ body {
   @apply transition-all duration-500 ease-in-out;
 }
 @keyframes float-up-down {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
-}
+  }
   50% {
     transform: translateY(-25px);
-}
+  }
 }
 
 @keyframes float-left-right {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateX(0);
-}
+  }
   50% {
     transform: translateX(25px);
-}
+  }
 }
 
 @keyframes float-diagonal {
-  0%,
-  100% {
+  0%, 100% {
     transform: translate(0, 0);
   }
   50% {
     transform: translate(25px, -25px);
   }
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideOut {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
 /* UTILITY CLASSES */
 .animate-float-y {
   animation: float-up-down 6s ease-in-out infinite;
@@ -426,22 +423,84 @@ body {
   animation-delay: 3s;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/* UTILITY CLASSES */
 .fade-in {
   animation: fadeIn 0.5s ease forwards;
   -webkit-animation: fadeIn 0.5s ease forwards;
 }
-
 .fade-out {
   animation: fadeOut 0.5s ease forwards;
   -webkit-animation: fadeOut 0.5s ease forwards;
 }
 
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+/* UTILITY CLASSES */
 .slide-in {
   animation: slideIn 0.5s ease forwards;
   -webkit-animation: slideIn 0.5s ease forwards;
 }
-
 .slide-out {
   animation: slideOut 0.5s ease forwards;
   -webkit-animation: slideOut 0.5s ease forwards;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+}
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* UTILITY CLASSES */
+.animate-slide-right {
+  animation: slideRight 0.5s ease forwards;
+  -webkit-animation: slideRight 0.5s ease forwards;
+}
+.animate-slide-left {
+  animation: slideLeft 0.5s ease forwards;
+  -webkit-animation: slideLeft 0.5s ease forwards;
 }

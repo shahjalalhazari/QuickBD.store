@@ -136,7 +136,7 @@ const DetailsContent = ({product}) => {
             <FiHeart size={18}/> Add To Favorite
           </button>
         </div>
-        <FullWidthBtn text={"Add to Cart"} color={"bg-primary"} />
+        <FullWidthBtn text={"Add to Cart"} color={"bg-primary"} customClass={"hover:bg-primary-dark"}/>
       </div>
       <hr className="border border-border-color/40" />
 

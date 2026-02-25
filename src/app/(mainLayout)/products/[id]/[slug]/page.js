@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import ImageGallery from "@/components/productDetailsPage/ImageGallery";
 import GridImageGallery from "@/components/productDetailsPage/GridImageGallery";
 import DetailsContent from "@/components/productDetailsPage/DetailsContent";
+import DescriptionTabs from "@/components/productDetailsPage/DescriptionTabs";
 
 
 const ProductDetailsPage = async() => {
@@ -30,6 +31,8 @@ const ProductDetailsPage = async() => {
         {/* DETAILS CONTENT */}
         <DetailsContent product={product} />
       </div>
+      {/* DESCRIPTION, REVIEWS & FAQs */}
+      <DescriptionTabs product={product} />
     </div>
   );
 };
