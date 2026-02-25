@@ -2,6 +2,10 @@ import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import "./products.css";
 import ClientProductsPage from "@/components/productsPage/ClientProductsPage";
 
+export const metadata = {
+  title: "Products",
+};
+
 const ProductsPage = () => {
   return (
     <div className="products-page quickbd-container">

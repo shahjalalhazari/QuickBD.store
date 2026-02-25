@@ -7,9 +7,21 @@ import GridImageGallery from "@/components/productDetailsPage/GridImageGallery";
 import DetailsContent from "@/components/productDetailsPage/DetailsContent";
 import DescriptionTabs from "@/components/productDetailsPage/DescriptionTabs";
 
+export const generateMetadata = async({params}) => {
+  const {id} = await params;
+  const {title, description} = await getProductDetails(id);
+  
+  return {
+    title: title,
+    description: description,
+  }
+};
 
-const ProductDetailsPage = async() => {
-  const product = await getProductDetails(28);
+
+const ProductDetailsPage = async({params}) => {
+  const {id} = await params;
+  console.log(id);
+  const product = await getProductDetails(id);
   console.log(product);
 
   return (
