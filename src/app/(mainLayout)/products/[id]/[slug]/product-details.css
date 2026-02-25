@@ -175,7 +175,18 @@
 .rating-stars {
     @apply text-2xl w-fit;
 }
-
+.product-faqs {
+    @apply space-y-2;
+}
+.accordion {
+    @apply bg-transparent border-2 border-border-color rounded-none;
+}
+.question {
+    @apply font-semibold text-heading-color;
+}
+.answere {
+    @apply text-sm text-body-color;
+}
 /* -------------------------------------------------------------- */
 
 
