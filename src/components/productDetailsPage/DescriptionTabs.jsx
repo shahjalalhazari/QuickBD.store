@@ -8,6 +8,7 @@ import UnderlineTextarea from "../shared/inputFields/UnderlineTextarea";
 import Image from "next/image";
 import ProductRating from "../shared/ProductRating";
 import { formatDateTime } from "@/utils/formatDateTime";
+import OutlineDropdown from "../shared/filters/OutlineDropdown";
 
 
 const tabs = ["description", "reviews", "faqs"];
@@ -77,7 +78,12 @@ const DescriptionTabs = ({product, faqs}) => {
             {/* PRODUCT REVIEWS */}
             {activeTab === "reviews" && (
               <div className="review-tab">
-                <div className="review-list">
+                <div className="review-list-section">
+                  <div className="review-list-header">
+                    <h4 className="review-list-heading">{product.reviews.length} Reviews</h4>
+                    <OutlineDropdown options={reviewDropdownOptions} />
+                  </div>
+                  <div className="review-list">
                   {product.reviews?.map((review, index) => (
                     <div className="review" key={index}>
                       <div className="user">
@@ -99,6 +105,7 @@ const DescriptionTabs = ({product, faqs}) => {
                       <p className="body-text w-full">{review.comment}</p>
                     </div>
                   ))}
+                </div>
                 </div>
                 <div className="review-form-section">
                   <h5 className="form-heading">Give us your opinion</h5>
@@ -152,3 +159,11 @@ const DescriptionTabs = ({product, faqs}) => {
 };
 
 export default DescriptionTabs;
+
+
+const reviewDropdownOptions = [
+  { label: "Newest", value: "newest" },
+  { label: "Oldest", value: "oldest" },
+  { label: "Highest Rating", value: "rating-asc" },
+  { label: "Lowest Rating", value: "rating-desc" },
+];

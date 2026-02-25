@@ -119,6 +119,36 @@ body {
 }
 
 
+/* DROPDOW */
+.outline-dropdown {
+  @apply relative w-44;
+}
+.dropdown-btn {
+  @apply flex justify-between items-center w-full p-3 rounded-md border-2 border-heading-color bg-transparent;
+}
+.dropdown-selected-item {
+  @apply text-heading-color text-sm font-medium cursor-pointer;
+}
+.dropdown-list-container {
+  @apply absolute left-0 mt-1 z-[995] w-full bg-ghost-white rounded border border-border-color shadow-lg overflow-hidden origin-top;
+}
+.container-open {
+  @apply opacity-100 overflow-y-auto max-h-60;
+}
+.container-close {
+  @apply max-h-0 opacity-0;
+}
+.dropdown-item {
+  @apply px-3 py-2 text-sm text-body-color font-medium cursor-pointer;
+}
+.dropdown-item:hover {
+  @apply bg-primary/20 text-primary;
+}
+.active-dropdown-item {
+  @apply bg-primary text-ghost-white;
+}
+
+
 
 /* CATEGORY CARD */
 .categroy-card {
@@ -257,6 +287,14 @@ body {
     @apply mt-10;
   }
 
+  /* DROPDOW */
+  .dropdown-btn {
+    @apply p-2;
+  }
+  .dropdown-item {
+    @apply px-2 py-1.5;
+  }
+
   
   /* CATEGORY CARD */
   .categroy-card {
@@ -338,6 +376,14 @@ body {
   /* *** Full Width Button & Button With Underline *** */
   .full-width-btn, .underline-btn {
     @apply text-sm;
+  }
+
+  /* DROPDOW */
+  .dropdown-btn {
+    @apply p-2;
+  }
+  .dropdown-item {
+    @apply px-2 py-1.5;
   }
 
 

@@ -57,10 +57,10 @@
 .seller-info {
     @apply space-y-1 text-sm font-medium;
 }
-.desc>p, .seller-info>p {
+.desc>p, .seller-info>p, .extra-info>p {
     @apply flex gap-x-1 text-body-color;
 }
-.desc>p>span, .seller-info>p>span {
+.desc>p>span, .seller-info>p>span, .extra-info>p>span {
     @apply font-semibold;
 }
 .seller-info>p>a:hover {
@@ -139,6 +139,15 @@
 .review-tab {
     @apply grid grid-cols-2 gap-6;
 }
+.review-list-section {
+    @apply space-y-6 order-1;
+}
+.review-list-header {
+    @apply flex justify-between items-center
+}
+.review-list-heading {
+    @apply text-xl font-semibold text-heading-color;
+}
 .review-list {
     @apply overflow-y-auto max-h-[350px];
 }
@@ -164,7 +173,7 @@
     @apply text-xs text-body-color;
 }
 .review-form-section {
-    @apply space-y-6;
+    @apply space-y-6 order-2;
 }
 .form-heading {
     @apply text-heading-color text-xl font-bold uppercase;
@@ -241,6 +250,46 @@
     .extra-info {
         @apply text-sm;
     }
+    /* TABS SECTION */
+    .tabs-section {
+        @apply mt-10;
+    }
+    .tab-btns {
+        @apply text-base pb-2;
+    }
+    .sliding-contents {
+        @apply mt-4;
+    }
+    .review-tab {
+        @apply grid grid-cols-2 gap-5;
+    }
+    .review-list-section {
+        @apply space-y-4;
+    }
+    .review-list-heading {
+        @apply text-lg;
+    }
+    .review {
+        @apply space-y-2 py-3;
+    }
+    .user {
+        @apply gap-2;
+    }
+    .user-name {
+        @apply text-sm;
+    }
+    .review-form-section {
+        @apply order-2;
+    }
+    .form-heading {
+        @apply text-lg;
+    }
+    .product-faqs {
+        @apply space-y-1;
+    }
+    .question {
+        @apply text-sm;
+    }
 }
 /* -------------------------------------------------------------- */
 
@@ -295,6 +344,46 @@
         @apply rounded py-2.5 text-sm;
     }
     .extra-info {
+        @apply text-sm;
+    }
+    /* TABS SECTION */
+    .tabs-section {
+        @apply mt-6 border-t border-border-color/40 pt-10;
+    }
+    .tab-btns {
+        @apply flex gap-x-0 justify-between text-base pb-2;
+    }
+    .sliding-contents {
+        @apply mt-4;
+    }
+    .review-tab {
+        @apply grid grid-cols-1 gap-0;
+    }
+    .review-list-section {
+        @apply space-y-4 order-2 mt-0;
+    }
+    .review-list-heading {
+        @apply text-lg;
+    }
+    .review {
+        @apply space-y-2 py-3;
+    }
+    .user {
+        @apply gap-2;
+    }
+    .user-name {
+        @apply text-sm;
+    }
+    .review-form-section {
+        @apply order-1 border-b border-border-color/60 mb-6 pb-6;
+    }
+    .form-heading {
+        @apply text-lg;
+    }
+    .product-faqs {
+        @apply space-y-1;
+    }
+    .question {
         @apply text-sm;
     }
 }

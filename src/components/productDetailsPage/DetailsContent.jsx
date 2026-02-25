@@ -143,7 +143,7 @@ const DetailsContent = ({product}) => {
       {/* ROW 5 - SKU & TAGS */}
       <div className="extra-info">
         <p>
-          <span>Tags:</span>
+          <span>Tags: </span>
           {product.tags?.map((tag, index) => (
             <Link 
               href={`/products?tag=${generateSlug(tag)}`} 
@@ -154,7 +154,7 @@ const DetailsContent = ({product}) => {
             </Link>
           ))}
         </p>
-        <p><span>SKU: </span>{product.sku}</p>
+        <p className="text-body-color"><span>SKU: </span>{product.sku}</p>
       </div>
     </div>
   );
