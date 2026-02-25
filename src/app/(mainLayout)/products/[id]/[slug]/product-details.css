@@ -139,6 +139,30 @@
 .review-tab {
     @apply grid grid-cols-2 gap-6;
 }
+.review-list {
+    @apply overflow-y-auto max-h-[350px];
+}
+.review {
+    @apply space-y-3 py-4 border-b border-border-color/60;
+}
+.user {
+    @apply flex items-center gap-3 w-full;
+}
+.user-date {
+    @apply flex justify-between w-full;
+}
+.user-photo {
+    @apply rounded h-12 w-12 object-cover object-center;
+}
+.user-details {
+    @apply flex flex-col gap-1;
+}
+.user-name {
+    @apply text-base text-heading-color font-semibold;
+}
+.date {
+    @apply text-xs text-body-color;
+}
 .review-form-section {
     @apply space-y-6;
 }
