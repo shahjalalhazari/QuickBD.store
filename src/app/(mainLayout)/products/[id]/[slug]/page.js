@@ -6,15 +6,20 @@ import ImageGallery from "@/components/productDetailsPage/ImageGallery";
 import GridImageGallery from "@/components/productDetailsPage/GridImageGallery";
 import DetailsContent from "@/components/productDetailsPage/DetailsContent";
 import DescriptionTabs from "@/components/productDetailsPage/DescriptionTabs";
+import { generateProductMetadata } from "@/app/metadata";
 
 export const generateMetadata = async({params}) => {
   const {id} = await params;
-  const {title, description} = await getProductDetails(id);
+  const product = await getProductDetails(id);
   
-  return {
-    title: title,
-    description: description,
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      description: "This product does not exist.",
+    };
   }
+
+  return generateProductMetadata(product);
 };
 
 

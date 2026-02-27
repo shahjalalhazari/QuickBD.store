@@ -41,8 +41,8 @@ const Navbar = () => {
 
         {/* NAVBAR ICONS */}
         <ul className='navbar-icons'>
-          <li className="quickbd-transition">
-            <Link href="/signin">
+          <li className={`cart-icon quickbd-transition ${pathname === "/account" && "active-icon"}`}>
+            <Link href="/account">
               <FaRegCircleUser className="navbar-icon" />
             </Link>
           </li>
@@ -54,7 +54,7 @@ const Navbar = () => {
           <li className="quickbd-transition">
             <button
               onClick={() => setCartOpen(true)}
-              className="cart-icon"
+              className={`cart-icon ${pathname === "/cart" && "active-icon"}`}
             >
               <FiShoppingBag className="navbar-icon" />
               <span className="cart-count">{totalItems}</span>

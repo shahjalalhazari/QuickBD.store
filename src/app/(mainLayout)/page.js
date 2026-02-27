@@ -5,6 +5,12 @@ import FeatureDetailsSection from "@/components/homePage/FeatureDetailsSection";
 import NewArrivals from "@/components/homePage/NewArrivals";
 import FeatureCardsSection from "@/components/homePage/FeatureCardsSection";
 import TestimonialSetion from "@/components/homePage/TestimonialSetion";
+import { SITE_DESCRIPTION, TEMPLATE_NAMES } from "../metadata";
+
+export const metadata = {
+  title: TEMPLATE_NAMES.home,
+  description: SITE_DESCRIPTION,
+};
 
 export default function Home() {
   return (

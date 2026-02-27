@@ -105,7 +105,7 @@ const CartSidebar = ({ isOpen, onClose, cartItems }) => {
             </div>
             {totalItems >= 1 && 
               <Link href="/cart" onClick={onClose} className="w-full">
-                <FullWidthBtn color={"bg-secondary"} text={"Checkout"} customClass={"w-full"}/>
+                <FullWidthBtn color={"bg-secondary"} text={"View Cart"} customClass={"w-full"}/>
               </Link>
             }
           </div>

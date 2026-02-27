@@ -1,9 +1,11 @@
 import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import "./products.css";
 import ClientProductsPage from "@/components/productsPage/ClientProductsPage";
+import { SITE_DESCRIPTION } from "@/app/metadata";
 
 export const metadata = {
   title: "Products",
+  description: SITE_DESCRIPTION
 };
 
 const ProductsPage = () => {

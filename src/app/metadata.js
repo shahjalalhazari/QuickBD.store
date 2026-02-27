@@ -241,19 +241,19 @@ export const baseMetadata = {
 // Helper functions for dynamic metadata
 export function generateProductMetadata(product) {
   return {
-    title: TEMPLATE_NAMES.productDetail.replace('%s', product.name),
-    description: `Buy ${product.name} at best price in Bangladesh. ${product.description}`,
-    keywords: [...SITE_KEYWORDS, product.name, product.category, 'price in bangladesh', 'buy online'],
+    title: TEMPLATE_NAMES.productDetail.replace('%s', product.title),
+    description: `Buy ${product.title} at best price in Bangladesh. ${product.description}`,
+    keywords: [...SITE_KEYWORDS, product.title, product.category, 'price in bangladesh', 'buy online'],
     openGraph: {
       ...baseMetadata.openGraph,
-      title: OPEN_GRAPH_TEMPLATES.product.title.replace('%s', product.name),
-      description: OPEN_GRAPH_TEMPLATES.product.description.replace('%s', product.name),
+      title: OPEN_GRAPH_TEMPLATES.product.title.replace('%s', product.title),
+      description: OPEN_GRAPH_TEMPLATES.product.description.replace('%s', product.title),
       images: [product.image],
     },
     twitter: {
       ...baseMetadata.twitter,
-      title: TWITTER_TEMPLATES.product.title.replace('%s', product.name),
-      description: TWITTER_TEMPLATES.product.description.replace('%s', product.name),
+      title: TWITTER_TEMPLATES.product.title.replace('%s', product.title),
+      description: TWITTER_TEMPLATES.product.description.replace('%s', product.title),
       images: [product.image],
     },
   }

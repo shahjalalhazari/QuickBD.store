@@ -31,6 +31,12 @@
 .cart-count {
     @apply bg-heading-color text-ghost-white text-xs font-semibold rounded-full py-1.5 px-2.5 ml-0.5;
 }
+.active-icon {
+    @apply text-primary;
+    .cart-count {
+        @apply bg-primary;
+    }
+}
 
 /* SIDEBAR */
 .oberlay {
@@ -251,7 +257,13 @@
     }
     .cart-full-btn>p {
         @apply text-sm font-semibold;
-    };
+    }
+    .sidebar-active-icon {
+        @apply text-primary border-primary;
+        .cart-count {
+            @apply bg-primary;
+        }
+    }
     .sub-total {
         @apply text-base;
     }

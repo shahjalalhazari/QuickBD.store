@@ -50,7 +50,7 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
         </li>
         {/* CART ICON */}
         <li className="quickbd-transition">
-          <button onClick={onCartOpen} className="cart-icon">
+          <button onClick={onCartOpen} className={`cart-icon ${pathname === "/cart" && "active-icon"}`}>
             <FiShoppingBag className="navbar-icon" />
             <span className="cart-count">{cartItems.length}</span>
           </button>
@@ -124,7 +124,7 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
             {/* CART BTN */}
             <Link href="/cart" 
               className={`cart-full-btn ${
-              pathname === "/cart" ? "active-nav-item" : ""}`}
+              pathname === "/cart" && "sidebar-active-icon"}`}
               onClick={closeNavbar}
             >
               <p>Cart</p>
@@ -137,7 +137,7 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
             {/* FAVORITE BTN */}
             <Link href="/profile/favorite" 
               className={`cart-full-btn ${
-              pathname === "/profile/favorite" ? "active-nav-item" : ""}`}
+              pathname === "/account/favorite" && "sidebar-active-icon"}`}
               onClick={closeNavbar}
             >
               <p>Favorite</p>
@@ -152,7 +152,8 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
               <FullWidthBtn 
                 text={"SignIn / Account"} 
                 color={"bg-primary"}
-                onClick={closeNavbar} 
+                onClick={closeNavbar}
+                customClass={"w-full"}
               />
             </Link>
 
