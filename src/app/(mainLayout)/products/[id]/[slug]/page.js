@@ -20,9 +20,7 @@ export const generateMetadata = async({params}) => {
 
 const ProductDetailsPage = async({params}) => {
   const {id} = await params;
-  console.log(id);
   const product = await getProductDetails(id);
-  console.log(product);
 
   return (
     <div className="quickbd-container">

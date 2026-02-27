@@ -10,7 +10,7 @@
 .navbar-items {
     @apply flex space-x-10 font-semibold text-lg text-heading-color;
 }
-.navbar-item:hover {
+.navbar-items>li:hover {
     @apply text-primary underline;
 }
 .active-nav {

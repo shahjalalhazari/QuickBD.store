@@ -8,10 +8,12 @@ import { FiLogIn, FiShoppingBag } from "react-icons/fi";
 import SmallNavbar from "./SmallNavbar";
 import CartSidebar from "@/components/cartPage/CartSidebar";
 import { useState } from "react";
+import { useNavigation } from "@/hooks/useNavigation";
 
 const Navbar = () => {
   const pathname = usePathname();
   const [cartOpen, setCartOpen] = useState(false);
+  const { isActiveNavItem } = useNavigation();
 
   const cartItems = [1, 2, 3, 4, 5];
   const totalItems = cartItems.length;
@@ -30,8 +32,8 @@ const Navbar = () => {
 
         {/* MAIN NAV ITEMS */}
         <ul className='navbar-items'>
-          {navItems.map((item, index) => (
-            <li key={index} className={`navbar-item quickbd-transition ${pathname === item.path ? 'active-nav' : ''}`}>
+          {navItems.map((item) => (
+              <li key={item.path} className={`quickbd-transition ${isActiveNavItem(item) ? "active-nav" : ""}`}>
               <Link href={item.path}>{item.title}</Link>
             </li>
           ))}
@@ -77,22 +79,9 @@ const Navbar = () => {
 
 export default Navbar;
 
-
 const navItems = [
-  {
-    title: "Home",
-    path: "/",
-  },
-  {
-    title: "Products",
-    path: "/products",
-  },
-  {
-    title: "Category",
-    path: "/categories",
-  },
-  {
-    title: "Contact Us",
-    path: "/contact-us",
-  },
-]
+  { title: "Home", path: "/", exact: true },
+  { title: "Products", path: "/products" },
+  { title: "Category", path: "/categories" },
+  { title: "Contact Us", path: "/contact-us" },
+];
