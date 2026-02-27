@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* MAIN NAV ITEMS */}
         <ul className='navbar-items'>
           {navItems.map((item) => (
-              <li key={item.path} className={`quickbd-transition ${isActiveNavItem(item) ? "active-nav" : ""}`}>
+              <li key={item.path} className={`quickbd-transition ${isActiveNavItem(item) && "active-nav"}`}>
               <Link href={item.path}>{item.title}</Link>
             </li>
           ))}

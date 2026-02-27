@@ -8,11 +8,13 @@ import { BiSearch, BiX } from "react-icons/bi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaRegHeart } from "react-icons/fa6";
 import FullWidthBtn from "../buttons/FullWidthBtn";
 import { FiShoppingBag } from "react-icons/fi";
+import { useNavigation } from "@/hooks/useNavigation";
 
 const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
 	const pathname = usePathname();
 	const [navbarOpen, setNavbarOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const { isActiveNavItem } = useNavigation();
 
   const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || "https://www.facebook.com/shahjalalhazari0/";
   const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || "https://www.instagram.com/shahjalalhazari/";
@@ -100,11 +102,13 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
             {/* NAVBAR ITEMS */}
             <ul className="sidebar-nav-list">
               {navItems?.map((item) => (
-                <li key={item.path}>
+                <li 
+                  key={item.path}
+                  className={`nav-item ${
+                    isActiveNavItem(item) && "active-nav-item"
+                  }`}
+                >
                   <Link
-                    className={`nav-item ${
-                      pathname === item.path && "active-nav-item"
-                    }`}
                     href={item.path}
                     onClick={closeNavbar}
                   >
