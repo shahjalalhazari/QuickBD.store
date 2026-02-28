@@ -18,6 +18,9 @@ const Navbar = () => {
   const cartItems = [1, 2, 3, 4, 5];
   const totalItems = cartItems.length;
 
+  const isCartPage = pathname.split("/").includes("cart");
+  const isAccountPage = pathname.split("/").includes("account");
+
   return (
     <>
     <nav role="navigation" aria-label="main navigation" className="main-navbar">
@@ -41,30 +44,40 @@ const Navbar = () => {
 
         {/* NAVBAR ICONS */}
         <ul className='navbar-icons'>
-          <li className={`cart-icon quickbd-transition ${pathname === "/account" && "active-icon"}`}>
-            <Link href="/account">
+          <li className={`cart-icon 
+            ${isAccountPage && "active-icon cursor-not-allowed"}
+          `}>
+            <Link href="/account" className="quickbd-transition">
               <FaRegCircleUser className="navbar-icon" />
             </Link>
           </li>
-          <li className="quickbd-transition">
-            <Link href="/signin">
+          <li className="">
+            <Link href="/signin" className="quickbd-transition">
               <FiLogIn className="navbar-icon" />
             </Link>
           </li>
-          <li className="quickbd-transition">
+          <li className="">
             <button
-              onClick={() => setCartOpen(true)}
-              className={`cart-icon ${pathname === "/cart" && "active-icon"}`}
+              onClick={() => !isCartPage && setCartOpen(true)}
+              disabled={isCartPage}
+              className={`cart-icon quickbd-transition
+                ${isCartPage && "active-icon"}
+              `}
             >
               <FiShoppingBag className="navbar-icon" />
-              <span className="cart-count">{totalItems}</span>
+              <span className="cart-count quickbd-transition">{totalItems}</span>
             </button>
           </li>
         </ul>
       </div>
 
       {/* NAVBAR FOR SMALL DEVICES */}
-      <SmallNavbar navItems={navItems} cartItems={cartItems} onCartOpen={() => setCartOpen(true)}/>
+      <SmallNavbar 
+        navItems={navItems} 
+        cartItems={cartItems} 
+        onCartOpen={() => !isCartPage && setCartOpen(true)} 
+        isCartPage={isCartPage} 
+      />
     </nav>
 
     {/* Cart Sidebar */}

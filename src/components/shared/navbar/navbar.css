@@ -24,6 +24,9 @@
 }
 .navbar-icons > li :hover {
     @apply text-primary;
+    .cart-count {
+        @apply bg-primary text-ghost-white;
+    }
 }
 .cart-icon {
     @apply flex items-center;

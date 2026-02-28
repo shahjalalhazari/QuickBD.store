@@ -10,7 +10,7 @@ import FullWidthBtn from "../buttons/FullWidthBtn";
 import { FiShoppingBag } from "react-icons/fi";
 import { useNavigation } from "@/hooks/useNavigation";
 
-const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
+const SmallNavbar = ({ navItems, onCartOpen, cartItems, isCartPage }) => {
 	const pathname = usePathname();
 	const [navbarOpen, setNavbarOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -123,8 +123,9 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems }) => {
           <div className="sidebar-footer">
             {/* CART BTN */}
             <Link href="/cart" 
-              className={`cart-full-btn ${
-              pathname === "/cart" && "sidebar-active-icon"}`}
+              className={`cart-full-btn 
+                ${isCartPage && "sidebar-active-icon"}
+              `}
               onClick={closeNavbar}
             >
               <p>Cart</p>
