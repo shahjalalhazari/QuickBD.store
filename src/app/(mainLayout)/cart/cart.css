@@ -1,0 +1,141 @@
+.cart-page {
+    @apply space-y-12;
+}
+.page-heading {
+    @apply text-5xl text-heading-color text-center font-semibold;
+}
+.cart-progresses {
+    @apply items-center justify-center gap-8;
+}
+.cart-progress {
+    @apply flex gap-4 items-center min-w-fit pb-3 border-b-[3px];
+}
+.circle {
+    @apply h-10 w-10 text-ghost-white font-semibold flex items-center justify-center rounded-full;
+}
+.cart-progress>h6 {
+    @apply font-semibold text-lg whitespace-nowrap;
+}
+.cart-body-content {
+    @apply grid grid-cols-12 gap-6;
+}
+/* CART TABLE */
+.cart-table {
+    @apply col-span-8 w-full;
+}
+/* COUPON CODE & CART SUMMARY */
+.coupon-summary {
+    @apply col-span-4 w-full space-y-8;
+}
+.sub-heading {
+    @apply text-xl text-secondary font-semibold;
+}
+/* COUPON CODE FORM */
+.coupon-form-container {
+    @apply space-y-4;
+}
+.coupon-form {
+    @apply flex gap-x-2 items-center justify-between w-full border-2 border-heading-color rounded-lg px-3 py-2;
+}
+.form-group {
+    @apply flex gap-x-4 items-center w-full;
+}
+.form-label {
+    @apply text-2xl text-body-color
+}
+.form-input {
+    @apply outline-none bg-transparent w-full;
+}
+.apply-btn {
+    @apply text-base font-semibold text-heading-color px-2.5 py-0.5 rounded;
+}
+.apply-btn:hover {
+    @apply bg-heading-color/20;
+}
+/* CART SUMMARY */
+.cart-summary {
+    @apply w-full;
+}
+
+
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    .page-heading {
+        @apply text-4xl;
+    }
+    .cart-progress {
+        @apply gap-3 pb-2;
+    }
+    .circle {
+        @apply h-9 w-9;
+    }
+    .cart-body-content {
+        @apply grid grid-cols-8 gap-12;
+    }
+    /* CART TABLE */
+    .cart-table {
+        @apply col-span-8 w-full;
+    }
+    /* COUPON CODE & CART SUMMARY */
+    .coupon-summary {
+        @apply col-span-8 flex gap-x-5 w-full space-y-0;
+    }
+    /* COUPON CODE FORM */
+    .coupon-form-container {
+        @apply space-y-4 w-full;
+    }
+    .form-input::placeholder {
+        @apply text-sm;
+    }
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+    .cart-page {
+        @apply space-y-10;
+    }
+    .page-heading {
+        @apply text-3xl;
+    }
+    .cart-progresses-mobile {
+        @apply flex items-center justify-center;
+    }
+    .cart-progress {
+        @apply shrink-0 flex gap-3 pb-2;
+    }
+    .circle {
+        @apply h-8 w-8;
+    }
+    .cart-body-content {
+        @apply grid grid-cols-1 gap-10;
+    }
+    /* CART TABLE */
+    .cart-table {
+        @apply col-span-1 w-full;
+    }
+    /* COUPON CODE & CART SUMMARY */
+    .coupon-summary {
+        @apply col-span-1 w-full space-y-10;
+    }
+    .sub-heading {
+        @apply text-lg;
+    }
+    /* COUPON CODE FORM */
+    .coupon-form-container {
+        @apply space-y-2;
+    }
+    .coupon-form {
+        @apply rounded;
+    }
+    .form-group {
+        @apply flex gap-x-3;
+    }
+    .form-input::placeholder {
+        @apply text-sm;
+    }
+}
