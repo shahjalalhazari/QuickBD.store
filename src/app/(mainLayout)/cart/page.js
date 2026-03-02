@@ -39,7 +39,7 @@ const CartPage = () => {
           <CouponForm />
 
           {/* CART SUMMARY */}
-          <CartSummary />
+          <CartSummary subtotal={599.99}/>
         </div>
       </div>
     </div>
