@@ -12,6 +12,8 @@ export const metadata = {
 };
 
 const CartPage = () => {
+  const subtotal = 1200;
+
   return (
     <div className="quickbd-container cart-page">
       {/* BREADCRUMBS */}
@@ -31,7 +33,7 @@ const CartPage = () => {
       {/* BODY CONTENT */}
       <div className="cart-body-content">
         {/* CART TABLE */}
-        <CartTable />
+        <CartTable subtotal={subtotal} />
 
         {/* COUPON & CART SUMMARY */}
         <div className="coupon-summary">
@@ -39,7 +41,7 @@ const CartPage = () => {
           <CouponForm />
 
           {/* CART SUMMARY */}
-          <CartSummary subtotal={599.99}/>
+          <CartSummary subtotal={subtotal}/>
         </div>
       </div>
     </div>
