@@ -16,6 +16,7 @@
 .cart-progress>h6 {
     @apply font-semibold text-lg whitespace-nowrap;
 }
+/* BODY CONTAINER */
 .cart-body-content {
     @apply grid grid-cols-12 gap-6;
 }
@@ -116,9 +117,6 @@
 .fee-detail {
     @apply flex items-center justify-between;
 }
-
-
-
 /* -------------------------------------------------------------- */
 
 
@@ -133,6 +131,7 @@
     .circle {
         @apply h-9 w-9;
     }
+    /* BODY CONTAINER */
     .cart-body-content {
         @apply grid grid-cols-8 gap-12;
     }
@@ -172,6 +171,7 @@
     .circle {
         @apply h-8 w-8;
     }
+    /* BODY CONTAINER */
     .cart-body-content {
         @apply grid grid-cols-1 gap-10;
     }

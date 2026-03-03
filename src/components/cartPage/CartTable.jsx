@@ -6,7 +6,7 @@ const CartTable = ({subtotal}) => {
 	return (
 		<div className='cart-table'>
 			<div className="table-header">
-				<p className='w-[25%]'>Product</p>
+				<p className='md:w-[25%]'>Product</p>
 				<p>Quantity</p>
 				<p>Unit Price</p>
 				<p>Amount</p>

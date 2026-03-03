@@ -1,0 +1,114 @@
+.checkout-page {
+    @apply space-y-12;
+}
+.page-heading {
+    @apply text-5xl text-heading-color text-center font-semibold;
+}
+.cart-progresses {
+    @apply items-center justify-center gap-8;
+}
+.cart-progress {
+    @apply flex gap-4 items-center min-w-fit pb-3 border-b-[3px];
+}
+.circle {
+    @apply h-10 w-10 text-ghost-white font-semibold flex items-center justify-center rounded-full;
+}
+.cart-progress>h6 {
+    @apply font-semibold text-lg whitespace-nowrap;
+}
+.sub-heading {
+    @apply text-xl text-secondary font-semibold;
+}
+.section-container {
+    @apply border-2 border-heading-color px-6 py-8 rounded-xl w-full;
+}
+/* BODY CONTAINER */
+.checkout-body-content {
+    @apply grid grid-cols-12 gap-6;
+}
+/* FORMS */
+.checkout-forms {
+    @apply col-span-8 w-full space-y-6;
+}
+.input-grid {
+    @apply flex gap-6 w-full;
+}
+/* SIDEBAR */
+.checkout-sidebar {
+    @apply col-span-4 w-full;
+}
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    .page-heading {
+        @apply text-4xl;
+    }
+    .cart-progress {
+        @apply gap-3 pb-2;
+    }
+    .circle {
+        @apply h-9 w-9;
+    }
+    .section-container {
+        @apply rounded-[10px];
+    }
+    /* BODY CONTAINER */
+    .checkout-body-content {
+        @apply grid grid-cols-8 gap-12;
+    }
+    /* FORMS */
+    .checkout-forms {
+        @apply col-span-5 w-full space-y-6;
+    }
+    .input-grid {
+        @apply flex flex-col;
+    }
+    /* SIDEBAR */
+    .checkout-sidebar {
+        @apply col-span-3 w-full;
+    }
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+    .cart-page {
+        @apply space-y-10;
+    }
+    .page-heading {
+        @apply text-3xl;
+    }
+    .cart-progresses-mobile {
+        @apply flex items-center justify-center;
+    }
+    .cart-progress {
+        @apply shrink-0 flex gap-3 pb-2;
+    }
+    .circle {
+        @apply h-8 w-8;
+    }
+    .sub-heading {
+        @apply text-lg;
+    }
+    .section-container {
+        @apply rounded-lg;
+    }
+    /* BODY CONTAINER */
+    .checkout-body-content {
+        @apply grid grid-cols-1 gap-10;
+    }
+    /* FORMS */
+    .checkout-forms {
+        @apply col-span-1 w-full;
+    }
+    .input-grid {
+        @apply flex flex-col;
+    }
+    /* ORDER SUMMARY SIDEBAR */
+    .checkout-sidebar {
+        @apply col-span-1 w-full space-y-10;
+    }
+}

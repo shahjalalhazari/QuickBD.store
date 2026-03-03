@@ -3,7 +3,7 @@ import CartProgressStep from "./CartProgressStep";
 const CartProgress = ({ currntStep }) => {
 	const steps = [
 		{ text: "Shopping Cart" },
-		{ text: "Checkout" },
+		{ text: "Checkout Details" },
 		{ text: "Order Confirm" },
 	];
 
@@ -26,11 +26,11 @@ const CartProgress = ({ currntStep }) => {
 					}
 
 					if (stepNumber === currntStep - 1) {
-						positionClass = "absolute right-[80%]";
+						positionClass = "absolute right-[85%]";
 					}
 
 					if (stepNumber === currntStep + 1) {
-						positionClass = "absolute left-[80%]";
+						positionClass = "absolute left-[85%]";
 					}
 
 					if (
