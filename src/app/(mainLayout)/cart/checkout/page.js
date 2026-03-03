@@ -31,6 +31,7 @@ const CheckoutPage = () => {
 				<form className='checkout-forms'>
 					{/* CONTACT INFO FORM */}
 					<ContactInfoForm />
+					{/* SHIPPING ADDRESS FORM */}
 					<ShippingAddressForm />
 					<PaymentMethod />
 					<FullWidthBtn
