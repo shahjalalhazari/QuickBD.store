@@ -6,6 +6,16 @@ import ShippingAddressForm from '@/components/checkoutPage/ShippingAddressForm';
 import PaymentMethod from '@/components/checkoutPage/PaymentMethod';
 import OrderSummary from '@/components/checkoutPage/OrderSummary';
 import FullWidthBtn from '@/components/shared/buttons/FullWidthBtn';
+import { SITE_DESCRIPTION, SITE_NAME, TEMPLATE_NAMES } from '@/app/metadata';
+
+export const metadata = {
+  title: TEMPLATE_NAMES.checkout,
+  description: [`Complete your purchase securely at ${SITE_NAME}. Fast delivery, secure payments, and trusted online shopping experience. ${SITE_DESCRIPTION}`],
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const CheckoutPage = () => {
 	return (
