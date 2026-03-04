@@ -158,6 +158,25 @@ body {
 .secondary-text {
   @apply text-heading-color font-semibold;
 }
+/* *** Form With Box Input Fields *** */
+.Form-input-btn {
+  @apply flex gap-x-2 items-center justify-between w-full border-2 rounded-lg px-3 py-2;
+}
+.Form-input-btn-group {
+  @apply flex gap-x-4 items-center w-full;
+}
+.Form-input-btn-label {
+  @apply text-2xl text-body-color
+}
+.Form-input-btn-input-field {
+  @apply outline-none bg-transparent w-full;
+}
+.Form-input-btn-apply-btn {
+  @apply text-base font-semibold text-heading-color px-2.5 py-0.5 rounded;
+}
+.Form-input-btn-apply-btn:hover {
+  @apply bg-heading-color/20;
+}
 
 
 

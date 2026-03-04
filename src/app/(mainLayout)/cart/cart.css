@@ -65,24 +65,6 @@
 .coupon-form-container {
     @apply space-y-4 w-full;
 }
-.coupon-form {
-    @apply flex gap-x-2 items-center justify-between w-full border-2 border-heading-color rounded-lg px-3 py-2;
-}
-.form-group {
-    @apply flex gap-x-4 items-center w-full;
-}
-.form-label {
-    @apply text-2xl text-body-color
-}
-.form-input {
-    @apply outline-none bg-transparent w-full;
-}
-.apply-btn {
-    @apply text-base font-semibold text-heading-color px-2.5 py-0.5 rounded;
-}
-.apply-btn:hover {
-    @apply bg-heading-color/20;
-}
 /* CART SUMMARY */
 .cart-summary {
     @apply border-2 border-heading-color rounded-lg px-6 py-8 flex flex-col  gap-y-6 w-full;

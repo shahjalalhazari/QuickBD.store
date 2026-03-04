@@ -26,27 +26,39 @@ const CheckoutPage = () => {
       <CartProgress currntStep={2} />
 
       {/* BODY CONTENT */}
-      <div className="checkout-body-content">
+      <form className="checkout-body-content">
 				{/* LEFT SIDE - ALL FORMS */}
-				<form className='checkout-forms'>
+				<div className='checkout-forms'>
 					{/* CONTACT INFO FORM */}
 					<ContactInfoForm />
 					{/* SHIPPING ADDRESS FORM */}
 					<ShippingAddressForm />
 					{/* PAYMENT METHOD FORM */}
 					<PaymentMethod />
-					<FullWidthBtn
-						color={"bg-primary"}
-						text={"Proceed to Payment"}
-						customClass={"w-full hover:bg-primary-dark"}
-					/>
-				</form>
+          {/* FORM SUBMIT BUTTON */}
+					<div className='hidden md:block w-full'>
+            <FullWidthBtn
+              color={"bg-primary"}
+              text={"Proceed to Payment"}
+              customClass={"w-full hover:bg-primary-dark"}
+            />
+          </div>
+				</div>
 
 				{/* RIGHT SIDE - ORDER SUMMARY SIDEBAR */}
 				<div className='checkout-sidebar'>
 					<OrderSummary />
 				</div>
-      </div>
+
+        {/* FORM SUBMIT BUTTON */}
+				<div className='w-full md:hidden'>
+          <FullWidthBtn
+            color={"bg-primary"}
+            text={"Proceed to Payment"}
+            customClass={"w-full hover:bg-primary-dark"}
+          />
+        </div>
+      </form>
     </div>
 	);
 };
