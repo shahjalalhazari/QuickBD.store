@@ -133,6 +133,32 @@ body {
 .box-input-field:focus {
   @apply border-primary;
 }
+/* *** Radio Input Fields *** */
+.radio-option {
+  @apply flex items-center justify-between border border-heading-color rounded-md py-3 px-4 cursor-pointer;
+}
+.radio-option:hover {
+  @apply bg-heading-color/10;
+}
+.selected-option {
+  @apply bg-primary/10;
+}
+.outer-circle {
+  @apply w-5 h-5 border-2 border-heading-color flex items-center justify-center rounded-full;
+}
+.check-mark {
+  @apply font-medium text-primary;
+}
+.option-label {
+  @apply font-medium text-heading-color;
+}
+.helper-text {
+  @apply text-xs font-medium text-body-color;
+}
+.secondary-text {
+  @apply text-heading-color font-semibold;
+}
+
 
 
 /* DROPDOW */
@@ -303,6 +329,13 @@ body {
     @apply mt-10;
   }
 
+
+  /* FORM INPUT FIELDS */
+  /* *** Radio Input Fields *** */
+  .helper-text {
+    @apply block;
+  }
+
   /* DROPDOW */
   .dropdown-btn {
     @apply p-2;
@@ -392,6 +425,16 @@ body {
   /* *** Full Width Button & Button With Underline *** */
   .full-width-btn, .underline-btn {
     @apply text-sm;
+  }
+
+
+  /* FORM INPUT FIELDS */
+  /* *** Radio Input Fields *** */
+  .radio-option {
+    @apply rounded py-2 px-3;
+  }
+  .helper-text {
+    @apply block;
   }
 
   /* DROPDOW */

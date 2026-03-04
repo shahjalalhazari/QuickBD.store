@@ -69,7 +69,7 @@ const CartSummary = ({ subtotal }) => {
           return (
             <label 
 						key={option.value}
-						className={`delivery-option quickbd-transition
+						className={`radio-option quickbd-transition
 							${disabled && "cursor-not-allowed"}
 							${option.value === selectedDelivery?.value && "selected-option"}
 						`}>
@@ -93,7 +93,7 @@ const CartSummary = ({ subtotal }) => {
 								{/* LABEL */}
 								<span className="option-label">
 									{option.name}
-									<span className="helper-text">&nbsp;({option.requiredTime})</span>
+									<span className="helper-text"> ({option.requiredTime})</span>
 									{isFreeOption && !isFreeEligible && (
                   <span className="helper-text">
                     <br />(Available above ৳ {FREE_DELIVERY_THRESHOLD})
@@ -103,7 +103,7 @@ const CartSummary = ({ subtotal }) => {
 							</div>
 
 							{/* DELIVERY FEES */}
-							<span className="delivery-fees">
+							<span className="secondary-text">
                 {option.fee === 0 ? "Free" : `৳ ${option.fee}`}
               </span>
 						</label>

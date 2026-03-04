@@ -87,30 +87,6 @@
 .cart-summary {
     @apply border-2 border-heading-color rounded-lg px-6 py-8 flex flex-col  gap-y-6 w-full;
 }
-.delivery-option {
-    @apply flex items-center justify-between border border-heading-color rounded-md py-3 px-4 cursor-pointer;
-}
-.delivery-option:hover {
-    @apply bg-heading-color/10;
-}
-.selected-option {
-    @apply bg-primary/10;
-}
-.outer-circle {
-    @apply w-5 h-5 border-2 border-heading-color flex items-center justify-center rounded-full;
-}
-.check-mark {
-    @apply font-medium text-primary
-}
-.option-label {
-    @apply font-medium text-heading-color;
-}
-.delivery-fees {
-    @apply text-heading-color font-semibold;
-}
-.helper-text {
-    @apply text-xs font-medium text-body-color;
-}
 .fee-details {
     @apply space-y-3 text-heading-color font-semibold;
 }

@@ -33,6 +33,7 @@ const CheckoutPage = () => {
 					<ContactInfoForm />
 					{/* SHIPPING ADDRESS FORM */}
 					<ShippingAddressForm />
+					{/* PAYMENT METHOD FORM */}
 					<PaymentMethod />
 					<FullWidthBtn
 						color={"bg-primary"}
