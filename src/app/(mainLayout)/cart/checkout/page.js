@@ -7,6 +7,7 @@ import PaymentMethod from '@/components/checkoutPage/PaymentMethod';
 import OrderSummary from '@/components/checkoutPage/OrderSummary';
 import FullWidthBtn from '@/components/shared/buttons/FullWidthBtn';
 import { SITE_DESCRIPTION, SITE_NAME, TEMPLATE_NAMES } from '@/app/metadata';
+import Link from 'next/link';
 
 export const metadata = {
   title: TEMPLATE_NAMES.checkout,
@@ -46,13 +47,13 @@ const CheckoutPage = () => {
 					{/* PAYMENT METHOD FORM */}
 					<PaymentMethod />
           {/* FORM SUBMIT BUTTON */}
-					<div className='hidden md:block w-full'>
+					<Link href={"/cart/order-complete"} className='hidden md:block w-full'>
             <FullWidthBtn
               color={"bg-primary"}
               text={"Proceed to Payment"}
               customClass={"w-full hover:bg-primary-dark"}
             />
-          </div>
+          </Link>
 				</div>
 
 				{/* RIGHT SIDE - ORDER SUMMARY SIDEBAR */}
@@ -61,13 +62,13 @@ const CheckoutPage = () => {
 				</div>
 
         {/* FORM SUBMIT BUTTON */}
-				<div className='w-full md:hidden'>
+				<Link href={"/cart/order-complete"} className='w-full md:hidden'>
           <FullWidthBtn
             color={"bg-primary"}
             text={"Proceed to Payment"}
             customClass={"w-full hover:bg-primary-dark"}
           />
-        </div>
+        </Link>
       </form>
     </div>
 	);

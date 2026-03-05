@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-    --font-montserrat: 'Montserrat', sans-serif;
-    --font-hind-siliguri: 'Hind Siliguri', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-hind-siliguri: 'Hind Siliguri', sans-serif;
 }
 
 html {
@@ -176,6 +176,12 @@ body {
 }
 .Form-input-btn-apply-btn:hover {
   @apply bg-heading-color/20;
+}
+
+
+/* STATUS BADGES */
+.status-badge {
+  @apply text-sm border rounded-full w-fit px-2 py-0.5 font-medium;
 }
 
 
