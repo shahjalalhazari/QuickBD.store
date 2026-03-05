@@ -93,6 +93,7 @@ const TEMPLATE_NAMES = {
   productDetail: '%s | Buy Now | ' + SITE_NAME,
   cart: 'Shopping Cart | ' + SITE_NAME,
   checkout: 'Checkout | ' + SITE_NAME,
+  complete: 'Order Completed | ' + SITE_NAME,
   contact: 'Contact Us | ' + SITE_NAME,
   faq: 'FAQ | ' + SITE_NAME,
   blog: '%s | Blog | ' + SITE_NAME,

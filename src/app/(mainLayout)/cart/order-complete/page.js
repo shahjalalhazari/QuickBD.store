@@ -7,6 +7,16 @@ import ConfirmHeadingSection from "@/components/orderCompletePage/ConfirmHeading
 import OrderDetails from "@/components/orderCompletePage/OrderDetails";
 import { HiDownload } from "react-icons/hi";
 import FullWidthBtn from "@/components/shared/buttons/FullWidthBtn";
+import { SITE_DESCRIPTION, SITE_NAME, TEMPLATE_NAMES } from "@/app/metadata";
+
+export const metadata = {
+  title: TEMPLATE_NAMES.complete,
+  description: `Your order has been successfully placed at ${SITE_NAME}. Thank you for shopping with us. View your order details and continue shopping for more great products. ${SITE_DESCRIPTION}`,
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const OrderCompletePage = () => {
   return (
