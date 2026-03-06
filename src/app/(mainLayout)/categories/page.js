@@ -3,7 +3,12 @@ import UnderlineBtn from '@/components/shared/buttons/UnderlineBtn';
 import CategoryCard from '@/components/shared/cards/CategoryCard';
 import { FaArrowRight } from 'react-icons/fa6';
 import "./categories.css";
+import { SITE_DESCRIPTION, TEMPLATE_NAMES } from '@/app/metadata';
 
+export const metadata = {
+  title: "Categories",
+  description: SITE_DESCRIPTION
+};
 
 const CategoriesPage = () => {
   const categories = [
