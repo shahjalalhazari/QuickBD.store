@@ -1,0 +1,60 @@
+.account-page {
+    @apply space-y-12;
+}
+.page-heading {
+    @apply text-5xl text-heading-color text-center font-semibold;
+}
+.account-page-grid {
+    @apply grid grid-cols-12 gap-6 w-full;
+}
+.box-container {
+    @apply border-2 border-heading-color py-12 rounded-xl space-y-8;
+}
+/* SIDEBAR */
+.account-sidebar-area {
+    @apply col-span-3 w-full;
+}
+.user-details {
+    @apply flex flex-col justify-center items-center gap-2;
+}
+.photo {
+    @apply relative w-fit;
+}
+.user-photo {
+    @apply w-20 h-20 object-cover rounded-full;
+}
+.upload-btn {
+    @apply absolute bottom-0 right-0 bg-heading-color p-1.5 rounded-full border-[1.5px] border-ghost-white;
+}
+.icon {
+    @apply text-ghost-white text-base;
+}
+.user-name {
+    @apply text-xl text-heading-color font-bold;
+}
+.account-menu-items {
+    @apply text-body-color font-medium;
+}
+.menu-item {
+    @apply py-3 border-b border-border-color/60 w-full text-start;
+}
+.menu-item:hover {
+    @apply text-primary border-primary;
+}
+.active {
+    @apply text-heading-color font-semibold border-heading-color;
+}
+/* BODY CONTAINER */
+.account-content {
+    @apply col-span-9 w-full;
+}
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {}
