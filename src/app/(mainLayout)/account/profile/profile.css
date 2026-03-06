@@ -1,0 +1,9 @@
+.profile-page {
+    @apply space-y-6;
+}
+.input-grid {
+    @apply flex gap-6 w-full;
+}
+.form-layout {
+    @apply space-y-6;
+}

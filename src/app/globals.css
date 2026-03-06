@@ -128,10 +128,14 @@ body {
   @apply text-danger;
 }
 .box-input-field, .box-textarea-field {
-  @apply border-2 border-border-color bg-transparent outline-none rounded text-sm font-medium text-body-color px-4 py-3;
+  @apply border-2 border-border-color bg-transparent outline-none rounded w-full text-sm font-medium text-body-color px-4 py-3;
 }
 .box-textarea-field:focus, .box-input-field:focus {
   @apply border-primary;
+}
+/* *** Box Password Input Field *** */
+.show-password {
+  @apply absolute bottom-4 right-5 text-base text-heading-color cursor-pointer;
 }
 /* *** Radio Input Fields *** */
 .radio-option {
