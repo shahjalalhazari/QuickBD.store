@@ -76,7 +76,22 @@ const SITE_KEYWORDS = [
   'emergency medicine delivery',
   'fast electronics delivery',
   'urgent delivery service',
-  'instant delivery bangladesh'
+  'instant delivery bangladesh',
+
+  // Contact
+  "QuickBD contact",
+  "QuickBD store contact",
+  "QuickBD.store contact",
+  "contact QuickBD Bangladesh",
+  "contact QuickBD store Bangladesh",
+  "contact QuickBD.store Bangladesh",
+  "QuickBD customer service",
+  "QuickBD store customer service",
+  "QuickBD.store customer service",
+  "Gouripur Cumilla online store",
+  "QuickBD help and support",
+  "QuickBD store help and support",
+  "QuickBD.store help and support",
 ]
 
 const AUTHOR = 'QuickBD.store Team'

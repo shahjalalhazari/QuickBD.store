@@ -104,15 +104,24 @@ const info = [
 
 const contactUs = [
   {
-    title: "+880 123 456 789",
-    path: "/contact-us",
+    title: process.env.NEXT_PUBLIC_PHONE_NUMBER_1,
+    path: `tel:${process.env.NEXT_PUBLIC_PHONE_NUMBER_1}`,
   },
   {
-    title: "quickbddotstore@gmail.com",
-    path: "/contact-us",
+    title: process.env.NEXT_PUBLIC_PHONE_NUMBER_2,
+    path: `tel:${process.env.NEXT_PUBLIC_PHONE_NUMBER_2}`,
   },
   {
-    title: "Gouripur Bazar, Daudkandi, | Cumilla - 3517",
-    path: "/contact-us",
+    title: process.env.NEXT_PUBLIC_EMAIL_1,
+    path: `mailto:${process.env.NEXT_PUBLIC_EMAIL_1}`,
+  },
+  {
+    title: process.env.NEXT_PUBLIC_EMAIL_2,
+    path: `mailto:${process.env.NEXT_PUBLIC_EMAIL_2}`,
+  },
+  {
+    title: process.env.NEXT_PUBLIC_ADDRESS,
+    path: process.env.NEXT_PUBLIC_LOCATION_URL,
+    target: "_blank"
   },
 ]

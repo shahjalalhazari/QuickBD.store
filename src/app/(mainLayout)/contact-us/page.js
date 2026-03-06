@@ -3,6 +3,12 @@ import Breadcrumbs from "@/components/shared/Breadcrumbs";
 import "./contact-us.css";
 import ContactDetails from "@/components/contactUsPage/ContactDetails";
 import ContactFormAndMap from "@/components/contactUsPage/ContactFormAndMap";
+import { SITE_DESCRIPTION, SITE_NAME, TEMPLATE_NAMES } from "@/app/metadata";
+
+export const metadata = {
+  title: TEMPLATE_NAMES.contact,
+  description: `Get in touch with ${SITE_NAME} for any questions, support, or order inquiries. Visit our location in ${process.env.NEXT_PUBLIC_ADDRESS} or contact us by phone or email. We are here to help with all your shopping needs, ${SITE_DESCRIPTION}`,
+};
 
 const ContactUsPage = () => {
   return (

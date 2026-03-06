@@ -11,7 +11,7 @@ const FooterColumn = ({heading, links, isAccount=false}) => {
       <ul className="column-links">
         {links.map((link, index) => (
           <li key={index} className={pathname === link.path ? "active-link" : "hover:underline"}>
-            <Link href={link.path}>
+            <Link href={link.path} target={link.target ? link.target : ""}>
               {link.title.split("|").map((line, i) => (
                 <span key={i} className="block">
                   {line.trim()}
