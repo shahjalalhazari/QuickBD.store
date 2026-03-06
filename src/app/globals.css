@@ -127,10 +127,10 @@ body {
 .box-input-label span {
   @apply text-danger;
 }
-.box-input-field {
+.box-input-field, .box-textarea-field {
   @apply border-2 border-border-color bg-transparent outline-none rounded text-sm font-medium text-body-color px-4 py-3;
 }
-.box-input-field:focus {
+.box-textarea-field:focus, .box-input-field:focus {
   @apply border-primary;
 }
 /* *** Radio Input Fields *** */

@@ -1,0 +1,141 @@
+.contact-us-page {
+    @apply mt-8 space-y-12;
+}
+/* TOP ROW - DESCRIPTION SECTION */
+.description-section {
+    @apply flex gap-6;
+}
+.english, .bengali {
+    @apply flex flex-col gap-6;
+}
+.heading {
+    @apply text-heading-color text-2xl font-semibold leading-tight
+} 
+.heading span {
+    @apply text-primary
+} 
+.body-text {
+    @apply text-body-color font-medium;
+}
+.body-text span {
+    @apply font-bold;
+}
+/* SECOND ROW - CONTACT DETAILS */
+.contact-details {
+    @apply space-y-8;
+}
+.header {
+    @apply text-secondary text-[40px] font-semibold text-center
+}
+.details {
+    @apply flex gap-6 w-full h-full;
+}
+.contact-details-card {
+    @apply flex flex-col justify-center text-center border-2 border-heading-color rounded-xl p-8 w-full;
+}
+.contact-details-card>.icon {
+    @apply text-[32px] text-heading-color flex justify-center mb-4;
+}
+.contact-details-card>.title {
+    @apply text-heading-color uppercase font-bold mb-2;
+}
+.contact-details-card>.details {
+    @apply text-body-color flex flex-col gap-1 font-medium;
+}
+.contact-details-card>.details>a:hover {
+    @apply text-primary;
+}
+/* THIRD ROW - FORM & MAP LOCATION */
+.form-map {
+    @apply flex gap-6 w-full
+}
+.contact-form {
+    @apply space-y-6 w-full;
+}
+.map-location {
+    @apply w-full rounded-xl;
+}
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    /* TOP ROW - DESCRIPTION SECTION */
+    .description-section {
+        @apply flex flex-col gap-12;
+    }
+    .english, .bengali {
+        @apply gap-5;
+    }
+    .heading {
+        @apply text-xl;
+    } 
+    .body-text {
+        @apply text-sm;
+    }
+    /* SECOND ROW - CONTACT DETAILS */
+    .contact-details {
+        @apply space-y-6;
+    }
+    .header {
+        @apply text-4xl;
+    }
+    .details {
+        @apply grid grid-cols-2 gap-5;
+    }
+    .contact-details-card:last-child {
+        @apply col-span-2 w-full;
+    }
+    .contact-details-card {
+        @apply rounded-lg p-6;
+    }
+    /* THIRD ROW - FORM & MAP LOCATION */
+    .form-map {
+        @apply flex gap-5 w-full;
+    }
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+    .contact-us-page {
+        @apply mt-10 space-y-10;
+    }
+    /* TOP ROW - DESCRIPTION SECTION */
+    .description-section {
+        @apply flex flex-col gap-10;
+    }
+    .english, .bengali {
+        @apply flex flex-col gap-4;
+    }
+    .heading {
+        @apply text-xl;
+    }
+    .body-text {
+        @apply text-sm;
+    }
+    /* SECOND ROW - CONTACT DETAILS */
+    .contact-details {
+        @apply space-y-6;
+    }
+    .header {
+        @apply text-4xl;
+    }
+    .details {
+        @apply flex-col gap-4;
+    }
+    .contact-details-card {
+        @apply rounded-lg p-6;
+    }
+    .contact-details-card>.details {
+        @apply text-sm w-3/4 mx-auto;
+    }
+    /* THIRD ROW - FORM & MAP LOCATION */
+    .form-map {
+        @apply flex flex-col gap-10;
+    }
+    .map-location {
+        @apply w-full h-96 rounded-lg;
+    }
+}
