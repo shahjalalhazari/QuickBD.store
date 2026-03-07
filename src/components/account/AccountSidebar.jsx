@@ -28,7 +28,7 @@ const AccountSidebar = () => {
   const pathname = usePathname();;
 
   return (
-    <div className="box-container px-6">
+    <div className="sidebar-container">
       {/* USER PHOTO & NAME */}
       <div className="user-details">
         <div className="photo">

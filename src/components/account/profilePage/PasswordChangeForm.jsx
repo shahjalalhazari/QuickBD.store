@@ -39,7 +39,7 @@ const PasswordChangeForm = () => {
         <FullWidthBtn
           color={'bg-secondary'} 
           text={"Changes Password"} 
-          customClass={"w-1/3 hover:bg-heading-color"} 
+          customClass={"w-full lg:w-1/3 hover:bg-heading-color"} 
         />
       </form>
 			

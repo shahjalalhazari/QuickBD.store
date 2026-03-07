@@ -10,7 +10,7 @@ const AccountDetailsForm = () => {
   }
 
   return (
-    <div className='box-container px-8'>
+    <div className='box-container'>
 			<h3 className="box-heading">Account Details</h3>
 
       <form onSubmit={handleAccountDetailsChange} className='form-layout'>
@@ -42,7 +42,7 @@ const AccountDetailsForm = () => {
         <FullWidthBtn
           color={'bg-secondary'} 
           text={"Save Changes"} 
-          customClass={"w-1/3 hover:bg-heading-color"} 
+          customClass={"w-full lg:w-1/3 hover:bg-heading-color"} 
         />
       </form>
 			

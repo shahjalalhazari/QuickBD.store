@@ -1,3 +1,4 @@
+/* LAYOUT & COMMON */
 .account-page {
     @apply space-y-12;
 }
@@ -8,7 +9,7 @@
     @apply grid grid-cols-12 gap-6 w-full;
 }
 .box-container {
-    @apply border-2 border-heading-color py-12 rounded-xl space-y-8;
+    @apply border-2 border-heading-color py-12 px-8 rounded-xl space-y-8;
 }
 .box-heading {
     @apply text-xl text-secondary font-semibold;
@@ -17,6 +18,9 @@
 .account-sidebar-area {
     @apply col-span-3 w-full sticky top-8 self-start;
 }
+.sidebar-container {
+    @apply border-2 border-heading-color py-12 px-6 rounded-xl space-y-6;
+}
 .user-details {
     @apply flex flex-col justify-center items-center gap-2;
 }
@@ -24,7 +28,7 @@
     @apply relative w-fit;
 }
 .user-photo {
-    @apply w-20 h-20 object-cover rounded-full;
+    @apply w-[72px] h-[72px] object-cover rounded-full;
 }
 .upload-btn {
     @apply absolute bottom-0 right-0 bg-heading-color p-1.5 rounded-full border-[1.5px] border-ghost-white;
@@ -33,7 +37,7 @@
     @apply text-ghost-white text-base;
 }
 .user-name {
-    @apply text-xl text-heading-color font-bold;
+    @apply text-lg text-heading-color font-bold;
 }
 .account-menu-items {
     @apply text-body-color font-medium;
@@ -55,7 +59,26 @@
 
 
 /* MEDIUM SCREEN */
-@media (min-width: 639px) and (max-width: 1023px) {}
+@media (min-width: 639px) and (max-width: 1023px) {
+    /* LAYOUT & COMMON */
+    .page-heading {
+        @apply text-4xl;
+    }
+    .account-page-grid {
+        @apply grid grid-cols-8 gap-5 w-full;
+    }
+    .box-container {
+        @apply py-10 px-[28px];
+    }
+    /* SIDEBAR */
+    .account-sidebar-area {
+        @apply col-span-3 w-full sticky top-6 self-start;
+    }
+    /* BODY CONTAINER */
+    .account-content {
+        @apply col-span-5;
+    }
+}
 /* -------------------------------------------------------------- */
 
 

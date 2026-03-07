@@ -1,9 +1,29 @@
 .profile-page {
     @apply space-y-6;
 }
-.input-grid {
-    @apply flex gap-6 w-full;
-}
 .form-layout {
     @apply space-y-6;
 }
+.input-grid {
+    @apply flex gap-6 w-full;
+}
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    .profile-page {
+        @apply space-y-6;
+    }
+    .form-layout {
+        @apply space-y-6;
+    }
+    .input-grid {
+        @apply flex flex-col gap-6 w-full;
+    }
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {}
