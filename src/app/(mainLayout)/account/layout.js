@@ -18,7 +18,7 @@ export default function AccountLayout({ children }) {
 
       <div className="account-page-grid">
         {/* SIDEBAR */}
-        <aside className="account-sidebar-area">
+        <aside className="account-sidebar-area md:sticky md:top-6 lg:top-8 self-start">
           <AccountSidebar />
         </aside>
 

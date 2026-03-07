@@ -26,4 +26,14 @@
 
 
 /* SMALL SCREEN */
-@media (max-width: 639px) {}
+@media (max-width: 639px) {
+    .profile-page {
+        @apply space-y-4;
+    }
+    .form-layout {
+        @apply space-y-4;
+    }
+    .input-grid {
+        @apply flex flex-col gap-4 w-full;
+    }
+}

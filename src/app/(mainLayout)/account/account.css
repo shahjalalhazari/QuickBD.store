@@ -16,7 +16,7 @@
 }
 /* SIDEBAR */
 .account-sidebar-area {
-    @apply col-span-3 w-full sticky top-8 self-start;
+    @apply col-span-3 w-full;
 }
 .sidebar-container {
     @apply border-2 border-heading-color py-12 px-6 rounded-xl space-y-6;
@@ -42,8 +42,11 @@
 .account-menu-items {
     @apply text-body-color font-medium;
 }
+.account-dropdown {
+    @apply hidden
+}
 .menu-item {
-    @apply py-3 border-b border-border-color/60 w-full text-start;
+    @apply py-3 border-b border-border-color/60 cursor-pointer w-full text-start;
 }
 .menu-item:hover {
     @apply text-primary border-primary;
@@ -72,7 +75,7 @@
     }
     /* SIDEBAR */
     .account-sidebar-area {
-        @apply col-span-3 w-full sticky top-6 self-start;
+        @apply col-span-3 w-full;
     }
     /* BODY CONTAINER */
     .account-content {
@@ -83,4 +86,38 @@
 
 
 /* SMALL SCREEN */
-@media (max-width: 639px) {}
+@media (max-width: 639px) {
+    /* LAYOUT & COMMON */
+    .account-page {
+        @apply space-y-10;
+    }
+    .page-heading {
+        @apply text-3xl;
+    }
+    .account-page-grid {
+        @apply grid grid-cols-4 gap-4;
+    }
+    .box-container {
+        @apply py-8 px-6 rounded-lg space-y-6;
+    }
+    .box-heading {
+        @apply text-lg;
+    }
+    /* SIDEBAR */
+    .account-sidebar-area {
+        @apply col-span-4 w-full;
+    }
+    .sidebar-container {
+        @apply py-8 px-6 rounded-lg;
+    }
+    .account-menu-items {
+        @apply hidden;
+    }
+    .account-dropdown {
+        @apply block
+    }
+    /* BODY CONTAINER */
+    .account-content {
+        @apply col-span-4;
+    }
+}

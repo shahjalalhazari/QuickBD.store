@@ -1,14 +1,28 @@
-"use client";
+"use client"
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
-const OutlineDropdown = ({options, width="w-44"}) => {
+
+const DropdownForRedirect = ({options, width="w-full"}) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [value, setValue] = useState(options[0]);
 
-  // Close on outside click
+  // Set active value based on route
+  useEffect(() => {
+    const activeOption = options.find((opt) => opt.path === pathname);
+
+    if (activeOption) {
+      setValue(activeOption);
+    }
+  }, [pathname, options]);
+  
+  // CLOSE ON OUTSIDE CLICK
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -20,14 +34,31 @@ const OutlineDropdown = ({options, width="w-44"}) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+
+  // LOGOUT HANDLER
+  const handleLogout = () => {
+    console.log("Logging Out...");
+  }
+
+  // HANDLE MENU ITEM SELECT
+  const handleSelect = (option) => {
+    setOpen(false);
+    
+    if (option.action === "logout") handleLogout();
+    if (option.path) {
+      setValue(option);
+      router.push(option.path);
+    }
+  };
+
   return (
-    <div className={`outline-dropdown ${width}`}ref={dropdownRef}>
+    <div className={`outline-dropdown ${width}`} ref={dropdownRef}>
       {/* DROPDOWN BUTTON */}
       <button
         onClick={() => setOpen(!open)}
         className="dropdown-btn"
       >
-        <span className="dropdown-selected-item">{value.label}</span>
+        <span className="dropdown-selected-item">{value.name}</span>
         <BiChevronDown
           size={22}
           className={`quickbd-transition ${open ? "rotate-180" : ""}`}
@@ -42,18 +73,15 @@ const OutlineDropdown = ({options, width="w-44"}) => {
             : "container-close"
         }`}
       >
-        {options.map((option) => (
+        {options.map((option, index) => (
           <div
-            key={option.value}
-            onClick={() => {
-              setValue(option)
-              setOpen(false);
-            }}
+            key={index}
+            onClick={() => {handleSelect(option)}}
             className={`dropdown-item quickbg-transition ${
-              option.value === value.value ? "active-dropdown-item" : ""
+              option.path === pathname ? "active-dropdown-item" : ""
             }`}
           >
-            {option.label}
+            {option.name}
           </div>
         ))}
       </div>
@@ -61,4 +89,4 @@ const OutlineDropdown = ({options, width="w-44"}) => {
   );
 };
 
-export default OutlineDropdown;
+export default DropdownForRedirect;

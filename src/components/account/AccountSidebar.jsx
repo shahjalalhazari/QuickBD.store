@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { TbCameraPlus } from "react-icons/tb";
+import DropdownForRedirect from '../shared/filters/DropdownForRedirect';
 
 const menuItems = [
   {
@@ -21,11 +21,27 @@ const menuItems = [
     name: "Address",
     path: "/account/address",
   },
-  
+  {
+    name: "Logout",
+    action: "logout",
+  }
 ];
 
 const AccountSidebar = () => {
-  const pathname = usePathname();;
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    console.log("Logging Out...");
+  }
+
+  const handleMenuClick = (item) => {
+    if (item.action) {
+      handleLogout();
+    } else {
+      router.push(item.path);
+    }
+  }
 
   return (
     <div className="sidebar-container">
@@ -46,27 +62,24 @@ const AccountSidebar = () => {
         <h6 className='user-name'>Shahjalal Hazari</h6>
       </div>
 
-      {/* MENU LIST */}
+      {/* MENU LIST FOR MEDIUM & LARGE DEVICES */}
       <ul className='account-menu-items'>
-        {menuItems.map((item) => (
-          <Link
-            href={item.path} 
-            key={item.path}
-          >
-            <li className={`
-              menu-item quickbd-transition 
-              ${pathname === item.path ? "active" : ""}`
-            }>
-              {item.name}
-            </li>
-          </Link>
-        ))}
-        <button className='w-full'>
-          <li className={`menu-item quickbd-transition`}>
-            Log Out
+        {menuItems.map((item, index) => (
+          <li key={index}
+            onClick={() => handleMenuClick(item)}
+            className={`
+            menu-item quickbd-transition 
+            ${item.path && pathname === item.path && "active"}`
+          }>
+            {item.name}
           </li>
-        </button>
+        ))}
       </ul>
+
+      {/* DRODOWN FOR SMALL DIVICES */}
+      <div className="account-dropdown">
+        <DropdownForRedirect options={menuItems} />
+      </div>
     </div>
   );
 };
