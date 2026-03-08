@@ -45,15 +45,15 @@ const Navbar = () => {
         {/* NAVBAR ICONS */}
         <ul className='navbar-icons'>
           <li className={`cart-icon 
-            ${isAccountPage && "active-icon cursor-not-allowed"}
+            ${isAccountPage && "active-icon"}
           `}>
-            <Link href="/account" className="quickbd-transition">
-              <FaRegCircleUser className="navbar-icon" />
+            <Link href="/account" className={`${isAccountPage && "cursor-not-allowed"}`}>
+              <FaRegCircleUser className="navbar-icon quickbd-transition" />
             </Link>
           </li>
           <li className="">
-            <Link href="/signin" className="quickbd-transition">
-              <FiLogIn className="navbar-icon" />
+            <Link href="/signin" className="">
+              <FiLogIn className="navbar-icon quickbd-transition" />
             </Link>
           </li>
           <li className="">

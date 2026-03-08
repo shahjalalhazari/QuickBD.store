@@ -4,6 +4,7 @@ import { usePathname } from 'next/navigation';
 
 const FooterColumn = ({heading, links, isAccount=false}) => {
   const pathname = usePathname();
+  const isAccountPage = pathname.split("/").includes("account");
 
   return (
     <div className='footer-column'>
@@ -21,7 +22,7 @@ const FooterColumn = ({heading, links, isAccount=false}) => {
           </li>
         ))}
         {isAccount && <>
-          <li className={`quickbd-transition ${pathname === "/account" ? "active-link" : "hover:underline"}`}>
+          <li className={`quickbd-transition ${isAccountPage ? "active-link" : "hover:underline"}`}>
             <Link href={"/account"}>Account</Link>
           </li>
           <li className={`quickbd-transition ${pathname === "/sign-in" ? "active-link" : "hover:underline"}`}>
