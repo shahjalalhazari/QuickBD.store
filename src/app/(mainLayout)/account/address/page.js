@@ -1,5 +1,11 @@
 import AddressCard from "@/components/account/addressPage/AddressCard";
 import "./address.css";
+import { SITE_DESCRIPTION, TEMPLATE_NAMES } from "@/app/metadata";
+
+export const metadata = {
+  title: TEMPLATE_NAMES.addresses,
+  description: SITE_DESCRIPTION,
+};
 
 
 const AddressPage = () => {

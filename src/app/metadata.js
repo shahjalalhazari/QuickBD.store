@@ -117,6 +117,7 @@ const TEMPLATE_NAMES = {
   wishlist: 'My Wishlist | ' + SITE_NAME,
   favorites: 'My Favorites | ' + SITE_NAME,
   orders: 'My Orders | ' + SITE_NAME,
+  addresses: 'Saved Addresses | ' + SITE_NAME,
   privacy: 'Privacy Policy | ' + SITE_NAME,
   terms: 'Terms of Service | ' + SITE_NAME,
   shipping: 'Shipping Policy | ' + SITE_NAME,
