@@ -26,10 +26,14 @@ const OrderListTable = ({orders}) => {
 
           return (
             <div className="order-item-row" key={index}>
-              <p>#{order.id}</p>
-              <p>৳ {order.amount.toFixed(2)}</p>
+              <p>{order.id}</p>
+              <p>{order.amount}</p>
               <p>
-                {order.date.day} <br /> {order.date.time}
+                {order.date.split("|").map((line, i) => (
+                  <span key={i} className="block">
+                    {line.trim()}
+                  </span>
+                ))}
               </p>
               <p>{order.items} Items</p>
               <StatusBadge
@@ -37,7 +41,11 @@ const OrderListTable = ({orders}) => {
                 text={order.status}
               />
               <p>
-                {order.deliveredDate.day} <br /> {order.deliveredDate.time}
+                {order.deliveredDate.split("|").map((line, i) => (
+                  <span key={i} className="block">
+                    {line.trim()}
+                  </span>
+                ))}
               </p>
               <button
                 className="details-btn quickbd-transition"

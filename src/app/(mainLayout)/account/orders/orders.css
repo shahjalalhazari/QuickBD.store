@@ -13,13 +13,72 @@
 .details-btn:hover {
     @apply bg-primary/20 text-primary;
 }
+.order-list {
+    @apply hidden;
+}
 /* -------------------------------------------------------------- */
 
 
 /* MEDIUM SCREEN */
-@media (min-width: 639px) and (max-width: 1023px) {}
+@media (min-width: 639px) and (max-width: 1023px) {
+    .order-list-table {
+        @apply hidden;
+    }
+    .order-list {
+        @apply block w-full space-y-6;
+    }
+    .order-card {
+        @apply space-y-3 border-b border-border-color/60 pb-6;
+    }
+    .order-card:last-child {
+        @apply border-0 pb-0;
+    }
+    .order-row {
+        @apply grid grid-cols-5 gap-5 w-full text-sm;
+    }
+    .list-item-label {
+        @apply text-body-color col-span-2 font-medium;
+    }
+    .list-item-value {
+        @apply text-heading-color font-medium col-span-3;
+    }
+    .details-btn {
+        @apply py-2 rounded text-sm bg-body-color/20 font-medium;
+    }
+    .details-btn:hover {
+        @apply bg-primary/20 text-primary;
+    }
+}
 /* -------------------------------------------------------------- */
 
 
 /* SMALL SCREEN */
-@media (max-width: 639px) {}
+@media (max-width: 639px) {
+    .order-list-table {
+        @apply hidden;
+    }
+    .order-list {
+        @apply block w-full space-y-6;
+    }
+    .order-card {
+        @apply space-y-3 border-b border-border-color/60 pb-6;
+    }
+    .order-card:last-child {
+        @apply border-0 pb-0;
+    }
+    .order-row {
+        @apply grid grid-cols-5 gap-4 w-full text-sm;
+    }
+    .list-item-label {
+        @apply text-body-color col-span-2 font-medium;
+    }
+    .list-item-value {
+        @apply text-heading-color font-medium col-span-3;
+    }
+    .details-btn {
+        @apply py-2 rounded text-sm bg-body-color/20 font-medium;
+    }
+    .details-btn:hover {
+        @apply bg-primary/20 text-primary;
+    }
+}
