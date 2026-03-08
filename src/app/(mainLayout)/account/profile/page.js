@@ -1,6 +1,12 @@
 import PasswordChangeForm from "@/components/account/profilePage/PasswordChangeForm";
 import "./profile.css";
 import AccountDetailsForm from '@/components/account/profilePage/AccountDetailsForm';
+import { SITE_DESCRIPTION, TEMPLATE_NAMES } from "@/app/metadata";
+
+export const metadata = {
+  title: TEMPLATE_NAMES.account,
+  description: SITE_DESCRIPTION,
+};
 
 const ProfilePage = () => {
   return (
