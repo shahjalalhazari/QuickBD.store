@@ -53,7 +53,8 @@ const AccountSidebar = () => {
             alt='Shahjalal Hazari' 
             width={80} 
             height={80} 
-            className='user-photo' 
+            className='user-photo'
+            priority
           />
           <button className='upload-btn' title='change Photo'>
             <TbCameraPlus className='icon' />

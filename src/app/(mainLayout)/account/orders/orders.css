@@ -1,0 +1,25 @@
+.order-list-table {
+    @apply w-full text-sm;
+}
+.table-header {
+    @apply border-b-2 border-heading-color pb-3 flex items-center justify-between font-semibold;
+}
+.order-item-row {
+    @apply border-b border-border-color/60 py-3 flex items-center justify-between font-medium text-body-color text-center;
+}
+.details-btn {
+    @apply p-1 rounded text-[22px];
+}
+.details-btn:hover {
+    @apply bg-primary/20 text-primary;
+}
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {}

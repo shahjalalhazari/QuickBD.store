@@ -16,7 +16,6 @@ const AddressPage = () => {
         <AddressCard/>
         <AddressCard/>
       </div>
-      
 		</div>
   );
 };
