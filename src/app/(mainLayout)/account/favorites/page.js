@@ -1,6 +1,7 @@
 import FavoriteItemsTable from '@/components/account/FavoriteItemsPage/FavoriteItemsTable';
 import "./favorites.css";
 import { SITE_DESCRIPTION, TEMPLATE_NAMES } from '@/app/metadata';
+import FavoriteItemsList from '@/components/account/FavoriteItemsPage/FavoriteItemsList';
 
 
 export const metadata = {
@@ -59,6 +60,9 @@ const FavoriteItemsPage = () => {
 
       {/* TABLE FOR LARGE SCREEN DEVICES */}
       <FavoriteItemsTable listItems={FavoriteItems} />
+
+      {/* FAVORITE ITEMS LIST FOR SMALL & MEDIUM DEVICES */}
+      <FavoriteItemsList listItems={FavoriteItems} />
 		</div>
   );
 };

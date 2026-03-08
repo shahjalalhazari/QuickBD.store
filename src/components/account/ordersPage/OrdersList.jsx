@@ -21,34 +21,34 @@ const OrdersList = ({orders}) => {
 
   return (
     <div className="order-list">
-  {orders.map((order, index) => (
-    <div className="order-card" key={index}>
-      {orderFields.map((field) => (
-        <div className="order-row" key={field.key}>
-          <p className="list-item-label">{field.label}:</p>
+      {orders.map((order, index) => (
+        <div className="order-card" key={index}>
+          {orderFields.map((field) => (
+            <div className="order-row" key={field.key}>
+              <p className="list-item-label">{field.label}:</p>
 
-          <div className="list-item-value">
-            {field.key === "status" ? (
-              <StatusBadge status={order.status} text={order.status} />
-            ) : (
-              order[field.key]
-            )}
+              <div className="list-item-value">
+                {field.key === "status" ? (
+                  <StatusBadge status={order.status} text={order.status} />
+                ) : (
+                  order[field.key]
+                )}
+              </div>
+            </div>
+          ))}
+
+          {/* Action Button */}
+          <div className="order-row">
+            <button
+              className="details-btn quickbd-transition col-span-5"
+              onClick={() => handleOrderDetails(order)}
+            >
+              View Details
+            </button>
           </div>
         </div>
       ))}
-
-      {/* Action Button */}
-      <div className="order-row">
-        <button
-          className="details-btn quickbd-transition col-span-5"
-          onClick={() => handleOrderDetails(order)}
-        >
-          View Details
-        </button>
-      </div>
     </div>
-  ))}
-</div>
   );
 };
 
