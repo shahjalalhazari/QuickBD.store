@@ -11,18 +11,20 @@ const ImageContainer = ({bgImg, logo}) => {
         alt='Sign In Image' 
         className='signin-image quickbd-transition'
       />
-      <Image
-        src={logo} 
-        width={200} 
-        height={60}
-        alt='QuickBD.store Logo' 
-        className='logo'
-      />
+      <Link href={"/"}>
+        <Image
+          src={logo} 
+          width={200} 
+          height={60}
+          alt='QuickBD.store Logo' 
+          className='logo'
+        />
+      </Link>
       <Link href={"/"}>
         <button className="full-width-btn quickbd-transition home-page-btn">
           Go to Home Page
         </button>
-      </Link> 
+      </Link>
     </div>
   );
 };

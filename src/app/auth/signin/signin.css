@@ -99,6 +99,23 @@
 
 /* MEDIUM SCREEN */
 @media (min-width: 639px) and (max-width: 1023px) {
+    /* IMAGE CONTAINER SIDE */
+    .logo {
+        @apply top-10 w-40;
+    }
+    .home-page-btn {
+        @apply bottom-10 w-2/3;
+    }
+    /* FORM CONTAINER SIDE */
+    .form-container {
+        @apply px-8;
+    }
+    .heading {
+        @apply text-4xl;
+    }
+    .form-buttons {
+        @apply gap-5;
+    }
 }
 /* -------------------------------------------------------------- */
 
@@ -118,10 +135,10 @@
         @apply w-full h-full;
     }
     .logo {
-        @apply absolute top-8 w-36;
+        @apply top-8 w-36;
     }
     .home-page-btn {
-        @apply absolute bottom-8 w-2/3;
+        @apply bottom-8 w-2/3;
     }
     /* FORM CONTAINER SIDE */
     .form-container {
