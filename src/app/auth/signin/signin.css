@@ -13,7 +13,7 @@
     @apply w-full h-[100vh] object-cover;
 }
 .logo {
-    @apply absolute top-12 left-[50%];
+    @apply absolute top-12 left-[50%] w-48 h-auto;
     transform: translateX(-50%);
 }
 .home-page-btn {
@@ -97,7 +97,6 @@
 
 
 
-
 /* MEDIUM SCREEN */
 @media (min-width: 639px) and (max-width: 1023px) {
 }
@@ -105,7 +104,36 @@
 
 
 
-
 /* SMALL SCREEN */
 @media (max-width: 639px) {
+    /* PAGE LAYOUT */
+    .auth-page {
+        @apply grid grid-cols-1 w-full h-full;
+    }
+    /* IMAGE CONTAINER SIDE */
+    .image-container {
+        @apply relative w-full h-[420px] overflow-hidden;
+    }
+    .signin-image {
+        @apply w-full h-full;
+    }
+    .logo {
+        @apply absolute top-8 w-36;
+    }
+    .home-page-btn {
+        @apply absolute bottom-8 w-2/3;
+    }
+    /* FORM CONTAINER SIDE */
+    .form-container {
+        @apply px-8 py-10;
+    }
+    .heading {
+        @apply text-[34px];
+    }
+    .redirect-text {
+        @apply text-sm;
+    }
+    .form-buttons {
+        @apply flex gap-4;
+    }
 }
