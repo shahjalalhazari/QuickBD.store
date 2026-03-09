@@ -98,6 +98,7 @@ body {
   transform: translateY(-70%);
 }
 .underline-input-group:focus-within, .underline-input-field:focus,
+.underline-password-input-group:focus-within, .underline-password-field:focus
 .underline-textarea-input:focus, .underline-textarea-group:focus-within {
   @apply border-primary;
 }
@@ -114,8 +115,28 @@ body {
 }
 .underline-textarea-input:focus ~ .underline-textarea-label,
 .underline-textarea-input:not(:placeholder-shown) ~ .underline-textarea-label {
+  @apply top-0 text-primary scale-90 bg-transparent;
+  transform: translateY(-70%);
+}
+/* *** Underlined Password Input *** */
+.underline-password-input-group {
+  @apply w-full relative border-b-2 border-heading-color;
+}
+.underline-password-field {
+  @apply w-full pt-2 text-heading-color border-none outline-none text-sm bg-transparent font-medium transition duration-500 ease-linear;
+}
+.underline-password-label {
+  @apply text-sm bg-transparent absolute top-1/2 left-0 text-body-color font-medium pointer-events-none;
+  transform: translateY(-50%);
+  transition: 0.5s ease;
+}
+.underline-password-field:focus ~ .underline-password-label,
+.underline-password-field:not(:placeholder-shown) ~ .underline-password-label {
   @apply top-0 text-primary scale-90;
   transform: translateY(-70%);
+}
+.underline-show-password {
+  @apply absolute right-0 top-2 text-body-color cursor-pointer;
 }
 /* *** Box Input Fields *** */
 .box-input-group {
@@ -180,6 +201,16 @@ body {
 }
 .Form-input-btn-apply-btn:hover {
   @apply bg-heading-color/20;
+}
+/* *** OTP Input Fields *** */
+.otp-input-fields {
+  @apply flex justify-between w-full;
+}
+.otp-input-box {
+  @apply w-12 h-12 text-xl font-medium text-center bg-transparent border-2 border-border-color/60 rounded-lg outline-none;
+}
+.otp-input-box:focus {
+  @apply border-primary ring-2 ring-primary/40;
 }
 
 

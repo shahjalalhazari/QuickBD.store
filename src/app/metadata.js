@@ -121,8 +121,8 @@ const TEMPLATE_NAMES = {
   terms: 'Terms of Service | ' + SITE_NAME,
   shipping: 'Shipping Policy | ' + SITE_NAME,
   returns: 'Return Policy | ' + SITE_NAME,
-  login: 'Login | ' + SITE_NAME,
-  register: 'Register | ' + SITE_NAME,
+  signin: 'Sign In | ' + SITE_NAME,
+  signup: 'Sign Up | ' + SITE_NAME,
 }
 
 // Open Graph templates

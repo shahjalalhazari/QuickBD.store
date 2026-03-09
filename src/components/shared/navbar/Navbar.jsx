@@ -52,7 +52,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="">
-            <Link href="/signin" className="">
+            <Link href="/auth/signin" className="">
               <FiLogIn className="navbar-icon quickbd-transition" />
             </Link>
           </li>

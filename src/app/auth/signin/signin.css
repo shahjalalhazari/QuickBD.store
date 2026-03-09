@@ -1,0 +1,99 @@
+/* PAGE LAYOUT */
+.auth-page {
+    @apply grid grid-cols-2 w-full h-[100vh];
+}
+/* IMAGE CONTAINER SIDE */
+.image-container {
+    @apply relative w-full h-[100vh] overflow-hidden;
+}
+.image-container:hover .signin-image {
+    @apply scale-105;
+}
+.signin-image {
+    @apply w-full h-[100vh] object-cover;
+}
+.logo {
+    @apply absolute top-12 left-[50%];
+    transform: translateX(-50%);
+}
+.home-page-btn {
+    @apply absolute bottom-12 left-[50%] bg-transparent text-primary border-[3px] border-primary w-1/3 font-semibold;
+    transform: translateX(-50%);
+}
+.home-page-btn:hover {
+    @apply bg-primary text-ghost-white;
+}
+/* FORM CONTAINER SIDE */
+.form-container {
+    @apply h-full px-48 flex flex-col justify-center w-full space-y-8;
+}
+.header {
+    @apply space-y-2;
+}
+.heading {
+    @apply text-secondary text-[40px] font-semibold;
+}
+.redirect-text {
+    @apply text-body-color font-medium;
+}
+.redirect-text a {
+    @apply text-primary font-semibold;
+}
+.redirect-text a:hover {
+    @apply underline;
+}
+.auth-form-layout {
+    @apply w-full space-y-6;
+}
+.form-buttons {
+    @apply w-full flex gap-6;
+}
+.send-otp-btn {
+    @apply w-full bg-primary;
+}
+.send-otp-btn:hover {
+    @apply bg-primary-dark;
+}
+.password-btn {
+    @apply w-full bg-secondary
+}
+.otp-input-container {
+    @apply space-y-8;
+}
+.submit-btn {
+    @apply bg-primary w-full mt-8 mb-4;
+}
+.submit-btn:hover {
+    @apply bg-primary-dark
+}
+.otp-timer {
+    @apply text-sm text-center text-body-color font-medium;
+}
+.resend-otp-btn {
+    @apply text-sm font-semibold bg-heading-color/10 px-8 py-2 rounded-md;
+}
+.resend-otp-btn:hover {
+    @apply text-heading-color bg-heading-color/20;
+}
+.google-login-btn {
+    @apply flex gap-4 items-center justify-center border-2 border-heading-color text-heading-color w-full font-medium
+}
+.google-login-btn:hover {
+    @apply bg-heading-color text-ghost-white;
+}
+/* -------------------------------------------------------------- */
+
+
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+}
+/* -------------------------------------------------------------- */
+
+
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+}

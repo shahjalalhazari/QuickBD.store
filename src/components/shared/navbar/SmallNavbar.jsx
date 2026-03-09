@@ -149,7 +149,7 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems, isCartPage }) => {
             </Link>
 
             {/* SIGNIN / ACCOUNT BTN */}
-            <Link href={"/signin"} className="w-full">
+            <Link href={"/auth/signin"} className="w-full">
               <FullWidthBtn 
                 text={"SignIn / Account"} 
                 color={"bg-primary"}
