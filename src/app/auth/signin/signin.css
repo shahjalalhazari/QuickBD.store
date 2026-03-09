@@ -69,11 +69,23 @@
 .otp-timer {
     @apply text-sm text-center text-body-color font-medium;
 }
-.resend-otp-btn {
-    @apply text-sm font-semibold bg-heading-color/10 px-8 py-2 rounded-md;
+.resend-otp-btn, .forgot-password {
+    @apply text-heading-color font-semibold;
 }
-.resend-otp-btn:hover {
-    @apply text-heading-color bg-heading-color/20;
+.remember-forgot {
+    @apply flex justify-between items-center text-sm text-body-color font-medium;
+}
+.checkbox-field {
+    @apply flex gap-x-2 items-center;
+}
+.remember-checkbox {
+    @apply appearance-none cursor-pointer h-4 w-4 border-2 border-border-color outline-none;
+}
+.remember-checkbox:checked {
+    @apply bg-primary border-primary;
+}
+.forgot-password:hover, .resend-otp-btn:hover {
+    @apply text-primary
 }
 .google-login-btn {
     @apply flex gap-4 items-center justify-center border-2 border-heading-color text-heading-color w-full font-medium

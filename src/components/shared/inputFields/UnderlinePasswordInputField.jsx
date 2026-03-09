@@ -3,7 +3,7 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 
-const UnderlinePasswordInputField = ({label, name}) => {
+const UnderlinePasswordInputField = ({label, name, placeholder=""}) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (

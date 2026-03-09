@@ -11,6 +11,7 @@ const SignInForm = () => {
   const [method, setMethod] = useState(null); // NULL || OTP || PASSWORD
   const [timer, setTimer] = useState(30);
   const [otpSent, setOtpSent] = useState(false);
+  const [rememberedEmail, setRememberedEmail] = useState("");
 
   useEffect(() => {
     if (!otpSent || timer === 0) return;
@@ -85,20 +86,35 @@ const SignInForm = () => {
             <button className="full-width-btn quickbd-transition submit-btn">
               Verify OTP
             </button>
-            {/* TIMER & RESEND BUTTON */}
-            <div className="otp-timer">
-              {timer > 0 ? (
-                <span>
-                  Resend OTP in {timer}s
-                </span>
-              ) : (
-                <button
-                  onClick={handleResendOtp}
-                  className="resend-otp-btn quickbd-transition"
-                >
-                  Resend OTP
-                </button>
-              )}
+
+            {/* REMEMBER CHECKBOX & TIMER */}
+            <div className="remember-forgot">
+              {/* CHECKBOX */}
+              <div className="checkbox-field">
+                <input
+                  type="checkbox"
+                  name="rememberLogin"
+                  id="rememberLogin"
+                  className="remember-checkbox uren-transition"
+                  defaultChecked={!!rememberedEmail}
+                />
+                <label htmlFor="rememberLogin" className="cursor-pointer">Remember Me</label>
+              </div>
+              {/* TIMER & RESEND BUTTON */}
+              <div className="otp-timer">
+                {timer > 0 ? (
+                  <span>
+                    Resend OTP in {timer}s
+                  </span>
+                ) : (
+                  <button
+                    onClick={handleResendOtp}
+                    className="resend-otp-btn quickbd-transition"
+                  >
+                    Resend OTP
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         )}
@@ -110,6 +126,25 @@ const SignInForm = () => {
               label={"Password"}
               name={"password"}
             />
+
+            {/* REMEMBER CHECKBOX & FORGOT PASSWORD BTN */}
+            <div className="remember-forgot mt-4">
+              {/* REMEMBER CHECKBOX */}
+              <div className="checkbox-field">
+                <input
+                  type="checkbox"
+                  name="rememberLogin"
+                  id="rememberLogin"
+                  className="remember-checkbox uren-transition"
+                  defaultChecked={!!rememberedEmail}
+                />
+                <label htmlFor="rememberLogin" className="cursor-pointer">Remember Me</label>
+              </div>
+              {/* FORGOT PASSWORD */}
+              <p className="forgot-password quickbd-transition">
+                <Link href={"auth/forgot-password"}>Forgot password?</Link>
+              </p>
+            </div>
 
             {/* VERIFY BUTTON */}
             <button className="full-width-btn quickbd-transition submit-btn">
