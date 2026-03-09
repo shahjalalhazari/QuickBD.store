@@ -20,14 +20,17 @@ A modern e-commerce platform built specifically for the Bangladeshi market, offe
 ## 🛠️ Tech Stack
 
 - **Frontend**: Next.js 16+, React, Tailwind CSS
-- **Backend**: Next.js API Routes, MongoDB
-- **Authentication**: NextAuth.js
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSql with Prisma ORM
+- **Authentication**: NextAuth.js, JWT
 - **Payments**: bKash, Nagad, SSLCOMMERZ
 - **Deployment**: Vercel-ready
 
 ## 🚀 Features
 
 - User authentication & role management
+- User signin with otp or password by email
+- Also user authentication with Google account
 - Shop & product management
 - Shopping cart & order system
 - Real-time order tracking
