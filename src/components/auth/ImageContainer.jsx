@@ -10,6 +10,7 @@ const ImageContainer = ({bgImg, logo}) => {
         height={600}
         alt='Sign In Image' 
         className='signin-image quickbd-transition'
+        priority
       />
       <Link href={"/"}>
         <Image

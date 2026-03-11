@@ -123,7 +123,7 @@ const SignInForm = () => {
         {method === "password" && (
           <div className="animate__animated animate__zoomIn">
             <UnderlinePasswordInputField
-              label={"Password"}
+              label={"PASSWORD"}
               name={"password"}
             />
 
