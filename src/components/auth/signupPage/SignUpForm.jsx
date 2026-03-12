@@ -3,7 +3,6 @@ import OtpInputField from "@/components/shared/inputFields/OtpInputField";
 import UnderlineInput from "@/components/shared/inputFields/UnderlineInput";
 import UnderlinePasswordInputField from "@/components/shared/inputFields/UnderlinePasswordInputField";
 import QuickbdLoading from "@/components/shared/QuickbdLoading";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -32,7 +31,7 @@ const SignUpForm = () => {
     setLoading(true);
     setMessage(null);
 
-    const form = event.target;
+    const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
@@ -144,7 +143,6 @@ const SignUpForm = () => {
               disabled={!agreePolicy || loading}
             >
               {loading ? <QuickbdLoading customSize={"w-[20px] h-[20px] md:w-[24px] h-[24px]"} /> : "Sign Up"}
-              {/* <QuickbdLoading customSize={"w-5 h-5 md:w-6 h-6"} /> "Sign Up" */}
             </button>
           </form>
 

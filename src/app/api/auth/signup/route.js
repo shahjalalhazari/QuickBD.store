@@ -2,9 +2,12 @@ import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import { signUpSchema } from "@/schemas/auth.schema";
+import { sendOtpEmail } from "@/lib/mail";
 
 export async function POST(req) {
   try {
+    // *** Part - 1: Get data and save them.
+    // GET USER SUBMITTED DATA AND VALIDATE THEM
     const body = await req.json();
     const validated = signUpSchema.safeParse(body);
     if (!validated.success) {
@@ -14,6 +17,7 @@ export async function POST(req) {
       )
     }
 
+    // GET VALIDATED DATA AND CHECK EXISTING USER
     const {name, email, password} = validated.data;
     const userExist = await prisma.user.findUnique({
       where: {email: email.toLocaleLowerCase()},
@@ -25,8 +29,8 @@ export async function POST(req) {
       )
     }
 
-    const passwordHash = await bcrypt.hash(password, 16);
-
+    // MAKE HASH PASSWORD AND SAVE NEW USER
+    const passwordHash = await bcrypt.hash(password, 12);
     const user = await prisma.user.create({
       data: {
         name,
@@ -35,8 +39,21 @@ export async function POST(req) {
       }
     });
 
+    // *** Part - 2: Create and Send OTP to user email.
+    // GENERATE 6-DIGIT OTP
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    // SET EXPIRATION FOR 3 MIN
+    const expiresAt = new Date(Date.now() + 3 * 60 * 1000);
+    // SAVE THE OTP IN DB
+    const userId = user.id;
+    await prisma.UserOtp.create({
+      data: {userId, otp, expiresAt},
+    });
+    // SEND MAIL WITH OTP
+    await sendOtpEmail(email, otp);
+
     return NextResponse.json(
-      { message: "User Created Successfully! An OTP has been send to your email.", userId: user.id, success: true },
+      { message: "User Created Successfully! An OTP has been send to your email.", success: true },
       { status: 200 }
     )
   } catch (erroe) {
