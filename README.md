@@ -21,8 +21,9 @@ A modern e-commerce platform built specifically for the Bangladeshi market, offe
 
 - **Frontend**: Next.js 16+, React, Tailwind CSS
 - **Backend**: Next.js API Routes
-- **Database**: PostgreSql with Prisma ORM
+- **Database**: PostgreSql (Supabase) with Prisma ORM
 - **Authentication**: NextAuth.js, JWT
+- **Input Validations**: Zod
 - **Payments**: bKash, Nagad, SSLCOMMERZ
 - **Deployment**: Vercel-ready
 
