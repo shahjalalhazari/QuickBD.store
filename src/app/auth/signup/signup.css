@@ -61,7 +61,7 @@
     @apply underline;
 }
 .submit-btn {
-    @apply bg-primary w-full mt-8 mb-4;
+    @apply bg-primary w-full mt-8 mb-4 flex items-center justify-center;
 }
 .submit-btn:hover {
     @apply bg-primary-dark
@@ -77,9 +77,6 @@
 }
 .sub-heading {
     @apply text-secondary text-center text-2xl font-semibold
-}
-.success-message {
-    @apply mt-4 mb-8 text-center text-accent bg-accent/10 border-2 border-accent px-2 py-1 rounded-md text-sm;
 }
 .otp-timer {
     @apply text-sm text-center text-body-color font-medium;

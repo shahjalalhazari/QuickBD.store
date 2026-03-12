@@ -94,13 +94,8 @@ body {
 }
 .underline-input-field:focus ~ .underline-input-label,
 .underline-input-field:not(:placeholder-shown) ~ .underline-input-label {
-  @apply top-0 text-primary scale-90;
+  @apply top-0 text-primary scale-90 bg-transparent;
   transform: translateY(-70%);
-}
-.underline-input-group:focus-within, .underline-input-field:focus,
-.underline-password-input-group:focus-within, .underline-password-field:focus
-.underline-textarea-input:focus, .underline-textarea-group:focus-within {
-  @apply border-primary;
 }
 /* *** Underlined Textarea Input *** */
 .underline-textarea-group {
@@ -137,6 +132,11 @@ body {
 }
 .underline-show-password {
   @apply absolute right-0 top-2 text-body-color cursor-pointer;
+}
+.underline-input-group:focus-within, .underline-input-field:focus,
+.underline-password-input-group:focus-within, .underline-password-field:focus
+.underline-textarea-input:focus, .underline-textarea-group:focus-within {
+  @apply border-primary;
 }
 /* *** Box Input Fields *** */
 .box-input-group {
@@ -340,6 +340,22 @@ body {
 .breadcrumbs-link:hover {
   @apply text-primary;
 }
+
+
+/* MESSAGES BOX */
+.message-box {
+  @apply text-center px-2 py-1 rounded-md text-sm border-2 font-medium;
+}
+.success-message {
+  @apply text-accent bg-accent/10 border-accent;
+}
+.error-message {
+  @apply text-danger bg-danger/10 border-danger;
+}
+.warning-message {
+  @apply text-warning bg-warning/10 border-warning;
+}
+
 
 /* -------------------------------------------------------------- */
 /* MEDIUM SCREEN */

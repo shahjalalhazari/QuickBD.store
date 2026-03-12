@@ -2,6 +2,8 @@
 import OtpInputField from "@/components/shared/inputFields/OtpInputField";
 import UnderlineInput from "@/components/shared/inputFields/UnderlineInput";
 import UnderlinePasswordInputField from "@/components/shared/inputFields/UnderlinePasswordInputField";
+import QuickbdLoading from "@/components/shared/QuickbdLoading";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa6";
@@ -9,6 +11,8 @@ import { FcGoogle } from "react-icons/fc";
 
 const SignUpForm = () => {
   const [agreePolicy, setAgreePolicy] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
 
   const [step, setStep] = useState("form");
   const [timer, setTimer] = useState(30);
@@ -23,12 +27,42 @@ const SignUpForm = () => {
     return () => clearInterval(interval);
   }, [step, timer]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setMessage(null);
 
-    // simulate account creation
-    setStep("otp");
-    setTimer(30);
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const confirmPassword = form.confirmPassword.value;
+    const newUser = {name, email, password, confirmPassword};
+
+    try {
+      // SEND NEW USER DATA TO DB.
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        body: JSON.stringify(newUser),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      // GET THE RESPONSE.
+      const data = await res.json();
+      
+      if (data.success) {
+        setMessage({ type: "success", text: data.message});
+        // SHOW OTP INPUT FIELDS AND START THE TIMER
+        setStep("otp");
+        setTimer(30);
+      } else {
+        setMessage({type: "error", text:data.error})
+      }
+    } catch (error) {
+      setMessage({type: "error", text:"Something went wrong! while Register User."});
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleResendOtp = () => {
@@ -49,6 +83,16 @@ const SignUpForm = () => {
               </Link>
             </p>
           </div>
+
+          {/* SHOW MESSAGES */}
+          {message && (
+            <div className={`message-box ${
+                message.type === "success" ? "success-message" : "error-message"
+              }`}
+            >
+              {message.text}
+            </div>
+          )}
 
           {/* SIGN UP FORM */}
           <form
@@ -97,9 +141,10 @@ const SignUpForm = () => {
 
             <button 
               className="full-width-btn quickbd-transition submit-btn"
-              disabled={!agreePolicy}
+              disabled={!agreePolicy || loading}
             >
-              Sign Up
+              {loading ? <QuickbdLoading customSize={"w-[20px] h-[20px] md:w-[24px] h-[24px]"} /> : "Sign Up"}
+              {/* <QuickbdLoading customSize={"w-5 h-5 md:w-6 h-6"} /> "Sign Up" */}
             </button>
           </form>
 
@@ -122,9 +167,15 @@ const SignUpForm = () => {
 
           {/* HEADER */}
           <h3 className="sub-heading">Verify Your E-mail</h3>
-          <p className="success-message">
-            Account created successfully. An OTP has been send to your email.
-          </p>
+          {/* SHOW MESSAGES */}
+          {message && (
+            <div className={`message-box mt-4 mb-8 ${
+                message.type === "success" ? "success-message" : "error-message"
+              }`}
+            >
+              {message.text}
+            </div>
+          )}
 
           <OtpInputField
             onComplete={(otp) => {
