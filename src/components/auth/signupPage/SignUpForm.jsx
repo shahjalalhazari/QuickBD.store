@@ -12,6 +12,7 @@ const SignUpForm = () => {
   const [agreePolicy, setAgreePolicy] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [registerUserId, setRegisterUserId] = useState(null);
 
   const [step, setStep] = useState("form");
   const [timer, setTimer] = useState(30);
@@ -26,6 +27,8 @@ const SignUpForm = () => {
     return () => clearInterval(interval);
   }, [step, timer]);
 
+
+  // HANDLER FOR USER SIGNUP
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -46,11 +49,11 @@ const SignUpForm = () => {
         headers: { "Content-Type": "application/json" },
       });
 
-      // GET THE RESPONSE.
       const data = await res.json();
       
       if (data.success) {
         setMessage({ type: "success", text: data.message});
+        setRegisterUserId(data.userId);
         // SHOW OTP INPUT FIELDS AND START THE TIMER
         setStep("otp");
         setTimer(30);
@@ -68,8 +71,40 @@ const SignUpForm = () => {
     setTimer(30);
   };
 
+  // VERIFY OTP HANDLER
+  const handleVerifyOtp = async (otp) => {
+    if (!registerUserId) return;
+
+    setLoading(true);
+    setMessage(null);
+
+    try {
+      // SEND OTP FOR VERIFY WITH USER ID
+      const res = await fetch("/api/auth/verify-otp", {
+        method: "POST",
+        body: JSON.stringify({userId: registerUserId, otp}),
+        headers: {"Content-type": "application/json"}
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setMessage({type: "success", text: data.message});
+        // SHOW VERIFICARION SUCCESS
+        setStep("verified");
+      } else {
+        setMessage({type: "error", text: data.error})
+      }
+    } catch (error) {
+      setMessage({type: "error", text: "Failed to verify OTP"});
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="form-container">
+      {/* SHOW SIGNUP FORM */}
       {step === "form" && (
         <>
           {/* HEADER */}
@@ -153,6 +188,8 @@ const SignUpForm = () => {
         </>
       )}
 
+
+      {/* SHOW OTP FORM */}
       {step === "otp" && (
         <div className="animate__animated animate__fadeIn">
           <button
@@ -161,7 +198,6 @@ const SignUpForm = () => {
           >
             <FaAngleLeft /> Back
           </button>
-
 
           {/* HEADER */}
           <h3 className="sub-heading">Verify Your E-mail</h3>
@@ -176,14 +212,12 @@ const SignUpForm = () => {
           )}
 
           <OtpInputField
-            onComplete={(otp) => {
-              console.log("OTP Completed:", otp);
-            }}
+            onComplete={(otp) => {handleVerifyOtp(otp)}}
           />
             {/* VERIFY BUTTON */}
-            <button className="full-width-btn quickbd-transition submit-btn">
-              Verify OTP
-            </button>
+            <div className="mt-8 mb-4 flex items-center justify-center">
+              {loading ? <QuickbdLoading customSize={"w-6 h-6"} /> : ""}
+            </div>
 
             {/* TIMER & RESEND BUTTON */}
               <div className="otp-timer">
@@ -201,6 +235,26 @@ const SignUpForm = () => {
                 )}
               </div>
           </div>
+      )}
+
+
+      {/* SHOW VERIFICARION MESSAGE */}
+      {step === "verified" && (
+        <div className="animate__animated animate__fadeIn">
+          <h3 className="sub-heading">Email Verified Successfully!</h3>
+          {/* SHOW MESSAGES */}
+          {message && (
+            <div className={`message-box mt-4 mb-8 ${
+                message.type === "success" ? "success-message" : "error-message"
+              }`}
+            >
+              {message.text}
+            </div>
+          )}
+          <Link href="/auth/signin" className="full-width-btn quickbd-transition submit-btn">
+            Go to SignIn
+          </Link>
+        </div>
       )}
     </div>
   );

@@ -40,13 +40,13 @@ export async function POST(req) {
     });
 
     // *** Part - 2: Create and Send OTP to user email.
+    const userId = user.id;
     // GENERATE 6-DIGITS OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     // SET EXPIRATION FOR 3 MIN
     const expiresAt = new Date(Date.now() + 3 * 60 * 1000);
     try {
       // SAVE THE OTP IN DB
-      const userId = user.id;
       await prisma.UserOtp.create({
         data: {userId, otp, expiresAt},
       });
@@ -60,7 +60,7 @@ export async function POST(req) {
     }
 
     return NextResponse.json(
-      { message: "User Created Successfully! An OTP has been send to your email.", success: true },
+      { message: "User Created Successfully! An OTP has been send to your email.", userId, success: true },
       { status: 200 }
     )
   } catch (erroe) {

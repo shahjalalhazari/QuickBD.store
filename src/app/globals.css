@@ -204,7 +204,7 @@ body {
 }
 /* *** OTP Input Fields *** */
 .otp-input-fields {
-  @apply flex justify-between w-full;
+  @apply flex justify-between w-full mt-8;
 }
 .otp-input-box {
   @apply w-12 h-12 text-xl font-medium text-center bg-transparent border-2 border-border-color/60 rounded-lg outline-none;
