@@ -12,7 +12,7 @@ const SignUpForm = () => {
   const [agreePolicy, setAgreePolicy] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
-  const [registerUserId, setRegisterUserId] = useState(null);
+  const [registerUserId, setRegisterUserId] = useState("");
 
   const [step, setStep] = useState("form");
   const [timer, setTimer] = useState(30);
@@ -27,10 +27,33 @@ const SignUpForm = () => {
     return () => clearInterval(interval);
   }, [step, timer]);
 
+  // SEND OTP FUNCTION
+  const sendOtp = async(userId) => {
+    try {
+      const res = await fetch("/api/auth/send-otp", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({userId}),
+        cache: "no-store",
+      });
+
+      const data = await res.json();
+      if(!data.success) {
+        throw new Error(data.error || "Failed to send OTP!");
+      }
+      return true;
+    } catch (error) {
+      setMessage({type: "error", text: error.message})
+      return false;
+    }
+  }
+
 
   // HANDLER FOR USER SIGNUP
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return;
+
     setLoading(true);
     setMessage(null);
 
@@ -42,33 +65,56 @@ const SignUpForm = () => {
     const newUser = {name, email, password, confirmPassword};
 
     try {
-      // SEND NEW USER DATA TO DB.
       const res = await fetch("/api/auth/signup", {
         method: "POST",
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(newUser),
-        headers: { "Content-Type": "application/json" },
+        cache: "no-store",
       });
 
       const data = await res.json();
-      
-      if (data.success) {
-        setMessage({ type: "success", text: data.message});
-        setRegisterUserId(data.userId);
-        // SHOW OTP INPUT FIELDS AND START THE TIMER
-        setStep("otp");
-        setTimer(30);
-      } else {
-        setMessage({type: "error", text:data.error})
+      if (!data.success) {
+        setMessage({ type: "error", text: signUpdata.error});
+        return;
       }
+
+      setRegisterUserId(data.userId);
+
+      // CALL SEND OTP API
+      const otpSent = await sendOtp(data.userId);
+      if (!otpSent) return;
+
+      // SHOW OTP INPUT FIELDS AND START THE TIMER
+      setStep("otp");
+      setTimer(30);
+
+      // SUCCESS MESSAGE
+      setMessage({ type: "success", text: data.message});
     } catch (error) {
-      setMessage({type: "error", text:"Something went wrong! while Register User."});
+      setMessage({ type: "error", text: data.error || "SignUp failed! Try again."});
     } finally {
       setLoading(false);
     }
-  };
+  }
 
-  const handleResendOtp = () => {
+  const handleResendOtp = async () => {
+    setLoading(true);
+    setMessage(null);
+
+    if (!registerUserId) return;
+
     setTimer(30);
+    try {
+      const otpSent = await sendOtp(registerUserId);
+      if(!otpSent) return;
+
+      setMessage({type: "success", text: "OTP resend successful!"})
+    } catch (error) {
+      console.log(error);
+      setMessage({type: "error", text: "Failed to Resend OTP."})
+    } finally {
+      setLoading(false);
+    }
   };
 
   // VERIFY OTP HANDLER
@@ -230,7 +276,7 @@ const SignUpForm = () => {
                     onClick={handleResendOtp}
                     className="resend-otp-btn quickbd-transition"
                   >
-                    Resend OTP
+                    {loading ? <QuickbdLoading customSize={"w-[20px] h-[20px] md:w-[24px] h-[24px]"} /> : "Resend OTP"}
                   </button>
                 )}
               </div>

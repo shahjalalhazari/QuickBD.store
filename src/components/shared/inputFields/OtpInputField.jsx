@@ -57,6 +57,11 @@ const OtpInputField = ({length = 6, onComplete,}) => {
     }
   }, [otp]);
 
+  // AUTO FOCUS FIRST INPUT FIELD
+  useEffect(() => {
+    inputs.current[0]?.focus();
+  }, []);
+
 
   return (
     <div
