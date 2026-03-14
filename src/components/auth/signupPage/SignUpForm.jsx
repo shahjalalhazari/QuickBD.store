@@ -17,6 +17,7 @@ const SignUpForm = () => {
   const [step, setStep] = useState("form");
   const [timer, setTimer] = useState(30);
 
+
   useEffect(() => {
     if (step !== "otp" || timer === 0) return;
 
@@ -26,6 +27,7 @@ const SignUpForm = () => {
 
     return () => clearInterval(interval);
   }, [step, timer]);
+
 
   // SEND OTP FUNCTION
   const sendOtp = async(userId) => {
@@ -97,6 +99,7 @@ const SignUpForm = () => {
     }
   }
 
+
   const handleResendOtp = async () => {
     setLoading(true);
     setMessage(null);
@@ -116,6 +119,7 @@ const SignUpForm = () => {
       setLoading(false);
     }
   };
+
 
   // VERIFY OTP HANDLER
   const handleVerifyOtp = async (otp) => {
@@ -138,6 +142,11 @@ const SignUpForm = () => {
         setMessage({type: "success", text: data.message});
         // SHOW VERIFICARION SUCCESS
         setStep("verified");
+
+        // REDIRECT USER TO SIGNIN PAGE AFTER OTP VERICATION
+        setTimeout(() => {
+          window.location.href = "/auth/signin";
+        }, 3000)
       } else {
         setMessage({type: "error", text: data.error})
       }
@@ -148,6 +157,7 @@ const SignUpForm = () => {
     }
   }
 
+  
   return (
     <div className="form-container">
       {/* SHOW SIGNUP FORM */}
@@ -260,12 +270,12 @@ const SignUpForm = () => {
           <OtpInputField
             onComplete={(otp) => {handleVerifyOtp(otp)}}
           />
-            {/* VERIFY BUTTON */}
-            <div className="mt-8 mb-4 flex items-center justify-center">
-              {loading ? <QuickbdLoading customSize={"w-6 h-6"} /> : ""}
-            </div>
-
-            {/* TIMER & RESEND BUTTON */}
+            {/* VERIFY LOADING SPINNER */}
+            {loading 
+            ? <div className="mt-8 mb-4 flex items-center justify-center">
+                <QuickbdLoading customSize={"w-6 h-6"} />
+              </div>
+            : <>{/* TIMER & RESEND BUTTON */}
               <div className="otp-timer">
                 {timer > 0 ? (
                   <span>
@@ -275,11 +285,13 @@ const SignUpForm = () => {
                   <button
                     onClick={handleResendOtp}
                     className="resend-otp-btn quickbd-transition"
-                  >
-                    {loading ? <QuickbdLoading customSize={"w-[20px] h-[20px] md:w-[24px] h-[24px]"} /> : "Resend OTP"}
+                  >Resend OTP
                   </button>
                 )}
               </div>
+              </>
+              
+            }
           </div>
       )}
 
@@ -297,9 +309,6 @@ const SignUpForm = () => {
               {message.text}
             </div>
           )}
-          <Link href="/auth/signin" className="full-width-btn quickbd-transition submit-btn">
-            Go to SignIn
-          </Link>
         </div>
       )}
     </div>

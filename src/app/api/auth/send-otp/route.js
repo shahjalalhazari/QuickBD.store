@@ -1,6 +1,7 @@
 import { sendOtpEmail } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import bcrypt from 'bcrypt';
 
 
 export async function POST(req) {
@@ -9,18 +10,25 @@ export async function POST(req) {
 
     if (!userId) {
       return NextResponse.json(
-        {error: "Missing UserId or Email", success: false},
+        {error: "Missing user", success: false},
         {status: 400}
       );
     };
 
     // GENERATE 6-DIGITS OTP
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    // MAKE OTP HASHED
+    const hashedOtp = await bcrypt.hash(otp, 10);
     // SET EXPIRATION FOR 3 MIN
     const expiresAt = new Date(Date.now() + 3 * 60 * 1000);
+    
+    // DELETE OLD OTPs OF CURRENT USER (IF AVAILABLE)
+    await prisma.userOtp.deleteMany({
+      where:{userId}
+    });
     // SAVE THE OTP IN DB
     await prisma.UserOtp.create({
-      data: {userId, otp, expiresAt},
+      data: {userId, otp:hashedOtp, expiresAt},
     });
 
     // FIND THE USER
@@ -31,7 +39,7 @@ export async function POST(req) {
     await sendOtpEmail(user.email, otp);
 
     return NextResponse.json(
-      { error: "OTP sent.", success: true },
+      { error: "OTP sent successfully!.", success: true },
       { status: 200 }
     );
   } catch (error) {

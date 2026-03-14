@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import bcrypt from 'bcrypt';
 
 export async function POST (req) {
   try {
@@ -13,14 +14,22 @@ export async function POST (req) {
     }
 
     // FIND THE OTP IN DB
-    const recoed = await prisma.userOtp.findFirst({
-      where: {userId, otp, expiresAt: {gte: new Date()}},
+    const record = await prisma.userOtp.findFirst({
+      where: {userId, expiresAt: {gte: new Date()}},
       orderBy: {createdAt: "desc"},
     });
-
-    if (!recoed){
+    if (!record){
       return NextResponse.json(
         {success: false, error: "OTP invalid or expired"},
+        {status: 400}
+      )
+    }
+
+    // COMPARE HASHED OTP
+    const validOtp = await bcrypt.compare(otp, record.otp);
+    if (!validOtp) {
+      return NextResponse.json(
+        {success: false, error: "Invalid OTP"},
         {status: 400}
       )
     }
@@ -30,12 +39,12 @@ export async function POST (req) {
       data: {emailVerified: true}
     });
     await prisma.userOtp.delete({
-      where: {id: recoed.id}
+      where: {id: record.id}
     });
 
     // SUCCES
     return NextResponse.json(
-      {success: true, message: "Verification Successful! Please SignIn"},
+      {success: true, message: "Verification Successful! You will be redirected to Sign In page"},
       {status: 200}
     )
   } catch (error) {

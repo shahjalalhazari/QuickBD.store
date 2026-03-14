@@ -79,7 +79,7 @@
     @apply text-secondary text-center text-2xl font-semibold
 }
 .otp-timer {
-    @apply text-sm text-center text-body-color font-medium;
+    @apply text-sm text-center text-body-color font-medium mt-8;
 }
 .resend-otp-btn{
     @apply text-heading-color font-semibold bg-heading-color/10 px-4 py-2 rounded-md uppercase;
