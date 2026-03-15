@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt';
 export async function POST (req) {
   try {
     const {userId, otp} = await req.json();
-
     if (!userId || !otp) {
       return NextResponse.json(
         {success: false, error: "Missing Data"},
@@ -13,7 +12,31 @@ export async function POST (req) {
       );
     }
 
-    // FIND THE OTP IN DB
+    // FIND THE USER
+    const user = await prisma.user.findUnique({
+      where: {id: userId},
+    });
+    if (!user) {
+      return NextResponse.json(
+        {success: false, error: "User not found!"},
+        {status: 404}
+      )
+    }
+    // IF USER VERIFICAION EXPIRED & USER'S EMAIL STILL NOT VERIFIED. DELETE OLD RECORDS & USER TOO
+    if (user.verificationExpires && user.verificationExpires < new Date() && !user.emailVerified){
+      await prisma.userOtp.deleteMany({
+        where: {id: record.id}
+      });
+      await prisma.user.delete({
+        where: {id: userId}
+      });
+      return NextResponse.json(
+        {success: false, error: "Verification expired! Please SingUp again."},
+        {status: 400}
+      )
+    }
+
+    // FIND THE LATEST OTP
     const record = await prisma.userOtp.findFirst({
       where: {userId, expiresAt: {gte: new Date()}},
       orderBy: {createdAt: "desc"},
@@ -33,11 +56,12 @@ export async function POST (req) {
         {status: 400}
       )
     }
-    // IF OTP IS VALID MAKE USER VERIFIED & DELETE THE OTP
+    // MAKE USER VERIFIED
     await prisma.user.update({
       where: {id: userId},
-      data: {emailVerified: true}
+      data: {emailVerified: true, verificationExpires: null,}
     });
+    // THEN DELETE OTP
     await prisma.userOtp.delete({
       where: {id: record.id}
     });
@@ -53,4 +77,4 @@ export async function POST (req) {
       {status: 500}
     )
   }
-}
+};

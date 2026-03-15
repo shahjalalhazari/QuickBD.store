@@ -34,6 +34,8 @@ export async function POST(req) {
         name,
         email: email.toLowerCase(),
         password: passwordHash,
+        // EXPIRATION FOR 10 MINUTES.
+        verificationExpires: new Date(Date.now() + 10 * 60 * 1000)
       }
     });
 
