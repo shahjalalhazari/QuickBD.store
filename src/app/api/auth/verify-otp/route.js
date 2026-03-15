@@ -1,9 +1,18 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import bcrypt from 'bcrypt';
+import { verifyOtpRateLimit } from "@/lib/rate-limit";
+import { rateLimitChecker } from "@/lib/rate-limit-checker";
 
 export async function POST (req) {
   try {
+    // CHECK USER IP AND RATE LIMIT
+    const forwardedFor = req.headers.get("x-forwarded-for");
+    const ip = forwardedFor ? forwardedFor.split(",")[0].trim() : "anonymous";
+    const rateLimitResponse = await rateLimitChecker(verifyOtpRateLimit, ip);
+    if (rateLimitResponse) return rateLimitResponse;
+
+    // GET USER ID & OTP
     const {userId, otp} = await req.json();
     if (!userId || !otp) {
       return NextResponse.json(
@@ -25,7 +34,7 @@ export async function POST (req) {
     // IF USER VERIFICAION EXPIRED & USER'S EMAIL STILL NOT VERIFIED. DELETE OLD RECORDS & USER TOO
     if (user.verificationExpires && user.verificationExpires < new Date() && !user.emailVerified){
       await prisma.userOtp.deleteMany({
-        where: {id: record.id}
+        where: {id: userId}
       });
       await prisma.user.delete({
         where: {id: userId}
@@ -47,10 +56,24 @@ export async function POST (req) {
         {status: 400}
       )
     }
+    // CHECK OTP ATTEMPS LIMIT
+    if (record.attempts >= 5) {
+      await prisma.userOtp.delete({
+        where: {id: record.id}
+      });
+      return NextResponse.json(
+        {success: false, error: "Too many incorrect attempts. Resend OTP."},
+        {status: 400}
+      )
+    }
 
-    // COMPARE HASHED OTP
+    // COMPARE HASHED OTP. IF INVALID, INCRESE ATTEMPTS
     const validOtp = await bcrypt.compare(otp, record.otp);
     if (!validOtp) {
+      await prisma.userOtp.update({
+        where: {id: record.id},
+        data: {attempts: {increment: 1}},
+      });
       return NextResponse.json(
         {success: false, error: "Invalid OTP"},
         {status: 400}
