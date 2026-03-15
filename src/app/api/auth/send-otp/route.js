@@ -2,10 +2,18 @@ import { sendOtpEmail } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import bcrypt from 'bcrypt';
+import { rateLimitChecker } from "@/lib/rate-limit-checker";
+import { sendOtpRateLimit } from "@/lib/rate-limit";
 
 
 export async function POST(req) {
   try {
+    // CHECK USER IP AND RATE LIMIT
+    const forwardedFor = req.headers.get("x-forwarded-for");
+    const ip = forwardedFor ? forwardedFor.split(",")[0].trim() : "anonymous";
+    const rateLimitResponse = await rateLimitChecker(sendOtpRateLimit, ip);
+    if (rateLimitResponse) return rateLimitResponse;
+
     const {userId} = await req.json();
 
     if (!userId) {
@@ -44,7 +52,7 @@ export async function POST(req) {
     );
   } catch (error) {
     return NextResponse.json(
-      { error: "Faild to send OTP.", success: false },
+      { error: "Failed to send OTP.", success: false },
       { status: 500 }
     );
   }
