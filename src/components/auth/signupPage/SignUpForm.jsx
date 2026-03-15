@@ -75,8 +75,8 @@ const SignUpForm = () => {
       });
 
       const data = await res.json();
-      if (!data.success) {
-        setMessage({ type: "error", text: signUpdata.error});
+      if (!res.ok) {
+        setMessage({ type: "error", text: data.error});
         return;
       }
 
@@ -93,7 +93,7 @@ const SignUpForm = () => {
       // SUCCESS MESSAGE
       setMessage({ type: "success", text: data.message});
     } catch (error) {
-      setMessage({ type: "error", text: data.error || "SignUp failed! Try again."});
+      setMessage({ type: "error", text: "SignUp failed! Try again."});
     } finally {
       setLoading(false);
     }
