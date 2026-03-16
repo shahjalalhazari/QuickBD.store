@@ -15,39 +15,66 @@ export async function POST(req) {
     if (rateLimitResponse) return rateLimitResponse;
 
     const {userId} = await req.json();
-
     if (!userId) {
       return NextResponse.json(
-        {error: "Missing user", success: false},
+        {error: "Missing userId", success: false},
         {status: 400}
       );
     };
 
-    // GENERATE 6-DIGITS OTP
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    // MAKE OTP HASHED
-    const hashedOtp = await bcrypt.hash(otp, 10);
-    // SET EXPIRATION FOR 3 MIN
-    const expiresAt = new Date(Date.now() + 3 * 60 * 1000);
-    
-    // DELETE OLD OTPs OF CURRENT USER (IF AVAILABLE)
+    // GET, CHECK & VERIFIED USER
+    const user = await prisma.user.findUnique({
+      where: {id: userId},
+    });
+    if (!user){
+      return NextResponse.json(
+        {success: false, error: "User not found!"},
+        {status: 404}
+      )
+    }
+    if (user.emailVerified) {
+      return NextResponse.json(
+        {success: false, error: "Email already verified!"},
+        {status: 400}
+      )
+    }
+    // CHECK COOLDOWN
+    if (user.otpResendAllowedAt && user.otpResendAllowedAt > new Date()) {
+      const secondsLeft = Math.ceil((user.otpResendAllowedAt - new Date()) / 1000);
+      return NextResponse.json(
+        {success: false, error: `Please wait, ${secondsLeft}s left.`, secondsLeft},
+        {status: 429}
+      )
+    }
+
+    // DELETE OLD OTPs (IF AVAILABLE)
     await prisma.userOtp.deleteMany({
       where:{userId}
     });
+
+    // GENERATE 6-DIGITS OTP, MAKE IT HASHED & SET EXPIRATION FOR 3 MIN
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    const hashedOtp = await bcrypt.hash(otp, 10);
+    const expiresAt = new Date(Date.now() + 3 * 60 * 1000);
+
     // SAVE THE OTP IN DB
     await prisma.UserOtp.create({
       data: {userId, otp:hashedOtp, expiresAt},
     });
 
-    // FIND THE USER
-    const user = await prisma.user.findUnique({
-      where: {id: userId}
+    // SET COOLDOWN
+    await prisma.user.update({
+      where: {id: userId},
+      data: {
+        otpResendAllowedAt: new Date(Date.now() + 30 * 1000)
+      }
     });
+
     // SEND MAIL WITH OTP
     await sendOtpEmail(user.email, otp);
 
     return NextResponse.json(
-      { error: "OTP sent successfully!.", success: true },
+      { message: "OTP sent successfully!.", success: true, cooldown: 30 },
       { status: 200 }
     );
   } catch (error) {

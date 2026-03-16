@@ -16,13 +16,15 @@ enum Role {
 }
 
 model User {
-  id                  String    @id @default(uuid())
-  name                String?
-  email               String    @unique
-  password            String
-  role                Role      @default(USER)
-  emailVerified       Boolean   @default(false)
+  id            String  @id @default(uuid())
+  name          String?
+  email         String  @unique
+  password      String
+  role          Role    @default(USER)
+  emailVerified Boolean @default(false)
+
   verificationExpires DateTime?
+  otpResendAllowedAt  DateTime?
 
   accounts Account[]
   sessions Session[]

@@ -15,7 +15,7 @@ const SignUpForm = () => {
   const [registerUserId, setRegisterUserId] = useState("");
 
   const [step, setStep] = useState("form");
-  const [timer, setTimer] = useState(30);
+  const [timer, setTimer] = useState(0);
 
 
   useEffect(() => {
@@ -40,13 +40,16 @@ const SignUpForm = () => {
       });
 
       const data = await res.json();
-      if(!data.success) {
+      if(!res.ok) {
+        if (data.secondsLeft) {
+          setTimer(data.secondsLeft);
+        }
         throw new Error(data.error || "Failed to send OTP!");
       }
-      return true;
+      return data;
     } catch (error) {
       setMessage({type: "error", text: error.message})
-      return false;
+      return null;
     }
   }
 
@@ -83,12 +86,12 @@ const SignUpForm = () => {
       setRegisterUserId(data.userId);
 
       // CALL SEND OTP API
-      const otpSent = await sendOtp(data.userId);
-      if (!otpSent) return;
+      const otpData = await sendOtp(data.userId);
+      if (!otpData) return;
 
       // SHOW OTP INPUT FIELDS AND START THE TIMER
       setStep("otp");
-      setTimer(30);
+      setTimer(otpData.cooldown || 30);
 
       // SUCCESS MESSAGE
       setMessage({ type: "success", text: data.message});
@@ -100,20 +103,20 @@ const SignUpForm = () => {
   }
 
 
+  // OTP RESEND HANDLER
   const handleResendOtp = async () => {
+    if (!registerUserId) return;
+
     setLoading(true);
     setMessage(null);
 
-    if (!registerUserId) return;
-
-    setTimer(30);
     try {
-      const otpSent = await sendOtp(registerUserId);
-      if(!otpSent) return;
+      const otpData = await sendOtp(registerUserId);
+      if(!otpData) return;
+      setTimer(otpData.cooldown || 30)
 
       setMessage({type: "success", text: "OTP resend successful!"})
     } catch (error) {
-      console.log(error);
       setMessage({type: "error", text: "Failed to Resend OTP."})
     } finally {
       setLoading(false);
@@ -137,7 +140,6 @@ const SignUpForm = () => {
       });
 
       const data = await res.json();
-
       if (data.success) {
         setMessage({type: "success", text: data.message});
         // SHOW VERIFICARION SUCCESS
@@ -146,7 +148,7 @@ const SignUpForm = () => {
         // REDIRECT USER TO SIGNIN PAGE AFTER OTP VERICATION
         setTimeout(() => {
           window.location.href = "/auth/signin";
-        }, 3000)
+        }, 5000)
       } else {
         setMessage({type: "error", text: data.error})
       }
