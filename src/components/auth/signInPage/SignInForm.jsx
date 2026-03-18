@@ -5,6 +5,8 @@ import UnderlinePasswordInputField from "@/components/shared/inputFields/Underli
 import { FcGoogle } from "react-icons/fc";
 import { useEffect, useState } from "react";
 import OtpInputField from "@/components/shared/inputFields/OtpInputField";
+import { FaAngleLeft } from "react-icons/fa6";
+import GoogleAuthenticate from "../GoogleAuthenticate";
 
 
 const SignInForm = () => {
@@ -12,26 +14,49 @@ const SignInForm = () => {
   const [timer, setTimer] = useState(30);
   const [otpSent, setOtpSent] = useState(false);
   const [rememberedEmail, setRememberedEmail] = useState("");
+  const [signInEmail, setSignInEmail] = useState("");
+  console.log(signInEmail);
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(null);
 
   useEffect(() => {
-    if (!otpSent || timer === 0) return;
+    if (!otpSent) return;
 
     const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
+      setTimer((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [otpSent, timer]);
+  }, [otpSent]);
 
+
+  // HANDLER FOR SEND SIGNIN OTP
   const handleSendOtp = () => {
     setMethod("otp");
     setOtpSent(true);
     setTimer(30);
   };
 
+
+  // HANDLER FOR RESEND OTP
   const handleResendOtp = () => {
     setTimer(30);
   };
+
+
+  // HANDLER FOR BACK BUTTON
+  const handleBackBtn = () => {
+    setMethod(null);
+    setOtpSent(false);
+    setTimer(30);
+  } 
 
   return (
     <div className="form-container">
@@ -46,6 +71,15 @@ const SignInForm = () => {
         </p>
       </div>
 
+      {(method === "otp" || method === "password") &&
+        <button
+          onClick={handleBackBtn}
+          className="back-btn quickbd-transition"
+        >
+          <FaAngleLeft /> Back
+        </button>
+      }
+
       {/* SIGN IN FORM */}
       <form className="auth-form-layout">
         {/* EMAIL FIELD */}
@@ -53,12 +87,15 @@ const SignInForm = () => {
           label={"E-MAIL"}
           name={"email"}
           type={"email"}
+          value={signInEmail}
+          onChange={(e) => setSignInEmail(e.target.value)}
         />
 
         {/* SHOW SEND OTP & USE PASSWORD BUTTONS  */}
         {method === null && (
           <div className="form-buttons">
             <button
+              type="button"
               onClick={handleSendOtp}
               className="full-width-btn quickbd-transition send-otp-btn"
             >
@@ -66,6 +103,7 @@ const SignInForm = () => {
             </button>
 
             <button
+              type="button"
               onClick={() => setMethod("password")}
               className="full-width-btn quickbd-transition password-btn"
             >
@@ -108,6 +146,7 @@ const SignInForm = () => {
                   </span>
                 ) : (
                   <button
+                    type="button"
                     onClick={handleResendOtp}
                     className="resend-otp-btn quickbd-transition"
                   >
@@ -155,9 +194,7 @@ const SignInForm = () => {
       </form>
 
       {/* GOOGLE LOGIN */}
-      <button className="full-width-btn quickbd-transition google-login-btn">
-        <FcGoogle size={20} /> Sign in with Google
-      </button>     
+      <GoogleAuthenticate />
     </div>
   );
 };

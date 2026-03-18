@@ -82,7 +82,7 @@ export async function POST (req) {
     // MAKE USER VERIFIED
     await prisma.user.update({
       where: {id: userId},
-      data: {emailVerified: true, verificationExpires: null,}
+      data: {emailVerified: true, verificationExpires: null, otpResendAllowedAt: null}
     });
     // THEN DELETE OTP
     await prisma.userOtp.delete({

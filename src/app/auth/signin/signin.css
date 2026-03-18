@@ -48,6 +48,12 @@
 .form-buttons {
     @apply w-full flex gap-6;
 }
+.back-btn {
+    @apply flex items-center gap-1 text-sm font-medium text-heading-color mb-12;
+}
+.back-btn:hover {
+    @apply text-primary font-semibold
+}
 .send-otp-btn {
     @apply w-full bg-primary;
 }
