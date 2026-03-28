@@ -1,9 +1,15 @@
 import Image from "next/image";
 
 
-const QuickbdLoading = ({customSize}) => {
+const QuickbdLoading = ({customSize="w-5 h-5 md:w-6 md:h-6"}) => {
   return (
-    <Image src={"/loading.gif"} width={24} height={24} alt="loading" className={`${customSize}`} />
+    <div className={`flex items-center justify-center w-full ${customSize}`}>
+      <Image 
+        src={"/loading.gif"} width={20} height={20} 
+        alt="loading" 
+        className={"w-auto h-auto"} 
+      />
+    </div>
   );
 };
 

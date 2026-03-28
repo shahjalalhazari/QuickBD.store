@@ -79,7 +79,7 @@
     @apply text-heading-color font-semibold;
 }
 .remember-forgot {
-    @apply flex justify-between items-center text-sm text-body-color font-medium;
+    @apply flex justify-between items-center w-full text-sm text-body-color font-medium mt-8;
 }
 .checkbox-field {
     @apply flex gap-x-2 items-center;
@@ -92,6 +92,12 @@
 }
 .forgot-password:hover, .resend-otp-btn:hover {
     @apply text-primary
+}
+.send-otp-btn, .password-btn, .submit-btn {
+    @apply flex items-center justify-center;
+}
+.send-otp-btn:disabled, .password-btn:disabled, .submit-btn:disabled {
+    @apply bg-body-color/50 cursor-not-allowed;
 }
 .google-login-btn {
     @apply flex gap-4 items-center justify-center border-2 border-heading-color text-heading-color w-full font-medium

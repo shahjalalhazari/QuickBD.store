@@ -1,12 +1,14 @@
 "use client";
+import {signIn} from "next-auth/react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import UnderlineInput from "@/components/shared/inputFields/UnderlineInput";
 import UnderlinePasswordInputField from "@/components/shared/inputFields/UnderlinePasswordInputField";
-import { FcGoogle } from "react-icons/fc";
-import { useEffect, useState } from "react";
 import OtpInputField from "@/components/shared/inputFields/OtpInputField";
 import { FaAngleLeft } from "react-icons/fa6";
 import GoogleAuthenticate from "../GoogleAuthenticate";
+import QuickbdLoading from "@/components/shared/QuickbdLoading";
+import { useRouter } from "next/navigation";
 
 
 const SignInForm = () => {
@@ -15,13 +17,14 @@ const SignInForm = () => {
   const [otpSent, setOtpSent] = useState(false);
   const [rememberedEmail, setRememberedEmail] = useState("");
   const [signInEmail, setSignInEmail] = useState("");
-  console.log(signInEmail);
+  const [signInUserId, setSignInUserId] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
-    if (!otpSent) return;
+    if (!otpSent || timer <= 0) return;
 
     const interval = setInterval(() => {
       setTimer((prev) => {
@@ -34,22 +37,7 @@ const SignInForm = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [otpSent]);
-
-
-  // HANDLER FOR SEND SIGNIN OTP
-  const handleSendOtp = () => {
-    setMethod("otp");
-    setOtpSent(true);
-    setTimer(30);
-  };
-
-
-  // HANDLER FOR RESEND OTP
-  const handleResendOtp = () => {
-    setTimer(30);
-  };
-
+  }, [otpSent, timer]);
 
   // HANDLER FOR BACK BUTTON
   const handleBackBtn = () => {
@@ -57,6 +45,138 @@ const SignInForm = () => {
     setOtpSent(false);
     setTimer(30);
   } 
+
+
+  // HANDLER FOR SIGNIN WITH OTP
+  const handleSignInWithOtp = async () => {
+    if (loading) return;
+
+    setLoading(true);
+    setMessage(null);
+    
+    try {
+      if (!signInEmail) {
+        setMessage({type: false, text: "Please enter your email"})
+        return;
+      };
+
+      const res = await fetch("/api/auth/send-signin-otp", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({email: signInEmail})
+      })
+      const data = await res.json();
+      console.log(data);
+
+      if (!res.ok){
+        setMessage({type: data.success, text: data.message})
+        return;
+      }
+
+      setSignInUserId(data.userId);
+
+      setMethod("otp");
+      setOtpSent(true);
+      setTimer(30);
+
+      setMessage({type: data.success, text: data.message})
+    } catch (error) {
+      console.log(error);
+      setMessage({type: data.success, text: error.message})
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  // HANDLER FOR RESEND OTP
+  const handleResendOtp = async() => {
+    if (!signInEmail) return;
+
+    setLoading(true);
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/auth/send-signin-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: signInEmail }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setMessage({ type: false, text: data.message });
+        return;
+      }
+
+      setTimer(30);
+      setOtpSent(true);
+      setMessage({ type: true, text: "OTP resent successfully!" });
+
+    } catch (error) {
+      setMessage({ type: false, text: "Failed to resend OTP" });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  // HANDLER FOR VERIFY OTP
+  const handleVerifyOtp = async (otp) => {
+    console.log(otp);
+    if (!signInEmail) return;
+
+    setLoading(true)
+    setMessage(null);
+
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: signInEmail,
+        otp: otp,
+        type: "otp",
+      })
+
+      if (res?.error){
+        setMessage({type: false, text: "Invalid or expired OTP"});
+        return;
+      }
+
+      // SIGNIN SUCCESS
+      setMessage({type: true, text: "Sign In Successfull! You will be redirected"});
+
+      // REDIRECT
+      setTimeout(() => {
+        router.push("/");
+      }, 3000)
+    } catch (error) {
+      setMessage({type: false, text: "Something went wrong!"});
+    } finally {
+      setLoading(false);
+    }
+  }
+
+
+  // HANDLER FOR SIGNIN WITH PASSWORD
+  const handleSignInWithPassword = async() => {
+    setLoading(true);
+    setMessage(null);
+
+    try {
+      if (!signInEmail) {
+        setMessage({type: "error", text: "Please enter your email"})
+        return;
+      };
+
+      setMethod("password");
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
 
   return (
     <div className="form-container">
@@ -80,6 +200,16 @@ const SignInForm = () => {
         </button>
       }
 
+      {/* SHOW MESSAGES */}
+      {message && (
+        <div className={`message-box ${
+            message.type === true ? "success-message" : "error-message"
+          }`}
+        >
+          {message.text}
+        </div>
+      )}
+
       {/* SIGN IN FORM */}
       <form className="auth-form-layout">
         {/* EMAIL FIELD */}
@@ -96,18 +226,20 @@ const SignInForm = () => {
           <div className="form-buttons">
             <button
               type="button"
-              onClick={handleSendOtp}
+              onClick={handleSignInWithOtp}
+              disabled={loading}
               className="full-width-btn quickbd-transition send-otp-btn"
             >
-              Send OTP
+              {loading ? <QuickbdLoading /> : "Send OTP"}
             </button>
 
             <button
               type="button"
-              onClick={() => setMethod("password")}
+              onClick={handleSignInWithPassword}
+              disabled={loading}
               className="full-width-btn quickbd-transition password-btn"
             >
-              Use Password
+              {loading ? <QuickbdLoading /> : "Use Password"}
             </button>
           </div>
         )}
@@ -116,17 +248,13 @@ const SignInForm = () => {
         {method === "otp" && (
           <div className="animate__animated animate__zoomIn">
             <OtpInputField
-              onComplete={(otp) => {
-                console.log("OTP Completed:", otp);
-              }}
+              onComplete={(otp) => {handleVerifyOtp(otp)}}
             />
-            {/* VERIFY BUTTON */}
-            <button className="full-width-btn quickbd-transition submit-btn">
-              Verify OTP
-            </button>
 
             {/* REMEMBER CHECKBOX & TIMER */}
             <div className="remember-forgot">
+              {loading ? <div className="flex items-center justify-center w-full"><QuickbdLoading /></div>:
+              <>
               {/* CHECKBOX */}
               <div className="checkbox-field">
                 <input
@@ -154,6 +282,8 @@ const SignInForm = () => {
                   </button>
                 )}
               </div>
+              </>
+}
             </div>
           </div>
         )}

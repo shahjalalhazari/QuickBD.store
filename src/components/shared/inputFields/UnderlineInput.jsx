@@ -2,7 +2,7 @@ const UnderlineInput = ({
   label, type="text", 
   required=true, name, 
   placeholder="",
-  value, onChange,
+  value="", onChange="",
   ...rest}) => {
   return (
     <div className="underline-input-group">
