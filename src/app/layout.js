@@ -2,6 +2,8 @@ import "./globals.css";
 import { Montserrat, Hind_Siliguri } from "next/font/google";
 import { baseMetadata } from "./metadata";
 import 'animate.css';
+import AuthProviders from "@/providers/AuthProviders";
+import { Bounce, ToastContainer } from "react-toastify";
 
 
 const montserrat = Montserrat({
@@ -43,7 +45,22 @@ export default function RootLayout({ children }) {
         <meta name="format-detection" content="telephone=no" />
       </head>
       <body className="bg-ghost-white">
-        {children}
+        <AuthProviders> {/* AUTH PROVIDER FOR AUTHENTICATION. */}
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}
+            />
+          {children}
+        </AuthProviders>
       </body>
     </html>
   );

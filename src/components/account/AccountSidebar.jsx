@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
 import { TbCameraPlus } from "react-icons/tb";
 import DropdownForRedirect from '../shared/filters/DropdownForRedirect';
+import { userSignOut } from '@/utils/userSignOut';
 
 const menuItems = [
   {
@@ -31,13 +32,9 @@ const AccountSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleLogout = () => {
-    console.log("Logging Out...");
-  }
-
   const handleMenuClick = (item) => {
     if (item.action) {
-      handleLogout();
+      userSignOut();
     } else {
       router.push(item.path);
     }

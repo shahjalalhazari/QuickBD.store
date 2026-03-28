@@ -1,9 +1,12 @@
 "use client"
+import { userSignOut } from '@/utils/userSignOut';
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const FooterColumn = ({heading, links, isAccount=false}) => {
   const pathname = usePathname();
+  const session = useSession();
   const isAccountPage = pathname.split("/").includes("account");
 
   return (
@@ -21,13 +24,19 @@ const FooterColumn = ({heading, links, isAccount=false}) => {
             </Link>
           </li>
         ))}
-        {isAccount && <>
-          <li className={`quickbd-transition ${isAccountPage ? "active-link" : "hover:underline"}`}>
-            <Link href={"/account"}>Account</Link>
+        {isAccount && <> {session.status === "authenticated" ?
+          <>
+            <li className={`quickbd-transition ${isAccountPage ? "active-link" : "hover:underline"}`}>
+              <Link href={"/account"}>Account</Link>
+            </li>
+            <li className={`quickbd-transition hover:underline cursor-pointer`} onClick={() => userSignOut()}>
+              Sign Out
+            </li>
+          </> :
+          <li className={`quickbd-transition ${pathname === "/auth/signin" ? "active-link" : "hover:underline"}`}>
+            <Link href={"/auth/signin"}>Sign In</Link>
           </li>
-          <li className={`quickbd-transition ${pathname === "/sign-in" ? "active-link" : "hover:underline"}`}>
-            <Link href={"/sign-in"}>Sign In</Link>
-          </li>
+        }
         </>}
       </ul>
     </div>

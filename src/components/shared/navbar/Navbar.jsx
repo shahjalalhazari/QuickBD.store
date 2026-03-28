@@ -4,14 +4,18 @@ import "./navbar.css";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaRegCircleUser } from "react-icons/fa6";
-import { FiLogIn, FiShoppingBag } from "react-icons/fi";
+import { FiLogIn, FiLogOut, FiShoppingBag } from "react-icons/fi";
 import SmallNavbar from "./SmallNavbar";
 import CartSidebar from "@/components/cartPage/CartSidebar";
 import { useState } from "react";
 import { useNavigation } from "@/hooks/useNavigation";
+import { useSession } from "next-auth/react";
+import { userSignOut } from "@/utils/userSignOut";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const session = useSession();
+
   const [cartOpen, setCartOpen] = useState(false);
   const { isActiveNavItem } = useNavigation();
 
@@ -44,25 +48,35 @@ const Navbar = () => {
 
         {/* NAVBAR ICONS */}
         <ul className='navbar-icons'>
-          <li className={`cart-icon 
-            ${isAccountPage && "active-icon"}
-          `}>
-            <Link href="/account" className={`${isAccountPage && "cursor-not-allowed"}`}>
-              <FaRegCircleUser className="navbar-icon quickbd-transition" />
-            </Link>
-          </li>
-          <li className="">
-            <Link href="/auth/signin" className="">
-              <FiLogIn className="navbar-icon quickbd-transition" />
-            </Link>
-          </li>
-          <li className="">
+          {session.status === "authenticated" ?
+            <>
+              <li className={`cart-icon 
+                  ${isAccountPage && "active-icon"}
+                `}
+                title="Profile"
+              >
+                <Link href="/account" className={`${isAccountPage && "cursor-not-allowed"}`}>
+                  <FaRegCircleUser className="navbar-icon quickbd-transition" />
+                </Link>
+              </li>
+              <li className="cursor-pointer" title="Sign Out" onClick={() => userSignOut()}>
+                <FiLogOut className="navbar-icon quickbd-transition" />
+              </li>
+            </> :
+            <li  title="Sign In">
+              <Link href="/auth/signin">
+                <FiLogIn className="navbar-icon quickbd-transition" />
+              </Link>
+            </li>
+          }
+          <li>
             <button
               onClick={() => !isCartPage && setCartOpen(true)}
               disabled={isCartPage}
               className={`cart-icon quickbd-transition
                 ${isCartPage && "active-icon"}
               `}
+              title="Cart"
             >
               <FiShoppingBag className="navbar-icon" />
               <span className="cart-count quickbd-transition">{totalItems}</span>
@@ -76,7 +90,8 @@ const Navbar = () => {
         navItems={navItems} 
         cartItems={cartItems} 
         onCartOpen={() => !isCartPage && setCartOpen(true)} 
-        isCartPage={isCartPage} 
+        isCartPage={isCartPage}
+        userSession={session}
       />
     </nav>
 

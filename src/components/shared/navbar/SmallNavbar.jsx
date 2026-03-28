@@ -9,8 +9,9 @@ import { FaFacebookF, FaYoutube, FaInstagram, FaRegHeart } from "react-icons/fa6
 import FullWidthBtn from "../buttons/FullWidthBtn";
 import { FiShoppingBag } from "react-icons/fi";
 import { useNavigation } from "@/hooks/useNavigation";
+import { userSignOut } from "@/utils/userSignOut";
 
-const SmallNavbar = ({ navItems, onCartOpen, cartItems, isCartPage }) => {
+const SmallNavbar = ({ navItems, onCartOpen, cartItems, isCartPage, userSession}) => {
 	const pathname = usePathname();
 	const [navbarOpen, setNavbarOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -33,6 +34,13 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems, isCartPage }) => {
       setIsClosing(false);
     }, 500);
   };
+
+
+  // HANDLER FOR USER SIGNOUT
+  const handleSignOut = () => {
+    closeNavbar();
+    userSignOut();
+  }
 
 	return (
 		<>
@@ -149,26 +157,48 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems, isCartPage }) => {
             </Link>
 
             {/* SIGNIN / ACCOUNT BTN */}
-            <Link href={"/auth/signin"} className="w-full">
-              <FullWidthBtn 
-                text={"SignIn / Account"} 
-                color={"bg-primary"}
-                onClick={closeNavbar}
-                customClass={"w-full"}
-              />
-            </Link>
+            {userSession.status === "authenticated" ? 
+              <Link href={"/account"} className="w-full" onClick={closeNavbar}>
+                <FullWidthBtn 
+                  text={"Profile"} 
+                  color={"bg-primary"}
+                  customClass={"w-full"}
+                />
+              </Link> : 
+              <Link href={"/auth/signin"} className="w-full" onClick={closeNavbar}>
+                <FullWidthBtn 
+                  text={"SignIn"} 
+                  color={"bg-primary"}
+                  customClass={"w-full"}
+                />
+              </Link>
+            }
 
-            {/* SOCIAL MEDIA ICONS */}
-            <div className="flex gap-x-4 text-heading-color">
-              <Link href={instagramUrl} target="_blank" className='quickbd-transition'>
-                <FaInstagram className="navbar-icon"/>
-              </Link>
-              <Link href={facebookUrl} target="_blank" className='quickbd-transition'>
-                <FaFacebookF className="navbar-icon"/>
-              </Link>
-              <Link href={youtubeUrl} target="_blank" className='quickbd-transition'>
-                <FaYoutube className="navbar-icon"/>
-              </Link>
+
+            <div className="flex items-center justify-between w-full">
+              {/* USER SIGN OUT BUTTON */}
+              {userSession.status === "authenticated" &&
+                <div className="w-1/2" onClick={handleSignOut}>
+                  <FullWidthBtn 
+                    text={"Sign Out"} 
+                    color={"bg-heading-color"}
+                    customClass={"w-full"}
+                  />
+                </div>
+              }
+              
+              {/* SOCIAL MEDIA ICONS */}
+              <div className="flex gap-x-4 text-heading-color">
+                <Link href={instagramUrl} target="_blank" className='quickbd-transition'>
+                  <FaInstagram className="navbar-icon"/>
+                </Link>
+                <Link href={facebookUrl} target="_blank" className='quickbd-transition'>
+                  <FaFacebookF className="navbar-icon"/>
+                </Link>
+                <Link href={youtubeUrl} target="_blank" className='quickbd-transition'>
+                  <FaYoutube className="navbar-icon"/>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
