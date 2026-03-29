@@ -1,9 +1,20 @@
 import { prisma } from "@/lib/prisma";
 import { NextResponse } from "next/server";
 import { generateAndSendOtp } from "@/lib/otp";
+import { rateLimitChecker } from "@/lib/rate-limit-checker";
+import { sendOtpRateLimit } from "@/lib/rate-limit";
 
 export async function POST(req) {
+  // CHECK USER IP AND RATE LIMIT
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  const ip = forwardedFor ? forwardedFor.split(",")[0].trim() : "anonymous";
+
   const {email} = await req.json();
+  const identifier = `${ip}-${email}`;
+
+  const rateLimitResponse = await rateLimitChecker(sendOtpRateLimit, identifier);
+  if (rateLimitResponse) return rateLimitResponse;
+
   const user = await prisma.user.findUnique({
     where: {email: email.toLowerCase()},
   });
@@ -23,8 +34,32 @@ export async function POST(req) {
     );
   }
 
+  // CHECK OTP RESEND ALLOWED
+  if (user.otpResendAllowedAt && user.otpResendAllowedAt > new Date()) {
+    const secondsLeft = Math.ceil(
+      (user.otpResendAllowedAt - new Date()) / 1000
+    );
+
+    return NextResponse.json(
+      {
+        success: false,
+        message: `Please wait ${secondsLeft}s before requesting again`,
+        secondsLeft,
+      },
+      { status: 429 }
+    );
+  }
+
   // GENERATE AND SEND MAIL
   await generateAndSendOtp(user.id, user.email);
+
+  // UPDATE OTP RESEND TIME & RESET ATTEMPTS
+  await prisma.user.update({
+    where: { id: user.id },
+    data: {
+      otpResendAllowedAt: new Date(Date.now() + 30 * 1000),
+    }
+  });
 
   // SEND SUCCESS MESSAGE
   return NextResponse.json(

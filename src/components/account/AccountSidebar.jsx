@@ -23,8 +23,8 @@ const menuItems = [
     path: "/account/address",
   },
   {
-    name: "Logout",
-    action: "logout",
+    name: "Sign Out",
+    action: "signout",
   }
 ];
 

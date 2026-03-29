@@ -1,4 +1,5 @@
 "use client"
+import { userSignOut } from "@/utils/userSignOut";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
@@ -34,17 +35,11 @@ const DropdownForRedirect = ({options, width="w-full"}) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-
-  // LOGOUT HANDLER
-  const handleLogout = () => {
-    console.log("Logging Out...");
-  }
-
   // HANDLE MENU ITEM SELECT
   const handleSelect = (option) => {
     setOpen(false);
     
-    if (option.action === "logout") handleLogout();
+    if (option.action) userSignOut();
     if (option.path) {
       setValue(option);
       router.push(option.path);

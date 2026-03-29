@@ -235,7 +235,7 @@ const SignUpForm = () => {
               className="full-width-btn quickbd-transition submit-btn"
               disabled={!agreePolicy || loading}
             >
-              {loading ? <QuickbdLoading customSize={"w-[20px] h-[20px] md:w-[24px] h-[24px]"} /> : "Sign Up"}
+              {loading ? <QuickbdLoading /> : "Sign Up"}
             </button>
           </form>
 
@@ -275,7 +275,7 @@ const SignUpForm = () => {
             {/* VERIFY LOADING SPINNER */}
             {loading 
             ? <div className="mt-8 mb-4 flex items-center justify-center">
-                <QuickbdLoading customSize={"w-6 h-6"} />
+                <QuickbdLoading />
               </div>
             : <>{/* TIMER & RESEND BUTTON */}
               <div className="otp-timer">

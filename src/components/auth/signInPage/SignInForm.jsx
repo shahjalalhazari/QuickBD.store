@@ -66,10 +66,9 @@ const SignInForm = () => {
         body: JSON.stringify({email: signInEmail})
       })
       const data = await res.json();
-      console.log(data);
 
       if (!res.ok){
-        setMessage({type: data.success, text: data.message})
+        setMessage({type: data.success, text: data.error || data.message})
         return;
       }
 
@@ -79,10 +78,9 @@ const SignInForm = () => {
       setOtpSent(true);
       setTimer(30);
 
-      setMessage({type: data.success, text: data.message})
+      setMessage({type: data.success, text: data.error || data.message})
     } catch (error) {
-      console.log(error);
-      setMessage({type: data.success, text: error.message})
+      setMessage({type: false, text: error.message})
     } finally {
       setLoading(false);
     }
@@ -102,17 +100,19 @@ const SignInForm = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: signInEmail }),
       });
-
       const data = await res.json();
 
       if (!res.ok) {
-        setMessage({ type: false, text: data.message });
+        setMessage({ type: false, text: data.message || data.error });
+        if (data.secondsLeft) {
+          setTimer(data.secondsLeft);
+        }
         return;
       }
 
       setTimer(30);
       setOtpSent(true);
-      setMessage({ type: true, text: "OTP resent successfully!" });
+      setMessage({ type: true, text: "OTP resent successfully!" || data.message });
 
     } catch (error) {
       setMessage({ type: false, text: "Failed to resend OTP" });
@@ -124,7 +124,6 @@ const SignInForm = () => {
 
   // HANDLER FOR VERIFY OTP
   const handleVerifyOtp = async (otp) => {
-    console.log(otp);
     if (!signInEmail) return;
 
     setLoading(true)
@@ -138,8 +137,8 @@ const SignInForm = () => {
         type: "otp",
       })
 
-      if (res?.error){
-        setMessage({type: false, text: "Invalid or expired OTP"});
+      if (!res?.ok){
+        setMessage({type: res.ok, text: res.error || res.message});
         return;
       }
 

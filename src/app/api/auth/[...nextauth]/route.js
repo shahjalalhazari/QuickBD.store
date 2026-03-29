@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import {z} from "zod";
+import { verifyOtpRateLimit } from "@/lib/rate-limit";
 const { default: NextAuth } = require("next-auth");
 
 // VALIDATION SCHEA
@@ -34,7 +35,6 @@ const handler = NextAuth({
       async authorize(credendials) {
         // PASSWORD SIGNIN
         const passwordParsed = passwordSignInSchema.safeParse(credendials);
-        console.log(passwordParsed);
         if (passwordParsed.success) {
           const {email, password} = passwordParsed.data;
 
@@ -60,6 +60,14 @@ const handler = NextAuth({
         const otpParsed = otpSignInSchema.safeParse(credendials);
         if (otpParsed.success){
           const {email, otp} = otpParsed.data;
+
+          // CHECK USER IP AND RATE LIMIT
+          const ip = "unknown"; // NEXTAUTH DOESN'T GIVE REQ EASILY.
+          const identifier = `${ip}-${email}`;
+          const {success} = await verifyOtpRateLimit.limit(identifier);
+          if (!success) {
+            throw new Error("Too many attempts. Try again later.");
+          }
           // FIND, CHECK AND VERIFIED USER
           const user = await prisma.user.findUnique({
             where: {email: email.toLowerCase()},
@@ -67,7 +75,7 @@ const handler = NextAuth({
           if (!user) throw new Error("User not found!");
           if (!user.emailVerified) throw new Error("Email not verified!");
 
-          // GET OTP
+          // GET USER OTP & OTP EXISTENCE CHECK
           const userOtp = await prisma.userOtp.findFirst({
             where: {userId: user.id},
             orderBy: {createdAt: "desc"}
@@ -78,9 +86,19 @@ const handler = NextAuth({
           if (new Date() > userOtp.expiresAt) {
             throw new Error("OTP expired!");
           }
+          // CHECK ATTEMPTS
+          if (userOtp.attempts >= 5) {
+            throw new Error("Too many wrong attempts. Try again later.");
+          }
           // VEIRFY OTP
           const isValid = await bcrypt.compare(otp, userOtp.otp);
-          if (!isValid) throw new Error("OTP is invalid!");
+          if (!isValid) {
+            await prisma.userOtp.update({
+              where: {id: userOtp.id},
+              data: {attempts: {increment: 1}}
+            });
+            throw new Error("OTP is invalid!");
+          }
 
           // DELETE OTP AFTER SUCCESS
           await prisma.userOtp.deleteMany({
