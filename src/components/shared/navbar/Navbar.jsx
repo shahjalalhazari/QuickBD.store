@@ -55,7 +55,7 @@ const Navbar = () => {
                 `}
                 title="Profile"
               >
-                <Link href="/account" className={`${isAccountPage && "cursor-not-allowed"}`}>
+                <Link href="/account/profile" className={`${isAccountPage && "cursor-not-allowed"}`}>
                   <FaRegCircleUser className="navbar-icon quickbd-transition" />
                 </Link>
               </li>

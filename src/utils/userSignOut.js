@@ -4,12 +4,18 @@ import { toast } from "react-toastify";
 
 export const userSignOut = async () => {
   try {
-    await signOut({redirect: false});
-    toast.success("✅ You have been signed out successfully!")
+    await toast.promise(
+      signOut({ redirect: false }),
+      {
+        pending: "Signing out...",
+        success: "✅ You have been signed out successfully!",
+        error: "❌ Failed to logout. Please try again."
+      }
+    );
 
     setTimeout(() => {
       window.location.reload();
-    }, 2000);
+    }, 3000);
   } catch (error) {
     toast.error("❌ Failed to logout. Please try again.");
   }

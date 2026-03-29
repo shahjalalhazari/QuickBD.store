@@ -27,7 +27,7 @@ const FooterColumn = ({heading, links, isAccount=false}) => {
         {isAccount && <> {session.status === "authenticated" ?
           <>
             <li className={`quickbd-transition ${isAccountPage ? "active-link" : "hover:underline"}`}>
-              <Link href={"/account"}>Account</Link>
+              <Link href={"/account/profile"}>Account</Link>
             </li>
             <li className={`quickbd-transition hover:underline cursor-pointer`} onClick={() => userSignOut()}>
               Sign Out

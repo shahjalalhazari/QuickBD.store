@@ -158,7 +158,7 @@ const SmallNavbar = ({ navItems, onCartOpen, cartItems, isCartPage, userSession}
 
             {/* SIGNIN / ACCOUNT BTN */}
             {userSession.status === "authenticated" ? 
-              <Link href={"/account"} className="w-full" onClick={closeNavbar}>
+              <Link href={"/account/profile"} className="w-full" onClick={closeNavbar}>
                 <FullWidthBtn 
                   text={"Profile"} 
                   color={"bg-primary"}
