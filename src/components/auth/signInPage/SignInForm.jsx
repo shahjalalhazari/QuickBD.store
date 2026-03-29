@@ -212,13 +212,18 @@ const SignInForm = () => {
       {/* SIGN IN FORM */}
       <form className="auth-form-layout">
         {/* EMAIL FIELD */}
-        <UnderlineInput 
-          label={"E-MAIL"}
-          name={"email"}
-          type={"email"}
-          value={signInEmail}
-          onChange={(e) => setSignInEmail(e.target.value)}
-        />
+        <div className="underline-input-group">
+          <input
+            type="email"
+            name="email" id="email"
+            required
+            placeholder=""
+            value={signInEmail}
+            onChange={(e) => setSignInEmail(e.target.value)}
+            className="underline-input-field"
+          />
+          <label htmlFor="email" className="underline-input-label">E-MAIL</label>
+        </div>
 
         {/* SHOW SEND OTP & USE PASSWORD BUTTONS  */}
         {method === null && (
