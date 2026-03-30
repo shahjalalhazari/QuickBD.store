@@ -9,7 +9,13 @@ const { default: NextAuth } = require("next-auth");
 // VALIDATION SCHEA
 const passwordSignInSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+      "Password must contain uppercase, lowercase and number"
+    ),
   type: z.literal("password"),
 });
 
@@ -33,30 +39,32 @@ const handler = NextAuth({
     CredentialsProvider({
       name: "Credendials",
       async authorize(credendials) {
-        // PASSWORD SIGNIN
+        // SIGNIN WITH PASSWORD
         const passwordParsed = passwordSignInSchema.safeParse(credendials);
-        if (passwordParsed.success) {
-          const {email, password} = passwordParsed.data;
+        if (!passwordParsed.success) {
+          throw new Error(passwordParsed.error.issues[0].message);
+        } 
+        const {email, password} = passwordParsed.data;
 
-          const user = await prisma.user.findUnique({
-            where: {email: email.toLowerCase()},
-          });
-          if (!user || !user.password) return null;
+        const user = await prisma.user.findUnique({
+          where: {email: email.toLowerCase()},
+        });
 
-          const passwordMatch = await bcrypt.compare(
-            password, user.password
-          )
-          if (!passwordMatch) return null;
+        if (!user || !user.password) throw new Error("User not found!");
 
-          return {
-            id: user.id,
-            email: user.email,
-            name: user.name,
-            role: user.role,
-          }
-        };
+        const passwordMatch = await bcrypt.compare(
+          password, user.password
+        )
+        if (!passwordMatch) throw new Error("Incorrect password!");
 
-        // OTP SIGNIN
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.role,
+        }
+
+        // SIGNIN WITH OTP
         const otpParsed = otpSignInSchema.safeParse(credendials);
         if (otpParsed.success){
           const {email, otp} = otpParsed.data;
@@ -68,6 +76,7 @@ const handler = NextAuth({
           if (!success) {
             throw new Error("Too many attempts. Try again later.");
           }
+
           // FIND, CHECK AND VERIFIED USER
           const user = await prisma.user.findUnique({
             where: {email: email.toLowerCase()},
@@ -86,10 +95,12 @@ const handler = NextAuth({
           if (new Date() > userOtp.expiresAt) {
             throw new Error("OTP expired!");
           }
+
           // CHECK ATTEMPTS
           if (userOtp.attempts >= 5) {
             throw new Error("Too many wrong attempts. Try again later.");
           }
+
           // VEIRFY OTP
           const isValid = await bcrypt.compare(otp, userOtp.otp);
           if (!isValid) {

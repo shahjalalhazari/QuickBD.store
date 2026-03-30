@@ -5,7 +5,7 @@ import Link from "next/link";
 import UnderlineInput from "@/components/shared/inputFields/UnderlineInput";
 import UnderlinePasswordInputField from "@/components/shared/inputFields/UnderlinePasswordInputField";
 import OtpInputField from "@/components/shared/inputFields/OtpInputField";
-import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleLeft, FaEye, FaEyeSlash } from "react-icons/fa6";
 import GoogleAuthenticate from "../GoogleAuthenticate";
 import QuickbdLoading from "@/components/shared/QuickbdLoading";
 import { useRouter } from "next/navigation";
@@ -17,7 +17,8 @@ const SignInForm = () => {
   const [otpSent, setOtpSent] = useState(false);
   const [rememberedEmail, setRememberedEmail] = useState("");
   const [signInEmail, setSignInEmail] = useState("");
-  const [signInUserId, setSignInUserId] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [signInPassword, setSignInPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -156,21 +157,56 @@ const SignInForm = () => {
     }
   }
 
+  //
+  const handleShowPasswordField = () => {
+    if (loading) return;
+    setMessage(null);
+
+    if (!signInEmail) {
+      setMessage({type: false, text: "Please enter your email"});
+      return;
+    }
+    setMethod("password");
+  }
+
 
   // HANDLER FOR SIGNIN WITH PASSWORD
-  const handleSignInWithPassword = async() => {
+  const handleSignInWithPassword = async(e) => {
+    e.preventDefault();
+
+    if (loading) return;
+
     setLoading(true);
     setMessage(null);
 
     try {
-      if (!signInEmail) {
-        setMessage({type: "error", text: "Please enter your email"})
+      if (!signInEmail || !signInPassword) {
+        setMessage({type: "error", text: "Please enter your email and password"});
         return;
-      };
+      }
 
-      setMethod("password");
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: signInEmail,
+        password: signInPassword,
+        type: "password",
+      });
+
+      if(!res?.ok){
+        setMessage({type: res.ok, text: res.error || res.message});
+        return;
+      }
+
+      setMessage({type: true, text: "Sign In Successfull! You will be redirected"});
+
+      // REDIRECT
+      setTimeout(() => {
+        router.push("/");
+      }, 3000)
+
+      
     } catch (error) {
-      console.log(error);
+      setMessage({type: false, text: "Something went wrong!"});
     } finally {
       setLoading(false);
     }
@@ -227,6 +263,7 @@ const SignInForm = () => {
 
         {/* SHOW SEND OTP & USE PASSWORD BUTTONS  */}
         {method === null && (
+          <div className="flex flex-col gap-y-8">
           <div className="form-buttons">
             <button
               type="button"
@@ -239,12 +276,16 @@ const SignInForm = () => {
 
             <button
               type="button"
-              onClick={handleSignInWithPassword}
+              onClick={handleShowPasswordField}
               disabled={loading}
               className="full-width-btn quickbd-transition password-btn"
             >
               {loading ? <QuickbdLoading /> : "Use Password"}
             </button>
+          </div>
+
+          {/* GOOGLE LOGIN */}
+          <GoogleAuthenticate />
           </div>
         )}
 
@@ -295,10 +336,28 @@ const SignInForm = () => {
         {/* IF METHOD IS PASSWORD */}
         {method === "password" && (
           <div className="animate__animated animate__zoomIn">
-            <UnderlinePasswordInputField
-              label={"PASSWORD"}
-              name={"password"}
-            />
+            {/* PASSWORD FIELD */}
+            <div className="underline-password-input-group">
+              <input 
+                type={showPassword ? "text" : "password"}
+                name="password" 
+                placeholder="" 
+                required
+                className="underline-password-field"
+                value={signInPassword}
+                onChange={(e) => setSignInPassword(e.target.value)}
+              />
+              <p
+                title={showPassword ? "Hide Password" : "Show Password"}
+                onClick={() => {
+                  !setShowPassword(!showPassword);
+                }}
+                className="underline-show-password"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </p>
+              <label htmlFor="password" className="underline-password-label">PASSWORD</label>
+            </div>
 
             {/* REMEMBER CHECKBOX & FORGOT PASSWORD BTN */}
             <div className="remember-forgot mt-4">
@@ -320,15 +379,17 @@ const SignInForm = () => {
             </div>
 
             {/* VERIFY BUTTON */}
-            <button className="full-width-btn quickbd-transition submit-btn">
-              Sign In
+              <button 
+              type="submit"
+              disabled={loading}
+              onClick={handleSignInWithPassword}
+              className="full-width-btn quickbd-transition submit-btn"
+            >
+              {loading ? <QuickbdLoading /> : "Sign In"}
             </button>
           </div>
         )}
       </form>
-
-      {/* GOOGLE LOGIN */}
-      <GoogleAuthenticate />
     </div>
   );
 };
