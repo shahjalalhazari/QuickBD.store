@@ -21,3 +21,9 @@ export const verifyOtpRateLimit = new Ratelimit({
   redis,
   limiter: Ratelimit.slidingWindow(10, "5 m"),
 })
+
+// APPTEMPT LIMIT FOR PASSWORD SIGNIN - 10 ATTEMPTs / 5 MINs.
+export const passwordSignInRateLimit = new Ratelimit({
+  redis,
+  limiter: Ratelimit.slidingWindow(10, "5 m"),
+})

@@ -26,6 +26,9 @@ model User {
   verificationExpires DateTime?
   otpResendAllowedAt  DateTime?
 
+  passwordAddpempts Int       @default(0)
+  passwordLockUntil DateTime?
+
   accounts Account[]
   sessions Session[]
   otps     UserOtp[]

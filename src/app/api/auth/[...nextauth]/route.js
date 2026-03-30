@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcrypt";
 import {z} from "zod";
-import { verifyOtpRateLimit } from "@/lib/rate-limit";
+import { passwordSignInRateLimit, verifyOtpRateLimit } from "@/lib/rate-limit";
 const { default: NextAuth } = require("next-auth");
 
 // VALIDATION SCHEA
@@ -45,18 +45,64 @@ const handler = NextAuth({
           throw new Error(passwordParsed.error.issues[0].message);
         } 
         const {email, password} = passwordParsed.data;
+        const normalizedEmail = email.toLowerCase();
 
+        // CHECK USER IP AND RATE LIMIT
+        const ip = "unknown";
+        const identifier = `${ip}-${normalizedEmail}`;
+        const {success} = await passwordSignInRateLimit.limit(identifier);
+
+        // IF LIMIT EXCEED THEN BLOCK SIGNIN AND SHOW ERROR MESSAGE.
+        if (!success) {
+          throw new Error("Too many attempts. Try again later.");
+        }
+
+        // FIND USER BY EMAIL
         const user = await prisma.user.findUnique({
-          where: {email: email.toLowerCase()},
+          where: {email: normalizedEmail},
         });
-
         if (!user || !user.password) throw new Error("User not found!");
 
+        // CHECK TEMP LOCK
+        if (user.passwordLockUntil && user.passwordLockUntil > new Date()) {
+          const secondLeft = Math.ceil((user.passwordLockUntil - new Date()) / 1000);
+          throw new Error(`Account locked. Try again after ${secondLeft}s.`);
+        }
+
+        // CHECK ATTPEMPTS LIMIT
+        if (user.passwordAddpempts >= 5) {
+          // LOCK USER FOR 5 MINs
+          await prisma.user.update({
+            where: {id: user.id},
+            data: {
+              passwordLockUntil: new Date(Date.now() + 5 * 60 * 1000), // LOCK FOR 5 MINs
+              passwordAddpempts: 0, // RESET ATTEMPTS
+            }
+          })
+
+          throw new Error("Too many wrong attempts. Account locked for 5 minutes.");
+        }
+
+        // VERIFY PASSWORD
         const passwordMatch = await bcrypt.compare(
           password, user.password
         )
-        if (!passwordMatch) throw new Error("Incorrect password!");
+        if (!passwordMatch) {
+          await prisma.user.update({
+            where: {id: user.id},
+            data: {passwordAddpempts: {increment: 1}}
+          });
 
+          throw new Error("Incorrect password!")
+        };
+
+        // SUCCESSFUL SIGNIN, RESET ATTEMPTS AND LOCK
+        await prisma.user.update({
+          where: {id: user.id},
+          data: {passwordAddpempts: 0, passwordLockUntil: null}
+        });
+
+        // RETURN USER DATA FOR JWT & SESSION
         return {
           id: user.id,
           email: user.email,
