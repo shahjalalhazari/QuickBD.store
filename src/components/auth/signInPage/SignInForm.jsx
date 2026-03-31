@@ -16,6 +16,7 @@ const SignInForm = () => {
   const [timer, setTimer] = useState(30);
   const [otpSent, setOtpSent] = useState(false);
   const [rememberedEmail, setRememberedEmail] = useState("");
+  const [rememberMeChecked, setRememberMeChecked] = useState(false);
   const [signInEmail, setSignInEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [signInPassword, setSignInPassword] = useState("");
@@ -24,6 +25,7 @@ const SignInForm = () => {
   const [message, setMessage] = useState(null);
   const router = useRouter();
 
+// OTP TIMER EFFECT
   useEffect(() => {
     if (!otpSent || timer <= 0) return;
 
@@ -39,6 +41,18 @@ const SignInForm = () => {
 
     return () => clearInterval(interval);
   }, [otpSent, timer]);
+
+
+  // CHECK REMEMBERED EMAIL
+  useEffect(() => {
+    const email = localStorage.getItem("rememberEmail");
+    if (email) {
+      setRememberedEmail(email);
+      setSignInEmail(email);
+      setRememberMeChecked(true);
+    }
+
+  }, []);
 
   // HANDLER FOR BACK BUTTON
   const handleBackBtn = () => {
@@ -72,8 +86,6 @@ const SignInForm = () => {
         setMessage({type: data.success, text: data.error || data.message})
         return;
       }
-
-      setSignInUserId(data.userId);
 
       setMethod("otp");
       setOtpSent(true);
@@ -138,6 +150,8 @@ const SignInForm = () => {
         type: "otp",
       })
 
+      console.log(res);
+
       if (!res?.ok){
         setMessage({type: res.ok, text: res.error || res.message});
         return;
@@ -197,6 +211,13 @@ const SignInForm = () => {
         return;
       }
 
+      // REMEMBER IS CHECKED.
+      if (rememberMeChecked) {
+        localStorage.setItem("rememberEmail", signInEmail);
+      } else {
+        localStorage.removeItem("rememberEmail");
+      }
+
       setMessage({type: true, text: "Sign In Successfull! You will be redirected"});
 
       // REDIRECT
@@ -254,7 +275,7 @@ const SignInForm = () => {
             name="email" id="email"
             required
             placeholder=""
-            value={signInEmail}
+            defaultValue={rememberedEmail}
             onChange={(e) => setSignInEmail(e.target.value)}
             className="underline-input-field"
           />
@@ -308,6 +329,7 @@ const SignInForm = () => {
                   id="rememberLogin"
                   className="remember-checkbox uren-transition"
                   defaultChecked={!!rememberedEmail}
+                  onChange={(e) => setRememberMeChecked(e.target.checked)}
                 />
                 <label htmlFor="rememberLogin" className="cursor-pointer">Remember Me</label>
               </div>
@@ -369,6 +391,7 @@ const SignInForm = () => {
                   id="rememberLogin"
                   className="remember-checkbox uren-transition"
                   defaultChecked={!!rememberedEmail}
+                  onChange={(e) => setRememberMeChecked(e.target.checked)}
                 />
                 <label htmlFor="rememberLogin" className="cursor-pointer">Remember Me</label>
               </div>

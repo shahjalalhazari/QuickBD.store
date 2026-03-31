@@ -55,59 +55,57 @@ const handler = NextAuth({
         // IF LIMIT EXCEED THEN BLOCK SIGNIN AND SHOW ERROR MESSAGE.
         if (!success) {
           throw new Error("Too many attempts. Try again later.");
-        }
+        } else if (success) {
+          // FIND USER BY EMAIL
+          const user = await prisma.user.findUnique({
+            where: {email: normalizedEmail},
+          });
+          if (!user || !user.password) throw new Error("User not found!");
 
-        // FIND USER BY EMAIL
-        const user = await prisma.user.findUnique({
-          where: {email: normalizedEmail},
-        });
-        if (!user || !user.password) throw new Error("User not found!");
+          // CHECK TEMP LOCK
+          if (user.passwordLockUntil && user.passwordLockUntil > new Date()) {
+            const secondLeft = Math.ceil((user.passwordLockUntil - new Date()) / 1000);
+            throw new Error(`Account locked. Try again after ${secondLeft}s.`);
+          }
 
-        // CHECK TEMP LOCK
-        if (user.passwordLockUntil && user.passwordLockUntil > new Date()) {
-          const secondLeft = Math.ceil((user.passwordLockUntil - new Date()) / 1000);
-          throw new Error(`Account locked. Try again after ${secondLeft}s.`);
-        }
+          // CHECK ATTPEMPTS LIMIT
+          if (user.passwordAddpempts >= 5) {
+            // LOCK USER FOR 5 MINs
+            await prisma.user.update({
+              where: {id: user.id},
+              data: {
+                passwordLockUntil: new Date(Date.now() + 5 * 60 * 1000), // LOCK FOR 5 MINs
+                passwordAddpempts: 0, // RESET ATTEMPTS
+              }
+            })
+            throw new Error("Too many wrong attempts. Account locked for 5 minutes.");
+          }
 
-        // CHECK ATTPEMPTS LIMIT
-        if (user.passwordAddpempts >= 5) {
-          // LOCK USER FOR 5 MINs
+          // VERIFY PASSWORD
+          const passwordMatch = await bcrypt.compare(
+            password, user.password
+          )
+          if (!passwordMatch) {
+            await prisma.user.update({
+              where: {id: user.id},
+              data: {passwordAddpempts: {increment: 1}}
+            });
+            throw new Error("Incorrect password!")
+          };
+
+          // SUCCESSFUL SIGNIN, RESET ATTEMPTS AND LOCK
           await prisma.user.update({
             where: {id: user.id},
-            data: {
-              passwordLockUntil: new Date(Date.now() + 5 * 60 * 1000), // LOCK FOR 5 MINs
-              passwordAddpempts: 0, // RESET ATTEMPTS
-            }
-          })
-
-          throw new Error("Too many wrong attempts. Account locked for 5 minutes.");
-        }
-
-        // VERIFY PASSWORD
-        const passwordMatch = await bcrypt.compare(
-          password, user.password
-        )
-        if (!passwordMatch) {
-          await prisma.user.update({
-            where: {id: user.id},
-            data: {passwordAddpempts: {increment: 1}}
+            data: {passwordAddpempts: 0, passwordLockUntil: null}
           });
 
-          throw new Error("Incorrect password!")
-        };
-
-        // SUCCESSFUL SIGNIN, RESET ATTEMPTS AND LOCK
-        await prisma.user.update({
-          where: {id: user.id},
-          data: {passwordAddpempts: 0, passwordLockUntil: null}
-        });
-
-        // RETURN USER DATA FOR JWT & SESSION
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          role: user.role,
+          // RETURN USER DATA FOR JWT & SESSION
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.name,
+            role: user.role,
+          }
         }
 
         // SIGNIN WITH OTP
@@ -116,7 +114,7 @@ const handler = NextAuth({
           const {email, otp} = otpParsed.data;
 
           // CHECK USER IP AND RATE LIMIT
-          const ip = "unknown"; // NEXTAUTH DOESN'T GIVE REQ EASILY.
+          const ip = "unknown";
           const identifier = `${ip}-${email}`;
           const {success} = await verifyOtpRateLimit.limit(identifier);
           if (!success) {
