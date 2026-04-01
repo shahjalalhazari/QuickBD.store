@@ -2,14 +2,11 @@
 import {signIn} from "next-auth/react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import UnderlineInput from "@/components/shared/inputFields/UnderlineInput";
-import UnderlinePasswordInputField from "@/components/shared/inputFields/UnderlinePasswordInputField";
 import OtpInputField from "@/components/shared/inputFields/OtpInputField";
 import { FaAngleLeft, FaEye, FaEyeSlash } from "react-icons/fa6";
 import GoogleAuthenticate from "../GoogleAuthenticate";
 import QuickbdLoading from "@/components/shared/QuickbdLoading";
 import { useRouter } from "next/navigation";
-
 
 const SignInForm = () => {
   const [method, setMethod] = useState(null); // NULL || OTP || PASSWORD
@@ -25,7 +22,7 @@ const SignInForm = () => {
   const [message, setMessage] = useState(null);
   const router = useRouter();
 
-// OTP TIMER EFFECT
+  // OTP TIMER EFFECT
   useEffect(() => {
     if (!otpSent || timer <= 0) return;
 
