@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import {z} from "zod";
 import { handleSignInWithPassword } from "@/lib/auth/passwordSignIn";
 import { handleSignInWithOTP } from "@/lib/auth/otpSignIn";
+import { googleAuth } from "@/lib/auth/googleAuth";
 const { default: NextAuth } = require("next-auth");
 
 // VALIDATION SCHEA
@@ -36,6 +37,10 @@ const handler = NextAuth({
   },
 
   providers: [
+    // AUTHENTICATION WITH GOOGLE
+    googleAuth,
+
+    // AUTHENTICATION WITH EMAIL & PASSWORD OR OTP
     CredentialsProvider({
       name: "Credendials",
       async authorize(credentials) {
@@ -71,6 +76,50 @@ const handler = NextAuth({
   ],
 
   callbacks: {
+    // GOOGLE AUTH - ACCOUNT LINKING LOGIC
+    async signIn({ user, account }) {
+      if (account?.provider === "google") {
+        if (!user.email) return false;
+
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email },
+          include: { accounts: true },
+        });
+
+        // ✅ CASE 1: No user → allow normal flow (adapter will create)
+        if (!existingUser) return true;
+
+        // ✅ CASE 2: User exists → check if already linked
+        const alreadyLinked = existingUser.accounts.some(
+          (acc) => acc.provider === "google"
+        );
+
+        if (alreadyLinked) {
+          return true; // normal login
+        }
+
+        // ✅ CASE 3: Exists but not linked → LINK manually
+        await prisma.account.create({
+          data: {
+            userId: existingUser.id,
+            type: account.type,
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+            access_token: account.access_token,
+            refresh_token: account.refresh_token,
+            expires_at: account.expires_at,
+            token_type: account.token_type,
+            scope: account.scope,
+            id_token: account.id_token,
+            session_state: account.session_state,
+          },
+        });
+        return true;
+      }
+      return true;
+    },
+
+
     async jwt({token, user}) {
       if (user) token.role = user.role;
       return token;
@@ -83,6 +132,21 @@ const handler = NextAuth({
       }
       return session;
     }
+  },
+
+  events: {
+    async createUser({ user }) {
+      const account = await prisma.account.findFirst({
+        where: { userId: user.id },
+      });
+
+      if (account?.provider === "google") {
+        await prisma.user.update({
+          where: { id: user.id },
+          data: { emailVerified: new Date(Date.now()) },
+        });
+      }
+    },
   },
 
   pages: {

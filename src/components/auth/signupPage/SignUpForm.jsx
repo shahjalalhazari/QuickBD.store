@@ -7,6 +7,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
+import AuthHeader from "../AuthHeader";
+import QuickbdMessage from "@/components/shared/QuickbdMessage";
+import GoogleAuthenticate from "../GoogleAuthenticate";
 
 const SignUpForm = () => {
   const [agreePolicy, setAgreePolicy] = useState(false);
@@ -166,24 +169,16 @@ const SignUpForm = () => {
       {step === "form" && (
         <>
           {/* HEADER */}
-          <div className="header">
-            <h3 className="heading">Sign Up</h3>
-            <p className="redirect-text">
-              Already have an account?&nbsp;
-              <Link href={"/auth/signin"}>
-                Sign In
-              </Link>
-            </p>
-          </div>
+          <AuthHeader
+            heading={"Sign Up"}
+            bodyText={"Already have an account"}
+            linkText={"Sign In"}
+            linkHref={"/auth/signin"}
+          />
 
           {/* SHOW MESSAGES */}
           {message && (
-            <div className={`message-box ${
-                message.type === "success" ? "success-message" : "error-message"
-              }`}
-            >
-              {message.text}
-            </div>
+            <QuickbdMessage message={message} />
           )}
 
           {/* SIGN UP FORM */}
@@ -240,9 +235,7 @@ const SignUpForm = () => {
           </form>
 
           {/* GOOGLE LOGIN */}
-          <button className="full-width-btn quickbd-transition google-login-btn">
-            <FcGoogle size={20} /> Continue with Google
-          </button> 
+          <GoogleAuthenticate />
         </>
       )}
 

@@ -7,6 +7,8 @@ import { FaAngleLeft, FaEye, FaEyeSlash } from "react-icons/fa6";
 import GoogleAuthenticate from "../GoogleAuthenticate";
 import QuickbdLoading from "@/components/shared/QuickbdLoading";
 import { useRouter } from "next/navigation";
+import AuthHeader from "../AuthHeader";
+import QuickbdMessage from "@/components/shared/QuickbdMessage";
 
 const SignInForm = () => {
   const [method, setMethod] = useState(null); // NULL || OTP || PASSWORD
@@ -50,6 +52,7 @@ const SignInForm = () => {
     }
 
   }, []);
+
 
   // HANDLER FOR BACK BUTTON
   const handleBackBtn = () => {
@@ -123,7 +126,6 @@ const SignInForm = () => {
       setTimer(30);
       setOtpSent(true);
       setMessage({ type: true, text: "OTP resent successfully!" || data.message });
-
     } catch (error) {
       setMessage({ type: false, text: "Failed to resend OTP" });
     } finally {
@@ -147,20 +149,13 @@ const SignInForm = () => {
         type: "otp",
       })
 
-      console.log(res);
-
       if (!res?.ok){
         setMessage({type: res.ok, text: res.error || res.message});
         return;
       }
 
       // SIGNIN SUCCESS
-      setMessage({type: true, text: "Sign In Successfull! You will be redirected"});
-
-      // REDIRECT
-      setTimeout(() => {
-        router.push("/");
-      }, 3000)
+      router.push("/?signin=otp_success");
     } catch (error) {
       setMessage({type: false, text: "Something went wrong!"});
     } finally {
@@ -168,7 +163,7 @@ const SignInForm = () => {
     }
   }
 
-  //
+  // SHOW PASSWORD FIELD
   const handleShowPasswordField = () => {
     if (loading) return;
     setMessage(null);
@@ -215,14 +210,9 @@ const SignInForm = () => {
         localStorage.removeItem("rememberEmail");
       }
 
-      setMessage({type: true, text: "Sign In Successfull! You will be redirected"});
+      // SUCESSFUL SIGN IN
+      router.push("/?signin=password_success");
 
-      // REDIRECT
-      setTimeout(() => {
-        router.push("/");
-      }, 3000)
-
-      
     } catch (error) {
       setMessage({type: false, text: "Something went wrong!"});
     } finally {
@@ -234,15 +224,12 @@ const SignInForm = () => {
   return (
     <div className="form-container">
       {/* HEADER */}
-      <div className="header">
-        <h3 className="heading">Sign In</h3>
-        <p className="redirect-text">
-          Don't have account yet?&nbsp;
-          <Link href={"/auth/signup"}>
-            {"Sign Up"}
-          </Link>
-        </p>
-      </div>
+      <AuthHeader
+        heading={"Sign In"}
+        bodyText={"Don't have an account"}
+        linkText={"Sign Up"}
+        linkHref={"/auth/signup"}
+      />
 
       {(method === "otp" || method === "password") &&
         <button
@@ -255,12 +242,7 @@ const SignInForm = () => {
 
       {/* SHOW MESSAGES */}
       {message && (
-        <div className={`message-box ${
-            message.type === true ? "success-message" : "error-message"
-          }`}
-        >
-          {message.text}
-        </div>
+        <QuickbdMessage message={message} />
       )}
 
       {/* SIGN IN FORM */}

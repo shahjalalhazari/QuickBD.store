@@ -1,9 +1,20 @@
+import { signIn } from 'next-auth/react';
 import { FcGoogle } from 'react-icons/fc';
 
 const GoogleAuthenticate = () => {
+  const handleGoogleLogin = () => {
+    signIn("google", {
+      callbackUrl: "/?signin=google_success",
+    });
+  };
+
   return (
-    <button className="full-width-btn quickbd-transition google-login-btn">
-      <FcGoogle size={20} /> Sign in with Google
+    <button 
+      type="button"
+      className="full-width-btn quickbd-transition google-login-btn"
+      onClick={handleGoogleLogin}
+    >
+      <FcGoogle size={20} /> Continue with Google
     </button>  
   );
 };
