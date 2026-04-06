@@ -3,14 +3,14 @@ import { NextResponse } from "next/server";
 import { generateAndSendOtp } from "@/lib/otp";
 import { rateLimitChecker } from "@/lib/rate-limit-checker";
 import { sendOtpRateLimit } from "@/lib/rate-limit";
+import { getClientInfo } from "@/lib/getClientInfo";
 
 export async function POST(req) {
   // CHECK USER IP AND RATE LIMIT
-  const forwardedFor = req.headers.get("x-forwarded-for");
-  const ip = forwardedFor ? forwardedFor.split(",")[0].trim() : "anonymous";
+  const {ip, userAgent} = await getClientInfo();
 
   const {email} = await req.json();
-  const identifier = `${ip}-${email}`;
+  const identifier = `${ip}-${email.toLowerCase()}`;
 
   const rateLimitResponse = await rateLimitChecker(sendOtpRateLimit, identifier);
   if (rateLimitResponse) return rateLimitResponse;

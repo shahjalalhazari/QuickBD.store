@@ -3,12 +3,12 @@ import { NextResponse } from "next/server";
 import bcrypt from 'bcrypt';
 import { verifyOtpRateLimit } from "@/lib/rate-limit";
 import { rateLimitChecker } from "@/lib/rate-limit-checker";
+import { getClientInfo } from "@/lib/getClientInfo";
 
 export async function POST (req) {
   try {
     // CHECK USER IP AND RATE LIMIT
-    const forwardedFor = req.headers.get("x-forwarded-for");
-    const ip = forwardedFor ? forwardedFor.split(",")[0].trim() : "anonymous";
+    const {ip, userAgent} = await getClientInfo();
     const rateLimitResponse = await rateLimitChecker(verifyOtpRateLimit, ip);
     if (rateLimitResponse) return rateLimitResponse;
 

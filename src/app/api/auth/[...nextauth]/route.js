@@ -86,19 +86,19 @@ const handler = NextAuth({
           include: { accounts: true },
         });
 
-        // ✅ CASE 1: No user → allow normal flow (adapter will create)
+        // ✅ CASE 1: NO USER
         if (!existingUser) return true;
 
-        // ✅ CASE 2: User exists → check if already linked
+        // ✅ CASE 2: USER EXISTS & LINKED → NORMAL LOGIN
         const alreadyLinked = existingUser.accounts.some(
           (acc) => acc.provider === "google"
         );
 
         if (alreadyLinked) {
-          return true; // normal login
+          return true;
         }
 
-        // ✅ CASE 3: Exists but not linked → LINK manually
+        // ✅ CASE 3: USER EXISTS BUT NOT LINKED
         await prisma.account.create({
           data: {
             userId: existingUser.id,

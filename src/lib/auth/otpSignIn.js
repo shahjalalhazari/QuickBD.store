@@ -1,15 +1,14 @@
-import { headers } from "next/headers";
 import { prisma } from "../prisma";
 import { verifyOtpRateLimit } from "../rate-limit";
 import bcrypt from 'bcrypt';
+import { getClientInfo } from "../getClientInfo";
 
 
 export const handleSignInWithOTP = async ({email, otp}) => {
   const normalizedEmail = email.toLowerCase();
 
   // CHECK USER IP AND RATE LIMIT
-  const headersList = headers();
-  const ip = headersList.get("x-forwarded-for") || headersList.get("x-real-ip") || "unknown";
+  const {ip, userAgent} = await getClientInfo();
   const identifier = `${ip}-${normalizedEmail}`;
   const {success} = await verifyOtpRateLimit.limit(identifier);
   if (!success) {

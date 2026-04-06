@@ -1,15 +1,14 @@
 import { prisma } from "../prisma";
 import bcrypt from 'bcrypt';
 import { passwordSignInRateLimit } from "../rate-limit";
-import { headers } from "next/headers";
+import { getClientInfo } from "../getClientInfo";
 
 
 export const handleSignInWithPassword = async ({email, password}) => {
   const normalizedEmail = email.toLowerCase();
 
   // CHECK USER IP AND RATE LIMIT
-  const headersList = headers();
-  const ip = headersList.get("x-forwarded-for") || headersList.get("x-real-ip") || "unknown";
+  const {ip, userAgent} = await getClientInfo();
   const identifier = `${ip}-${normalizedEmail}`;
   const { success } = await passwordSignInRateLimit.limit(identifier);
   if (!success) {

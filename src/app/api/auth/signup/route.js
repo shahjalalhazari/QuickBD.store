@@ -4,12 +4,12 @@ import bcrypt from "bcrypt";
 import { signUpSchema } from "@/schemas/auth.schema";
 import { rateLimitChecker } from "@/lib/rate-limit-checker";
 import { signUpRateLimit } from "@/lib/rate-limit";
+import { getClientInfo } from "@/lib/getClientInfo";
 
 export async function POST(req) {
   try {
     // CHECK USER IP AND RATE LIMIT
-    const forwardedFor = req.headers.get("x-forwarded-for");
-    const ip = forwardedFor ? forwardedFor.split(",")[0].trim() : "anonymous";
+    const {ip, userAgent} = await getClientInfo();
     const rateLimitResponse = await rateLimitChecker(signUpRateLimit, ip);
     if (rateLimitResponse) return rateLimitResponse;
 
