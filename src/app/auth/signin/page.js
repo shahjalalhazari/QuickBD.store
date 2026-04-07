@@ -2,6 +2,8 @@ import "./signin.css";
 import SignInForm from '@/components/auth/signInPage/SignInForm';
 import ImageContainer from '@/components/auth/ImageContainer';
 import { SITE_DESCRIPTION, TEMPLATE_NAMES } from "@/app/metadata";
+import { Suspense } from "react";
+import QuickbdLoading from "@/components/shared/QuickbdLoading";
 
 export const metadata = {
   title: TEMPLATE_NAMES.signin,
@@ -17,7 +19,9 @@ const SignInPage = () => {
         logo={"/images/logo/whiteLogo.png"}
       />
       {/* FORM COINTAINER */}
-			<SignInForm />
+      <Suspense fallback={<QuickbdLoading />}>
+        <SignInForm />
+      </Suspense>
 		</div>
 	);
 };

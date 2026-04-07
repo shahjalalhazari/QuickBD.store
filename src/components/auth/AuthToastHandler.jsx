@@ -25,7 +25,8 @@ const AuthToastHandler = () => {
       if (signin) {
         const newParams = new URLSearchParams(params.toString());
         newParams.delete("signin");
-        router.replace(`?${newParams.toString()}`, { scroll: false });
+        const query = newParams.toString();
+        router.replace(query ? `?${query}` : "/", { scroll: false });
       }
     }
   }, [params, router]);
