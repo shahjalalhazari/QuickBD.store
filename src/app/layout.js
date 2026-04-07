@@ -34,7 +34,12 @@ export const metadata = baseMetadata;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${hind.variable} font-montserrat`} data-theme="light">
+    <html 
+      lang="en" 
+      className={`${montserrat.variable} ${hind.variable} font-montserrat`} 
+      data-theme="light" 
+      data-scroll-behavior="smooth"
+    >
       <head>
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
