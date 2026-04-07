@@ -6,7 +6,6 @@ import NewArrivals from "@/components/homePage/NewArrivals";
 import FeatureCardsSection from "@/components/homePage/FeatureCardsSection";
 import TestimonialSetion from "@/components/homePage/TestimonialSetion";
 import { SITE_DESCRIPTION, TEMPLATE_NAMES } from "../metadata";
-import AuthToastHandler from "@/components/auth/AuthToastHandler";
 
 export const metadata = {
   title: TEMPLATE_NAMES.home,
@@ -16,9 +15,6 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="home-page">
-      {/* AUTH TOAST HANDLER */}
-      <AuthToastHandler />
-
       {/* HOME PAGE CONTENT */}
       <HeroSection />
 

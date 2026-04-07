@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-export default function NotFound() {
+export default function Unauthorized() {
   const router = useRouter();
 
   return (
@@ -26,14 +26,14 @@ export default function NotFound() {
       <Image 
         src="/shapes/error-page/Oval-2.png" 
         alt="shape" width={59} height={59} 
-        className="oval-2  animate-float-y"
+        className="oval-2 animate-float-y"
       />
       <Image 
         src="/shapes/error-page/Oval-3.png" 
         alt="shape" width={63} height={63} 
-        className="oval-3  animate-float-x"
+        className="oval-3 animate-float-x"
       />
-			<Image 
+      <Image 
         src="/shapes/error-page/Oval-4.png" 
         alt="shape" width={111} height={111} 
         className="oval-4 animate-float-diagonal"
@@ -41,16 +41,16 @@ export default function NotFound() {
       <Image 
         src="/shapes/error-page/Oval-5.png" 
         alt="shape" width={167} height={167} 
-        className="oval-5  animate-float-y"
+        className="oval-5 animate-float-y"
       />
 
       {/* CONTENT */}
       <div className="content">
-        <h1 className="error-heading">404</h1>
-        <h2 className="error-subheading">PAGE NOT FOUND</h2>
+        <h1 className="error-heading">403</h1>
+        <h2 className="error-subheading">ACCESS DENIED</h2>
         <p className="error-paragraph">
-          Oops! The page you are looking for does not exist.
-          It might have been moved or deleted.
+          Sorry, you do not have permission to access this page.
+          Please check your account or return to the homepage.
         </p>
         <div className="back-to-home-btn">
           <button

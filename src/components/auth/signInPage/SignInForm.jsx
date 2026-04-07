@@ -6,7 +6,7 @@ import OtpInputField from "@/components/shared/inputFields/OtpInputField";
 import { FaAngleLeft, FaEye, FaEyeSlash } from "react-icons/fa6";
 import GoogleAuthenticate from "../GoogleAuthenticate";
 import QuickbdLoading from "@/components/shared/QuickbdLoading";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import AuthHeader from "../AuthHeader";
 import QuickbdMessage from "@/components/shared/QuickbdMessage";
 
@@ -19,10 +19,12 @@ const SignInForm = () => {
   const [signInEmail, setSignInEmail] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [signInPassword, setSignInPassword] = useState("");
-
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectPath = searchParams?.get("redirect") || "/";
 
   // OTP TIMER EFFECT
   useEffect(() => {
@@ -155,7 +157,7 @@ const SignInForm = () => {
       }
 
       // SIGNIN SUCCESS
-      router.push("/?signin=otp_success");
+      router.push(`${redirectPath}?signin=otp_success`);
     } catch (error) {
       setMessage({type: false, text: "Something went wrong!"});
     } finally {
@@ -211,8 +213,7 @@ const SignInForm = () => {
       }
 
       // SUCESSFUL SIGN IN
-      router.push("/?signin=password_success");
-
+      router.push(`${redirectPath}?signin=password_success`);
     } catch (error) {
       setMessage({type: false, text: "Something went wrong!"});
     } finally {
