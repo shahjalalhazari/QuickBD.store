@@ -1,311 +1,70 @@
 "use client";
-import OtpInputField from "@/components/shared/inputFields/OtpInputField";
-import UnderlineInput from "@/components/shared/inputFields/UnderlineInput";
-import UnderlinePasswordInputField from "@/components/shared/inputFields/UnderlinePasswordInputField";
-import QuickbdLoading from "@/components/shared/QuickbdLoading";
-import Link from "next/link";
 import { useEffect, useState } from "react";
-import { FaAngleLeft } from "react-icons/fa6";
-import { FcGoogle } from "react-icons/fc";
 import AuthHeader from "../AuthHeader";
 import QuickbdMessage from "@/components/shared/QuickbdMessage";
 import GoogleAuthenticate from "../GoogleAuthenticate";
+import BackBtn from "../BackBtn";
+import OtpStep from "./steps/OtpStep";
+import FormStep from "./steps/FormStep";
+import VerifiedStep from "./steps/VerifiedStep";
 
 const SignUpForm = () => {
-  const [agreePolicy, setAgreePolicy] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState(null);
-  const [registerUserId, setRegisterUserId] = useState("");
+  const [state, setState] = useState({
+    step: "form",
+    loading: false,
+    message: null,
+    agreePolicy: false,
+    registerUserId: "",
+    timer: 0,
+  });
 
-  const [step, setStep] = useState("form");
-  const [timer, setTimer] = useState(0);
+  // HELPER FUNCTION TO UPDATE STATE
+  const updateState = (data) => {
+    setState((prev) => ({...prev, ...data}));
+  };
 
+  const {step, timer, message,} = state;
 
+  // TIMER EFFECT FOR OTP RESEND
   useEffect(() => {
     if (step !== "otp" || timer === 0) return;
 
     const interval = setInterval(() => {
-      setTimer((prev) => prev - 1);
+      setState((prev) => ({...prev, timer: prev.timer - 1}));
     }, 1000);
 
     return () => clearInterval(interval);
   }, [step, timer]);
 
-
-  // SEND OTP FUNCTION
-  const sendOtp = async(userId) => {
-    try {
-      const res = await fetch("/api/auth/send-otp", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({userId}),
-        cache: "no-store",
-      });
-
-      const data = await res.json();
-      if(!res.ok) {
-        if (data.secondsLeft) {
-          setTimer(data.secondsLeft);
-        }
-        throw new Error(data.error || "Failed to send OTP!");
-      }
-      return data;
-    } catch (error) {
-      setMessage({type: "error", text: error.message})
-      return null;
-    }
-  }
-
-
-  // HANDLER FOR USER SIGNUP
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (loading) return;
-
-    setLoading(true);
-    setMessage(null);
-
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const confirmPassword = form.confirmPassword.value;
-    const newUser = {name, email, password, confirmPassword};
-
-    try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(newUser),
-        cache: "no-store",
-      });
-
-      const data = await res.json();
-      if (!res.ok) {
-        setMessage({ type: "error", text: data.error});
-        return;
-      }
-
-      setRegisterUserId(data.userId);
-
-      // CALL SEND OTP API
-      const otpData = await sendOtp(data.userId);
-      if (!otpData) return;
-
-      // SHOW OTP INPUT FIELDS AND START THE TIMER
-      setStep("otp");
-      setTimer(otpData.cooldown || 30);
-
-      // SUCCESS MESSAGE
-      setMessage({ type: "success", text: data.message});
-    } catch (error) {
-      setMessage({ type: "error", text: "SignUp failed! Try again."});
-    } finally {
-      setLoading(false);
-    }
-  }
-
-
-  // OTP RESEND HANDLER
-  const handleResendOtp = async () => {
-    if (!registerUserId) return;
-
-    setLoading(true);
-    setMessage(null);
-
-    try {
-      const otpData = await sendOtp(registerUserId);
-      if(!otpData) return;
-      setTimer(otpData.cooldown || 30)
-
-      setMessage({type: "success", text: "OTP resend successful!"})
-    } catch (error) {
-      setMessage({type: "error", text: "Failed to Resend OTP."})
-    } finally {
-      setLoading(false);
-    }
-  };
-
-
-  // VERIFY OTP HANDLER
-  const handleVerifyOtp = async (otp) => {
-    if (!registerUserId) return;
-
-    setLoading(true);
-    setMessage(null);
-
-    try {
-      // SEND OTP FOR VERIFY WITH USER ID
-      const res = await fetch("/api/auth/verify-otp", {
-        method: "POST",
-        body: JSON.stringify({userId: registerUserId, otp}),
-        headers: {"Content-type": "application/json"}
-      });
-
-      const data = await res.json();
-      if (data.success) {
-        setMessage({type: "success", text: data.message});
-        // SHOW VERIFICARION SUCCESS
-        setStep("verified");
-
-        // REDIRECT USER TO SIGNIN PAGE AFTER OTP VERICATION
-        setTimeout(() => {
-          window.location.href = "/auth/signin";
-        }, 5000)
-      } else {
-        setMessage({type: "error", text: data.error})
-      }
-    } catch (error) {
-      setMessage({type: "error", text: "Failed to verify OTP"});
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  
   return (
     <div className="form-container">
-      {/* SHOW SIGNUP FORM */}
-      {step === "form" && (
-        <>
-          {/* HEADER */}
-          <AuthHeader
-            heading={"Sign Up"}
-            bodyText={"Already have an account"}
-            linkText={"Sign In"}
-            linkHref={"/auth/signin"}
-          />
+      {/* HEADER */}
+      <AuthHeader
+        heading={"Sign Up"}
+        bodyText={"Already have an account"}
+        linkText={"Sign In"}
+        linkHref={"/auth/signin"}
+      />
 
-          {/* SHOW MESSAGES */}
-          {message && (
-            <QuickbdMessage message={message} />
-          )}
+      {/* BACK BUTTON */}
+      {step !== "form" && <BackBtn setStep={(s) => updateState({ step: s })} step="form" />}
 
-          {/* SIGN UP FORM */}
-          <form
-            onSubmit={handleSubmit}
-            className="auth-form-layout animate__animated animate__fadeIn"
-          >
-            {/* Name FIELD */}
-            <UnderlineInput
-              label={"FULL NAME"}
-              name={"name"}
-              type={"text"}
-            />
-            {/* EMAIL FIELD */}
-            <UnderlineInput
-              label={"E-MAIL"}
-              name={"email"}
-              type={"email"}
-            />
-            {/* PASSWORD FIELD */}
-            <UnderlinePasswordInputField
-              label={"PASSOWRD"}
-              name={"password"}
-            />
-            {/* CONFIEM PASSWORD FIELD */}
-            <UnderlinePasswordInputField
-              label={"CONFIRM PASSWORD"}
-              name={"confirmPassword"}
-            />
+      {/* SHOW MESSAGES */}
+      {message && <QuickbdMessage message={message} />}
 
-            {/* CHECKBOX */}
-            <div className="checkbox-field">
-              <input
-                type="checkbox"
-                name="privacyPolicyChecked"
-                className="privacy-checkbox uren-transition"
-                checked={agreePolicy}
-                onChange={(e) => setAgreePolicy(e.target.checked)}
-              />
-              <label 
-                htmlFor="privacyPolicyChecked" 
-                className="privacy-label"
-              >
-                I agree with <Link href={"/"}>Privacy Policy </Link> and <Link href={"/"}>Terms of Use</Link>
-              </label>
-            </div>
-
-            <button 
-              className="full-width-btn quickbd-transition submit-btn"
-              disabled={!agreePolicy || loading}
-            >
-              {loading ? <QuickbdLoading /> : "Sign Up"}
-            </button>
-          </form>
-
-          {/* GOOGLE LOGIN */}
-          <GoogleAuthenticate />
-        </>
-      )}
-
+      {/* FORM STEP */}
+      {step === "form" && <>
+        {/* FORM */}
+        <FormStep state={state} updateState={updateState} />
+        {/* GOOGLE AUTHENTICATE BUTTON */}
+        <GoogleAuthenticate />
+      </>}
 
       {/* SHOW OTP FORM */}
-      {step === "otp" && (
-        <div className="animate__animated animate__fadeIn">
-          <button
-            onClick={() => setStep("form")}
-            className="back-btn quickbd-transition"
-          >
-            <FaAngleLeft /> Back
-          </button>
-
-          {/* HEADER */}
-          <h3 className="sub-heading">Verify Your E-mail</h3>
-          {/* SHOW MESSAGES */}
-          {message && (
-            <div className={`message-box mt-4 mb-8 ${
-                message.type === "success" ? "success-message" : "error-message"
-              }`}
-            >
-              {message.text}
-            </div>
-          )}
-
-          <OtpInputField
-            onComplete={(otp) => {handleVerifyOtp(otp)}}
-          />
-            {/* VERIFY LOADING SPINNER */}
-            {loading 
-            ? <div className="mt-8 mb-4 flex items-center justify-center">
-                <QuickbdLoading />
-              </div>
-            : <>{/* TIMER & RESEND BUTTON */}
-              <div className="otp-timer">
-                {timer > 0 ? (
-                  <span>
-                    Resend OTP in {timer}s
-                  </span>
-                ) : (
-                  <button
-                    onClick={handleResendOtp}
-                    className="resend-otp-btn quickbd-transition"
-                  >Resend OTP
-                  </button>
-                )}
-              </div>
-              </>
-              
-            }
-          </div>
-      )}
-
+      {step === "otp" && <OtpStep state={state} updateState={updateState} />}
 
       {/* SHOW VERIFICARION MESSAGE */}
-      {step === "verified" && (
-        <div className="animate__animated animate__fadeIn">
-          <h3 className="sub-heading">Email Verified Successfully!</h3>
-          {/* SHOW MESSAGES */}
-          {message && (
-            <div className={`message-box mt-4 mb-8 ${
-                message.type === "success" ? "success-message" : "error-message"
-              }`}
-            >
-              {message.text}
-            </div>
-          )}
-        </div>
-      )}
+      {step === "verified" && <VerifiedStep />}
     </div>
   );
 };
