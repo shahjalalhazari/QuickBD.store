@@ -114,6 +114,12 @@ const handler = NextAuth({
             session_state: account.session_state,
           },
         });
+
+        // MAKE SURE EMAIL IS VERIFIED
+        await prisma.user.update({
+          where: { email: user.email },
+          data: { emailVerified: new Date(Date.now()) },
+        });
         return true;
       }
       return true;
@@ -135,12 +141,8 @@ const handler = NextAuth({
   },
 
   events: {
-    async createUser({ user }) {
-      const account = await prisma.account.findFirst({
-        where: { userId: user.id },
-      });
-
-      if (account?.provider === "google") {
+    async linkAccount({ user, account }) {
+      if (account.provider === "google") {
         await prisma.user.update({
           where: { id: user.id },
           data: { emailVerified: new Date(Date.now()) },

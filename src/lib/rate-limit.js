@@ -10,16 +10,16 @@ export const signUpRateLimit = new Ratelimit({
   analytics: true,
 });
 
-// RATE LIMIT FOR SEND OTP - 3 REQs / 5 MINs.
+// RATE LIMIT FOR SEND OTP - 5 REQs / 5 MINs.
 export const sendOtpRateLimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(3, "5 m"),
+  limiter: Ratelimit.slidingWindow(5, "5 m"),
 });
 
-// RATE LIMIT FOR VERIFY OTP - 10 ATTEMPTs / 5 MINs.
+// RATE LIMIT FOR VERIFY OTP - 5 ATTEMPTs / 5 MINs.
 export const verifyOtpRateLimit = new Ratelimit({
   redis,
-  limiter: Ratelimit.slidingWindow(10, "5 m"),
+  limiter: Ratelimit.slidingWindow(5, "5 m"),
 })
 
 // APPTEMPT LIMIT FOR PASSWORD SIGNIN - 10 ATTEMPTs / 5 MINs.
