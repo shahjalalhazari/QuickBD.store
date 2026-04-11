@@ -22,7 +22,7 @@ const ROLE_ROUTES = [
 export async function middleware(request) {
   try {
     // GET PATH & TOKEN
-    const { pathname } = request.nextUrl;
+    const { pathname, search } = request.nextUrl;
     const token = await getToken({
       req: request,
       secret: process.env.NEXTAUTH_SECRET,
@@ -55,7 +55,8 @@ export async function middleware(request) {
     // USER NOT AUTHENTICATED, REDIRECT TO SIGNIN
     if (!token) {
       const signInUrl = new URL("/auth/signin", request.url);
-      signInUrl.searchParams.set("redirect", pathname);
+      const fullPath = pathname + search;
+      signInUrl.searchParams.set("callbackUrl", fullPath);
       return NextResponse.redirect(signInUrl);
     }
 

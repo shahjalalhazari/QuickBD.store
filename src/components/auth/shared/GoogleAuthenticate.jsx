@@ -5,15 +5,10 @@ import { FcGoogle } from 'react-icons/fc';
 
 const GoogleAuthenticate = () => {
   const searchParams = useSearchParams();
-  const redirectPath = searchParams?.get("redirect") || "/";
+  const callbackUrl = searchParams?.get("callbackUrl") || "/";
 
   const handleGoogleLogin = () => {
-    const url = new URL(redirectPath, window.location.origin);
-    url.searchParams.set("signin", "google_success");
-
-    signIn("google", {
-      callbackUrl: url.toString(),
-    });
+    signIn("google", { callbackUrl });
   };
 
   return (

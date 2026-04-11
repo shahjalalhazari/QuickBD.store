@@ -4,8 +4,6 @@ import { baseMetadata } from "./metadata";
 import 'animate.css';
 import AuthProviders from "@/providers/AuthProviders";
 import { Bounce, ToastContainer } from "react-toastify";
-import AuthToastHandler from "@/components/auth/shared/AuthToastHandler";
-import { Suspense } from "react";
 
 
 const montserrat = Montserrat({
@@ -66,11 +64,6 @@ export default function RootLayout({ children }) {
             theme="light"
             transition={Bounce}
           />
-
-          {/* AUTH TOAST HANDLER */}
-          <Suspense fallback={null}>
-            <AuthToastHandler />
-          </Suspense>
           {children}
         </AuthProviders>
       </body>

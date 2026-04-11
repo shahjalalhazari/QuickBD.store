@@ -14,7 +14,7 @@ const PasswordStep = ({state, updateState}) => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectPath = searchParams?.get("redirect") || "/";
+  const callbackUrl = searchParams?.get("callbackUrl") || "/";
 
 
   // HANDLER FOR SIGNIN WITH PASSWORD
@@ -45,9 +45,7 @@ const PasswordStep = ({state, updateState}) => {
       // REMEMBER EMAIL, UPDATE MESSAGE & REDIRECT
       handleRememberEmail({rememberMe, email});
       updateState({ message: { type: "success", text: "Successfully signed in with password 🎉 Redirecting..." } });
-      setTimeout(() => {
-        router.push(`${redirectPath}`);
-      }, 5000)
+      setTimeout(() => { router.push(`${callbackUrl}`)}, 5000)
 
     } catch (error) {
       console.log(error);

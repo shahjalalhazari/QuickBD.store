@@ -13,7 +13,7 @@ const OtpStep = ({state, updateState}) => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirectPath = searchParams?.get("redirect") || "/";
+  const callbackUrl = searchParams?.get("callbackUrl") || "/";
 
 
   // HANDLER FOR RESEND OTP
@@ -73,9 +73,7 @@ const OtpStep = ({state, updateState}) => {
       // SAVE REMEMBER EMAIL, SUCCESS MESSAGE, AND REDIRECT
       handleRememberEmail({rememberMe, email});
       updateState({ message: { type: "success", text: "Successfully signed in with OTP 🎉 Redirecting..." } });
-      setTimeout(() => {
-        router.push(`${redirectPath}`);
-      }, 5000)
+      setTimeout(() => {router.push(`${callbackUrl}`)}, 5000)
 
     } catch (error) {
       updateState({ message: { type: "error", text: "Something went wrong!" } });
