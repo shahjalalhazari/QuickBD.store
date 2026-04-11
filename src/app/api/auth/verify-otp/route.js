@@ -8,7 +8,7 @@ import { getClientInfo } from "@/lib/getClientInfo";
 export async function POST (req) {
   try {
     // CHECK USER IP AND RATE LIMIT
-    const {ip, userAgent} = await getClientInfo();
+    const {ip} = await getClientInfo();
     const rateLimitResponse = await rateLimitChecker(verifyOtpRateLimit, ip);
     if (rateLimitResponse) return rateLimitResponse;
 

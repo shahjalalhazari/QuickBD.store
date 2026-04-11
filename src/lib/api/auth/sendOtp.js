@@ -1,5 +1,4 @@
 // AN UTILITY FUNCTION TO SEND OTP.
-
 export const sendOtpRequest = async ({ userId }) => {
   const res = await fetch("/api/auth/send-otp", {
     method: "POST",

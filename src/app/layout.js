@@ -4,7 +4,7 @@ import { baseMetadata } from "./metadata";
 import 'animate.css';
 import AuthProviders from "@/providers/AuthProviders";
 import { Bounce, ToastContainer } from "react-toastify";
-import AuthToastHandler from "@/components/auth/AuthToastHandler";
+import AuthToastHandler from "@/components/auth/shared/AuthToastHandler";
 import { Suspense } from "react";
 
 

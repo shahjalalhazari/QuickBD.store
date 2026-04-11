@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import AuthHeader from "../AuthHeader";
+import AuthHeader from "../shared/AuthHeader";
 import QuickbdMessage from "@/components/shared/QuickbdMessage";
-import GoogleAuthenticate from "../GoogleAuthenticate";
-import BackBtn from "../BackBtn";
+import GoogleAuthenticate from "../shared/GoogleAuthenticate";
+import BackBtn from "../shared/BackBtn";
 import OtpStep from "./steps/OtpStep";
 import FormStep from "./steps/FormStep";
 import VerifiedStep from "./steps/VerifiedStep";
@@ -23,7 +23,7 @@ const SignUpForm = () => {
     setState((prev) => ({...prev, ...data}));
   };
 
-  const {step, timer, message,} = state;
+  const {step, timer, message} = state;
 
   // TIMER EFFECT FOR OTP RESEND
   useEffect(() => {
@@ -36,6 +36,14 @@ const SignUpForm = () => {
     return () => clearInterval(interval);
   }, [step, timer]);
 
+  // HANDLER FOR BACK BUTTON
+  const handleBackBtn = () => {
+    updateState({
+      step: "form",
+      timer: 30,
+    });
+  }
+
   return (
     <div className="form-container">
       {/* HEADER */}
@@ -47,7 +55,7 @@ const SignUpForm = () => {
       />
 
       {/* BACK BUTTON */}
-      {step !== "form" && <BackBtn setStep={(s) => updateState({ step: s })} step="form" />}
+      {step !== "form" && <BackBtn handleBackBtn={handleBackBtn} />}
 
       {/* SHOW MESSAGES */}
       {message && <QuickbdMessage message={message} />}

@@ -63,7 +63,7 @@ export async function POST(req) {
 
   // SEND SUCCESS MESSAGE
   return NextResponse.json(
-    {success: true, message: "OTP sent successfull!", userId: user.id},
+    {success: true, message: "OTP sent successfull!", userId: user.id, cooldown: 30},
     {status: 200}
   );
 }

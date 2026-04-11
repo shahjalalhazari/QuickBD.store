@@ -344,16 +344,19 @@ body {
 
 /* MESSAGES BOX */
 .message-box {
-  @apply text-center px-2 py-1 rounded-md text-sm border-2 font-medium;
+  @apply text-center px-2 py-1 rounded-md text-sm border-2 font-medium flex items-center justify-center gap-x-1 w-full;
 }
 .success-message {
   @apply text-accent bg-accent/10 border-accent;
 }
-.error-message {
+.error-message, .danger-message {
   @apply text-danger bg-danger/10 border-danger;
 }
 .warning-message {
   @apply text-warning bg-warning/10 border-warning;
+}
+.info-message {
+  @apply text-info bg-info/10 border-info;
 }
 
 

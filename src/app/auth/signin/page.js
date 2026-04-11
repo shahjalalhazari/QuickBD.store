@@ -1,6 +1,6 @@
 import "./signin.css";
 import SignInForm from '@/components/auth/signInPage/SignInForm';
-import ImageContainer from '@/components/auth/ImageContainer';
+import ImageContainer from '@/components/auth/shared/ImageContainer';
 import { SITE_DESCRIPTION, TEMPLATE_NAMES } from "@/app/metadata";
 import { Suspense } from "react";
 import QuickbdLoading from "@/components/shared/QuickbdLoading";

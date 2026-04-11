@@ -13,10 +13,6 @@ const AuthToastHandler = () => {
     try {
       if (signin === "google_success") {
         toast.success("Successfully signed in with Google 🎉");
-      } else if (signin === "password_success") {
-        toast.success("Successfully signed in with password 🎉");
-      } else if (signin === "otp_success") {
-        toast.success("Successfully signed in with OTP 🎉");
       }
     } catch (error) {
       toast.error("Something went wrong while signing in.");
