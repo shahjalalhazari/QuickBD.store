@@ -26,7 +26,10 @@ export async function middleware(request) {
     const token = await getToken({
       req: request,
       secret: process.env.NEXTAUTH_SECRET,
+      secureCookie: process.env.NODE_ENV === "production",
     });
+    console.log("TOKEN:", token);
+    console.log("COOKIES:", request.cookies.getAll());
 
     // SKIP SYSTEM FILES
     if (
@@ -81,7 +84,7 @@ export async function middleware(request) {
 // MATCHER CONFIG
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico).*)",
+    "/((?!_next/static|_next/image|favicon.ico|api/auth).*)",
     "/account/:path*",
     "/seller/:path*",
     "/staff/:path*",

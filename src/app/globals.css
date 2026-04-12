@@ -59,7 +59,7 @@ body {
   @apply text-[54px] font-bold text-heading-color;
 }
 .error-paragraph {
-  @apply text-base mt-2 text-body-color;
+  @apply text-base font-medium mt-2 text-body-color;
 }
 .back-to-home-btn {
   @apply mt-12;
