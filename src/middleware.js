@@ -28,8 +28,6 @@ export async function middleware(request) {
       secret: process.env.NEXTAUTH_SECRET,
       secureCookie: process.env.NODE_ENV === "production",
     });
-    console.log("TOKEN:", token);
-    console.log("COOKIES:", request.cookies.getAll());
 
     // SKIP SYSTEM FILES
     if (

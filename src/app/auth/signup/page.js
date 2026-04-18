@@ -1,6 +1,6 @@
-import ImageContainer from "@/components/auth/shared/ImageContainer";
+import ImageContainer from "@/components/customerLayout/auth/shared/ImageContainer";
 import "./signup.css";
-import SignUpForm from "@/components/auth/signupPage/SignUpForm";
+import SignUpForm from "@/components/customerLayout/auth/signupPage/SignUpForm";
 import { SITE_DESCRIPTION, TEMPLATE_NAMES } from "@/app/metadata";
 
 export const metadata = {
