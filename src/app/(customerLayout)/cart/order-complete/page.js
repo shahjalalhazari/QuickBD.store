@@ -1,13 +1,13 @@
-import CartProgress from "@/components/customerLayout/cartPage/CartProgress";
-import Breadcrumbs from "@/components/customerLayout/shared/Breadcrumbs";
-import "./orderComplete.css";
-import Image from "next/image";
 import Link from "next/link";
-import ConfirmHeadingSection from "@/components/orderCompletePage/ConfirmHeadingSection";
-import OrderDetails from "@/components/orderCompletePage/OrderDetails";
-import { HiDownload } from "react-icons/hi";
-import FullWidthBtn from "@/components/customerLayout/shared/buttons/FullWidthBtn";
+import Image from "next/image";
 import { SITE_DESCRIPTION, SITE_NAME, TEMPLATE_NAMES } from "@/app/metadata";
+import "./orderComplete.css";
+import { HiDownload } from "react-icons/hi";
+import Breadcrumbs from "@/components/customerLayout/shared/Breadcrumbs";
+import CartProgress from "@/components/customerLayout/cartPage/CartProgress";
+import FullWidthBtn from "@/components/customerLayout/shared/buttons/FullWidthBtn";
+import ConfirmHeadingSection from "@/components/customerLayout/orderCompletePage/ConfirmHeadingSection";
+import OrderDetails from "@/components/customerLayout/orderCompletePage/OrderDetails";
 
 export const metadata = {
   title: TEMPLATE_NAMES.complete,
