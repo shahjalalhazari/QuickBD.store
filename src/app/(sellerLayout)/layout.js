@@ -1,10 +1,26 @@
-import React from 'react';
+import PageHeader from "@/components/sellerLayout/shared/PageHeader";
+import "./sellerLayout.css";
+import SellerDashboardSidebar from "@/components/sellerLayout/shared/Sidebar";
+import { HeaderProvider } from "@/hooks/useDashboardHeader";
 
-const SellerLayout = () => {
+
+const SellerLayout = ({ children }) => {
+
   return (
-    <div>
-      Seller Layout
-    </div>
+    <HeaderProvider>
+      <div className="dashboard-layout">
+        {/* SIDEBAR */}
+        <SellerDashboardSidebar />
+
+        <main className="dashboard-content">
+          {/* PAGE HEADER */}
+          <PageHeader />
+
+          {/* CHILDREN */}
+          { children }
+        </main>
+      </div>
+    </HeaderProvider>
   );
 };
 

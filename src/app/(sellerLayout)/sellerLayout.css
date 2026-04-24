@@ -1,0 +1,73 @@
+.dashboard-layout {
+    @apply flex min-h-screen;
+}
+
+/* SIDEBAR */
+.dashboard-sidebar {
+    @apply bg-secondary w-[250px] text-ghost-white pt-8 flex flex-col justify-between;
+}
+.sidebar-logo {
+    @apply flex items-center justify-center
+}
+.sidebar-nav-items {
+    @apply flex flex-col gap-6 px-6 text-ghost-white font-medium text-base;
+}
+.sidebar-item {
+    @apply w-full flex items-center gap-3 border-b-2 border-body-color/60 pb-2 cursor-pointer
+}
+.sidebar-item:hover {
+    @apply border-primary
+}
+.sidebar-active-item {
+    @apply text-primary border-primary
+}
+.sidebar-item .icon {
+    @apply text-xl
+}
+.store-status-details {
+    @apply p-6 bg-primary space-y-1;
+}
+.shop-name {
+    @apply font-semibold text-base;
+}
+.online-status {
+    @apply flex items-center gap-1
+}
+.online-status>div {
+    @apply w-2 h-2 bg-accent rounded-full
+}
+.online-status>p {
+    @apply text-sm font-medium text-light-orange
+}
+
+/* DASHBOARD CONTENT */
+.dashboard-content {
+    @apply px-6 py-8 w-full;
+}
+.page-header {
+    @apply flex justify-between items-start;
+}
+.heading {
+    @apply space-y-1;
+}
+.heading .title {
+    @apply text-[26px] text-heading-color font-semibold;
+}
+.heading .subtitle {
+    @apply text-body-color text-sm font-medium;
+}
+.right-side {
+    @apply flex items-center gap-6;
+}
+.notification, .support, .profile {
+    @apply text-lg text-heading-color cursor-pointer relative bg-light-orange p-3 border-2 border-body-color/30 rounded-md;
+}
+.notification-circle {
+    @apply w-2 h-2 rounded-full bg-primary absolute top-2 right-2;
+}
+.profile {
+    @apply flex items-center gap-3;
+}
+.profile img {
+    @apply w-6 h-6 rounded-full;
+}
