@@ -17,14 +17,14 @@ const PageHeader = () => {
       </div>
 
       <div className="right-side">
-        <div className="notification">
+        <div className="notification quickbd-transition">
           <FaBell className='icon' />
           <div className="notification-circle"></div>
         </div>
-        <div className="support">
+        <div className="support quickbd-transition">
           <FaQuestionCircle className='icon' />
         </div>
-        <Link href={"/seller/settings"} className="profile">
+        <Link href={"/seller/settings"} className="profile quickbd-transition">
           <Image 
           src={"/images/users/user-1.jpg"} 
           alt="Profile" priority
