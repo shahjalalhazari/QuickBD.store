@@ -241,7 +241,7 @@ body {
   @apply max-h-0 opacity-0;
 }
 .dropdown-item {
-  @apply px-3 py-2 text-sm text-body-color font-medium cursor-pointer;
+  @apply px-3 py-2 text-sm text-body-color font-medium cursor-pointer w-full text-start;
 }
 .dropdown-item:hover {
   @apply bg-primary/20 text-primary;

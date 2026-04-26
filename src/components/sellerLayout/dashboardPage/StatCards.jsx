@@ -1,4 +1,4 @@
-import StatCard from '../shared/StatCard';
+import StatCard from "../shared/cards/StatCard";
 
 const StatCards = ({statCardData}) => {
   return (

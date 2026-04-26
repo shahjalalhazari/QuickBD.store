@@ -1,4 +1,5 @@
-import StatCardTrend from './StatCardTrend';
+import StatCardTrend from "./StatCardTrend";
+
 
 const StatCard = ({ data }) => {
   const iconBg = `bg-${data.intent}/20`;

@@ -2,59 +2,61 @@
 import { useEffect, useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
-const OutlineDropdown = ({options, width="w-44"}) => {
+const OutlineDropdown = ({ options, value, onChange, width="w-44"}) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const [value, setValue] = useState(options[0]);
+  // FALLBACK IF THERE IS NO VALUE
+  const selected = value || options?.[0];
 
-  // Close on outside click
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    function handleClickOutside(e){
+      if(
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target)
+      ){
         setOpen(false);
       }
     }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener( "mousedown", handleClickOutside );
+    return () => document.removeEventListener( "mousedown", handleClickOutside );
   }, []);
 
+
   return (
-    <div className={`outline-dropdown ${width}`}ref={dropdownRef}>
-      {/* DROPDOWN BUTTON */}
+    <div className={`outline-dropdown relative ${width}`} ref={dropdownRef}>
       <button
+        type="button"
         onClick={() => setOpen(!open)}
         className="dropdown-btn"
       >
-        <span className="dropdown-selected-item">{value.label}</span>
+        <span className="dropdown-selected-item">{selected.label}</span>
+
         <BiChevronDown
-          size={22}
-          className={`quickbd-transition ${open ? "rotate-180" : ""}`}
+          size={20}
+          className={`
+            quickbd-transition
+            ${open ? "rotate-180" : ""}
+          `}
         />
       </button>
 
-      {/* DROPDOWN CONTAINER */}
-      <div
-        className={`dropdown-list-container quickbd-transition ${
-          open
-            ? "container-open"
-            : "container-close"
-        }`}
+      {/* MENU LIST */}
+      <div className={`dropdown-list-container quickbd-transition
+          ${ open ? "container-open" : "container-close"}
+        `}
       >
-        {options.map((option) => (
-          <div
+        {options.map((option)=>(
+          <button
             key={option.value}
-            onClick={() => {
-              setValue(option)
-              setOpen(false);
-            }}
-            className={`dropdown-item quickbg-transition ${
-              option.value === value.value ? "active-dropdown-item" : ""
-            }`}
+            type="button"
+            onClick={()=>{ onChange?.(option); setOpen(false); }}
+            className={`dropdown-item quickbd-transition
+              ${option.value === selected.value ? "active-dropdown-item" : ""}
+            `}
           >
             {option.label}
-          </div>
+          </button>
         ))}
       </div>
     </div>

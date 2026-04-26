@@ -1,9 +1,11 @@
+import SalesOverviewChart from '@/components/sellerLayout/dashboardPage/SalesOverviewChart';
 import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
 import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
 import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
 import React from 'react';
 import { FaCartShopping, FaChartColumn, FaTruckPickup } from 'react-icons/fa6';
 import { TbCurrencyTaka } from 'react-icons/tb';
+import "./dashboardPage.css";
 
 // METADATA
 export const metadata = sellerDashboardPageMeta.dashboard.metadata;
@@ -19,6 +21,13 @@ const SellerDashboardPage = () => {
 
       {/* STAT CARDS */}
       <StatCards statCardData={statCardData} />
+
+      {/* LINE CHART & QUICK ACTIONS SECTION */}
+      <div className='two-col-grid'>
+        {/* CHART */}
+        <SalesOverviewChart />
+      </div>
+
     </React.Fragment>
   );
 };

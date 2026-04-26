@@ -4,7 +4,7 @@
 
 /* SIDEBAR */
 .dashboard-sidebar {
-    @apply bg-secondary w-[250px] text-ghost-white pt-8 flex flex-col justify-between;
+    @apply bg-secondary w-[250px] h-screen fixed top-0 left-0 z-[999] text-ghost-white pt-8 flex flex-col justify-between;
 }
 .sidebar-logo {
     @apply flex items-center justify-center
@@ -42,7 +42,7 @@
 
 /* DASHBOARD MAIN CONTENT AREA */
 .dashboard-content {
-    @apply px-6 py-8 w-full space-y-8;
+    @apply px-6 py-8 w-full space-y-8 overflow-y-auto ml-[250px];
 }
 
 /* DASHBOARD PAGE HEADER */
@@ -101,4 +101,9 @@
 }
 .stat-card-trend {
     @apply flex items-center gap-1 text-sm font-semibold;
+}
+
+/* BASIC SECTION LAYOUT */
+.two-col-grid {
+    /* @apply grid grid-cols-2 gap-6; */
 }
