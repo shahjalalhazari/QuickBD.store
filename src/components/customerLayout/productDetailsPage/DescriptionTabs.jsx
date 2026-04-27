@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaRegStar, FaStar } from "react-icons/fa6";
 import Rating from "react-rating";
-import FullWidthBtn from "../shared/buttons/FullWidthBtn";
+import FullWidthBtn from "../../shared/buttons/FullWidthBtn";
 import UnderlineInput from "../../shared/inputFields/UnderlineInput";
 import UnderlineTextarea from "../../shared/inputFields/UnderlineTextarea";
 import Image from "next/image";

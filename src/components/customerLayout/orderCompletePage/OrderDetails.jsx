@@ -1,4 +1,4 @@
-import StatusBadge from "../../shared/StatusBadge";
+import StatusBadge from "../../shared/badges/StatusBadge";
 
 const orderDetailsContent = [
   {

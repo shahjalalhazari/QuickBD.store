@@ -1,7 +1,4 @@
-/* SALES OVERVIEW CHART */
-.sales-overview-chart {
-    @apply bg-white shadow-lg p-6 rounded-[10px] space-y-4;
-}
+/* --- SALES OVERVIEW CHART --- */
 .chart-header {
     @apply flex justify-between;
 }
@@ -38,4 +35,21 @@
 }
 .trend-stable {
     @apply bg-secondary/20 text-secondary;
+}
+
+/* --- RECENT ORDERS TABLE --- */
+.recent-orders-section {
+    @apply bg-white p-6 shadow-lg rounded-[10px];
+}
+.order-items-grid {
+    @apply text-xs space-y-1 inline-block;
+}
+.order-item {
+    @apply border-[0.5px] border-border-color/60 rounded-full w-fit px-2 py-1 bg-ghost-white;
+}
+.show-all-btn {
+    @apply text-primary font-semibold;
+}
+.show-all-btn:hover {
+    @apply underline
 }

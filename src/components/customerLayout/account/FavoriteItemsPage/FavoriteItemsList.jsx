@@ -1,6 +1,6 @@
-import FullWidthBtn from "@/components/customerLayout/shared/buttons/FullWidthBtn";
+import FullWidthBtn from "@/components/shared/buttons/FullWidthBtn";
 import ProductRating from "@/components/customerLayout/shared/ProductRating";
-import StatusBadge from "@/components/shared/StatusBadge";
+import StatusBadge from "@/components/shared/badges/StatusBadge";
 import Image from "next/image";
 import { BiX } from "react-icons/bi";
 

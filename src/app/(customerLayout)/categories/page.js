@@ -1,5 +1,5 @@
 import Breadcrumbs from '@/components/customerLayout/shared/Breadcrumbs';
-import UnderlineBtn from '@/components/customerLayout/shared/buttons/UnderlineBtn';
+import UnderlineBtn from '@/components/shared/buttons/UnderlineBtn';
 import CategoryCard from '@/components/customerLayout/shared/cards/CategoryCard';
 import { FaArrowRight } from 'react-icons/fa6';
 import "./categories.css";

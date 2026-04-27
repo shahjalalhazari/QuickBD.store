@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import UnderlineBtn from '../buttons/UnderlineBtn';
+import UnderlineBtn from '../../../shared/buttons/UnderlineBtn';
 import { FaArrowRight } from 'react-icons/fa6';
 
 const CategoryCard = ({ category }) => {

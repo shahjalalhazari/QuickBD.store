@@ -62,7 +62,7 @@ const myOrders = [
     amount: "৳ 1800",
     date: "03 Mar, 2026 | 12:28 PM",
     items: 10,
-    status: "Canceled",
+    status: "led",
     deliveredDate: "03 Mar, 2026 | 03:28 PM",
   },
 ]

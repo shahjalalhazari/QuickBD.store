@@ -1,5 +1,5 @@
 "use client"
-import StatusBadge from "@/components/shared/StatusBadge";
+import StatusBadge from "@/components/shared/badges/StatusBadge";
 import { RiFileList2Line } from "react-icons/ri";
 
 // THIS TABLE LIST COMPONENT IS ONLY FOR LARGE DEVICES.

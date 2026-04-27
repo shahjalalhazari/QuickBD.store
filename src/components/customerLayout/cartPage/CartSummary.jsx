@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import FullWidthBtn from "../shared/buttons/FullWidthBtn";
+import FullWidthBtn from "../../shared/buttons/FullWidthBtn";
 import { FaCheck } from "react-icons/fa6";
 import Link from "next/link";
 

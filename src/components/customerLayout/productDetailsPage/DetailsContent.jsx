@@ -1,10 +1,10 @@
 "use client"
 import { FiHeart } from "react-icons/fi";
 import ProductRating from "../shared/ProductRating";
-import ProductBadge from "../shared/ProductBadge";
+import ProductBadge from "../../shared/badges/ProductBadge";
 import { useState } from "react";
 import { FaCheck, FaMinus, FaPlus } from "react-icons/fa6";
-import FullWidthBtn from "../shared/buttons/FullWidthBtn";
+import FullWidthBtn from "../../shared/buttons/FullWidthBtn";
 import Link from "next/link";
 import { generateSlug } from "@/utils/generateSlug";
 

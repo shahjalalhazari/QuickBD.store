@@ -1,7 +1,7 @@
 import React from 'react';
 import BoxInputField from '../../shared/inputFields/BoxInputField';
 import BoxTextareaField from '../../shared/inputFields/BoxTextareaField';
-import FullWidthBtn from '../shared/buttons/FullWidthBtn';
+import FullWidthBtn from '../../shared/buttons/FullWidthBtn';
 
 const ContactFormAndMap = () => {
   return (

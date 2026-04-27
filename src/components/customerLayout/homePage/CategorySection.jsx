@@ -1,5 +1,5 @@
 import { FaArrowRight } from "react-icons/fa6";
-import UnderlineBtn from "../shared/buttons/UnderlineBtn";
+import UnderlineBtn from "../../shared/buttons/UnderlineBtn";
 import CategoryCard from "../shared/cards/CategoryCard";
 import Link from "next/link";
 

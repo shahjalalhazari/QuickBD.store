@@ -91,7 +91,7 @@ const SalesOverviewChart = () => {
   ]
 
   return (
-    <section className="sales-overview-chart">
+    <section className="section-container">
       {/* HEADER AND DROPDOWN */}
       <div className="chart-header">
         <div className='space-y-2'>

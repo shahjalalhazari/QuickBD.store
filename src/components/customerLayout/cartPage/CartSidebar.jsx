@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { BiX } from "react-icons/bi";
-import FullWidthBtn from "../shared/buttons/FullWidthBtn";
-import UnderlineBtn from "../shared/buttons/UnderlineBtn";
+import FullWidthBtn from "../../shared/buttons/FullWidthBtn";
+import UnderlineBtn from "../../shared/buttons/UnderlineBtn";
 import { FaMinus, FaPlus } from "react-icons/fa6";
 
 

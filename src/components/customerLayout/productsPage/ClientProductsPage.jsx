@@ -1,7 +1,7 @@
 "use client";
 import { FaAngleRight } from "react-icons/fa6";
 import Breadcrumbs from "../shared/Breadcrumbs";
-import UnderlineBtn from "../shared/buttons/UnderlineBtn";
+import UnderlineBtn from "../../shared/buttons/UnderlineBtn";
 import ProductCard from "../shared/cards/ProductCard";
 import CheckboxFilters from "./CheckboxFilters";
 import SortingDropdowns from "./SortingDropdowns";

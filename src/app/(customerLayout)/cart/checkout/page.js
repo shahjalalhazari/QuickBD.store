@@ -5,7 +5,7 @@ import ContactInfoForm from '@/components/customerLayout/checkoutPage/ContactInf
 import ShippingAddressForm from '@/components/customerLayout/checkoutPage/ShippingAddressForm';
 import PaymentMethod from '@/components/customerLayout/checkoutPage/PaymentMethod';
 import OrderSummary from '@/components/customerLayout/checkoutPage/OrderSummary';
-import FullWidthBtn from '@/components/customerLayout/shared/buttons/FullWidthBtn';
+import FullWidthBtn from '@/components/shared/buttons/FullWidthBtn';
 import { SITE_DESCRIPTION, SITE_NAME, TEMPLATE_NAMES } from '@/app/metadata';
 import Link from 'next/link';
 

@@ -78,6 +78,19 @@ body {
 .underline-btn:hover {
   @apply border-primary quickbd-transition;
 }
+/* *** View All Buttons *** */
+.view-all-btn {
+  @apply border-2 border-border-color/60 text-sm font-semibold px-4 py-1 rounded;
+}
+.view-all-btn:hover {
+  @apply border-primary bg-primary/10 text-primary;
+}
+.view-btn {
+  @apply border border-border-color/60 px-2 py-0.5 rounded;
+}
+.view-btn:hover {
+  @apply bg-body-color/20 text-heading-color;
+}
 
 /* FORM INPUT FIELDS */
 /* *** Underlined Form Inputs *** */
@@ -216,7 +229,7 @@ body {
 
 /* STATUS BADGES */
 .status-badge {
-  @apply text-sm border rounded-full w-fit px-2 py-0.5 font-medium;
+  @apply text-xs border rounded-full w-fit px-2 py-0.5 font-medium;
 }
 
 

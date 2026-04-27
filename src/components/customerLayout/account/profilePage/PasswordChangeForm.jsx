@@ -1,6 +1,6 @@
 "use client";
 
-import FullWidthBtn from "@/components/customerLayout/shared/buttons/FullWidthBtn";
+import FullWidthBtn from "@/components/shared/buttons/FullWidthBtn";
 import BoxInputField from "@/components/shared/inputFields/BoxInputField";
 import BoxPasswordInputField from "@/components/shared/inputFields/BoxPasswordInputField";
 

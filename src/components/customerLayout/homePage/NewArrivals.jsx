@@ -1,5 +1,5 @@
 import Image from "next/image";
-import UnderlineBtn from "../shared/buttons/UnderlineBtn";
+import UnderlineBtn from "../../shared/buttons/UnderlineBtn";
 import { FaAngleRight } from "react-icons/fa6";
 import SectionHeading from "../shared/heading/SectionHeading";
 import Link from "next/link";

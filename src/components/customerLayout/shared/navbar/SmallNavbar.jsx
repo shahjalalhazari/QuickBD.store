@@ -6,7 +6,7 @@ import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BiSearch, BiX } from "react-icons/bi";
 import { FaFacebookF, FaYoutube, FaInstagram, FaRegHeart } from "react-icons/fa6";
-import FullWidthBtn from "../buttons/FullWidthBtn";
+import FullWidthBtn from "../../../shared/buttons/FullWidthBtn";
 import { FiShoppingBag } from "react-icons/fi";
 import { useNavigation } from "@/hooks/useNavigation";
 import { userSignOut } from "@/utils/userSignOut";

@@ -5,7 +5,7 @@ import "./orderComplete.css";
 import { HiDownload } from "react-icons/hi";
 import Breadcrumbs from "@/components/customerLayout/shared/Breadcrumbs";
 import CartProgress from "@/components/customerLayout/cartPage/CartProgress";
-import FullWidthBtn from "@/components/customerLayout/shared/buttons/FullWidthBtn";
+import FullWidthBtn from "@/components/shared/buttons/FullWidthBtn";
 import ConfirmHeadingSection from "@/components/customerLayout/orderCompletePage/ConfirmHeadingSection";
 import OrderDetails from "@/components/customerLayout/orderCompletePage/OrderDetails";
 

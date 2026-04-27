@@ -1,6 +1,6 @@
 "use client";
 
-import StatusBadge from "@/components/shared/StatusBadge";
+import StatusBadge from "@/components/shared/badges/StatusBadge";
 import { RiFileList2Line } from "react-icons/ri";
 
 const orderFields = [

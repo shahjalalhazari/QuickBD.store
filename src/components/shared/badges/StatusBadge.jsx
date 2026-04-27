@@ -1,8 +1,9 @@
 const StatusBadge = ({status, text}) => {
+  const statusLower = status?.toLowerCase();
 
   return (
     <>
-    {(status === "pending" || status === "Pending") && 
+    {(statusLower === "pending") && 
       <div className={`
         status-badge quickbd-transition 
         bg-info/20 border-info text-info
@@ -10,9 +11,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(status === "accepted" || status === "Accepted" ||
-      status === "Low Stock" || status === "low stock"
-    ) && 
+    {(statusLower === "accepted" || status === "low stock") && 
       <div className={`
         status-badge quickbd-transition 
         bg-warning/20 border-warning text-warning
@@ -20,7 +19,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(status === "processing" || status === "Processing") && 
+    {(statusLower === "processing") && 
       <div className={`
         status-badge quickbd-transition 
         bg-purple/20 border-purple text-purple
@@ -28,7 +27,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(status === "shipped" || status === "Shipped") && 
+    {(statusLower === "shipped") && 
       <div className={`
         status-badge quickbd-transition 
         bg-secondary/20 border-secondary text-secondary
@@ -36,10 +35,8 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(status === "delivered" || status === "Delivered" || 
-      status === "success" || status === "Success" ||
-      status === "in stock" || status === "In Stock" ||
-      status === "active" || status === "Active"
+    {(statusLower === "delivered" || statusLower === "success" ||
+      statusLower === "in stock" || statusLower === "active"
     ) && 
       <div className={`
         status-badge quickbd-transition 
@@ -48,9 +45,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(status === "canceled" || status === "Canceled" ||
-      status === "out of stock" || status === "Out Of Stock" || status === "Out of Stock"
-    ) && 
+    {(statusLower === "cancelled" || statusLower === "out of stock") && 
       <div className={`
         status-badge quickbd-transition 
         bg-danger/20 border-danger text-danger
@@ -58,7 +53,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(status === "inactive" || status === "Inactive") && 
+    {(statusLower === "inactive") && 
       <div className={`
         status-badge quickbd-transition 
         bg-body-color/20 border-body-color text-body-color

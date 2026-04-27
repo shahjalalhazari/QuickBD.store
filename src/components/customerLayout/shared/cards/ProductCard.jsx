@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import ProductRating from "../ProductRating";
 import { FaRegHeart } from "react-icons/fa6";
-import ProductBadge from "../ProductBadge";
+import ProductBadge from "../../../shared/badges/ProductBadge";
 import { generateSlug } from "@/utils/generateSlug";
 
 const ProductCard = ({ item}) => {
