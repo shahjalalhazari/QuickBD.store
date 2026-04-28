@@ -53,3 +53,8 @@
 .show-all-btn:hover {
     @apply underline
 }
+
+/* --- RECENT ACTIVITES --- */
+.recent-activites {
+    @apply flex flex-col gap-y-4;
+}

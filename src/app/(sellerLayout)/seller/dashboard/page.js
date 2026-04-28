@@ -1,12 +1,13 @@
-import SalesOverviewChart from '@/components/sellerLayout/dashboardPage/SalesOverviewChart';
-import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
-import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
-import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
 import React from 'react';
 import { FaCartShopping, FaChartColumn, FaTruckPickup } from 'react-icons/fa6';
-import { TbCurrencyTaka } from 'react-icons/tb';
 import "./dashboardPage.css";
+import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
+import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
+import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
+import SalesOverviewChart from '@/components/sellerLayout/dashboardPage/SalesOverviewChart';
+import { TbCurrencyTaka } from 'react-icons/tb';
 import RecentOrders from '@/components/sellerLayout/dashboardPage/RecentOrders';
+import RecentActivity from '@/components/sellerLayout/dashboardPage/RecentActivity';
 
 // METADATA
 export const metadata = sellerDashboardPageMeta.dashboard.metadata;
@@ -28,6 +29,9 @@ const SellerDashboardPage = () => {
 
       {/* RECENT ORDERS TABLE */}
       <RecentOrders/>
+
+      {/* RECENT ACTIVITES */}
+      <RecentActivity />
 
     </React.Fragment>
   );

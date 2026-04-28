@@ -2,20 +2,19 @@ import StatusBadge from '@/components/shared/badges/StatusBadge';
 import ViewAllBtn from '@/components/shared/buttons/ViewAllBtn';
 import DataTable from '@/components/shared/tables/DataTable';
 import { formatDateTime } from '@/utils/formatDateTime';
-import { orderData } from '@/utils/orderData';
-import Link from 'next/link';
+import { orderData } from '@/utils/tempoData/orderData';
+import SectionHeader from '../shared/headers/SectionHeader';
 
 const RecentOrders = () => {
   const orders = orderData;
 
   return (
     <div className='section-container'>
-      <div className="section-header">
-        <h5>Recent Orders</h5>
-        <Link href={"/dashboard/orders"}>
-          <ViewAllBtn text={"View All"} className={"view-all-btn"} />
-        </Link>
-      </div>
+      {/* SECITON HEADER */}
+      <SectionHeader
+        heading={"Recent Orders"}
+        path={"/seller/orders"}
+      />
 
       {/* TABLE */}
       <DataTable columns={tableColumns} data={orders} />

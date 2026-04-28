@@ -139,3 +139,23 @@
 .dashboard-table>tbody>tr>td {
     @apply px-4 py-2;
 }
+
+/* ACTIVITY CARD STYLE */
+.activity-card {
+    @apply flex gap-3 items-center;
+}
+.activity-card:hover {
+    @apply bg-body-color/10;
+}
+.activity-card>.icon {
+    @apply p-3 rounded-lg text-center text-ghost-white text-2xl;
+}
+.activity-card>.content {
+    @apply flex flex-col items-start gap-1.5;
+}
+.activity-card>.content>p {
+    @apply text-sm font-semibold text-heading-color text-start;
+}
+.activity-card>.content>span {
+    @apply text-xs font-medium text-body-color text-start;
+}
