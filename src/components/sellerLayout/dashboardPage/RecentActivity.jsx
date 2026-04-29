@@ -68,7 +68,7 @@ const RecentActivity = () => {
   }
 
   return (
-    <div className='section-container'>
+    <section className='section-container'>
       {/* SECTION HEADER */}
       <SectionHeader
         heading={"Recent Activity"}
@@ -92,7 +92,7 @@ const RecentActivity = () => {
             )
         })}
       </div>
-    </div>
+    </section>
   );
 };
 

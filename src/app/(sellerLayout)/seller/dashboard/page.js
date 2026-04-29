@@ -8,6 +8,7 @@ import SalesOverviewChart from '@/components/sellerLayout/dashboardPage/SalesOve
 import { TbCurrencyTaka } from 'react-icons/tb';
 import RecentOrders from '@/components/sellerLayout/dashboardPage/RecentOrders';
 import RecentActivity from '@/components/sellerLayout/dashboardPage/RecentActivity';
+import TopSellingProducts from '@/components/sellerLayout/dashboardPage/TopSellingProducts';
 
 // METADATA
 export const metadata = sellerDashboardPageMeta.dashboard.metadata;
@@ -30,9 +31,13 @@ const SellerDashboardPage = () => {
       {/* RECENT ORDERS TABLE */}
       <RecentOrders/>
 
-      {/* RECENT ACTIVITES */}
-      <RecentActivity />
+      <div className='two-col-grid'>
+        {/* RECENT ACTIVITES */}
+        <RecentActivity />
 
+        {/* TOP SELLING PRODUCTS */}
+        <TopSellingProducts />
+      </div>
     </React.Fragment>
   );
 };

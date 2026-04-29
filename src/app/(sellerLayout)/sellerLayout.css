@@ -114,7 +114,7 @@
     @apply text-secondary text-xl font-semibold;
 }
 .two-col-grid {
-    /* @apply grid grid-cols-2 gap-6; */
+    @apply grid grid-cols-2 gap-6;
 }
 
 /* TABLE LAYOUT STYLE */
@@ -145,7 +145,7 @@
     @apply flex gap-3 items-center;
 }
 .activity-card:hover {
-    @apply bg-body-color/10;
+    @apply bg-body-color/10 rounded-lg;
 }
 .activity-card>.icon {
     @apply p-3 rounded-lg text-center text-ghost-white text-2xl;
@@ -154,8 +154,34 @@
     @apply flex flex-col items-start gap-1.5;
 }
 .activity-card>.content>p {
-    @apply text-sm font-semibold text-heading-color text-start;
+    @apply text-sm font-semibold text-heading-color;
 }
 .activity-card>.content>span {
-    @apply text-xs font-medium text-body-color text-start;
+    @apply text-xs font-medium text-body-color;
+}
+
+/* TOP SELLING PRODUCT CARD STYLE */
+.top-selling-product-card {
+    @apply flex items-center justify-between bg-body-color/10 text-sm px-3 py-2 w-full rounded-lg;
+}
+.top-selling-product-card:hover {
+    @apply bg-body-color/15;
+}
+.number-name {
+    @apply flex items-center gap-3;
+}
+.serial-number {
+    @apply text-primary font-bold text-xl bg-primary/10 w-12 h-10 flex items-center justify-center rounded-md;
+}
+.name-qty {
+    @apply flex flex-col gap-1.5 w-full;
+}
+.name-qty p {
+    @apply font-semibold text-heading-color;
+}
+.name-qty span {
+    @apply text-xs font-medium text-body-color;
+}
+.top-selling-product-card .revenue {
+    @apply text-primary font-bold flex gap-1 items-center;
 }

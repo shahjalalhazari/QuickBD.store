@@ -58,3 +58,8 @@
 .recent-activites {
     @apply flex flex-col gap-y-4;
 }
+
+/* --- TOP SELLLING PRODUCTS LIST --- */
+.top-selling-products {
+    @apply flex flex-col gap-y-3;
+}

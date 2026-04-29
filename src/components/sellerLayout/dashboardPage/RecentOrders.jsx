@@ -9,7 +9,7 @@ const RecentOrders = () => {
   const orders = orderData;
 
   return (
-    <div className='section-container'>
+    <section className='section-container'>
       {/* SECITON HEADER */}
       <SectionHeader
         heading={"Recent Orders"}
@@ -18,7 +18,7 @@ const RecentOrders = () => {
 
       {/* TABLE */}
       <DataTable columns={tableColumns} data={orders} />
-    </div>
+    </section>
   );
 };
 
