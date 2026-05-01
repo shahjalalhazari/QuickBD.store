@@ -99,7 +99,7 @@ const QuickActions = () => {
 
 
   return (
-    <section className="section-container h-fit">
+    <section className="section-container">
       {/* SECTION HEADER */}
         <div className="section-header">
           <h5 className="">Quick Actions</h5>

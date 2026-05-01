@@ -3,14 +3,10 @@ import { BiMinus, BiTrendingDown, BiTrendingUp } from "react-icons/bi";
 const MetricPillCard = ({data}) => {
   return (
     <div className="metric-pill-card">
-      <div className="card-row">
-        <span className="pill-card-label">
-          {data.label}
-        </span>
-        <span className="text-lg">{data.icon}</span>
-      </div>
-      <div className="card-row">
-        <h3 className="pill-card-value">
+      <p className="pill-card-label">
+        {data.label}
+      </p>
+      <h3 className="pill-card-value">
         {data.value.toLocaleString()}
       </h3>
       <p className={`pill-card-trend ${data.trendGoing == "up" ? "trend-up" : 
@@ -22,7 +18,6 @@ const MetricPillCard = ({data}) => {
         }
         {data.trend}
       </p>
-      </div>
     </div>
   );
 };

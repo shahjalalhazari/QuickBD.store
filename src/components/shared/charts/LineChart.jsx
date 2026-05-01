@@ -42,7 +42,7 @@ const LineChart = ({ selectedData }) => {
 
     setChartOptions({
       maintainAspectRatio:false,
-      aspectRatio: 1,
+      aspectRatio: 1.2,
       interaction:{
         mode:"index",
         intersect:false

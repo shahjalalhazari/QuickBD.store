@@ -1,9 +1,7 @@
 "use client"
 import OutlineDropdown from '@/components/shared/filters/OutlineDropdown';
-import { useEffect, useMemo, useState } from "react";
-import { FaPercentage, FaShoppingCart } from "react-icons/fa";
+import { useMemo, useState } from "react";
 import MetricPillCard from '../shared/cards/MetricPillCard';
-import { TbCurrencyTaka } from 'react-icons/tb';
 import LineChart from '@/components/shared/charts/LineChart';
 
 
@@ -68,7 +66,6 @@ const SalesOverviewChart = () => {
       id: 1,
       label: "Revenue",
       value: `৳ ${currentSales.toFixed(2)}`,
-      icon: <TbCurrencyTaka />,
       trend: "12.4%",
       trendGoing: "up"
     },
@@ -76,7 +73,6 @@ const SalesOverviewChart = () => {
       id: 2,
       label: "Order Completed",
       value: currentOrders.toFixed(2),
-      icon: <FaShoppingCart />,
       trend: "-.2%",
       trendGoing: "down"
     },
@@ -84,7 +80,6 @@ const SalesOverviewChart = () => {
       id: 3,
       label: "Avg Order Value",
       value: `৳ ${(currentSales / currentOrders).toFixed(2)}`,
-      icon: <FaPercentage />,
       trend: "0.0%",
       trendGoing: "stable"
     },

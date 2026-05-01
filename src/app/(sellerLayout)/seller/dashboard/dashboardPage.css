@@ -10,19 +10,16 @@
 }
 /* METRIC PILL */
 .metric-pill-layout {
-    @apply grid grid-cols-3 gap-6;
+    @apply grid grid-cols-3 gap-4;
 }
 .metric-pill-card {
-    @apply text-body-color font-medium space-y-3 border border-border-color/60 p-4 rounded-lg;
-}
-.card-row {
-    @apply flex items-center justify-between;
+    @apply text-body-color font-medium space-y-2 border border-border-color/60 p-4 rounded-md;
 }
 .pill-card-label {
     @apply text-sm;
 }
 .pill-card-value {
-    @apply text-2xl text-heading-color font-semibold
+    @apply text-xl text-heading-color font-semibold;
 }
 .pill-card-trend {
     @apply inline-flex h-fit w-fit items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium;

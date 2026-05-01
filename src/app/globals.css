@@ -239,7 +239,7 @@ body {
   @apply relative;
 }
 .outline-dropdown>.dropdown-btn {
-  @apply flex justify-between items-center w-full p-3 rounded-md border-2 border-heading-color bg-transparent;
+  @apply flex justify-between items-center w-full p-3 rounded-md border-2 border-border-color/60 bg-transparent;
 }
 .dropdown-selected-item {
   @apply text-heading-color text-sm font-medium cursor-pointer;
