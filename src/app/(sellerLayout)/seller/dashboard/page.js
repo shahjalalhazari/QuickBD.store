@@ -9,6 +9,7 @@ import { TbCurrencyTaka } from 'react-icons/tb';
 import RecentOrders from '@/components/sellerLayout/dashboardPage/RecentOrders';
 import RecentActivity from '@/components/sellerLayout/dashboardPage/RecentActivity';
 import TopSellingProducts from '@/components/sellerLayout/dashboardPage/TopSellingProducts';
+import QuickActions from '@/components/sellerLayout/dashboardPage/QuickActions';
 
 // METADATA
 export const metadata = sellerDashboardPageMeta.dashboard.metadata;
@@ -25,8 +26,13 @@ const SellerDashboardPage = () => {
       {/* STAT CARDS */}
       <StatCards statCardData={statCardData} />
 
-      {/* SALES OVERVIEW CHART */}
-      <SalesOverviewChart />
+      <div className='two-col-grid'>
+        {/* SALES OVERVIEW CHART */}
+        <SalesOverviewChart />
+
+        {/* QUICK ACTIONS ITEMS */}
+        <QuickActions />
+      </div>
 
       {/* RECENT ORDERS TABLE */}
       <RecentOrders/>

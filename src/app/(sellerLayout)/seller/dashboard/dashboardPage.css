@@ -63,3 +63,17 @@
 .top-selling-products {
     @apply flex flex-col gap-y-3;
 }
+
+/* --- QUICK ACTIONS LIST --- */
+.quick-action-layout {
+    @apply grid grid-cols-2 gap-6;
+}
+.action-card {
+    @apply px-4 py-8 flex flex-col items-center justify-center gap-y-2.5 text-heading-color font-medium text-base border border-border-color/60 rounded-lg bg-ghost-white;
+}
+.action-card:hover {
+    @apply text-primary shadow-md;
+}
+.action-card-icon {
+    @apply text-[26px];
+}
