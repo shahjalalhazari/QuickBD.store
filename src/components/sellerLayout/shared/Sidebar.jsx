@@ -54,38 +54,41 @@ const SellerDashboardSidebar = () => {
 
   return (
     <div className="dashboard-sidebar">
-        {/* LOGO */}
-        <Link href={"/"} className="sidebar-logo">
-          <Image 
-            src={"/images/logo/whiteLogo.png"} 
-            alt={"logo"} width={160} height={50} 
-            priority
-          />
-        </Link>
+      {/* LOGO */}
+      <Link href={"/"} className="sidebar-logo">
+        <Image 
+          src={"/images/logo/whiteLogo.png"} 
+          alt={"logo"} width={160} height={50} 
+          priority
+        />
+      </Link>
 
+      {/* SIDEBAR BODY - SCROLLABLE */}
+      <div className="sidebar-body">
         {/* NAVIGATION */}
         <ul className='sidebar-nav-items'>
-          {navitems.map((item, index) => (
-            <Link href={item.path} key={item.path}>
-              <li key={index} className={`sidebar-item quickbd-transition ${pathname === item.path && "sidebar-active-item"}`}>
+          {navitems.map((item) => (
+            <li key={item.path}>
+              <Link href={item.path} className={`sidebar-item quickbd-transition ${pathname === item.path && "sidebar-active-item"}`}>
                 <span className='icon'>{item.icon}</span>
                 <span className='name'>{item.name}</span>
-              </li>
-            </Link>
+              </Link>
+            </li>
           ))}
         </ul>
+      </div>
 
-        {/* SHOP NAME */}
-        <div className="store-status-details">
-          <Link href={"/seller/settings"}>
-            <p className='shop-name'>Hajari Fruits Shop</p>
-          </Link>
-          <div className='online-status'>
-            <div className=''></div>
-            <p className=''>Online</p>
-          </div>
+      {/* SHOP NAME */}
+      <div className="store-status-details">
+        <Link href={"/seller/settings"}>
+          <p className='shop-name'>Hajari Fruits Shop</p>
+        </Link>
+        <div className='online-status'>
+          <div className=''></div>
+          <p className=''>Online</p>
         </div>
       </div>
+    </div>
   );
 };
 

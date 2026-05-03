@@ -1,4 +1,4 @@
-import PageHeader from "@/components/sellerLayout/shared/PageHeader";
+import PageHeader from "@/components/sellerLayout/shared/headers/PageHeader";
 import "./sellerLayout.css";
 import SellerDashboardSidebar from "@/components/sellerLayout/shared/Sidebar";
 import { HeaderProvider } from "@/hooks/useDashboardHeader";

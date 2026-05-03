@@ -6,7 +6,7 @@ import React from 'react';
 import { FaQuestionCircle } from 'react-icons/fa';
 import { FaBell } from 'react-icons/fa6';
 
-const PageHeader = () => {
+const PageHeader = (zzz) => {
   const { header } = useHeader();
 
   return (

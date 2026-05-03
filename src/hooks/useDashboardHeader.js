@@ -5,8 +5,8 @@ const HeaderContext = createContext();
 
 export function HeaderProvider({ children }) {
   const [header, setHeader] = useState({
-    heading: "Heading",
-    subheading: "Sub Heading"
+    heading: "",
+    subheading: ""
   });
 
   return <HeaderContext.Provider value={{ header, setHeader}}>

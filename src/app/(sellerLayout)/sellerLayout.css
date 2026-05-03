@@ -9,6 +9,9 @@
 .sidebar-logo {
     @apply flex items-center justify-center
 }
+.sidebar-body {
+    @apply overflow-y-auto;
+}
 .sidebar-nav-items {
     @apply flex flex-col gap-6 px-6 text-ghost-white font-medium text-base;
 }
