@@ -261,7 +261,31 @@
 
     /* DASHBOARD PAGE HEADER */
     .page-header {
-        @apply pb-6;
+        @apply pb-4;
+    }
+    .heading {
+        @apply space-y-0;
+    }
+    .heading .title {
+        @apply text-[22px];
+    }
+    .right-side {
+        @apply flex items-center gap-3;
+    }
+    .notification, .support, .profile {
+        @apply p-2 rounded;
+    }
+    .notification:hover, .support:hover, .profile:hover {
+        @apply border-secondary;
+    }
+    .notification-circle {
+        @apply w-1.5 h-1.5 top-1.5 right-1.5;
+    }
+    .profile {
+        @apply p-1.5;
+    }
+    .profile img {
+        @apply w-8 h-8;
     }
 }
 /* -------------------------------------------------------------- */
