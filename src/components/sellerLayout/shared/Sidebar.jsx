@@ -2,54 +2,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { FaChartSimple, FaGear, FaUsers, FaWallet } from 'react-icons/fa6';
-import { IoMdCube } from "react-icons/io";
-import { RiCouponFill, RiDashboardFill, RiFileListFill } from 'react-icons/ri';
 
-const navitems = [
-  {
-    name: "Dashboard",
-    path: "/seller/dashboard",
-    icon: <RiDashboardFill />,
-  },
-  {
-    name: "Products",
-    path: "/seller/products",
-    icon: <RiFileListFill />,
-  },
-  {
-    name: "Orders",
-    path: "/seller/orders",
-    icon: <IoMdCube />,
-  },
-  {
-    name: "Analytics",
-    path: "/seller/analytics",
-    icon: <FaChartSimple />,
-  },
-  {
-    name: "Earnings",
-    path: "/seller/earnings",
-    icon: <FaWallet />,
-  },
-  {
-    name: "Promotions",
-    path: "/seller/promotions",
-    icon: <RiCouponFill />,
-  },
-  {
-    name: "Customers",
-    path: "/seller/customers",
-    icon: <FaUsers />,
-  },
-  {
-    name: "Settings",
-    path: "/seller/settings",
-    icon: <FaGear />,
-  }
-]
-
-const SellerDashboardSidebar = () => {
+const SellerDashboardSidebar = ({ navitems }) => {
   const pathname = usePathname();
 
   return (
@@ -67,7 +21,7 @@ const SellerDashboardSidebar = () => {
       <div className="sidebar-body">
         {/* NAVIGATION */}
         <ul className='sidebar-nav-items'>
-          {navitems.map((item) => (
+          {navitems?.map((item) => (
             <li key={item.path}>
               <Link href={item.path} className={`sidebar-item quickbd-transition ${pathname === item.path && "sidebar-active-item"}`}>
                 <span className='icon'>{item.icon}</span>

@@ -6,8 +6,14 @@
 .dashboard-sidebar {
     @apply bg-secondary w-[250px] h-screen fixed top-0 left-0 z-[999] text-ghost-white pt-8 flex flex-col justify-between;
 }
+.small-sidebar {
+    @apply hidden;
+}
 .sidebar-logo {
-    @apply flex items-center justify-center
+    @apply flex items-center justify-center;
+}
+.logo {
+    @apply w-40 h-auto;
 }
 .sidebar-body {
     @apply overflow-y-auto;
@@ -16,16 +22,16 @@
     @apply flex flex-col gap-6 px-6 text-ghost-white font-medium text-base;
 }
 .sidebar-item {
-    @apply w-full flex items-center gap-3 border-b-2 border-body-color/60 pb-2 cursor-pointer
+    @apply w-full flex items-center gap-3 border-b-2 border-body-color/60 pb-2 cursor-pointer;
 }
 .sidebar-item:hover {
-    @apply border-primary
+    @apply border-primary;
 }
 .sidebar-active-item {
-    @apply text-primary border-primary
+    @apply text-primary border-primary;
 }
 .sidebar-item .icon {
-    @apply text-xl
+    @apply text-xl;
 }
 .store-status-details {
     @apply p-6 bg-primary space-y-1;
@@ -33,19 +39,36 @@
 .shop-name {
     @apply font-semibold text-base;
 }
+.shop-name:hover {
+    @apply underline;
+}
 .online-status {
-    @apply flex items-center gap-1
+    @apply flex items-center gap-1;
 }
 .online-status>div {
-    @apply w-2 h-2 bg-accent rounded-full
+    @apply w-2 h-2 bg-accent rounded-full;
 }
 .online-status>p {
-    @apply text-sm font-medium text-light-orange
+    @apply text-sm font-medium text-light-orange;
+}
+
+/* SMALL SIDEBAR - FOR MEDIUM AND SMALL DEVICES */
+.sidebar-oberlay {
+    @apply fixed inset-0 bg-secondary/80 z-[999];
+}
+.small-sidebar {
+    @apply fixed top-0 left-0 h-screen flex flex-col justify-between bg-secondary w-[250px] z-[1002] text-ghost-white pt-6 transform transition-transform duration-500 ease-in-out;
+}
+.close-btn {
+    @apply absolute top-0 right-[-46px] bg-ghost-white text-secondary font-semibold text-3xl p-2;
+}
+.close-btn:hover {
+    @apply  bg-heading-color/20;
 }
 
 /* DASHBOARD MAIN CONTENT AREA */
 .dashboard-content {
-    @apply px-6 py-8 w-full space-y-8 overflow-y-auto ml-[250px];
+    @apply px-6 py-8 w-full space-y-8 overflow-auto ml-[250px];
 }
 
 /* DASHBOARD PAGE HEADER */
@@ -68,7 +91,7 @@
     @apply text-lg text-heading-color cursor-pointer relative bg-light-orange p-3 border-2 border-body-color/30 rounded-md;
 }
 .notification:hover, .support:hover, .profile:hover {
-    @apply border-secondary
+    @apply border-secondary;
 }
 .notification-circle {
     @apply w-2 h-2 rounded-full bg-primary absolute top-2 right-2;
@@ -85,10 +108,10 @@
     @apply grid grid-cols-4 gap-6 w-full;
 }
 .stat-card {
-    @apply flex items-center gap-3 bg-white p-6 rounded-lg shadow-md
+    @apply flex items-center gap-3 bg-white p-6 rounded-lg shadow-md;
 }
 .stat-card:hover {
-    @apply shadow-lg
+    @apply shadow-lg;
 }
 .stat-card .icon {
     @apply text-[28px] font-medium p-2.5 rounded-md;
@@ -97,7 +120,7 @@
     @apply space-y-1;
 }
 .stat-card .data .label {
-    @apply text-sm text-body-color font-medium
+    @apply text-sm text-body-color font-medium;
 }
 .stat-card .data .value {
     @apply text-heading-color text-[22px] font-bold;
@@ -137,7 +160,7 @@
     @apply border-b border-border-color/60 align-middle text-sm text-body-color font-medium transition;
 }
 .dashboard-table>tbody>tr:hover {
-    @apply bg-body-color/5
+    @apply bg-body-color/5;
 }
 .dashboard-table>tbody>tr>td {
     @apply px-4 py-2;
@@ -187,4 +210,63 @@
 }
 .top-selling-product-card .revenue {
     @apply text-primary font-bold flex gap-1 items-center;
+}
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    /* SIDEBAR */
+    .dashboard-sidebar {
+        @apply hidden;
+    }
+    .logo {
+        @apply w-36 h-auto;
+    }
+    .sidebar-body {
+        @apply overflow-y-auto;
+    }
+    .sidebar-nav-items {
+        @apply flex flex-col gap-3 px-0 text-ghost-white font-medium text-base;
+    }
+    .sidebar-item {
+        @apply w-full flex items-center gap-2 border-b-0 cursor-pointer px-6 py-2;
+    }
+    .sidebar-item:hover {
+        @apply bg-primary/20;
+    }
+    .sidebar-active-item {
+        @apply bg-primary text-ghost-white;
+    }
+    .store-status-details {
+        @apply px-6 py-4;
+    }
+    .shop-name {
+        @apply text-sm;
+    }
+    .online-status {
+        @apply flex items-center gap-1;
+    }
+    .online-status>div {
+        @apply w-1.5 h-1.5;
+    }
+    .online-status>p {
+        @apply text-xs;
+    }
+
+    /* DASHBOARD MAIN CONTENT AREA */
+    .dashboard-content {
+        @apply p-6 pt-0 space-y-6 ml-0;
+    }
+
+    /* DASHBOARD PAGE HEADER */
+    .page-header {
+        @apply pb-6;
+    }
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
 }
