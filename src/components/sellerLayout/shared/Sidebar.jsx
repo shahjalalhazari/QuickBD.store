@@ -38,8 +38,8 @@ const SellerDashboardSidebar = ({ navitems }) => {
           <p className='shop-name'>Hajari Fruits Shop</p>
         </Link>
         <div className='online-status'>
-          <div className=''></div>
-          <p className=''>Online</p>
+          <div></div>
+          <p>Online</p>
         </div>
       </div>
     </div>

@@ -35,35 +35,41 @@ const MdSmPageHeader = ({ navitems }) => {
   return (
     <React.Fragment>
       <div className='page-header'>
-        {/* LEFT SIDE - SIDEBAR BUTTON & HEADINGS */}
-        <div className="flex items-center gap-8">
-          {/* HAMBURGER BUTTON */}
-          <button className="text-heading-color" onClick={openSidebar}>
-            <GiHamburgerMenu size={36} />
-          </button>
+        <div className="page-heading-content">
+          {/* LEFT SIDE - SIDEBAR BUTTON & HEADINGS */}
+          <div className="flex items-center gap-4 md:gap-8">
+            {/* HAMBURGER BUTTON */}
+            <button className="text-heading-color text-2xl md:text-4xl" onClick={openSidebar}>
+              <GiHamburgerMenu />
+            </button>
 
-          {/* HEADING & SUB-HEADING */}
-          <div className="heading">
-            <h1 className="title">{ header.heading }</h1>
-            <p className="subtitle">{ header.subheading }</p>
+            {/* HEADING & SUB-HEADING */}
+            <div className="heading">
+              <h1 className="title">{ header.heading }</h1>
+              <p className="subtitle hidden md:block">{ header.subheading }</p>
+            </div>
+          </div>
+
+          {/* RIGHT SIDE - NOTIFICATION, SUPPORT & PROFILE AVATER */}
+          <div className="right-side">
+            <div className="notification quickbd-transition">
+              <FaBell className='icon' />
+              <div className="notification-circle"></div>
+            </div>
+            <div className="support quickbd-transition">
+              <FaQuestionCircle className='icon' />
+            </div>
+            <Link href={"/seller/settings"} className="profile quickbd-transition">
+              <Image 
+              src={"/images/users/user-1.jpg"} 
+              alt="Profile" priority
+              width={20} height={20} />
+            </Link>
           </div>
         </div>
-
-        {/* RIGHT SIDE - NOTIFICATION, SUPPORT & PROFILE AVATER */}
-        <div className="right-side">
-          <div className="notification quickbd-transition">
-            <FaBell className='icon' />
-            <div className="notification-circle"></div>
-          </div>
-          <div className="support quickbd-transition">
-            <FaQuestionCircle className='icon' />
-          </div>
-          <Link href={"/seller/settings"} className="profile quickbd-transition">
-            <Image 
-            src={"/images/users/user-1.jpg"} 
-            alt="Profile" priority
-            width={20} height={20} />
-          </Link>
+        {/* SUB TITLE ONLY FOR SMALL DEVICES */}
+        <div className="heading mt-1.5 md:hidden">
+          <p className="subtitle">{ header.subheading }</p>
         </div>
       </div>
 
@@ -77,12 +83,9 @@ const MdSmPageHeader = ({ navitems }) => {
             }`}
             onClick={closeSidebar}
           ></div>
+
           {/* DASHBOARD SIDEBAR */}
-          <div className={`
-            small-sidebar left-0 ${
-              isClosing ? "slide-out" : "slide-in"
-            }`}
-          >
+          <div className={`small-sidebar left-0 ${isClosing ? "slide-out" : "slide-in"}`}>
             {/* CLOSE BTN */}
             <button 
               onClick={closeSidebar} 
@@ -130,8 +133,8 @@ const MdSmPageHeader = ({ navitems }) => {
                 <p className='shop-name'>Hajari Fruits Shop</p>
               </Link>
               <div className='online-status'>
-                <div className=''></div>
-                <p className=''>Online</p>
+                <div></div>
+                <p>Online</p>
               </div>
             </div>
           </div>

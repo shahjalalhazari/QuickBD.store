@@ -4,7 +4,7 @@
 
 /* SIDEBAR */
 .dashboard-sidebar {
-    @apply bg-secondary w-[250px] h-screen fixed top-0 left-0 z-[999] text-ghost-white pt-8 flex flex-col justify-between;
+    @apply bg-secondary min-w-[250px] h-screen fixed top-0 left-0 z-[999] text-ghost-white pt-8 flex flex-col justify-between;
 }
 .small-sidebar {
     @apply hidden;
@@ -63,7 +63,7 @@
     @apply absolute top-0 right-[-46px] bg-ghost-white text-secondary font-semibold text-3xl p-2;
 }
 .close-btn:hover {
-    @apply  bg-heading-color/20;
+    @apply  bg-primary/20;
 }
 
 /* DASHBOARD MAIN CONTENT AREA */
@@ -73,7 +73,10 @@
 
 /* DASHBOARD PAGE HEADER */
 .page-header {
-    @apply flex justify-between items-start pb-8 border-b-2 border-border-color/60;
+    @apply pb-6 border-b-2 border-border-color/60;
+}
+.page-heading-content {
+    @apply flex justify-between items-start 
 }
 .heading {
     @apply space-y-1;
@@ -223,9 +226,6 @@
     .logo {
         @apply w-36 h-auto;
     }
-    .sidebar-body {
-        @apply overflow-y-auto;
-    }
     .sidebar-nav-items {
         @apply flex flex-col gap-3 px-0 text-ghost-white font-medium text-base;
     }
@@ -264,7 +264,7 @@
         @apply pb-4;
     }
     .heading {
-        @apply space-y-0;
+        @apply space-y-0.5;
     }
     .heading .title {
         @apply text-[22px];
@@ -293,4 +293,75 @@
 
 /* SMALL SCREEN */
 @media (max-width: 639px) {
+    /* SIDEBAR */
+    .dashboard-sidebar {
+        @apply hidden;
+    }
+    .logo {
+        @apply w-36 h-auto;
+    }
+    .sidebar-nav-items {
+        @apply flex flex-col gap-3 px-0 text-ghost-white font-medium text-base;
+    }
+    .sidebar-item {
+        @apply w-full flex items-center gap-2 border-b-0 cursor-pointer px-6 py-2;
+    }
+    .sidebar-item:hover {
+        @apply bg-primary/20;
+    }
+    .sidebar-active-item {
+        @apply bg-primary text-ghost-white;
+    }
+    .store-status-details {
+        @apply px-6 py-4;
+    }
+    .shop-name {
+        @apply text-sm;
+    }
+    .online-status {
+        @apply flex items-center gap-1;
+    }
+    .online-status>div {
+        @apply w-1.5 h-1.5;
+    }
+    .online-status>p {
+        @apply text-xs;
+    }
+    .close-btn {
+        @apply right-[-40px] text-2xl;
+    }
+
+    /* DASHBOARD MAIN CONTENT AREA */
+    .dashboard-content {
+        @apply py-6 px-4 pt-0 space-y-6 ml-0;
+    }
+
+    /* DASHBOARD PAGE HEADER */
+    .page-header {
+        @apply pb-3;
+    }
+    .heading {
+        @apply space-y-0;
+    }
+    .heading .title {
+        @apply text-lg;
+    }
+    .heading .subtitle {
+        @apply text-xs;
+    }
+    .right-side {
+        @apply gap-2;
+    }
+    .notification, .support, .profile {
+        @apply text-base p-2 rounded;
+    }
+    .notification-circle {
+        @apply w-1.5 h-1.5 top-1.5 right-1.5;
+    }
+    .profile {
+        @apply p-1;
+    }
+    .profile img {
+        @apply w-6 h-6;
+    }
 }
