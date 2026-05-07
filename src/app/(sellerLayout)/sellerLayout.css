@@ -111,7 +111,7 @@
     @apply grid grid-cols-4 gap-6 w-full;
 }
 .stat-card {
-    @apply flex items-center gap-3 bg-white p-6 rounded-lg shadow-md;
+    @apply flex items-center gap-3 border border-border-color/60 w-full bg-white p-6 rounded-lg shadow-md;
 }
 .stat-card:hover {
     @apply shadow-lg;
@@ -129,7 +129,7 @@
     @apply text-heading-color text-[22px] font-bold;
 }
 .stat-card-trend {
-    @apply flex items-center gap-1 text-sm font-semibold;
+    @apply flex items-center gap-1 text-xs font-medium;
 }
 
 /* SHARED SECTION LAYOUT & STYLES */
@@ -263,6 +263,9 @@
     .page-header {
         @apply pb-4;
     }
+    .page-heading-content {
+    @apply flex justify-between items-center;
+}
     .heading {
         @apply space-y-0.5;
     }
@@ -286,6 +289,23 @@
     }
     .profile img {
         @apply w-8 h-8;
+    }
+
+    /* STAT CARDS */
+    .stat-card-grid {
+        @apply grid-cols-4 gap-4;
+    }
+    .stat-card {
+        @apply flex flex-col items-center justify-center gap-2 p-4 rounded-md;
+    }
+    .stat-card .icon {
+        @apply text-[28px] font-medium p-2 rounded-md;
+    }
+    .stat-card .data {
+        @apply space-y-1 flex flex-col items-center justify-center;
+    }
+    .stat-card .data .value {
+        @apply text-xl;
     }
 }
 /* -------------------------------------------------------------- */
@@ -340,6 +360,9 @@
     .page-header {
         @apply pb-3;
     }
+    .page-heading-content {
+        @apply flex justify-between items-center
+    }
     .heading {
         @apply space-y-0;
     }
@@ -363,5 +386,31 @@
     }
     .profile img {
         @apply w-6 h-6;
+    }
+
+    /* STAT CARDS */
+    .stat-card-grid {
+        @apply grid grid-cols-1 gap-3 w-full overflow-x-auto px-0.5 items-stretch snap-x snap-mandatory scroll-smooth;
+        grid-template-columns: auto auto auto auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .stat-card-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .stat-card {
+        @apply flex items-center gap-2.5 bg-white p-4 rounded-lg shadow-md shrink-0 w-fit mb-1;
+    }
+    .stat-card .data {
+        @apply space-y-0.5 min-w-max;
+    }
+    .stat-card .data .label {
+        @apply text-xs;
+    }
+    .stat-card .data .value {
+        @apply text-lg;
+    }
+    .stat-card-trend {
+        @apply text-[10px];
     }
 }
