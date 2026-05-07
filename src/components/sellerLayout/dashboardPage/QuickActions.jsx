@@ -101,19 +101,19 @@ const QuickActions = () => {
   return (
     <section className="section-container">
       {/* SECTION HEADER */}
-        <div className="section-header">
-          <h5 className="">Quick Actions</h5>
-        </div>
+      <div className="section-header">
+        <h5 className="">Quick Actions</h5>
+      </div>
 
-        {/* BUTTONS */}
-        <div className="quick-action-layout">
-          {actionList.map(item=>(
-            <ActionCard
-              key={item.id}
-              item={item}
-            />
-          ))}
-        </div>
+      {/* BUTTONS */}
+      <div className="quick-action-layout">
+        {actionList.map(item=>(
+          <ActionCard
+            key={item.id}
+            item={item}
+          />
+        ))}
+      </div>
     </section>
   );
 };

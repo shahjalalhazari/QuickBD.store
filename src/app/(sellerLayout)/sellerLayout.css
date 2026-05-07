@@ -264,8 +264,8 @@
         @apply pb-4;
     }
     .page-heading-content {
-    @apply flex justify-between items-center;
-}
+        @apply flex justify-between items-center;
+    }
     .heading {
         @apply space-y-0.5;
     }
@@ -306,6 +306,14 @@
     }
     .stat-card .data .value {
         @apply text-xl;
+    }
+
+    /* SHARED SECTION LAYOUT & STYLES */
+    .section-container {
+        @apply p-4 rounded-lg;
+    }
+    .two-col-grid {
+        @apply grid grid-cols-1 gap-6;
     }
 }
 /* -------------------------------------------------------------- */
@@ -412,5 +420,19 @@
     }
     .stat-card-trend {
         @apply text-[10px];
+    }
+
+    /* SHARED SECTION LAYOUT & STYLES */
+    .section-container {
+        @apply shadow-md p-4 rounded-lg space-y-3;
+    }
+    .section-header {
+        @apply pb-2;
+    }
+    .section-header h5 {
+        @apply text-lg;
+    }
+    .two-col-grid {
+        @apply grid grid-cols-1 gap-6;
     }
 }

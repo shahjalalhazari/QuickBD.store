@@ -74,3 +74,55 @@
 .action-card-icon {
     @apply text-[26px];
 }
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    /* --- SALES OVERVIEW CHART --- */
+    .chart-sub-heading {
+        @apply text-sm font-medium text-body-color;
+    }
+    .chart-heading {
+        @apply text-xl;
+    }
+    /* METRIC PILL */
+    .metric-pill-card {
+        @apply space-y-1.5;
+    }
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+    /* --- SALES OVERVIEW CHART --- */
+    .chart-header {
+        @apply gap-4;
+    }
+    .chart-sub-heading {
+        @apply text-xs;
+    }
+    .chart-heading {
+        @apply text-base;
+    }
+    /* METRIC PILL */
+    .metric-pill-layout {
+        @apply grid grid-cols-1 gap-3 w-full overflow-x-auto items-stretch snap-x snap-mandatory scroll-smooth;
+        grid-template-columns: auto auto auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    .metric-pill-card {
+        @apply w-36 mb-1 space-y-1 p-3 rounded;
+    }
+    .pill-card-label {
+        @apply text-xs;
+    }
+    .pill-card-value {
+        @apply text-base;
+    }
+    .pill-card-trend {
+        @apply gap-0.5 px-1.5 py-0.5 text-[10px];
+    }
+}

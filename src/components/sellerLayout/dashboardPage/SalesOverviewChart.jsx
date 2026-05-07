@@ -73,7 +73,7 @@ const SalesOverviewChart = () => {
       id: 2,
       label: "Order Completed",
       value: currentOrders.toFixed(2),
-      trend: "-.2%",
+      trend: "2%",
       trendGoing: "down"
     },
     {
@@ -89,7 +89,7 @@ const SalesOverviewChart = () => {
     <section className="section-container">
       {/* HEADER AND DROPDOWN */}
       <div className="chart-header">
-        <div className='space-y-2'>
+        <div className='space-y-1 md:space-y-2'>
           <p className="chart-sub-heading">Performance Analytics</p>
           <h2 className="chart-heading">Sales Overview</h2>
         </div>
