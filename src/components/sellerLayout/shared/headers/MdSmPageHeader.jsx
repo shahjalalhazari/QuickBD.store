@@ -39,7 +39,7 @@ const MdSmPageHeader = ({ navitems }) => {
           {/* LEFT SIDE - SIDEBAR BUTTON & HEADINGS */}
           <div className="flex items-center gap-4 md:gap-8">
             {/* HAMBURGER BUTTON */}
-            <button className="text-heading-color text-2xl md:text-4xl" onClick={openSidebar}>
+            <button className="text-heading-color text-xl md:text-4xl" onClick={openSidebar}>
               <GiHamburgerMenu />
             </button>
 

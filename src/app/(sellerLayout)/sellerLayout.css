@@ -180,7 +180,7 @@
     @apply p-3 rounded-lg text-center text-ghost-white text-2xl;
 }
 .activity-card>.content {
-    @apply flex flex-col items-start gap-1.5;
+    @apply flex flex-col items-start gap-1.5 px-0 text-left;
 }
 .activity-card>.content>p {
     @apply text-sm font-semibold text-heading-color;
@@ -428,7 +428,7 @@
         @apply space-y-0;
     }
     .heading .title {
-        @apply text-lg;
+        @apply text-base;
     }
     .heading .subtitle {
         @apply text-xs;
