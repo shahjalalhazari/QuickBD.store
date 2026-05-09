@@ -214,6 +214,59 @@
 .top-selling-product-card .revenue {
     @apply text-primary font-bold flex gap-1 items-center;
 }
+
+/* ORDER CARDS STYLE */
+.order-card {
+    @apply rounded-md border border-border-color/60 w-full h-full flex flex-col;
+}
+.order-card-header {
+    @apply flex items-center justify-between gap-4 px-4 py-3 bg-body-color/10 border-b border-border-color/60;
+}
+.order-id {
+    @apply text-base font-bold text-heading-color;
+}
+.customer-name {
+    @apply text-body-color font-medium text-sm;
+}
+.order-card-body {
+    @apply px-4 py-3 space-y-2.5 flex-1;
+}
+.order-items-grid {
+    @apply flex flex-col gap-2 font-medium text-heading-color;
+}
+.order-item {
+    @apply border-[0.5px] text-sm border-border-color/60 rounded-full w-fit px-2.5 py-1 bg-ghost-white;
+}
+.remaining-items {
+    @apply flex gap-2 items-center text-xs font-medium;
+}
+.show-all-btn {
+    @apply text-primary text-sm font-semibold;
+}
+.show-all-btn:hover {
+    @apply underline
+}
+.order-card-divider {
+    @apply border border-border-color/60;
+}
+.order-other-info {
+    @apply flex items-center justify-between gap-4;
+}
+.order-price {
+    @apply text-lg font-bold text-heading-color;
+}
+.order-date {
+    @apply text-sm text-body-color font-medium text-right;
+}
+.order-card-footer {
+    @apply px-4 py-3 bg-body-color/10 border-t border-border-color/60 flex justify-center mt-auto;
+}
+.order-card-footer:hover {
+    @apply bg-body-color/20 text-heading-color;
+}
+.order-view-btn {
+    @apply text-sm text-body-color font-semibold bg-transparent;
+}
 /* -------------------------------------------------------------- */
 
 

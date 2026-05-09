@@ -34,23 +34,6 @@
     @apply bg-secondary/20 text-secondary;
 }
 
-/* --- RECENT ORDERS TABLE --- */
-.recent-orders-section {
-    @apply bg-white p-6 shadow-lg rounded-[10px];
-}
-.order-items-grid {
-    @apply text-xs space-y-1 inline-block;
-}
-.order-item {
-    @apply border-[0.5px] border-border-color/60 rounded-full w-fit px-2 py-1 bg-ghost-white;
-}
-.show-all-btn {
-    @apply text-primary font-semibold;
-}
-.show-all-btn:hover {
-    @apply underline
-}
-
 /* --- RECENT ACTIVITES --- */
 .recent-activites {
     @apply flex flex-col gap-y-4;
@@ -101,6 +84,11 @@
     .action-card-icon {
         @apply text-xl;
     }
+
+    /* --- RECENT ORDERS TABLE --- */
+    .order-card-layout {
+        @apply grid grid-cols-2 gap-4 items-stretch;
+    }
 }
 /* -------------------------------------------------------------- */
 
@@ -139,12 +127,17 @@
 
     /* --- QUICK ACTIONS LIST --- */
     .quick-action-layout {
-        @apply grid grid-cols-2 gap-2;
+        @apply grid grid-cols-2 gap-3;
     }
     .action-card {
         @apply px-3 py-4 gap-y-1.5 text-sm rounded;
     }
     .action-card-icon {
         @apply text-lg;
+    }
+
+    /* --- RECENT ORDERS TABLE --- */
+    .order-card-layout {
+        @apply grid grid-cols-1 gap-3 items-stretch;
     }
 }

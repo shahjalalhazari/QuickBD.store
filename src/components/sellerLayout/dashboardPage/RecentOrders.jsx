@@ -4,20 +4,39 @@ import DataTable from '@/components/shared/tables/DataTable';
 import { formatDateTime } from '@/utils/formatDateTime';
 import { orderData } from '@/utils/tempoData/orderData';
 import SectionHeader from '../shared/headers/SectionHeader';
+import OrderCard from '../shared/cards/OrderCard';
 
 const RecentOrders = () => {
   const orders = orderData;
+  const emptyMessage = "No Data Found";
 
   return (
     <section className='section-container'>
-      {/* SECITON HEADER */}
+      {/* SECTION HEADER */}
       <SectionHeader
         heading={"Recent Orders"}
         path={"/seller/orders"}
       />
 
-      {/* TABLE */}
-      <DataTable columns={tableColumns} data={orders} />
+      {/* RECENT ORDERS FOR LARGE SCREENS IN TABLE LAYOUT */}
+      <div className="hidden lg:block">
+        <DataTable columns={tableColumns} data={orders} />
+      </div>
+      {/* RECENT ORDERS FOR MEDIUM SCREENS IN CARD LAYOUT */}
+      <div className="order-card-layout lg:hidden">
+        {orders.length > 0 ? (
+          orders.slice(0, 10).map((order) => (
+            <OrderCard key={order.id} order={order} />
+          ))
+        ) : (
+          <p 
+            colSpan={columns.length}
+            className="py-10 text-center text-body-color"
+          >
+            {emptyMessage}
+          </p>
+        )}
+      </div>
     </section>
   );
 };
@@ -44,14 +63,19 @@ const tableColumns = [
       return (
         <div className="order-items-grid">
           {visibleItems.map(item=>(
-            <p key={item.sku} className='order-item'>{item.name} × {item.quantity}</p>
+            <p 
+              key={item.sku} 
+              className='order-item'
+            >
+              {item.name} × {item.quantity}
+            </p>
           ))}
 
           {/* IF REMAINING ITEM */}
           {remaining > 0 && (
-            <div className="flex gap-2 items-center">
+            <div className="remaining-items">
               <p>
-                +{remaining} item(s)
+                +{remaining} more Item(s)
               </p>
               <button className="show-all-btn quickbd-transition">
                 Show All
