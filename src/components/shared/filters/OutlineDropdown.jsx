@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
-const OutlineDropdown = ({ options, value, onChange, width="w-44"}) => {
+const OutlineDropdown = ({ options, value, onChange, width=""}) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -24,7 +24,7 @@ const OutlineDropdown = ({ options, value, onChange, width="w-44"}) => {
 
 
   return (
-    <div className={`outline-dropdown relative ${width}`} ref={dropdownRef}>
+    <div className={`outline-dropdown relative w-[150px] md:w-40`} ref={dropdownRef}>
       <button
         type="button"
         onClick={() => setOpen(!open)}

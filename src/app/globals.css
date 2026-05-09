@@ -239,7 +239,7 @@ body {
   @apply relative;
 }
 .outline-dropdown>.dropdown-btn {
-  @apply flex justify-between items-center w-full p-3 rounded-md border-2 border-border-color/60 bg-transparent;
+  @apply flex justify-between items-center w-full gap-x-2 p-3 rounded-md border-2 border-border-color/60 bg-transparent;
 }
 .dropdown-selected-item {
   @apply text-heading-color text-sm font-medium cursor-pointer;
@@ -435,6 +435,9 @@ body {
   .dropdown-item {
     @apply px-2 py-1.5;
   }
+  .outline-dropdown>.dropdown-btn {
+    @apply p-2 rounded;
+  }
 
   
   /* CATEGORY CARD */
@@ -534,7 +537,10 @@ body {
     @apply p-2;
   }
   .dropdown-item {
-    @apply px-2 py-1.5;
+    @apply px-2 py-1;
+  }
+  .outline-dropdown>.dropdown-btn {
+    @apply p-2 rounded;
   }
 
 

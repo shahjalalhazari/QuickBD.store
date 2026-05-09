@@ -66,7 +66,7 @@
     @apply grid grid-cols-2 gap-6;
 }
 .action-card {
-    @apply px-4 py-8 flex flex-col items-center justify-center gap-y-2.5 text-heading-color font-medium text-base border border-border-color/60 rounded-lg bg-ghost-white;
+    @apply px-4 py-8 flex flex-col items-center justify-center gap-y-2.5 text-center text-heading-color font-medium text-base border border-border-color/60 rounded-lg bg-ghost-white;
 }
 .action-card:hover {
     @apply text-primary shadow-md;
@@ -89,6 +89,17 @@
     /* METRIC PILL */
     .metric-pill-card {
         @apply space-y-1.5;
+    }
+
+    /* --- QUICK ACTIONS LIST --- */
+    .quick-action-layout {
+        @apply grid grid-cols-3 gap-4;
+    }
+    .action-card {
+        @apply px-4 py-6 gap-y-2 rounded-md text-sm;
+    }
+    .action-card-icon {
+        @apply text-xl;
     }
 }
 /* -------------------------------------------------------------- */
@@ -124,5 +135,16 @@
     }
     .pill-card-trend {
         @apply gap-0.5 px-1.5 py-0.5 text-[10px];
+    }
+
+    /* --- QUICK ACTIONS LIST --- */
+    .quick-action-layout {
+        @apply grid grid-cols-2 gap-2;
+    }
+    .action-card {
+        @apply px-3 py-4 gap-y-1.5 text-sm rounded;
+    }
+    .action-card-icon {
+        @apply text-lg;
     }
 }
