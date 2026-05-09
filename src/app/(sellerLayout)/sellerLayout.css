@@ -488,4 +488,12 @@
     .two-col-grid {
         @apply grid grid-cols-1 gap-6;
     }
+
+    /* TOP SELLING PRODUCT CARD STYLE */
+    .top-selling-product-card {
+        @apply p-2 rounded-md;
+    }
+    .serial-number {
+        @apply rounded;
+    }
 }
