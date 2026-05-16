@@ -4,7 +4,7 @@ export const getProducts = async (category) => {
     const data = await res.json();
     return data.products;
   } else {
-    const res = await fetch('https://dummyjson.com/products?limit=100'); // GET FIRST 100 PRODUCTS.
+    const res = await fetch('https://dummyjson.com/products?limit=10'); // GET FIRST 10 PRODUCTS.
     const data = await res.json();
     return data.products;
   }

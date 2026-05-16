@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
 
-const OutlineDropdown = ({ options, value, onChange, width=""}) => {
+const OutlineDropdown = ({ options, value, onChange}) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
 

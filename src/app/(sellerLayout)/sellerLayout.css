@@ -151,13 +151,13 @@
     @apply overflow-hidden rounded-[10px] border border-border-color/60;
 }
 .dashboard-table {
-    @apply w-full min-w-full text-base;
+    @apply w-full min-w-full text-sm;
 }
 .dashboard-table>thead {
     @apply bg-body-color/10 border-b border-border-color/60;
 }
 .dashboard-table>thead th {
-    @apply py-3 px-4 text-left font-semibold text-heading-color text-base;
+    @apply py-3 px-4 text-left font-semibold text-heading-color;
 }
 .dashboard-table>tbody>tr {
     @apply border-b border-border-color/60 align-middle text-sm text-body-color font-medium transition;
@@ -235,7 +235,7 @@
     @apply flex flex-col gap-2 font-medium text-heading-color;
 }
 .order-item {
-    @apply border-[0.5px] text-sm border-border-color/60 rounded-full w-fit px-2.5 py-1 bg-ghost-white;
+    @apply border-[0.5px] text-xs border-border-color/60 rounded-full w-fit px-2.5 py-1 bg-ghost-white;
 }
 .remaining-items {
     @apply flex gap-2 items-center text-xs font-medium;
@@ -266,6 +266,23 @@
 }
 .order-view-btn {
     @apply text-sm text-body-color font-semibold bg-transparent;
+}
+
+/* SEARCHBAR AND FILTERS */
+.searchbar-filters {
+    @apply flex items-center w-full gap-4 justify-between;
+}
+.dropdown-filters {
+    @apply flex items-center gap-3;
+}
+.dashboard-searchbar {
+    @apply flex items-center gap-3 bg-ghost-white text-heading-color font-medium text-sm px-4 py-3 rounded-md border border-border-color/60 w-full;
+}
+.dashboard-search-input {
+    @apply w-full bg-transparent focus:outline-none;
+}
+.dashboard-search-input::placeholder {
+    @apply text-body-color/50;
 }
 /* -------------------------------------------------------------- */
 

@@ -1,5 +1,7 @@
 import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
+import ProductsList from '@/components/sellerLayout/productsPage/ProductsList';
 import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
+import { getProducts } from '@/lib/getProducts';
 import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
 import React from 'react';
 import { AiFillProduct } from 'react-icons/ai';
@@ -8,7 +10,9 @@ import { PiChartLineDownBold } from 'react-icons/pi';
 
 export const metadata = sellerDashboardPageMeta.products.metadata
 
-const SellerProductsPage = () => {
+const SellerProductsPage = async () => {
+  const allProducts = await getProducts();
+  
   return (
     <React.Fragment>
       <PageHeaderSetter
@@ -18,6 +22,10 @@ const SellerProductsPage = () => {
 
       {/* STAT CARDS */}
       <StatCards statCardData={statCardData} />
+
+      {/* PRODUCTS TABLE SECTION */}
+      <ProductsList allProducts={allProducts} />
+      
     </React.Fragment>
   );
 };

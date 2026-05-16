@@ -91,6 +91,18 @@ body {
 .view-btn:hover {
   @apply bg-body-color/20 text-heading-color;
 }
+/* *** Add Button *** */
+.add-btn {
+  @apply flex items-center gap-2 text-base bg-transparent border-2 border-primary text-primary font-semibold px-3 py-1.5 rounded-md;
+}
+.add-btn:hover {
+  @apply bg-primary/15 text-primary;
+}
+
+/* *** Icon Button *** */
+.icon-btn {
+  @apply flex items-center justify-center text-base p-1.5 rounded;
+}
 
 /* FORM INPUT FIELDS */
 /* *** Underlined Form Inputs *** */
@@ -520,6 +532,10 @@ body {
   /* *** Full Width Button & Button With Underline *** */
   .full-width-btn, .underline-btn {
     @apply text-sm;
+  }
+  /* *** Add Button *** */
+  .add-btn {
+    @apply gap-2 text-sm border px-2 py-1 rounded;
   }
 
 
