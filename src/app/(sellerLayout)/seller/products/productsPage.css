@@ -9,7 +9,7 @@
     @apply text-heading-color;
 }
 .multiple-data-list {
-    @apply flex flex-col gap-1;
+    @apply flex flex-col flex-1 text-start items-start gap-1;
 }
 .discount-price {
     @apply text-xs text-body-color line-through;
@@ -20,8 +20,6 @@
 .action-btns {
     @apply flex items-center gap-1;
 }
-
-
 /* -------------------------------------------------------------- */
 
 
@@ -38,10 +36,64 @@
         @apply flex items-center gap-1;
     }
 }
-
-
 /* -------------------------------------------------------------- */
 
 
 /* SMALL SCREEN */
-@media (max-width: 639px) {}
+@media (max-width: 639px) {
+    /* PRODUCT CARD STYLES */
+    .product-card-layout {
+        @apply grid grid-cols-1 gap-y-3 w-full;
+    }
+    .seller-product-card {
+        @apply bg-white p-4 text-sm font-medium rounded-md text-body-color border border-border-color/60 shadow-md transition-all duration-700;
+    }
+    .card-header {
+        @apply flex gap-2 items-center w-full;
+    }
+    .card-img {
+        @apply h-12 w-12 overflow-hidden rounded border-[0.5px] border-border-color/60 object-cover;
+    }
+    .card-header .title {
+        @apply text-heading-color font-semibold;
+    }
+    .card-header .sku {
+        @apply text-xs;
+    }
+    .card-body-collapsed {
+        @apply flex items-center justify-between gap-3 pt-4;
+    }
+    .card-body-collapsed .price {
+        @apply text-heading-color font-semibold
+    }
+    .card-body-collapsed .expand-icon {
+        @apply text-heading-color font-bold;
+    }
+    .card-body-expanded {
+        @apply overflow-hidden transition-all duration-700;
+    }
+    .card-data-list {
+        @apply flex flex-col gap-y-1;
+    }
+    .card-data {
+        @apply grid grid-cols-[120px_10px_1fr] items-start capitalize;
+    }
+    .card-data .value {
+        @apply font-semibold;
+    }
+    .card-footer {
+        @apply flex items-center pt-4;
+    }
+    .delete-btn {
+        @apply flex items-center justify-center gap-2.5 bg-danger/20 text-danger w-full px-4 py-1.5 rounded-s;
+    }
+    .delete-btn:hover {
+        @apply bg-danger/30;
+    }
+    .edit-btn {
+        @apply flex items-center justify-center gap-2 font-medium bg-info/20 text-info w-full px-4 py-1.5 rounded-e;
+    }
+    .edit-btn:hover {
+        @apply bg-info/30;
+    }
+}

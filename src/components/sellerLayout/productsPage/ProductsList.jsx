@@ -7,6 +7,7 @@ import StatusBadge from '@/components/shared/badges/StatusBadge';
 import IconBtn from '@/components/shared/buttons/IconBtn';
 import { FaTrashAlt } from 'react-icons/fa';
 import { MdEdit } from 'react-icons/md';
+import ProductsCardList from './ProductsCardList';
 
 const ProductsList = (allProducts) => {
   const [openModal, setOpenModal] = useState(false);
@@ -40,6 +41,11 @@ const ProductsList = (allProducts) => {
       </div>
 
       {/* PRODUCTS CARD LIST FOR SMALL SCREENS */}
+      <div className="md:hidden">
+        <ProductsCardList
+          data={allProducts.allProducts} 
+        />
+      </div>
     </section>
   );
 };
@@ -48,6 +54,7 @@ export default ProductsList;
 
 
 const lgTableColumns = [
+  // PRODUCT
   {
     header: "Product",
     accessor: "product",
@@ -67,6 +74,7 @@ const lgTableColumns = [
     ),
   },
 
+  // CATEGORY & BRAND
   {
     header: "Category & Brand",
     accessor: "category",
@@ -78,6 +86,7 @@ const lgTableColumns = [
     )
   },
 
+  // PRICES
   {
     header: "Price",
     accessor: "price",
@@ -95,6 +104,7 @@ const lgTableColumns = [
     ),
   },
 
+  // DISCOUNT AMOUNT
   {
     header: "Discount",
     accessor: "discountPercentage",
@@ -103,11 +113,13 @@ const lgTableColumns = [
     ),
   },
 
+  // STOCK QTY
   {
     header: "Stock",
     accessor: "stock",
   },
 
+  // STATUS
   {
     header: "Status",
     accessor: "status",
@@ -119,6 +131,7 @@ const lgTableColumns = [
     ),
   },
 
+  // ACTION BTNS
   {
     header: "Action",
     accessor: "action",
@@ -141,6 +154,7 @@ const lgTableColumns = [
 
 
 const mdTableColumns = [
+  // PRODUCT & SKU
   {
     header: "Product",
     accessor: "product",
@@ -160,6 +174,7 @@ const mdTableColumns = [
     ),
   },
 
+  // CATEGORY, BRAND & STOCK
   {
     header: "Category & Brand",
     accessor: "category",
@@ -172,6 +187,7 @@ const mdTableColumns = [
     ),
   },
 
+  // PRICES
   {
     header: "Price",
     accessor: "price",
@@ -189,6 +205,7 @@ const mdTableColumns = [
     ),
   },
 
+  // STATUS & ACTION BTNS
   {
     header: "Action",
     accessor: "action",

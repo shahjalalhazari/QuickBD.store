@@ -513,4 +513,15 @@
     .serial-number {
         @apply rounded;
     }
+
+    /* SEARCHBAR AND FILTERS */
+    .searchbar-filters {
+        @apply flex flex-col gap-3;
+    }
+    .dropdown-filters {
+        @apply w-full;
+    }
+    .dashboard-searchbar {
+        @apply gap-2 px-3 py-2 rounded;
+    }
 }

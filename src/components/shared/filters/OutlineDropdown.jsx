@@ -24,7 +24,10 @@ const OutlineDropdown = ({ options, value, onChange}) => {
 
 
   return (
-    <div className={`outline-dropdown relative w-[150px] md:w-40`} ref={dropdownRef}>
+    <div 
+      className={`outline-dropdown w-full relative min-w-[150px] md:min-w-40`} 
+      ref={dropdownRef}
+    >
       <button
         type="button"
         onClick={() => setOpen(!open)}
