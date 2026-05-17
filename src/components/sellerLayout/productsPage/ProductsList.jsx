@@ -25,10 +25,20 @@ const ProductsList = (allProducts) => {
 
       {/* PRODUCTS TABLE FOR LARGE SCREENS */}
       <div className="hidden lg:block">
-        <DataTable columns={tableColumns} data={allProducts.allProducts} />
+        <DataTable 
+          columns={lgTableColumns} 
+          data={allProducts.allProducts}
+        />
       </div>
-      
+
       {/* PRODUCTS TABLE FOR MEDIUM SCREENS */}
+      <div className="hidden md:block lg:hidden">
+        <DataTable 
+          columns={mdTableColumns} 
+          data={allProducts.allProducts} 
+        />
+      </div>
+
       {/* PRODUCTS CARD LIST FOR SMALL SCREENS */}
     </section>
   );
@@ -37,20 +47,20 @@ const ProductsList = (allProducts) => {
 export default ProductsList;
 
 
-const tableColumns = [
+const lgTableColumns = [
   {
     header: "Product",
     accessor: "product",
     render: (_, row) => (
-      <div className="flex items-center gap-3">
+      <div className="product">
         <img
           src={row.thumbnail}
           alt={row.title}
-          className="h-12 w-12 rounded-md object-cover border border-border-color/60"
+          className="product-img"
         />
 
-        <div className="flex flex-col gap-1">
-          <p className="font-semibold">{row.title}</p>
+        <div className="multiple-data-list">
+          <button className='product-title quickbd-transition'>{row.title}</button>
           <p className='text-xs'>SKU: {row.sku}</p>
         </div>
       </div>
@@ -58,27 +68,27 @@ const tableColumns = [
   },
 
   {
-    header: "Category",
+    header: "Category & Brand",
     accessor: "category",
-  },
-
-  {
-    header: "Brand",
-    accessor: "brand",
+    render: (_, row) => (
+      <div className='multiple-data-list'>
+        <p>{row.category}</p>
+        <p>{row.brand}</p>
+      </div>
+    )
   },
 
   {
     header: "Price",
     accessor: "price",
     render: (_, row) => (
-      <div className="space-y-1">
+      <div className="multiple-data-list">
         {row.price && (
-          <p className="text-xs text-gray-400 line-through">
+          <p className="discount-price">
             ৳ {row.price}
           </p>
         )}
-
-        <p className="font-semibold">
+        <p>
           ৳ {row.price}
         </p>
       </div>
@@ -89,7 +99,7 @@ const tableColumns = [
     header: "Discount",
     accessor: "discountPercentage",
     render: (value) => (
-      <p>{value || 0}%</p>
+      <p>{value || 0}% OFF</p>
     ),
   },
 
@@ -98,16 +108,6 @@ const tableColumns = [
     accessor: "stock",
   },
 
-  // {
-  //   header: "Status",
-  //   accessor: "status",
-  //   render: (value) => (
-  //     <StatusBadge
-  //       status={value}
-  //       text={value}
-  //     />
-  //   ),
-  // },
   {
     header: "Status",
     accessor: "status",
@@ -123,7 +123,7 @@ const tableColumns = [
     header: "Action",
     accessor: "action",
     render: (_, row) => (
-      <div className="flex items-center gap-1">
+      <div className="action-btns">
         <IconBtn 
           icon={<MdEdit />}
           onClick={() => console.log("Edit", row.id)}
@@ -134,6 +134,82 @@ const tableColumns = [
           onClick={() => console.log("Delete", row.id)}
           customClass="danger"
         />
+      </div>
+    ),
+  },
+];
+
+
+const mdTableColumns = [
+  {
+    header: "Product",
+    accessor: "product",
+    render: (_, row) => (
+      <div className="product">
+        <img
+          src={row.thumbnail}
+          alt={row.title}
+          className="product-img"
+        />
+
+        <div className="multiple-data-list">
+          <p>{row.title}</p>
+          <p className='text-xs'>SKU: {row.sku}</p>
+        </div>
+      </div>
+    ),
+  },
+
+  {
+    header: "Category & Brand",
+    accessor: "category",
+    render: (_, row) => (
+      <div className="multiple-data-list text-xs">
+        <p>{row.category}</p>
+        <p>{row.brand}</p>
+        <p>Stock: {row.stock}</p>
+      </div>
+    ),
+  },
+
+  {
+    header: "Price",
+    accessor: "price",
+    render: (_, row) => (
+      <div className="multiple-data-list">
+        {row.price && (
+          <p className="discount-price">
+            ৳ {row.price}
+          </p>
+        )}
+
+        <p>৳ {row.price}</p>
+        <p className='flex text-xs'>{row.discountPercentage || 0}% OFF</p>
+      </div>
+    ),
+  },
+
+  {
+    header: "Action",
+    accessor: "action",
+    render: (value="active", row) => (
+      <div className="product-actions">
+        <StatusBadge
+          status={value}
+          text={value}
+        />
+        <div className="action-btns">
+          <IconBtn 
+            icon={<MdEdit />}
+            onClick={() => console.log("Edit", row.id)}
+            customClass="info"
+          />
+          <IconBtn 
+            icon={<FaTrashAlt />}
+            onClick={() => console.log("Delete", row.id)}
+            customClass="danger"
+          />
+        </div>
       </div>
     ),
   },

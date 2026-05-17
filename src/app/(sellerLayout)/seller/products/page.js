@@ -7,6 +7,7 @@ import React from 'react';
 import { AiFillProduct } from 'react-icons/ai';
 import { FaCircleCheck, FaTriangleExclamation } from 'react-icons/fa6';
 import { PiChartLineDownBold } from 'react-icons/pi';
+import "./productsPage.css";
 
 export const metadata = sellerDashboardPageMeta.products.metadata
 

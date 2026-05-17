@@ -1,0 +1,47 @@
+/* PRODUCTS TABLE STYLES */
+.product {
+    @apply flex items-center gap-2;
+}
+.product-img {
+    @apply h-12 w-12 rounded-md object-cover border border-border-color/60;
+}
+.product-title:hover {
+    @apply text-heading-color;
+}
+.multiple-data-list {
+    @apply flex flex-col gap-1;
+}
+.discount-price {
+    @apply text-xs text-body-color line-through;
+}
+.product-actions {
+    @apply flex flex-col justify-center gap-1 w-full;
+}
+.action-btns {
+    @apply flex items-center gap-1;
+}
+
+
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    /* PRODUCTS TABLE STYLES */
+    .product-img {
+        @apply h-10 w-10;
+    }
+    .multiple-data-list {
+        @apply flex flex-col items-start gap-0.5;
+    }
+    .product-actions {
+        @apply flex items-center gap-1;
+    }
+}
+
+
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {}

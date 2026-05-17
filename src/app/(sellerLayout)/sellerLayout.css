@@ -160,7 +160,7 @@
     @apply py-3 px-4 text-left font-semibold text-heading-color;
 }
 .dashboard-table>tbody>tr {
-    @apply border-b border-border-color/60 align-middle text-sm text-body-color font-medium transition;
+    @apply border-b capitalize border-border-color/60 align-middle text-sm text-body-color font-medium transition;
 }
 .dashboard-table>tbody>tr:hover {
     @apply bg-body-color/5;
