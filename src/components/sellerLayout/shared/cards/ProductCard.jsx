@@ -15,8 +15,8 @@ const ProductCard = ({product}) => {
   const {thumbnail, title, price, category, brand, stock, sku, status="Active", discountPercentage} = product
 
   return (
-      <div className="seller-product-card" onClick={handleToggle}>
-        <div className="card-header">
+      <div className="seller-product-card">
+        <div className="card-header" onClick={handleToggle}>
           {/* IMAGE */}
           <img
             src={thumbnail}
@@ -51,9 +51,11 @@ const ProductCard = ({product}) => {
           />
 
           {/* ICON */}
-          <div className={`expand-icon quickbd-transition ${
-            expanded ?"rotate-180" : "rotate-0"}`
-          }>
+          <div 
+            onClick={handleToggle} 
+            className={`expand-icon quickbd-transition ${
+              expanded ?"rotate-180" : "rotate-0"}`}
+          >
             <FaChevronDown size={16} />
           </div>
         </div>
@@ -67,7 +69,7 @@ const ProductCard = ({product}) => {
       `}
       >
         {/* PRODUCT OTHER INFO */}
-        <div className="card-data-list">
+        <div className="card-data-list" onClick={handleToggle}>
           {/* BRAND */}
           <div className="card-data">
             <span>Brand</span>
