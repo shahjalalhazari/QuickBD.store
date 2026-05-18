@@ -284,6 +284,23 @@
 .dashboard-search-input::placeholder {
     @apply text-body-color/50;
 }
+
+/* DASHBOARD PAGINATION */
+.dashboard-pagination {
+    @apply flex items-center justify-between text-xs font-medium text-body-color mt-6;
+}
+.page-numbers {
+    @apply flex items-center gap-x-1 text-sm;
+}
+.page-number {
+    @apply h-7 w-7 rounded-full text-heading-color;
+}
+.page-number:hover {
+    @apply text-primary bg-primary/20;
+}
+.active-page {
+    @apply bg-primary text-ghost-white font-semibold;
+}
 /* -------------------------------------------------------------- */
 
 
@@ -384,6 +401,11 @@
     }
     .two-col-grid {
         @apply grid grid-cols-1 gap-6;
+    }
+
+    /* DASHBOARD PAGINATION */
+    .dashboard-pagination {
+        @apply mt-4;
     }
 }
 /* -------------------------------------------------------------- */

@@ -5,11 +5,11 @@
 .product-img {
     @apply h-12 w-12 rounded-md object-cover border border-border-color/60;
 }
-.product-title:hover {
-    @apply text-heading-color;
-}
 .multiple-data-list {
     @apply flex flex-col flex-1 text-start items-start gap-1;
+}
+.multiple-data-list .title {
+    @apply text-heading-color font-semibold;
 }
 .discount-price {
     @apply text-xs text-body-color line-through;
