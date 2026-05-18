@@ -72,7 +72,7 @@ const statCardData = [
       value:"1",
       change:"0.0%",
       trend:"neutral",
-      intent:"waning",
+      intent:"warning",
       icon: <PiChartLineDownBold />,
     }
 ]
