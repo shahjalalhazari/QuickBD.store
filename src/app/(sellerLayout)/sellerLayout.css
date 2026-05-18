@@ -394,6 +394,9 @@
     .stat-card .data .value {
         @apply text-xl;
     }
+    .stat-card-trend {
+        @apply text-[10px];
+    }
 
     /* SHARED SECTION LAYOUT & STYLES */
     .section-container {
