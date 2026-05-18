@@ -1,62 +1,53 @@
+import PaymentBadge from '@/components/shared/badges/PaymentBadge';
 import StatusBadge from '@/components/shared/badges/StatusBadge';
+import OrderProcessBtn from '@/components/shared/buttons/OrderProcessBtn';
 import ViewAllBtn from '@/components/shared/buttons/ViewAllBtn';
 import DataTable from '@/components/shared/tables/DataTable';
 import { formatDateTime } from '@/utils/formatDateTime';
 import { orderData } from '@/utils/tempoData/orderData';
 import SectionHeader from '../shared/headers/SectionHeader';
-import OrderCard from '../shared/cards/OrderCard';
 
-const RecentOrders = () => {
+const OrdersListSection = () => {
   const orders = orderData;
-  const emptyMessage = "No Data Found";
 
   return (
     <section className='section-container'>
       {/* SECTION HEADER */}
       <SectionHeader
-        heading={"Recent Orders"}
-        path={"/seller/orders"}
+        heading="All Orders"
+        showBtn={false}
       />
 
-      {/* RECENT ORDERS FOR LARGE SCREENS IN TABLE LAYOUT */}
+      {/* ORDERS FOR LARGE SCREENS IN TABLE LAYOUT */}
       <div className="hidden lg:block">
         <DataTable columns={tableColumns} data={orders} />
       </div>
-      {/* RECENT ORDERS FOR MEDIUM SCREENS IN CARD LAYOUT */}
-      <div className="order-card-layout lg:hidden">
-        {orders.length > 0 ? (
-          orders.slice(0, 10).map((order) => (
-            <OrderCard key={order.id} order={order} />
-          ))
-        ) : (
-          <p 
-            colSpan={columns.length}
-            className="py-10 text-center text-body-color"
-          >
-            {emptyMessage}
-          </p>
-        )}
-      </div>
+
+      {/* ORDERS FOR MEDIUM & SMALL SCREENS IN CARD LAYOUT */}
     </section>
   );
 };
 
-export default RecentOrders;
+export default OrdersListSection;
+
 
 const tableColumns = [
+  // ORDER ID
   {
     header: "Order ID",
     accessor: "id"
   },
+  // CUSTOMER NAME
   {
     header: "Customer",
     accessor: "customer",
     render:(customer)=><p>{customer.name}</p>
   },
+  // ORDER ITEMS
   {
     header: "Ordered Item(s)",
     accessor: "product",
-    render:(product,_)=>{
+    render:(product)=>{
       const visibleItems = product.slice(0,2);
       const remaining = product.length - 2;
 
@@ -85,9 +76,10 @@ const tableColumns = [
         </div>
       )
       }
-    },
+  },
+  // ORDER DATED & TIME
   {
-    header: "Date",
+    header: "Date / Time",
     accessor: "orderDate",
     render:(_,row)=>(
       <p className="whitespace-pre-line">
@@ -97,6 +89,7 @@ const tableColumns = [
       </p>
     )
   },
+  // ORDER AMOUNT
   {
     header: "Amount",
     accessor: "total",
@@ -104,6 +97,15 @@ const tableColumns = [
       <span className='font-semibold'>৳ {(value).toFixed(2)}</span>
     )
   },
+  // PAYMENT METHOD & STATUS
+  {
+    header:"Payment",
+    accessor:"paymentMethod",
+    render:(_, row)=>(
+      <PaymentBadge method={row.paymentMethod} status={row.paymentStatus} />
+    )
+  },
+  // ORDER STATUS
   {
     header:"Status",
     accessor:"status",
@@ -111,11 +113,26 @@ const tableColumns = [
       <StatusBadge status={value} text={value}/>
     )
   },
+  // ORDER DETILS ACTION
   {
     header: "Action",
     accessor: "action",
     render:(_)=>(
-      <ViewAllBtn text={"View"} className={"view-btn"} />
+      <ViewAllBtn text={"See More"} className={"view-btn"} />
+    )
+  },
+  // ORDER NEXT STEP
+  {
+    header: "Next Step",
+    accessor: "nextStep",
+    render:(_, row)=> (
+      (row.nextStep) && 
+      <div className="flex flex-col gap-y-1">
+        <OrderProcessBtn nextStep={row.nextStep} />
+        {(row.nextStep == "Accept") && 
+          <OrderProcessBtn nextStep={"cancel"} />
+        }
+      </div>
     )
   },
 ]

@@ -1,9 +1,11 @@
 import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
+import OrdersListSection from '@/components/sellerLayout/ordersPage/OrdersListSection';
 import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
 import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
 import React from 'react';
 import { FaCircleCheck, FaClock, FaGear } from 'react-icons/fa6';
 import { HiSquare3Stack3D } from 'react-icons/hi2';
+import "./ordersPage.css";
 
 export const metadata = sellerDashboardPageMeta.orders.metadata;
 
@@ -18,7 +20,8 @@ const SellerOrdersPage = () => {
       {/* STAT CARDS */}
       <StatCards statCardData={statCardData} />
 
-      {/* ORDERS TABLE SECTION */}
+      {/* ORDERS LIST SECTION */}
+      <OrdersListSection />
       
     </React.Fragment>
   );

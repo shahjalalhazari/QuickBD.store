@@ -61,6 +61,7 @@ export const orderData = [
         discount:0,
 
         status:"Pending",
+        nextStep: "Accept",
         paymentStatus:"Pending",
         fulfillmentStatus:"Processing",
 
@@ -121,6 +122,7 @@ export const orderData = [
         discount:10,
 
         status:"Processing",
+        nextStep: "Shipped",
         paymentStatus:"Paid",
         fulfillmentStatus:"Packing",
 
@@ -210,7 +212,8 @@ export const orderData = [
         shippingFee:10,
         discount:5,
 
-        status:"Delivered",
+        status:"Accepted",
+        nextStep: "Start Process",
         paymentStatus:"Paid",
         fulfillmentStatus:"Shipped",
 
@@ -301,6 +304,7 @@ export const orderData = [
         discount:10,
 
         status:"Processing",
+        nextStep: "Shipped",
         paymentStatus:"Paid",
         fulfillmentStatus:"Packing",
 
@@ -421,6 +425,7 @@ export const orderData = [
         discount:0,
 
         status:"Pending",
+        nextStep: "Accept",
         paymentStatus:"Pending",
         fulfillmentStatus:"Processing",
 
@@ -601,6 +606,7 @@ export const orderData = [
         discount:0,
 
         status:"Pending",
+        nextStep: "Accept",
         paymentStatus:"Pending",
         fulfillmentStatus:"Processing",
 
@@ -661,6 +667,7 @@ export const orderData = [
         discount:10,
 
         status:"Processing",
+        nextStep: "Shipped",
         paymentStatus:"Paid",
         fulfillmentStatus:"Packing",
 

@@ -25,7 +25,7 @@ const OutlineDropdown = ({ options, value, onChange}) => {
 
   return (
     <div 
-      className={`outline-dropdown w-full relative min-w-[150px] md:min-w-40`} 
+      className={`outline-dropdown w-full min-w-[150px] md:min-w-40 max-w-40 md:max-w-44`} 
       ref={dropdownRef}
     >
       <button

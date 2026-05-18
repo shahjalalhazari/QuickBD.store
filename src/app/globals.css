@@ -243,6 +243,9 @@ body {
 .status-badge {
   @apply text-xs border rounded-full w-fit px-2 py-0.5 font-medium;
 }
+.payment-badge {
+  @apply text-xs border w-fit px-1 py-0.5 text-body-color font-semibold rounded;
+}
 
 
 

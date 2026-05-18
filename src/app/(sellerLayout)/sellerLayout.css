@@ -410,6 +410,16 @@
     .dashboard-pagination {
         @apply mt-4;
     }
+
+    /* ORDERS CARDS LAYOUT */
+    .order-card-layout {
+        @apply grid grid-cols-2 gap-4 items-stretch;
+    }
+
+    /* SEARCHBAR AND FILTERS */
+    .dashboard-searchbar {
+        @apply py-2;
+    }
 }
 /* -------------------------------------------------------------- */
 
@@ -544,9 +554,14 @@
         @apply flex flex-col gap-3;
     }
     .dropdown-filters {
-        @apply w-full;
+        @apply w-full flex-wrap justify-center;
     }
     .dashboard-searchbar {
         @apply gap-2 px-3 py-2 rounded;
+    }
+
+    /* ORDERS CARDS LAYOUT */
+    .order-card-layout {
+        @apply grid grid-cols-1 gap-3 items-stretch;
     }
 }
