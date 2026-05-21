@@ -18,7 +18,11 @@ const ProductsList = ({allProducts}) => {
       />
 
       {/* SEARCH BAR & FILTER DROPDOWNS */}
-      <SearchBarAndFilters />
+      <SearchBarAndFilters
+        searchPlaceholer={"Search Products by Id, Name or SKU..."}
+        dropdownOne={categoryFilters}
+        dropdownTwo={statusFilters}
+      />
 
       {/* PRODUCTS LIST TABLE FOR MEDIUM & LARGE SCREEN */}
       <ProductsListTable 
@@ -36,3 +40,18 @@ const ProductsList = ({allProducts}) => {
 };
 
 export default ProductsList;
+
+
+const categoryFilters = [
+  { value: 'all', label: 'All Categories' },
+  { value: 'electronics', label: 'Electronics' },
+  { value: 'fashion', label: 'Fashion' },
+  { value: 'home', label: 'Home & Living' },
+];
+
+const statusFilters = [
+  { value: 'all', label: 'All Statuses' },
+  { value: 'active', label: 'Active' },
+  { value: 'inactive', label: 'Inactive' },
+  { value: 'outofstock', label: 'Out of Stock' },
+];

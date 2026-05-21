@@ -6,6 +6,7 @@ import DataTable from '@/components/shared/tables/DataTable';
 import { formatDateTime } from '@/utils/formatDateTime';
 import { orderData } from '@/utils/tempoData/orderData';
 import SectionHeader from '../shared/headers/SectionHeader';
+import SearchBarAndFilters from '../shared/filters/SearchBarAndFilters';
 
 const OrdersListSection = () => {
   const orders = orderData;
@@ -16,6 +17,13 @@ const OrdersListSection = () => {
       <SectionHeader
         heading="All Orders"
         showBtn={false}
+      />
+
+      {/* SEARCHBAR & FILTERS */}
+      <SearchBarAndFilters
+        searchPlaceholer={"Search orders by Id or Customer..."}
+        dropdownOne={daysFilters}
+        dropdownTwo={sortFilters}
       />
 
       {/* ORDERS FOR LARGE SCREENS IN TABLE LAYOUT */}
@@ -135,4 +143,22 @@ const tableColumns = [
       </div>
     )
   },
-]
+];
+
+
+// DROPDOWN FILTER OPTIONS
+const daysFilters = [
+  { value: 'all', label: 'All Time' },
+  { value: '7days', label: 'Last 7 Days' },
+  { value: '30days', label: 'Last 30 Days' },
+  { value: '3months', label: 'Last 3 Months' },
+  { value: '6months', label: 'Last 6 Months' },
+  { value: 'lastYear', label: 'Last Year' },
+];
+
+const sortFilters = [
+  { value: 'newest', label: 'Newest First' },
+  { value: 'oldest', label: 'Oldest First' },
+  { value: 'highest', label: 'Highest Amount' },
+  { value: 'lowest', label: 'Lowest Amount' },
+];
