@@ -23,10 +23,10 @@ const FilterBtns = ({orders}) => {
           <span>{filter.label}</span>
 
           <span
-            className={`count-btn
+            className={`order-count
               ${
                 activeFilter === filter.value
-                  ? "active-count-btn" : "inactive-count-btn"
+                  ? "active-order-count" : "inactive-order-count"
               }`}
           >
             {filter.count}
