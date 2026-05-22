@@ -19,7 +19,7 @@ const ProductsList = ({allProducts}) => {
 
       {/* SEARCH BAR & FILTER DROPDOWNS */}
       <SearchBarAndFilters
-        searchPlaceholer={"Search Products by Id, Name or SKU..."}
+        searchPlaceholder={"Search Products by Id, Name or SKU..."}
         dropdownOne={categoryFilters}
         dropdownTwo={statusFilters}
       />
@@ -53,5 +53,5 @@ const statusFilters = [
   { value: 'all', label: 'All Statuses' },
   { value: 'active', label: 'Active' },
   { value: 'inactive', label: 'Inactive' },
-  { value: 'outofstock', label: 'Out of Stock' },
+  { value: 'outOfStock', label: 'Out of Stock' },
 ];

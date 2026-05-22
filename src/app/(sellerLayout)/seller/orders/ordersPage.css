@@ -1,3 +1,29 @@
+/* FILTER BUTTONS */
+.filter-btns {
+    @apply flex flex-wrap gap-3 items-center w-full;
+}
+.filter-btn {
+    @apply flex items-center gap-2 text-sm font-medium border rounded-lg px-3 py-1.5;
+}
+.filter-btn:hover {
+    @apply border-primary bg-primary/20;
+}
+.active-filter-btn {
+    @apply bg-primary border-primary text-ghost-white pointer-events-none;
+}
+.inactive-filter-btn {
+    @apply text-heading-color border-heading-color;
+}
+.count-btn {
+    @apply px-1.5 py-0.5 rounded-md text-xs font-semibold;
+}
+.active-count-btn {
+    @apply bg-ghost-white/20;
+}
+.inactive-count-btn {
+    @apply bg-heading-color/20 ;
+}
+
 /* ORDERS TABLE STYLE */
 .order-next-step {
     @apply p-1 w-full rounded text-xs text-ghost-white font-medium

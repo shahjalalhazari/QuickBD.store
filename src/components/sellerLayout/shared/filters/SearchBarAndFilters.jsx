@@ -4,14 +4,14 @@ import OutlineDropdown from '@/components/shared/filters/OutlineDropdown';
 import { useState } from 'react';
 
 
-const SearchBarAndFilters = ({searchPlaceholer, dropdownOne, dropdownTwo}) => {
+const SearchBarAndFilters = ({searchPlaceholder, dropdownOne, dropdownTwo}) => {
   const [dropdownOneRange, setDropdownOneRange] = useState(dropdownOne[0]);
   const [dropdownTwoRange, setDropdownTwoRange] = useState(dropdownTwo[0]);
 
   return (
     <div className="searchbar-filters">
       <DashboardSearchBar 
-        placeholder={searchPlaceholer} 
+        placeholder={searchPlaceholder} 
       />
       <div className="dropdown-filters">
         {/* CATEGORY DROPDOWN FILTER */}

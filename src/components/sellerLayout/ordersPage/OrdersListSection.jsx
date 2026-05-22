@@ -7,6 +7,7 @@ import { formatDateTime } from '@/utils/formatDateTime';
 import { orderData } from '@/utils/tempoData/orderData';
 import SectionHeader from '../shared/headers/SectionHeader';
 import SearchBarAndFilters from '../shared/filters/SearchBarAndFilters';
+import FilterBtns from './FilterBtns';
 
 const OrdersListSection = () => {
   const orders = orderData;
@@ -19,9 +20,12 @@ const OrdersListSection = () => {
         showBtn={false}
       />
 
+      {/* FILTER BUTTONS */}
+      <FilterBtns orders={orders} />
+
       {/* SEARCHBAR & FILTERS */}
       <SearchBarAndFilters
-        searchPlaceholer={"Search orders by Id or Customer..."}
+        searchPlaceholder={"Search orders by Id or Customer..."}
         dropdownOne={daysFilters}
         dropdownTwo={sortFilters}
       />
