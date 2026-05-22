@@ -8,6 +8,8 @@ import { orderData } from '@/utils/tempoData/orderData';
 import SectionHeader from '../shared/headers/SectionHeader';
 import SearchBarAndFilters from '../shared/filters/SearchBarAndFilters';
 import FilterBtns from './FilterBtns';
+import OrderCard from '../shared/cards/OrderCard';
+import { getOrderNextStep } from '@/lib/getOrderNextStep';
 
 const OrdersListSection = () => {
   const orders = orderData;
@@ -36,6 +38,20 @@ const OrdersListSection = () => {
       </div>
 
       {/* ORDERS FOR MEDIUM & SMALL SCREENS IN CARD LAYOUT */}
+      <div className="order-card-layout lg:hidden">
+        {orders.length > 0 ? (
+          orders.slice(0, 10).map((order) => (
+            <OrderCard key={order.id} order={order} />
+          ))
+        ) : (
+          <p 
+            colSpan={columns.length}
+            className="py-10 text-center text-body-color"
+          >
+            {emptyMessage}
+          </p>
+        )}
+      </div>
     </section>
   );
 };
@@ -125,7 +141,7 @@ const tableColumns = [
       <StatusBadge status={value} text={value}/>
     )
   },
-  // ORDER DETILS ACTION
+  // ORDER DETAILS ACTION
   {
     header: "Action",
     accessor: "action",
@@ -137,15 +153,21 @@ const tableColumns = [
   {
     header: "Next Step",
     accessor: "nextStep",
-    render:(_, row)=> (
-      (row.nextStep) && 
-      <div className="flex flex-col gap-y-1">
-        <OrderProcessBtn nextStep={row.nextStep} />
-        {(row.nextStep == "Accept") && 
-          <OrderProcessBtn nextStep={"cancel"} />
-        }
-      </div>
-    )
+    render:(_, row)=> {
+      const nextStepAction = getOrderNextStep(row.status)
+      return (
+        nextStepAction.length > 0 && (
+          <div className="order-next-step">
+            {nextStepAction.map((action) => (
+              <OrderProcessBtn
+                key={action}
+                nextStep={action}
+              />
+            ))}
+          </div>
+        )
+      )
+    }
   },
 ];
 

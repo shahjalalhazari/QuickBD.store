@@ -3,12 +3,12 @@ const OrderProcessBtn = ({nextStep}) => {
 
   return (
     <button 
-      className={`order-next-step
-        ${nextStepLower == "accept" ? "bg-accent" :
-          nextStepLower == "shipped" ? "bg-secondary" : 
-          nextStepLower == "start process" ? "bg-info" :
-          nextStepLower == "cancel" ? "bg-danger" :
-          "bg-primary"
+      className={`next-step-btn quickbd-transition
+        ${nextStepLower == "accept" ? "bg-accent text-ghost-white" :
+          nextStepLower == "shipped" ? "bg-secondary text-ghost-white" : 
+          nextStepLower == "start process" ? "bg-info text-ghost-white" :
+          nextStepLower == "cancel" ? "border-2 border-danger text-danger hover:bg-danger/10" :
+          "bg-primary text-ghost-white"
         }
         `}
     >

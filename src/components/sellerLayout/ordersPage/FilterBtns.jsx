@@ -5,7 +5,6 @@ import { useState } from 'react';
 const FilterBtns = ({orders}) => {
   const filters = getOrderFilters(orders);
   const [activeFilter, setActiveFilter] = useState("all");
-  console.log(activeFilter);
 
   return (
     <div className="filter-btns">

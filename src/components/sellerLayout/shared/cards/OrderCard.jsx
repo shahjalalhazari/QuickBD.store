@@ -1,11 +1,15 @@
 import StatusBadge from '@/components/shared/badges/StatusBadge';
+import OrderProcessBtn from '@/components/shared/buttons/OrderProcessBtn';
 import ViewAllBtn from '@/components/shared/buttons/ViewAllBtn';
+import { getOrderNextStep } from '@/lib/getOrderNextStep';
 import { formatDateTime } from '@/utils/formatDateTime';
-import React from 'react';
 
 const OrderCard = ({ order }) => {
   const visibleItems = order.product.slice(0, 2);
   const remaining = order.product.length - 2;
+
+  // GET ORDER NEXT STEP ACTION
+  const nextStepAction = getOrderNextStep(order.status)
 
   return (
     <div className="order-card">
@@ -64,6 +68,18 @@ const OrderCard = ({ order }) => {
             {formatDateTime(order.orderDate)}
           </p>
         </div>
+
+        {/* ORDER NEXT STEP BUTTON */}
+        {nextStepAction.length > 0 && (
+          <div className="order-next-step">
+            {nextStepAction.map((action) => (
+              <OrderProcessBtn
+                key={action}
+                nextStep={action}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {/* CARD FOOTER -  VIEW DETAILS BUTTON */}

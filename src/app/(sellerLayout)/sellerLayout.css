@@ -258,6 +258,15 @@
 .order-date {
     @apply text-sm text-body-color font-medium text-right;
 }
+.order-next-step {
+    @apply flex flex-col gap-1.5;
+}
+.next-step-btn {
+    @apply p-1 w-full rounded text-xs font-medium
+}
+.next-step-btn:hover {
+    @apply bg-opacity-70 shadow-lg;
+}
 .order-card-footer {
     @apply px-4 py-3 bg-body-color/10 border-t border-border-color/60 flex justify-center mt-auto;
 }
@@ -415,6 +424,13 @@
     .order-card-layout {
         @apply grid grid-cols-2 gap-4 items-stretch;
     }
+    /* ORDER CARD STYLES */
+    .order-next-step {
+        @apply flex flex-row gap-4;
+    }
+    .next-step-btn {
+        @apply p-1.5 rounded-md text-sm;
+    }
 
     /* SEARCHBAR AND FILTERS */
     .dashboard-searchbar {
@@ -563,5 +579,12 @@
     /* ORDERS CARDS LAYOUT */
     .order-card-layout {
         @apply grid grid-cols-1 gap-3 items-stretch;
+    }
+    /* ORDER CARD */
+    .order-next-step {
+        @apply flex flex-row gap-3;
+    }
+    .next-step-btn {
+        @apply p-1 rounded text-sm;
     }
 }

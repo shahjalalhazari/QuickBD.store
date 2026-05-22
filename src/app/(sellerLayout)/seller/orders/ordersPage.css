@@ -24,14 +24,6 @@
     @apply bg-heading-color/20 ;
 }
 
-/* ORDERS TABLE STYLE */
-.order-next-step {
-    @apply p-1 w-full rounded text-xs text-ghost-white font-medium
-}
-.order-next-step:hover {
-    @apply bg-opacity-80;
-}
-
 /* -------------------------------------------------------------- */
 
 

@@ -38,7 +38,7 @@ const SellerDashboardPage = () => {
       <RecentOrders/>
 
       <div className='two-col-grid'>
-        {/* RECENT ACTIVITES */}
+        {/* RECENT ACTIVITIES */}
         <RecentActivity />
 
         {/* TOP SELLING PRODUCTS */}
