@@ -10,6 +10,9 @@ import SearchBarAndFilters from '../shared/filters/SearchBarAndFilters';
 import FilterBtns from './FilterBtns';
 import OrderCard from '../shared/cards/OrderCard';
 import { getOrderNextStep } from '@/lib/getOrderNextStep';
+import UnderlineBtn from '@/components/shared/buttons/UnderlineBtn';
+import { FaArrowRight } from 'react-icons/fa6';
+import DashboardPagination from '../shared/filters/DashboardPagination';
 
 const OrdersListSection = () => {
   const orders = orderData;
@@ -37,6 +40,7 @@ const OrdersListSection = () => {
         <DataTable columns={tableColumns} data={orders} />
       </div>
 
+
       {/* ORDERS FOR MEDIUM & SMALL SCREENS IN CARD LAYOUT */}
       <div className="order-card-layout lg:hidden">
         {orders.length > 0 ? (
@@ -51,6 +55,16 @@ const OrdersListSection = () => {
             {emptyMessage}
           </p>
         )}
+      </div>
+
+      {/* PAGINATION FOR LARGE & MEDIUM SCREEN */}
+      <div className="hidden md:block">
+        <DashboardPagination />
+      </div>
+
+      {/* LOAD MORE BTN FOR SMALL SCREEN */}
+      <div className="flex justify-end md:hidden">
+        <UnderlineBtn text={"Load More"} icon={<FaArrowRight />} />
       </div>
     </section>
   );
