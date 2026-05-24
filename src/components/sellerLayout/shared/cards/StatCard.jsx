@@ -2,8 +2,8 @@ import StatCardTrend from "./StatCardTrend";
 
 
 const StatCard = ({ data }) => {
-  const iconBg = `bg-${data.intent}/20`;
-  const iconColor = `text-${data.intent}`;
+  const iconBg = `bg-${data.intent}/20` || "bg-primary/20";
+  const iconColor = `text-${data.intent}` || "text-primary/20";
 
   return (
     <div className='stat-card quickbd-transition'>

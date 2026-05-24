@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const SellerDashboardSidebar = ({ navitems }) => {
+const SellerDashboardSidebar = ({ navItems }) => {
   const pathname = usePathname();
 
   return (
@@ -21,7 +21,7 @@ const SellerDashboardSidebar = ({ navitems }) => {
       <div className="sidebar-body">
         {/* NAVIGATION */}
         <ul className='sidebar-nav-items'>
-          {navitems?.map((item) => (
+          {navItems?.map((item) => (
             <li key={item.path}>
               <Link href={item.path} className={`sidebar-item quickbd-transition ${pathname === item.path && "sidebar-active-item"}`}>
                 <span className='icon'>{item.icon}</span>

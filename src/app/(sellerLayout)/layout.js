@@ -14,7 +14,7 @@ const SellerLayout = ({ children }) => {
     <HeaderProvider>
       <div className="dashboard-layout">
         {/* SIDEBAR */}
-        <SellerDashboardSidebar navitems={sidebarNavitems} />
+        <SellerDashboardSidebar navItems={sidebarNavitems} />
 
         <main className="dashboard-content">
           {/* PAGE HEADER FOR LARGE SCREEN */}
