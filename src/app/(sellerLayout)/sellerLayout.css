@@ -235,7 +235,7 @@
     @apply flex flex-col gap-2 font-medium text-heading-color;
 }
 .order-item {
-    @apply border-[0.5px] text-xs border-border-color/60 rounded-full w-fit px-2.5 py-1 bg-ghost-white;
+    @apply border text-xs border-border-color/60 rounded-full w-fit px-2.5 py-1 bg-ghost-white;
 }
 .remaining-items {
     @apply flex gap-2 items-center text-xs font-medium;
@@ -580,11 +580,50 @@
     .order-card-layout {
         @apply grid grid-cols-1 gap-3 items-stretch;
     }
-    /* ORDER CARD */
+    /* ORDER CARDS STYLE */
+    .order-card-header {
+        @apply px-3 py-2;
+    }
+    .order-id {
+        @apply text-sm;
+    }
+    .customer-name {
+        @apply text-xs;
+    }
+    .order-card-body {
+        @apply px-3 py-2 space-y-2;
+    }
+    .order-items-grid {
+        @apply gap-1;
+    }
+    .order-item {
+        @apply px-2 py-0.5;
+    }
+    .remaining-items {
+        @apply gap-1.5;
+    }
+    .show-all-btn {
+        @apply text-xs;
+    }
+    .order-other-info {
+        @apply gap-3;
+    }
+    .order-price {
+        @apply text-base;
+    }
+    .order-date {
+        @apply text-xs;
+    }
     .order-next-step {
-        @apply flex flex-row gap-3;
+        @apply flex flex-row gap-2.5;
     }
     .next-step-btn {
-        @apply p-1 rounded text-sm;
+        @apply text-sm;
+    }
+    .order-card-footer {
+        @apply px-3 py-2;
+    }
+    .order-view-btn {
+        @apply text-xs;
     }
 }
