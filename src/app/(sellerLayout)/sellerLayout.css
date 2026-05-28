@@ -146,6 +146,17 @@
     @apply grid grid-cols-2 gap-6;
 }
 
+/* --- CHART STYLES --- */
+.chart-header {
+    @apply flex justify-between;
+}
+.chart-sub-heading {
+    @apply text-sm font-medium text-body-color;
+}
+.chart-heading {
+    @apply text-2xl text-heading-color font-semibold
+}
+
 /* TABLE LAYOUT STYLE */
 .dashboard-table-layout {
     @apply overflow-hidden rounded-[10px] border border-border-color/60;

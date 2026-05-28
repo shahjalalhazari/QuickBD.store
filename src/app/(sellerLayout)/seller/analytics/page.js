@@ -1,3 +1,4 @@
+import RevenueOverview from '@/components/sellerLayout/analyticsPage/RevenueOverview';
 import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
 import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
 import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
@@ -5,6 +6,10 @@ import React from 'react';
 import { FaPercentage } from 'react-icons/fa';
 import { FaBagShopping, FaUsers } from 'react-icons/fa6';
 import { TbCurrencyTaka } from 'react-icons/tb';
+
+// METADATA
+export const metadata = sellerDashboardPageMeta.analytics.metadata;
+
 
 const AnalyticsPage = () => {
   return (
@@ -17,6 +22,9 @@ const AnalyticsPage = () => {
     
           {/* STAT CARDS */}
           <StatCards statCardData={statCardData} />
+
+          {/* REVENUE OVERVIEW */}
+          <RevenueOverview />
         </React.Fragment>
   );
 };
