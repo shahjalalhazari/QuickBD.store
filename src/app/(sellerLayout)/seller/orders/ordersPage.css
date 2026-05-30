@@ -1,58 +1,15 @@
-/* FILTER BUTTONS */
-.filter-btns {
-    @apply flex flex-wrap gap-3 items-center w-full;
-}
-.filter-btn {
-    @apply flex items-center gap-2 text-sm font-medium border rounded-lg px-3 py-1.5;
-}
-.filter-btn:hover {
-    @apply border-primary bg-primary/20;
-}
-.active-filter-btn {
-    @apply bg-primary border-primary text-ghost-white pointer-events-none;
-}
-.inactive-filter-btn {
-    @apply text-heading-color border-heading-color;
-}
-.order-count {
-    @apply px-1.5 py-0.5 rounded-md text-xs font-semibold;
-}
-.active-order-count {
-    @apply bg-ghost-white/20;
-}
-.inactive-order-count {
-    @apply bg-heading-color/20 ;
-}
 
 /* -------------------------------------------------------------- */
 
 
 /* MEDIUM SCREEN */
 @media (min-width: 639px) and (max-width: 1023px) {
-    /* FILTER BUTTONS */
-    .filter-btns {
-        @apply gap-2;
-    }
-    .filter-btn {
-        @apply gap-1.5 rounded-md px-2.5;
-    }
-    .order-count {
-        @apply px-1 py-0.5 rounded;
-    }
+    
 }
 /* -------------------------------------------------------------- */
 
 
 /* SMALL SCREEN */
 @media (max-width: 639px) {
-    /* FILTER BUTTONS */
-    .filter-btns {
-        @apply gap-1.5;
-    }
-    .filter-btn {
-        @apply gap-1 rounded px-2 py-1 text-xs;
-    }
-    .order-count {
-        @apply px-1 py-0 rounded-sm text-[10px];
-    }
+    
 }

@@ -1,3 +1,4 @@
+import RecentActivitiesSection from '@/components/sellerLayout/analyticsPage/RecentActivitiesSection';
 import RevenueOverview from '@/components/sellerLayout/analyticsPage/RevenueOverview';
 import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
 import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
@@ -6,6 +7,7 @@ import React from 'react';
 import { FaPercentage } from 'react-icons/fa';
 import { FaBagShopping, FaUsers } from 'react-icons/fa6';
 import { TbCurrencyTaka } from 'react-icons/tb';
+import "./analyticsPage.css";
 
 // METADATA
 export const metadata = sellerDashboardPageMeta.analytics.metadata;
@@ -14,18 +16,23 @@ export const metadata = sellerDashboardPageMeta.analytics.metadata;
 const AnalyticsPage = () => {
   return (
     <React.Fragment>
-          {/* PAGE HEADER */}
-          <PageHeaderSetter
-            heading={sellerDashboardPageMeta.analytics.heading}
-            subheading={sellerDashboardPageMeta.analytics.subheading}
-          />
-    
-          {/* STAT CARDS */}
-          <StatCards statCardData={statCardData} />
+      {/* PAGE HEADER */}
+      <PageHeaderSetter
+        heading={sellerDashboardPageMeta.analytics.heading}
+        subheading={sellerDashboardPageMeta.analytics.subheading}
+      />
 
-          {/* REVENUE OVERVIEW */}
-          <RevenueOverview />
-        </React.Fragment>
+      {/* STAT CARDS */}
+      <StatCards statCardData={statCardData} />
+
+      {/* REVENUE OVERVIEW */}
+      <RevenueOverview />
+
+      <div className='two-col-grid'>
+      {/* RECENT ACTIVITIES */}
+      <RecentActivitiesSection />
+      </div>
+    </React.Fragment>
   );
 };
 

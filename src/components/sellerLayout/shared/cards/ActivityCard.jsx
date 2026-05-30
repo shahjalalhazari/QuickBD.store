@@ -7,7 +7,7 @@ const ActivityCard = ({activity, metadata, time}) => {
         {metadata.icon}
       </div>
       <div className="content">
-        <p>{activity}</p>
+        <button className='activity-item-title'>{activity}</button>
         <span>{time}</span>
       </div>
     </div>
