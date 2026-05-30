@@ -28,10 +28,8 @@ const AnalyticsPage = () => {
       {/* REVENUE OVERVIEW */}
       <RevenueOverview />
 
-      <div className='two-col-grid'>
       {/* RECENT ACTIVITIES */}
       <RecentActivitiesSection />
-      </div>
     </React.Fragment>
   );
 };

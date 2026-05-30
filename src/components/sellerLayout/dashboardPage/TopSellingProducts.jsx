@@ -15,7 +15,7 @@ const TopSellingProducts = () => {
       
       {/* TOP SELLING PRODUCTS LIST */}
       <div className="top-selling-products">
-        {topProductsList.map((product, index) => (
+        {topProductsList.slice(0,5).map((product, index) => (
           <TopSellingProductCard key={product.id} product={product} index={index} />
         ))}
       </div>

@@ -182,7 +182,7 @@
 
 /* ACTIVITY CARD STYLE */
 .activity-card {
-    @apply flex gap-3 items-center;
+    @apply flex gap-3 items-center text-start;
 }
 .activity-card:hover {
     @apply bg-body-color/10 rounded-lg;
@@ -194,7 +194,7 @@
     @apply flex flex-col items-start gap-1.5 px-0 text-left;
 }
 .activity-item-title {
-    @apply text-sm font-semibold text-heading-color;
+    @apply text-sm font-semibold text-heading-color text-left w-full
 }
 .activity-card>.content>span {
     @apply text-xs font-medium text-body-color;

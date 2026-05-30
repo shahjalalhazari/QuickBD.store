@@ -1,3 +1,22 @@
 .activities-section {
-    @apply flex flex-col gap-3;
+    @apply grid grid-cols-2 gap-x-6 gap-y-3;
+};
+
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+    .activities-section {
+        @apply grid grid-cols-2 gap-x-4 gap-y-2;
+    };
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+    .activities-section {
+        @apply grid grid-cols-1 gap-x-0 gap-y-2;
+    };
 }
