@@ -39,7 +39,7 @@ export const sellerDashboardPageMeta = {
     heading: "Earnings & Payouts",
     subheading: "Track your earnings, payouts, and revenue.",
     metadata: {
-      title: "Earnings - Seller | QuickBD.store",
+      title: "Earnings & Payouts - Seller | QuickBD.store",
       description: "Track revenue, payouts, commissions, and transaction history in your QuickBD seller account.",
     },
   },
