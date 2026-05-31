@@ -137,7 +137,7 @@
     @apply bg-white shadow-lg p-6 rounded-[10px] space-y-4;
 }
 .section-header {
-    @apply flex items-center justify-between border-b-2 border-border-color/60 pb-3;
+    @apply flex items-center justify-between gap-x-4 border-b-2 border-border-color/60 pb-3;
 }
 .section-header h5 {
     @apply text-secondary text-xl font-semibold;

@@ -1,4 +1,5 @@
 import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
+import EarningChartSection from '@/components/sellerLayout/earningsPage/EarningChartSection';
 import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
 import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
 import React from 'react';
@@ -21,6 +22,13 @@ const EarningsPage = () => {
     
           {/* STAT CARDS */}
           <StatCards statCardData={statCardData} />
+
+          <div className='two-col-grid'>
+            {/* EARNING CHART SECTION */}
+            <EarningChartSection />
+
+            {/* PAYOUT SCHEDULE SECTION */}
+          </div>
         </React.Fragment>
   );
 };
@@ -53,7 +61,7 @@ const statCardData = [
     {
       id:3,
       label:"Pending Payout",
-      value:"0.5%",
+      value:"৳ 2450.76",
       change:"0.5%",
       trend:"up",
       intent:"primary",
