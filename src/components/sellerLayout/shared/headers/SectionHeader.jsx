@@ -29,7 +29,7 @@ const SectionHeader = ({
           {/* ACTION BUTTON */}
           {!path && onClick && (
             <button onClick={onClick}>
-              <AddBtn text="Add Product" />
+              <AddBtn text={btnText} />
             </button>
           )}
         </>

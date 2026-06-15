@@ -1,0 +1,63 @@
+.payout-cards-list {
+    @apply flex flex-col gap-y-3 w-full;
+}
+.payout-card {
+    @apply bg-heading-color/10 flex items-center gap-3 p-3 rounded-lg font-medium;
+}
+.payout-card:hover {
+    @apply bg-heading-color/20;
+}
+.payout-date {
+    @apply px-3 py-1 rounded flex flex-col items-center leading-none;
+}
+.status-upcoming {
+    @apply bg-primary text-ghost-white;
+}
+.status-paid {
+    @apply text-heading-color bg-heading-color/20;
+}
+.payout-day{
+    @apply text-lg font-semibold;
+}
+.payout-month{
+    @apply text-xs;
+}
+.payout-content {
+    @apply flex flex-col justify-between;
+}
+.payout-amount {
+    @apply text-primary font-semibold text-base;
+}
+.paid-date {
+    @apply text-body-color text-sm;
+}
+/* -------------------------------------------------------------- */
+
+
+/* MEDIUM SCREEN */
+@media (min-width: 639px) and (max-width: 1023px) {
+}
+/* -------------------------------------------------------------- */
+
+
+/* SMALL SCREEN */
+@media (max-width: 639px) {
+    .payout-cards-list {
+        @apply gap-y-2;
+    }
+    .payout-card {
+        @apply gap-2 p-2 rounded;
+    }
+    .payout-date {
+        @apply px-2 py-0.5 rounded-sm;
+    }
+    .payout-day{
+        @apply text-base;
+    }
+    .payout-amount {
+        @apply text-sm;
+    }
+    .paid-date {
+        @apply text-xs;
+    }
+}

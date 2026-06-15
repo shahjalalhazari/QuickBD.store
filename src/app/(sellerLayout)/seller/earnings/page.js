@@ -1,10 +1,12 @@
 import StatCards from '@/components/sellerLayout/dashboardPage/StatCards';
 import EarningChartSection from '@/components/sellerLayout/earningsPage/EarningChartSection';
+import PayoutScheduleSection from '@/components/sellerLayout/earningsPage/PayoutScheduleSection';
 import PageHeaderSetter from '@/components/sellerLayout/shared/PageHeaderSetter';
 import { sellerDashboardPageMeta } from '@/lib/sellerDashboardPageMeta';
 import React from 'react';
 import { FaCalendarDays, FaClock, FaWallet } from 'react-icons/fa6';
 import { TbCurrencyTaka } from 'react-icons/tb';
+import "./earningsPage.css";
 
 
 // METADATA
@@ -14,22 +16,23 @@ export const metadata = sellerDashboardPageMeta.earnings.metadata;
 const EarningsPage = () => {
   return (
     <React.Fragment>
-          {/* PAGE HEADER */}
-          <PageHeaderSetter
-            heading={sellerDashboardPageMeta.earnings.heading}
-            subheading={sellerDashboardPageMeta.earnings.subheading}
-          />
-    
-          {/* STAT CARDS */}
-          <StatCards statCardData={statCardData} />
+      {/* PAGE HEADER */}
+      <PageHeaderSetter
+        heading={sellerDashboardPageMeta.earnings.heading}
+        subheading={sellerDashboardPageMeta.earnings.subheading}
+      />
 
-          <div className='two-col-grid'>
-            {/* EARNING CHART SECTION */}
-            <EarningChartSection />
+      {/* STAT CARDS */}
+      <StatCards statCardData={statCardData} />
 
-            {/* PAYOUT SCHEDULE SECTION */}
-          </div>
-        </React.Fragment>
+      <div className='two-col-grid'>
+        {/* EARNING CHART SECTION */}
+        <EarningChartSection />
+
+        {/* PAYOUT SCHEDULE SECTION */}
+        <PayoutScheduleSection />
+      </div>
+    </React.Fragment>
   );
 };
 
@@ -39,16 +42,16 @@ export default EarningsPage;
 // STAT CARD's DATA
 const statCardData = [
   {
-      id:1,
-      label:"Total Earnings",
-      value:"৳ 405,892",
-      change:"12.8%",
-      trend:"up",
-      intent:"purple",
-      icon: <TbCurrencyTaka />,
-    },
+    id:1,
+    label:"Total Earnings",
+    value:"৳ 405,892",
+    change:"12.8%",
+    trend:"up",
+    intent:"purple",
+    icon: <TbCurrencyTaka />,
+  },
 
-    {
+  {
       id:2,
       label:"Available Balance",
       value:"৳ 450.76",
@@ -56,9 +59,9 @@ const statCardData = [
       trend:"up",
       intent:"accent",
       icon: <FaWallet />,
-    },
+  },
 
-    {
+  {
       id:3,
       label:"Pending Payout",
       value:"৳ 2450.76",
@@ -66,9 +69,9 @@ const statCardData = [
       trend:"up",
       intent:"primary",
       icon: <FaClock />,
-    },
+  },
 
-    {
+  {
       id:4,
       label:"Next Payout",
       value:"02 Jun, 2026",
@@ -76,5 +79,5 @@ const statCardData = [
       trend:"up",
       intent:"info",
       icon: <FaCalendarDays />,
-    }
+  }
 ]
