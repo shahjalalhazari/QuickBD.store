@@ -7,6 +7,7 @@ import React from 'react';
 import { FaCalendarDays, FaClock, FaWallet } from 'react-icons/fa6';
 import { TbCurrencyTaka } from 'react-icons/tb';
 import "./earningsPage.css";
+import EarningHistorySection from '@/components/sellerLayout/earningsPage/EarningHistorySection';
 
 
 // METADATA
@@ -32,6 +33,9 @@ const EarningsPage = () => {
         {/* PAYOUT SCHEDULE SECTION */}
         <PayoutScheduleSection />
       </div>
+
+      {/* EARNING HISTORY SECION */}
+      <EarningHistorySection />
     </React.Fragment>
   );
 };

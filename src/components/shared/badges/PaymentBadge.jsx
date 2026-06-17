@@ -5,28 +5,21 @@ const PaymentBadge = ({method, status}) => {
 
   return (
     <React.Fragment>
-      {/* PENDING */}
+      {/* PENDING OR UNPAID */}
       {(statusLower === "pending") && 
-        <div className={`
-          payment-badge quickbd-transition 
-          bg-warning/20 border-warning
-        `}>
+        <div className={`payment-badge bg-warning/20 border-warning`}>
           {method}
         </div>
         }
       {/* PAID */}
       {(statusLower === "paid") && 
-        <div className={`
-          payment-badge bg-accent/20 border-accent
-        `}>
+        <div className={`payment-badge bg-accent/20 border-accent`}>
           {method}
         </div>
       }
-      {/* REFUNDED */}
+      {/* REFUNDED OR CANCELLER */}
       {(statusLower === "refunded") && 
-        <div className={`
-          payment-badge bg-danger/20 border-danger
-        `}>
+        <div className={`payment-badge bg-danger/20 border-danger`}>
           {method}
         </div>
       }

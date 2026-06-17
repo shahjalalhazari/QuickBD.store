@@ -4,9 +4,9 @@ import OutlineDropdown from '@/components/shared/filters/OutlineDropdown';
 import { useState } from 'react';
 
 
-const SearchBarAndFilters = ({searchPlaceholder, dropdownOne, dropdownTwo}) => {
-  const [dropdownOneRange, setDropdownOneRange] = useState(dropdownOne[0]);
-  const [dropdownTwoRange, setDropdownTwoRange] = useState(dropdownTwo[0]);
+const SearchBarAndFilters = ({searchPlaceholder, dropdownOne=[], dropdownTwo=[]}) => {
+  const [dropdownOneRange, setDropdownOneRange] = useState(dropdownOne[0] || null);
+  const [dropdownTwoRange, setDropdownTwoRange] = useState(dropdownTwo[0] || null);
 
   return (
     <div className="searchbar-filters">
@@ -15,14 +15,14 @@ const SearchBarAndFilters = ({searchPlaceholder, dropdownOne, dropdownTwo}) => {
       />
       <div className="dropdown-filters">
         {/* CATEGORY DROPDOWN FILTER */}
-        {dropdownOne && <OutlineDropdown
+        {dropdownOne?.length > 0 && <OutlineDropdown
           options={dropdownOne}
           value={dropdownOneRange}
           onChange={setDropdownOneRange}
         />}
         
         {/* STATUS DROPDOWN FILTER */}
-        {dropdownTwo && <OutlineDropdown
+        {dropdownTwo?.length > 0 && <OutlineDropdown
           options={dropdownTwo}
           value={dropdownTwoRange}
           onChange={setDropdownTwoRange}

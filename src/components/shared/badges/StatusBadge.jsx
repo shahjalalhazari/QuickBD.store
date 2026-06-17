@@ -11,7 +11,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(statusLower === "accepted" || status === "low stock") && 
+    {(statusLower === "accepted" || status === "low stock"  || statusLower === "unpaid") && 
       <div className={`
         status-badge quickbd-transition 
         bg-warning/20 border-warning text-warning
@@ -35,8 +35,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(statusLower === "delivered" || statusLower === "success" ||
-      statusLower === "in stock" || statusLower === "active"
+    {(statusLower === "delivered" || statusLower === "success" || statusLower === "in stock" || statusLower === "active" || statusLower === "paid"
     ) && 
       <div className={`
         status-badge quickbd-transition 
@@ -45,7 +44,7 @@ const StatusBadge = ({status, text}) => {
         {text}
       </div>
       }
-    {(statusLower === "cancelled" || statusLower === "out of stock") && 
+    {(statusLower === "cancelled" || statusLower === "out of stock" || statusLower === "refunded") && 
       <div className={`
         status-badge quickbd-transition 
         bg-danger/20 border-danger text-danger
