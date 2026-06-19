@@ -7,10 +7,14 @@ import StatusBadge from "@/components/shared/badges/StatusBadge";
 import PaymentBadge from "@/components/shared/badges/PaymentBadge";
 import ViewAllBtn from "@/components/shared/buttons/ViewAllBtn";
 import DashboardPagination from "../shared/filters/DashboardPagination";
+import UnderlineBtn from '@/components/shared/buttons/UnderlineBtn';
+import { FaArrowRight } from 'react-icons/fa6';
+import EarningCard from "../shared/cards/EarningCard";
 
 
 const EarningHistorySection = () => {
   const earningHistory = earningsHistoryData;
+  const emptyMessage = "No Data Found";
 
 
   return (
@@ -20,18 +24,46 @@ const EarningHistorySection = () => {
         heading={"Earning History"}
       />
 
+
       {/* SEARCHBAR & FILTERS */}
       <SearchBarAndFilters
         searchPlaceholder={"Search earning history by ID, Status"}
         dropdownOne={daysFilters}
       />  
 
-      {/* EARNING HISTORY TABLE */}
-      <DataTable columns={tableColumns} data={earningHistory} />
+
+      {/* EARNING HISTORY TABLE FOR LARGE SCREEN */}
+      <div className="hidden lg:block">
+        <DataTable columns={tableColumns} data={earningHistory} />
+      </div>
+
+
+      {/* EARNING HISTORY FOR MEDIUM & SMALL SCREENS IN CARD LAYOUT */}
+      <div className="earnings-card-layout lg:hidden">
+        {earningHistory.length > 0 ? (
+          earningHistory.slice(0, 10).map((earning) => (
+            <EarningCard key={earning.id} earning={earning} />
+          ))
+        ) : (
+          <p 
+            colSpan={columns.length}
+            className="py-10 text-center text-body-color"
+          >
+            {emptyMessage}
+          </p>
+        )}
+      </div>
+
 
       {/* PAGINATION FOR LARGE & MEDIUM SCREEN */}
       <div className="hidden md:block">
         <DashboardPagination />
+      </div>
+
+
+      {/* LOAD MORE BTN FOR SMALL SCREEN */}
+      <div className="flex justify-end md:hidden">
+        <UnderlineBtn text={"Load More"} icon={<FaArrowRight />} />
       </div>
     </section>
   );
@@ -91,7 +123,6 @@ const tableColumns = [
       <StatusBadge status={value} text={value}/>
     )
   },
-  
   // PAYMENT METHOD & STATUS
   {
     header:"Payment",

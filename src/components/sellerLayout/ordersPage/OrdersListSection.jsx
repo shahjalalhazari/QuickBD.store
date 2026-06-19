@@ -16,6 +16,7 @@ import DashboardPagination from '../shared/filters/DashboardPagination';
 
 const OrdersListSection = () => {
   const orders = orderData;
+  const emptyMessage = "No Data Found";
 
   return (
     <section className='section-container'>

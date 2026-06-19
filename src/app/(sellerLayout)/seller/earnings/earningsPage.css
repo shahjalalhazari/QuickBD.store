@@ -36,6 +36,9 @@
 
 /* MEDIUM SCREEN */
 @media (min-width: 639px) and (max-width: 1023px) {
+    /* .earnings-card-layout {
+        @apply grid grid-cols-2 gap-3;
+    } */
 }
 /* -------------------------------------------------------------- */
 
